@@ -7,17 +7,15 @@ module Authentication
 
   included do
     attr_accessor :current_client
+    attr_accessor :current_user
+
     before_action :authenticate
   end
 
   protected
 
   def authentication_method
-    Settings.authentication_method || :digest
-  end
-
-  def test
-    current_client
+    :digest
   end
 
   def authenticate
@@ -34,15 +32,19 @@ module Authentication
   end
 
   def authenticate_with_digest
-    authenticate_or_request_with_http_digest(REALM) do |username|
-      WriteLog.info self, "Authenticating client: #{username}"
-      self.current_client = username
-      Credentials.password_for(username)
+    authenticate_or_request_with_http_digest(REALM) do |mkey|
+      WriteLog.info self, "Authenticating user: #{mkey}"
+      self.current_user = User.find(mkey)
+      current_user && current_user.auth
     end
   end
 
   def request_http_basic_authentication(realm = REALM)
     headers['WWW-Authenticate'] = %(Basic realm="#{realm.gsub(/"/, '')}")
     render json: { status: :unauthorized }, status: :unauthorized
+  end
+
+  def request_http_digest_authentication(realm = REALM)
+    super(realm, { status: :unauthorized }.to_json)
   end
 end
