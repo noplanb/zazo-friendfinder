@@ -206,6 +206,7 @@ GEM
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.7.5)
     safe_yaml (1.0.4)
+    settingslogic (2.0.9)
     shellany (0.0.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
@@ -271,6 +272,7 @@ DEPENDENCIES
   rollbar
   rspec-collection_matchers
   rspec-rails
+  settingslogic
   shoulda-matchers
   simplecov
   terminal-notifier-guard
