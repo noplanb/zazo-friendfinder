@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe RankingCriteria::Criterias::IsThisContactFavorite do
-  describe '#calculate' do
+  describe '#calculate_with_ratio' do
     let(:connection) { FactoryGirl.create :connection, vectors: vectors }
-    subject { described_class.new(connection).calculate }
+    subject { described_class.new(connection).calculate_with_ratio }
 
     context 'when contact is marked as favorite once' do
       let(:vectors) {[
         FactoryGirl.create(:vector_mobile, additions: { marked_as_favorite: true }),
         FactoryGirl.create(:vector_email)
       ]}
-      it { is_expected.to eq described_class::RATIO }
+      it { is_expected.to eq 10 }
     end
 
     context 'when contact is double marked as favorite' do
@@ -18,7 +18,7 @@ RSpec.describe RankingCriteria::Criterias::IsThisContactFavorite do
         FactoryGirl.create(:vector_mobile, additions: { marked_as_favorite: true }),
         FactoryGirl.create(:vector_email,  additions: { marked_as_favorite: true })
       ]}
-      it { is_expected.to eq described_class::RATIO }
+      it { is_expected.to eq 10 }
     end
 
     context 'when contact is not marked' do

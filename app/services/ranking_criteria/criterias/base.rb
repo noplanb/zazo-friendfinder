@@ -1,5 +1,7 @@
 class RankingCriteria::Criterias::Base
-  RATIO = 1
+  def self.ratio
+    1
+  end
 
   attr_reader :connection
 
@@ -13,5 +15,9 @@ class RankingCriteria::Criterias::Base
 
   def calculate
     0
+  end
+
+  def calculate_with_ratio
+    self.class.ratio * calculate
   end
 end
