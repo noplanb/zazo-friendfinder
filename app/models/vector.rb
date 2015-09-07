@@ -1,5 +1,5 @@
 class Vector < ActiveRecord::Base
   belongs_to :connection
 
-  validates :name, :value, presence: true
+  validates :connection, :name, :value, presence: true
 end
