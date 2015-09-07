@@ -38,6 +38,7 @@ FactoryGirl.define do
     # factories
     #
 
+    factory :vector_mobile, traits: []
     factory :vector_mobile_messages, traits: [:messages_sent]
     factory :vector_mobile_favorite, traits: [:marked_as_favorite]
     factory :vector_mobile_messages_favorite, traits: [:messages_sent, :marked_as_favorite]

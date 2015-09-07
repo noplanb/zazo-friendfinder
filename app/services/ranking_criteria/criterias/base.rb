@@ -12,6 +12,6 @@ class RankingCriteria::Criterias::Base
   end
 
   def calculate
-
+    0
   end
 end
