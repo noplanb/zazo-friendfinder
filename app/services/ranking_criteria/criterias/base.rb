@@ -1,4 +1,6 @@
 class RankingCriteria::Criterias::Base
+  RATIO = 1
+
   attr_reader :connection
 
   def initialize(connection)

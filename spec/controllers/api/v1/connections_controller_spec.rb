@@ -8,9 +8,7 @@ RSpec.describe Api::V1::ConnectionsController, type: :controller do
     use_vcr_cassette 'authentication/with_http_digest', api_base_urls
 
     before do
-      authenticate_with_http_digest(user_mkey, user_auth) do
-        post :create, format: :json
-      end
+      authenticate_with_http_digest(user_mkey, user_auth) { post :create, format: :json }
     end
 
     it { expect(response).to be_success }
