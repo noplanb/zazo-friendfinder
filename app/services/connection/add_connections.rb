@@ -1,5 +1,5 @@
 class Connection::AddConnections
-  attr_reader :params, :validation
+  attr_reader :current_user, :params, :validation
 
   class Validation
     include ActiveModel::Validations
@@ -9,12 +9,13 @@ class Connection::AddConnections
     end
   end
 
-  def initialize(params)
-    @params     = params
-    @validation = Validation.new(params)
+  def initialize(current_user, params)
+    @current_user = current_user
+    @params       = params
+    @validation   = Validation.new(params)
   end
 
-  def create
+  def do
     validation.valid?
   end
 end
