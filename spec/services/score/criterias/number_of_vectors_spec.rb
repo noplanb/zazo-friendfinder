@@ -45,6 +45,6 @@ RSpec.describe Score::Criterias::NumberOfVectors do
 
     it { is_expected.to be_valid }
     it { expect(subject.name).to eq 'number_of_vectors' }
-    it { expect(subject.persisted?).to be_true }
+    it { expect(subject.persisted?).to be true }
   end
 end

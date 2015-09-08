@@ -10,7 +10,13 @@ class Score::Criterias::Base
   end
 
   def save
-    
+    instance = Score.new({
+      name: name,
+      contact: contact,
+      value: calculate_with_ratio
+    })
+    instance.save
+    instance
   end
 
   def calculate
@@ -18,6 +24,12 @@ class Score::Criterias::Base
   end
 
   def calculate_with_ratio
-    self.class.ratio * calculate
+    (self.class.ratio * calculate).to_i
+  end
+
+  protected
+
+  def name
+    self.class.name.split('::').last.underscore
   end
 end

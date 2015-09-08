@@ -41,6 +41,6 @@ RSpec.describe Score::Criterias::IsThisContactFavorite do
 
     it { is_expected.to be_valid }
     it { expect(subject.name).to eq 'is_this_contact_favorite' }
-    it { expect(subject.persisted?).to be_true }
+    it { expect(subject.persisted?).to be true }
   end
 end

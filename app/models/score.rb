@@ -1,5 +1,5 @@
 class Score < ActiveRecord::Base
-  ALLOWED_METHODS = %w()
+  ALLOWED_METHODS = %w(is_this_contact_favorite number_of_vectors)
 
   belongs_to :contact
 

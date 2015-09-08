@@ -7,9 +7,9 @@ RSpec.describe Score::Criterias::Base do
     context 'with invalid name' do
       subject { instance.save }
 
-      it { is_expected.to.not be_valid }
+      it { is_expected.to_not be_valid }
       it { expect(subject.name).to eq 'base' }
-      it { expect(subject.persisted?).to be_false }
+      it { expect(subject.persisted?).to be false }
     end
   end
 end
