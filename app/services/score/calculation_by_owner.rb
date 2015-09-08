@@ -6,6 +6,8 @@ class Score::CalculationByOwner
   end
 
   def do
-
+    Contact.by_owner(owner).map do |contact|
+      Score::CalculationByContact.new(contact).do
+    end.find { |res| !res }.nil? ? true : false
   end
 end

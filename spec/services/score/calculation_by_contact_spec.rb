@@ -15,7 +15,7 @@ RSpec.describe Score::CalculationByContact do
     let!(:subject) { instance.do }
 
     it { is_expected.to be true }
-    it { expect(Score.all.size).to eq 3 }
-    it { expect(Contact.find(contact.id).total_score).to eq 21 }
+    it { expect(Score.all.size).to eq 4 }
+    it { expect(Contact.find(contact.id).total_score).to eq 33 }
   end
 end

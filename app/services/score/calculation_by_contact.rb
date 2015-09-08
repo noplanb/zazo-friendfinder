@@ -7,7 +7,7 @@ class Score::CalculationByContact
 
   def do
     contact.total_score = save_scores_and_get_total
-    contact.save!
+    contact.save
   end
 
   private
@@ -16,12 +16,12 @@ class Score::CalculationByContact
     total_score = 0
     wrap_transaction do
       criterias.each do |calculated|
-        score = Score.create({
+        score = Score.create!({
           contact: contact,
           name:  calculated[:name],
           value: calculated[:score]
         })
-        total_score += score.value if score.persisted?
+        total_score += score.value
       end
     end
     total_score
