@@ -3,7 +3,7 @@ class Score < ActiveRecord::Base
 
   belongs_to :contact
 
-  validates :contact, :method, :value, presence: true
+  validates :contact, :name, :value, presence: true
   validates :value, numericality: true
-  validates :method, inclusion: { in: ALLOWED_METHODS, message: '%{value} is not a allowed method' }
+  validates :name, inclusion: { in: ALLOWED_METHODS, message: '%{value} is not a allowed method' }
 end

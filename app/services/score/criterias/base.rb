@@ -10,7 +10,7 @@ class Score::Criterias::Base
   end
 
   def save
-
+    
   end
 
   def calculate
