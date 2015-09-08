@@ -3,7 +3,7 @@ class Api::V1::ContactsController < ApplicationController
     if manager.do
       render json: { status: :success }
     else
-      render status: :unprocessable_entity, json: { status: :failure, errors: manager.validation.errors.messages }
+      render status: :unprocessable_entity, json: { status: :failure, errors: manager.validator.errors.messages }
     end
   end
 

@@ -1,6 +1,6 @@
 class Score < ActiveRecord::Base
   ALLOWED_METHODS = %w()
-  
+
   belongs_to :contact
 
   validates :contact, :method, :value, presence: true

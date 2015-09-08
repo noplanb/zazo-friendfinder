@@ -1,4 +1,4 @@
-class Contact::GetSuggestions
+class Suggestion::GetSuggestions
   attr_reader :current_user
 
   def initialize(current_user)
