@@ -4,8 +4,8 @@ class RankingCriteria::Criterias::IsThisContactFavorite < RankingCriteria::Crite
   end
 
   def calculate
-    (connection.vectors.find do |vector|
-      vector.additions.try :[], 'marked_as_favorite'
-    end.nil? ? 0 : 1)
+    connection.vectors.find do |vector|
+      vector.additions_value 'marked_as_favorite'
+    end.nil? ? 0 : 1
   end
 end

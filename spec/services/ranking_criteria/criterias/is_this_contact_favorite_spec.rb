@@ -24,7 +24,7 @@ RSpec.describe RankingCriteria::Criterias::IsThisContactFavorite do
     context 'when contact is not marked' do
       let(:vectors) {[
         FactoryGirl.create(:vector_mobile),
-        FactoryGirl.create(:vector_email,  additions: { messages_sent: 12 })
+        FactoryGirl.create(:vector_email, additions: { messages_sent: 12 })
       ]}
       it { is_expected.to eq 0 }
     end

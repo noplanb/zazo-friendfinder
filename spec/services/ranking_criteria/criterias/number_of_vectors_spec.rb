@@ -23,9 +23,7 @@ RSpec.describe RankingCriteria::Criterias::NumberOfVectors do
     end
 
     context 'contact with 1 vector' do
-      let(:vectors) {[
-        FactoryGirl.create(:vector_mobile)
-      ]}
+      let(:vectors) { [FactoryGirl.create(:vector_mobile)] }
       it { is_expected.to eq 4 }
     end
 
