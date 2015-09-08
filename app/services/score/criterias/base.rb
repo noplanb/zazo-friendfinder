@@ -32,4 +32,8 @@ class Score::Criterias::Base
   def name
     self.class.name.split('::').last.underscore
   end
+
+  def run_raw_sql(sql)
+    Contact.connection.select_all sql
+  end
 end
