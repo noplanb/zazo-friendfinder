@@ -1,4 +1,4 @@
-class RankingCriteria::Worker
+class Score::Worker
   class << self
     def execute
 

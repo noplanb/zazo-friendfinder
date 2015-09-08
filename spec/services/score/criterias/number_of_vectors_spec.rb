@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe RankingCriteria::Criterias::NumberOfVectors do
+RSpec.describe Score::Criterias::NumberOfVectors do
   describe '#calculate_with_ratio' do
-    let(:connection) { FactoryGirl.create :connection, vectors: vectors }
+    let(:connection) { FactoryGirl.create :contact, vectors: vectors }
     subject { described_class.new(connection).calculate_with_ratio }
 
     context 'contact with 3 vectors' do

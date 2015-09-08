@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe RankingCriteria::Criterias::IsThisContactFavorite do
+RSpec.describe Score::Criterias::IsThisContactFavorite do
   describe '#calculate_with_ratio' do
-    let(:connection) { FactoryGirl.create :connection, vectors: vectors }
+    let(:connection) { FactoryGirl.create :contact, vectors: vectors }
     subject { described_class.new(connection).calculate_with_ratio }
 
     context 'when contact is marked as favorite once' do

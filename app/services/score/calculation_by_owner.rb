@@ -1,4 +1,4 @@
-class RankingCriteria::CalculationByOwner
+class Score::CalculationByOwner
   attr_reader :owner
 
   def initialize(owner)

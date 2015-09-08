@@ -1,4 +1,4 @@
-class Api::V1::ConnectionsController < ApplicationController
+class Api::V1::ContactsController < ApplicationController
   def create
     if manager.do
       render json: { status: :success }
@@ -10,10 +10,10 @@ class Api::V1::ConnectionsController < ApplicationController
   private
 
   def manager
-    @manager ||= Connection::AddConnections.new(current_user, connections_params)
+    @manager ||= Contact::AddContacts.new(current_user, contacts_params)
   end
 
-  def connections_params
+  def contacts_params
     params
   end
 end

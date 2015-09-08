@@ -1,12 +1,12 @@
-class RankingCriteria::Criterias::Base
+class Score::Criterias::Base
   def self.ratio
     1
   end
 
-  attr_reader :connection
+  attr_reader :contact
 
-  def initialize(connection)
-    @connection = connection
+  def initialize(contact)
+    @contact = contact
   end
 
   def save

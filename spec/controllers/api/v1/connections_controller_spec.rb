@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::ConnectionsController, type: :controller do
+RSpec.describe Api::V1::ContactsController, type: :controller do
   let(:user_mkey) { '7qdanSEmctZ2jPnYA0a1' }
   let(:user_auth) { '7qdanSEmctZ2jPnYA0a1' }
 

@@ -1,4 +1,4 @@
-class Connection::AddConnections
+class Contact::AddContacts
   attr_reader :current_user, :params, :validation
 
   class Validation

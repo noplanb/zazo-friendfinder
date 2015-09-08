@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :vector do
     name      'mobile'
     value     { Faker::PhoneNumber.cell_phone }
-    association :connection
+    association :contact
 
     #
     # types

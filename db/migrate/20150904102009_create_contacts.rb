@@ -1,6 +1,6 @@
-class CreateConnections < ActiveRecord::Migration
+class CreateContacts < ActiveRecord::Migration
   def change
-    create_table :connections do |t|
+    create_table :contacts do |t|
       t.string :owner
       t.string :first_name
       t.string :last_name
@@ -9,6 +9,6 @@ class CreateConnections < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :connections, :owner
+    add_index :contacts, :owner
   end
 end

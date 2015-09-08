@@ -1,7 +1,7 @@
 class Vector < ActiveRecord::Base
-  belongs_to :connection
+  belongs_to :contact
 
-  validates :connection, :name, :value, presence: true
+  validates :contact, :name, :value, presence: true
 
   scope :mobile, -> { where name: 'mobile' }
 
