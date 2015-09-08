@@ -14,44 +14,45 @@ RSpec.describe Score::Criterias::OthersHavingThisContact do
   describe '#calculate_with_ratio' do
     subject { instance.calculate_with_ratio }
 
-    context 'three others have this contact' do
-      context 'by one vector' do
+    context 'several others have this contact' do
+      context 'by one vector overlap' do
         before do
-          3.times do
-            vectors = [
-              FactoryGirl.create(:vector_email, value: email),
-              FactoryGirl.create(:vector_facebook, value: email)
-            ]
-            FactoryGirl.create :contact, vectors: vectors
-          end
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email,    value: email)]
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email)]
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email,    value: email), FactoryGirl.create(:vector_facebook, value: email)]
         end
 
         it { is_expected.to eq 9 }
       end
 
-      context 'by two vectors' do
+      context 'by two vectors overlap' do
         before do
-          3.times do
-            vectors = [
-              FactoryGirl.create(:vector_email, value: email),
-              FactoryGirl.create(:vector_mobile, value: mobile),
-              FactoryGirl.create(:vector_facebook, value: email)
-            ]
-            FactoryGirl.create :contact, vectors: vectors
-          end
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email,    value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email)]
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile,   value: email)]
         end
 
-        it { is_expected.to eq 18 }
+        it { is_expected.to eq 12 }
       end
     end
 
     context 'one other has this contact' do
-      before do
-        vector = FactoryGirl.create(:vector_facebook, value: email)
-        FactoryGirl.create :contact, vectors: [vector]
+      context 'by one vector overlap' do
+        before do
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email)]
+        end
+
+        it { is_expected.to eq 3 }
       end
 
-      it { is_expected.to eq 3 }
+      context 'by two vectors overlap' do
+        before do
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
+        end
+
+        it { is_expected.to eq 3 }
+      end
     end
 
     context 'no one has this contact' do

@@ -4,7 +4,7 @@ class Score::Criterias::OthersHavingThisContact < Score::Criterias::Base
   end
 
   def calculate
-    run_raw_sql(query)[0].try(:[], 'total').to_i
+    run_raw_sql(query)[0]['total'].to_i
   end
 
   private
@@ -17,16 +17,12 @@ class Score::Criterias::OthersHavingThisContact < Score::Criterias::Base
         FROM contacts
           JOIN vectors ON contacts.id = vectors.contact_id
         WHERE contacts.id = #{contact.id}
-      ), by_all_vectors AS (
-        SELECT
-          vectors.value,
-          COUNT(DISTINCT contacts.id) count
+      ) SELECT
+          COUNT(DISTINCT contacts.id) total
         FROM contacts
           JOIN vectors ON contacts.id = vectors.contact_id
           JOIN contact_values ON contact_values.value = vectors.value
         WHERE contact_id != #{contact.id}
-        GROUP BY vectors.value
-      ) SELECT SUM(count) total FROM by_all_vectors
     SQL
   end
 end
