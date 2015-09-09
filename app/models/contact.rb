@@ -4,5 +4,5 @@ class Contact < ActiveRecord::Base
 
   validates :owner, :expires_at, presence: true
 
-  scope :by_owner, -> (owner) { where owner: owner }
+  scope :by_owner, -> (owner) { where(owner: owner).order('total_score DESC') }
 end

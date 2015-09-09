@@ -40,7 +40,7 @@ RSpec.describe Score::Criterias::NumberOfVectors do
   end
 
   describe '#save' do
-    let(:vectors) { [FactoryGirl.create(:vector_mobile_favorite)] }
+    let(:vectors) { [FactoryGirl.create(:vector_mobile_marked_as_favorite)] }
     subject { instance.save }
 
     it { is_expected.to be_valid }

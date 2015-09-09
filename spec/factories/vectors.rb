@@ -22,7 +22,7 @@ FactoryGirl.define do
     # additions
     #
 
-    trait :messages_sent do
+    trait :sms_messages_sent do
       additions do
         { messages_sent: Faker::Number.number(2).to_i }
       end
@@ -39,12 +39,11 @@ FactoryGirl.define do
     #
 
     factory :vector_mobile, traits: []
-    factory :vector_mobile_messages, traits: [:messages_sent]
-    factory :vector_mobile_favorite, traits: [:marked_as_favorite]
-    factory :vector_mobile_messages_favorite, traits: [:messages_sent, :marked_as_favorite]
+    factory :vector_mobile_sms_messages_sent, traits: [:sms_messages_sent]
+    factory :vector_mobile_marked_as_favorite, traits: [:marked_as_favorite]
 
     factory :vector_email, traits: [:email]
-    factory :vector_email_favorite, traits: [:email, :marked_as_favorite]
+    factory :vector_email_marked_as_favorite, traits: [:email, :marked_as_favorite]
 
     factory :vector_facebook, traits: [:facebook]
   end

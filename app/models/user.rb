@@ -19,7 +19,7 @@ class User
     end
   end
 
-  def initialize(attrs)
+  def initialize(attrs = {})
     self.mkey = attrs[:mkey]
     self.auth = attrs[:auth]
   end

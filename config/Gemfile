@@ -7,6 +7,7 @@ gem 'faraday_middleware'
 gem 'faraday-digestauth'
 gem 'whenever', require: false
 gem 'settingslogic'
+gem 'active_model_serializers'
 gem 'pry-rails'
 
 gem 'figaro', github: 'asux/figaro', branch: 'feature/eb-set-command'
