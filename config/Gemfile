@@ -10,6 +10,8 @@ gem 'settingslogic'
 gem 'active_model_serializers'
 gem 'pry-rails'
 
+gem 'global_phone'
+
 gem 'figaro', github: 'asux/figaro', branch: 'feature/eb-set-command'
 gem 'puma'
 gem 'rollbar'
