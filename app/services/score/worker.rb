@@ -1,7 +1,5 @@
 class Score::Worker
-  class << self
-    def execute
+  def self.execute
 
-    end
   end
 end

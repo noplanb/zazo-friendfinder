@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <%= statistics_api_base_url %>/api/v1/fetch/users/find_by_mobile_or_email?mobile=xxxxxxxxx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - a2e6bbcd-5d6b-45c5-b7cb-b56d29c7899d
+      X-Runtime:
+      - '0.024565'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["nu94niayva4gwm3zjlpx","ghanbbmwr3xjkfj9a0k9","volrysezy45fuxg4ow4x","mbroqgqgalsqkvwfh7bz","5wioxy5qx080n9fythra","fb0dsmsxwhfph7lvqlc4","upl4efx00vqn3u842l98","fu7cq5nvadstacpptdhl","nnsanjqc56kb4o71yq36","ewtmz8r4byjq8dlcg0ar"]'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":null,"mkey":null}'
+    http_version: 
+  recorded_at: Wed, 09 Sep 2015 10:08:13 GMT
+- request:
+    method: get
+    uri: <%= statistics_api_base_url %>/api/v1/fetch/users/find_by_mobile_or_email?email=xxxxxxxxx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 231d5398-dc82-4484-a012-432e948f40e5
+      X-Runtime:
+      - '0.015087'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["d2ti5tbusdfj66mb75j6","ghanbbmwr3xjkfj9a0k9","volrysezy45fuxg4ow4x","mbroqgqgalsqkvwfh7bz","5wioxy5qx080n9fythra","fb0dsmsxwhfph7lvqlc4","upl4efx00vqn3u842l98","fu7cq5nvadstacpptdhl","nnsanjqc56kb4o71yq36","ewtmz8r4byjq8dlcg0ar"]'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"id":null,"mkey":null}'
+    http_version: 
+  recorded_at: Wed, 09 Sep 2015 10:08:13 GMT
+recorded_with: VCR 2.9.3
