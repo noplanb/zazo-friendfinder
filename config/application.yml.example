@@ -5,6 +5,7 @@ db_host: localhost
 db_port: '5432'
 
 statistics_api_base_url:
+events_api_base_url:
 
 rollbar_access_token:
 newrelic_license_key:
