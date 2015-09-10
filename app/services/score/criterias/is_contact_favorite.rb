@@ -1,4 +1,4 @@
-class Score::Criterias::IsThisContactFavorite < Score::Criterias::Base
+class Score::Criterias::IsContactFavorite < Score::Criterias::Base
   def self.ratio
     10
   end

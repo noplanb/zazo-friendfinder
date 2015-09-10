@@ -1,5 +1,5 @@
 class Score < ActiveRecord::Base
-  ALLOWED_METHODS = %w(is_this_contact_favorite number_of_vectors others_having_this_contact sms_frequency)
+  ALLOWED_METHODS = %w(is_contact_favorite is_contact_registered_on_zazo number_of_vectors others_having_this_contact sms_frequency activity_on_zazo)
 
   belongs_to :contact
 

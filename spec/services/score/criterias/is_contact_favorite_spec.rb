@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criterias::IsThisContactFavorite do
+RSpec.describe Score::Criterias::IsContactFavorite do
   let(:connection) { FactoryGirl.create :contact, vectors: vectors }
   let(:instance) { described_class.new connection }
 
@@ -40,7 +40,7 @@ RSpec.describe Score::Criterias::IsThisContactFavorite do
     subject { instance.save }
 
     it { is_expected.to be_valid }
-    it { expect(subject.name).to eq 'is_this_contact_favorite' }
+    it { expect(subject.name).to eq 'is_contact_favorite' }
     it { expect(subject.persisted?).to be true }
   end
 end
