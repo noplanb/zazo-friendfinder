@@ -7,29 +7,29 @@ RSpec.describe Score::Criterias::SmsFrequency do
 
     context 'with multiple vectors messages_sent' do
       let(:vectors) {[
-        FactoryGirl.create(:vector_mobile, additions: { messages_sent: 48 }),
-        FactoryGirl.create(:vector_email, additions: { messages_sent: 56 }),
+        FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 48 }),
+        FactoryGirl.create(:vector_email, additions: { email_messages_sent: 56 }),
       ]}
       it { is_expected.to eq 48 }
     end
 
-    context 'with mobile vector messages_sent' do
+    context 'with mobile vector sms_messages_sent' do
       let(:vectors) {[
-        FactoryGirl.create(:vector_mobile, additions: { messages_sent: 21 }),
+        FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 21 }),
         FactoryGirl.create(:vector_email)
       ]}
       it { is_expected.to eq 21 }
     end
 
-    context 'with email vector messages_sent' do
+    context 'with email vector email_messages_sent' do
       let(:vectors) {[
         FactoryGirl.create(:vector_mobile),
-        FactoryGirl.create(:vector_email, additions: { messages_sent: 23 })
+        FactoryGirl.create(:vector_email, additions: { email_messages_sent: 23 })
       ]}
       it { is_expected.to eq 0 }
     end
 
-    context 'with not defined messages_sent' do
+    context 'with not defined sms_messages_sent' do
       let(:vectors) { [FactoryGirl.create(:vector_mobile)] }
       it { is_expected.to eq 0 }
     end

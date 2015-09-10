@@ -30,7 +30,7 @@ RSpec.describe Contact::SetZazoIdAndMkey do
     context 'by invalid mobile and correct email together' do
       use_vcr_cassette 'contact/set_zazo_id_and_mkey_by_invalid_mobile_and_correct_email', api_base_urls
       let(:vectors) {[
-        FactoryGirl.create(:vector_mobile, value: 'xxxxxxxxx'),
+        FactoryGirl.create(:vector_mobile, value: '+79999999999'),
         FactoryGirl.create(:vector_email, value: email)
       ]}
       before { instance.do }
@@ -42,8 +42,8 @@ RSpec.describe Contact::SetZazoIdAndMkey do
     context 'for nonexistent user' do
       use_vcr_cassette 'contact/set_zazo_id_and_mkey_for_nonexistent_user', api_base_urls
       let(:vectors) {[
-        FactoryGirl.create(:vector_email,  value: 'xxxxxxxxx'),
-        FactoryGirl.create(:vector_mobile, value: 'xxxxxxxxx')
+        FactoryGirl.create(:vector_email,  value: 'admin@google.com'),
+        FactoryGirl.create(:vector_mobile, value: '+79999999999')
       ]}
       before { instance.do }
 

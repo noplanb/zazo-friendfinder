@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%= statistics_api_base_url %>/api/v1/fetch/users/find_by_mobile_or_email?mobile=xxxxxxxxx
+    uri: <%= statistics_api_base_url %>/api/v1/fetch/users/find_by_mobile_or_email?mobile=%2B79999999999
     body:
       encoding: US-ASCII
       string: ''
@@ -29,25 +29,25 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - a2e6bbcd-5d6b-45c5-b7cb-b56d29c7899d
+      - 8bb5ef11-e8ad-4c0a-ada0-70002a017d39
       X-Runtime:
-      - '0.024565'
+      - '0.029153'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       X-Miniprofiler-Ids:
-      - '["nu94niayva4gwm3zjlpx","ghanbbmwr3xjkfj9a0k9","volrysezy45fuxg4ow4x","mbroqgqgalsqkvwfh7bz","5wioxy5qx080n9fythra","fb0dsmsxwhfph7lvqlc4","upl4efx00vqn3u842l98","fu7cq5nvadstacpptdhl","nnsanjqc56kb4o71yq36","ewtmz8r4byjq8dlcg0ar"]'
+      - '["iwq5pueteah74glv5et0","cu4jlmz68qqaitc0o0c2","gsv5hiyaew4moad7a2ku"]'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"id":null,"mkey":null}'
     http_version: 
-  recorded_at: Wed, 09 Sep 2015 10:08:13 GMT
+  recorded_at: Thu, 10 Sep 2015 17:52:47 GMT
 - request:
     method: get
-    uri: <%= statistics_api_base_url %>/api/v1/fetch/users/find_by_mobile_or_email?email=xxxxxxxxx
+    uri: http://0.0.0.0:3000/api/v1/fetch/users/find_by_mobile_or_email?email=admin@google.com
     body:
       encoding: US-ASCII
       string: ''
@@ -74,20 +74,20 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - 231d5398-dc82-4484-a012-432e948f40e5
+      - c9299cdf-bbf9-494d-b400-4fa1e74e078c
       X-Runtime:
-      - '0.015087'
+      - '0.024073'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       X-Miniprofiler-Ids:
-      - '["d2ti5tbusdfj66mb75j6","ghanbbmwr3xjkfj9a0k9","volrysezy45fuxg4ow4x","mbroqgqgalsqkvwfh7bz","5wioxy5qx080n9fythra","fb0dsmsxwhfph7lvqlc4","upl4efx00vqn3u842l98","fu7cq5nvadstacpptdhl","nnsanjqc56kb4o71yq36","ewtmz8r4byjq8dlcg0ar"]'
+      - '["vkmeogivmcwrdeiwhlmz","cu4jlmz68qqaitc0o0c2","gsv5hiyaew4moad7a2ku","iwq5pueteah74glv5et0"]'
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
       string: '{"id":null,"mkey":null}'
     http_version: 
-  recorded_at: Wed, 09 Sep 2015 10:08:13 GMT
+  recorded_at: Thu, 10 Sep 2015 17:52:47 GMT
 recorded_with: VCR 2.9.3

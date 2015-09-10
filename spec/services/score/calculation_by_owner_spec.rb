@@ -8,7 +8,7 @@ RSpec.describe Score::CalculationByOwner do
     before do
       # first owner's contact
       vectors = [
-        FactoryGirl.create(:vector_mobile, additions: { messages_sent: 12 }),
+        FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 12 }),
         FactoryGirl.create(:vector_email, additions: { marked_as_favorite: true })
       ]
       FactoryGirl.create :contact, owner: owner, vectors: vectors
@@ -20,7 +20,7 @@ RSpec.describe Score::CalculationByOwner do
       FactoryGirl.create :contact, owner: owner, vectors: vectors
 
       # non owner's contact
-      vectors = [FactoryGirl.create(:vector_email, value: vectors.last.value)]
+      vectors = [FactoryGirl.create(:vector_mobile, value: vectors.last.value)]
       FactoryGirl.create :contact, vectors: vectors
     end
     let!(:subject) { instance.do }

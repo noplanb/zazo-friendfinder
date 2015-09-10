@@ -24,7 +24,7 @@ FactoryGirl.define do
 
     trait :sms_messages_sent do
       additions do
-        { messages_sent: Faker::Number.number(2).to_i }
+        { sms_messages_sent: Faker::Number.number(2).to_i }
       end
     end
 

@@ -6,7 +6,7 @@ RSpec.describe Score::CalculationByContact do
 
   describe '#do' do
     let(:vectors) {[
-      FactoryGirl.create(:vector_mobile, additions: { messages_sent: 12 }),
+      FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 12 }),
       FactoryGirl.create(:vector_email, additions: { marked_as_favorite: true })
     ]}
     before do

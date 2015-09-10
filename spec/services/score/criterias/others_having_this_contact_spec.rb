@@ -30,7 +30,7 @@ RSpec.describe Score::Criterias::OthersHavingThisContact do
           FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email,    value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
           FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
           FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email)]
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile,   value: email)]
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile,   value: mobile)]
         end
 
         it { is_expected.to eq 12 }
