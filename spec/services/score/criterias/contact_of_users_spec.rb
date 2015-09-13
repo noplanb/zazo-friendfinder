@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criterias::ContactOfUsers do
-  let(:connection) { FactoryGirl.create :contact, vectors: vectors }
-  let(:instance) { described_class.new connection }
+  let(:contact) { FactoryGirl.create :contact, vectors: vectors }
+  let(:instance) { described_class.new contact }
   let(:email) { 'elfishawy.sani@gmail.com' }
   let(:mobile) { '+16502453537' }
   let(:vectors) do
@@ -61,10 +61,17 @@ RSpec.describe Score::Criterias::ContactOfUsers do
   end
 
   describe '#save' do
-    subject { instance.save }
+    let!(:contact_1) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email), FactoryGirl.create(:vector_mobile, value: mobile)] }
+    let!(:contact_2) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)] }
+    let!(:subject) { instance.save }
+    before { contact.reload }
 
     it { is_expected.to be_valid }
     it { expect(subject.name).to eq 'contact_of_users' }
     it { expect(subject.persisted?).to be true }
+
+    it { expect(contact.reload.vectors.mobile.first.additions).to eq ({ 'users_with_contact' => [contact_1.owner, contact_2.owner] }) }
+    it { expect(contact.reload.vectors.email.first.additions).to eq ({ 'users_with_contact' => [contact_1.owner] }) }
+    it { expect(contact.reload.vectors.facebook.first.additions).to be_nil }
   end
 end

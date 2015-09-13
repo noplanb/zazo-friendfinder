@@ -15,7 +15,7 @@ class Score::Criterias::Base
       contact: contact,
       value: calculate_with_ratio
     })
-    instance.save
+    instance.save && update_contact
     instance
   end
 
@@ -28,6 +28,10 @@ class Score::Criterias::Base
   end
 
   protected
+
+  def update_contact
+    # redefine this in child
+  end
 
   def name
     self.class.name.split('::').last.underscore
