@@ -1,6 +1,6 @@
 class Score::Criterias::NumVectors < Score::Criterias::Base
   def self.ratio
-    4
+    1
   end
 
   def calculate

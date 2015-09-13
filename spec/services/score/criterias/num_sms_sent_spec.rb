@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criterias::NumSmsSent do
-  let(:connection) { FactoryGirl.create :contact, vectors: vectors }
-  let(:instance) { described_class.new connection }
+  let(:contact) { FactoryGirl.create :contact, vectors: vectors }
+  let(:instance) { described_class.new contact }
 
   describe '#calculate_with_ratio' do
     let(:connection) { FactoryGirl.create :contact, vectors: vectors }
@@ -10,10 +10,10 @@ RSpec.describe Score::Criterias::NumSmsSent do
 
     context 'with multiple vectors messages_sent' do
       let(:vectors) {[
-        FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 48 }),
+        FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 32 }),
         FactoryGirl.create(:vector_email, additions: { email_messages_sent: 56 }),
       ]}
-      it { is_expected.to eq 48 }
+      it { is_expected.to eq 41 }
     end
 
     context 'with mobile vector sms_messages_sent' do
@@ -21,7 +21,7 @@ RSpec.describe Score::Criterias::NumSmsSent do
         FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 21 }),
         FactoryGirl.create(:vector_email)
       ]}
-      it { is_expected.to eq 21 }
+      it { is_expected.to eq 32 }
     end
 
     context 'with email vector email_messages_sent' do

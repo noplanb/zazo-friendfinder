@@ -1,6 +1,6 @@
 class Score::Criterias::IsFavorite < Score::Criterias::Base
   def self.ratio
-    10
+    48
   end
 
   def calculate

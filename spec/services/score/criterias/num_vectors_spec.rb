@@ -14,7 +14,7 @@ RSpec.describe Score::Criterias::NumVectors do
         FactoryGirl.create(:vector_facebook)
       ]}
 
-      it { is_expected.to eq 12 }
+      it { is_expected.to eq 3 }
     end
 
     context 'contact with 2 vectors' do
@@ -23,13 +23,13 @@ RSpec.describe Score::Criterias::NumVectors do
         FactoryGirl.create(:vector_email)
       ]}
 
-      it { is_expected.to eq 8 }
+      it { is_expected.to eq 2 }
     end
 
     context 'contact with 1 vector' do
       let(:vectors) { [FactoryGirl.create(:vector_mobile)] }
 
-      it { is_expected.to eq 4 }
+      it { is_expected.to eq 1 }
     end
 
     context 'contact with 0 vectors' do

@@ -13,7 +13,7 @@ RSpec.describe Score::Criterias::IsFavorite do
         FactoryGirl.create(:vector_email)
       ]}
 
-      it { is_expected.to eq 10 }
+      it { is_expected.to eq 48 }
     end
 
     context 'when contact is double marked as favorite' do
@@ -22,7 +22,7 @@ RSpec.describe Score::Criterias::IsFavorite do
         FactoryGirl.create(:vector_email,  additions: { marked_as_favorite: true })
       ]}
 
-      it { is_expected.to eq 10 }
+      it { is_expected.to eq 48 }
     end
 
     context 'when contact is not marked' do

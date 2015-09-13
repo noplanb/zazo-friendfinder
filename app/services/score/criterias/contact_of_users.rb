@@ -1,6 +1,6 @@
 class Score::Criterias::ContactOfUsers < Score::Criterias::Base
   def self.ratio
-    3
+    4
   end
 
   def calculate

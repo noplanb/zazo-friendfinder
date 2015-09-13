@@ -22,7 +22,7 @@ RSpec.describe Score::Criterias::ContactOfUsers do
           FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email,    value: email), FactoryGirl.create(:vector_facebook, value: email)]
         end
 
-        it { is_expected.to eq 9 }
+        it { is_expected.to eq 12 }
       end
 
       context 'by two vectors overlap' do
@@ -33,7 +33,7 @@ RSpec.describe Score::Criterias::ContactOfUsers do
           FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile,   value: mobile)]
         end
 
-        it { is_expected.to eq 12 }
+        it { is_expected.to eq 16 }
       end
     end
 
@@ -43,7 +43,7 @@ RSpec.describe Score::Criterias::ContactOfUsers do
           FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email)]
         end
 
-        it { is_expected.to eq 3 }
+        it { is_expected.to eq 4 }
       end
 
       context 'by two vectors overlap' do
@@ -51,7 +51,7 @@ RSpec.describe Score::Criterias::ContactOfUsers do
           FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
         end
 
-        it { is_expected.to eq 3 }
+        it { is_expected.to eq 4 }
       end
     end
 
