@@ -8,21 +8,21 @@ RSpec.describe Score::Criterias::ZazoActivity do
     subject { instance.calculate_with_ratio }
 
     context 'with correct mkey by very active user' do
-      use_vcr_cassette 'score/criterias/activity_on_zazo_by_7qdanSEmctZ2jPnYA0a1', api_base_urls
+      use_vcr_cassette 'score/criterias/zazo_activity_by_7qdanSEmctZ2jPnYA0a1', api_base_urls
       let(:mkey) { '7qdanSEmctZ2jPnYA0a1' }
 
       it { is_expected.to eq 273 }
     end
 
     context 'with correct mkey by not very active user' do
-      use_vcr_cassette 'score/criterias/activity_on_zazo_by_GBAHb0482YxlJ0kYwbIS', api_base_urls
+      use_vcr_cassette 'score/criterias/zazo_activity_by_GBAHb0482YxlJ0kYwbIS', api_base_urls
       let(:mkey) { 'GBAHb0482YxlJ0kYwbIS' }
 
       it { is_expected.to eq 7 }
     end
 
     context 'with incorrect mkey' do
-      use_vcr_cassette 'score/criterias/activity_on_zazo_by_incorrect', api_base_urls
+      use_vcr_cassette 'score/criterias/zazo_activity_by_incorrect', api_base_urls
       let(:mkey) { 'xxxxxxxxxxxx' }
 
       it { is_expected.to eq 0 }
@@ -36,7 +36,7 @@ RSpec.describe Score::Criterias::ZazoActivity do
   end
 
   describe '#save' do
-    use_vcr_cassette 'score/criterias/activity_on_zazo_by_7qdanSEmctZ2jPnYA0a1', api_base_urls
+    use_vcr_cassette 'score/criterias/zazo_activity_by_7qdanSEmctZ2jPnYA0a1', api_base_urls
     let(:mkey) { '7qdanSEmctZ2jPnYA0a1' }
     subject { instance.save }
 
