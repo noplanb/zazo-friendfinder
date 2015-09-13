@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criterias::NumberOfVectors do
+RSpec.describe Score::Criterias::NumVectors do
   let(:connection) { FactoryGirl.create :contact, vectors: vectors }
   let(:instance) { described_class.new connection }
 
@@ -44,7 +44,7 @@ RSpec.describe Score::Criterias::NumberOfVectors do
     subject { instance.save }
 
     it { is_expected.to be_valid }
-    it { expect(subject.name).to eq 'number_of_vectors' }
+    it { expect(subject.name).to eq 'num_vectors' }
     it { expect(subject.persisted?).to be true }
   end
 end

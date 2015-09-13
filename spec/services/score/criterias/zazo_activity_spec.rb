@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criterias::ActivityOnZazo do
+RSpec.describe Score::Criterias::ZazoActivity do
   let(:connection) { FactoryGirl.create :contact, zazo_mkey: mkey }
   let(:instance) { described_class.new connection }
 
@@ -41,7 +41,7 @@ RSpec.describe Score::Criterias::ActivityOnZazo do
     subject { instance.save }
 
     it { is_expected.to be_valid }
-    it { expect(subject.name).to eq 'activity_on_zazo' }
+    it { expect(subject.name).to eq 'zazo_activity' }
     it { expect(subject.persisted?).to be true }
   end
 end

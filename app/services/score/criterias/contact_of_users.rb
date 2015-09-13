@@ -1,4 +1,4 @@
-class Score::Criterias::OthersHavingThisContact < Score::Criterias::Base
+class Score::Criterias::ContactOfUsers < Score::Criterias::Base
   def self.ratio
     3
   end

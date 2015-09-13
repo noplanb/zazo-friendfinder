@@ -1,4 +1,4 @@
-class Score::Criterias::NumberOfVectors < Score::Criterias::Base
+class Score::Criterias::NumVectors < Score::Criterias::Base
   def self.ratio
     4
   end

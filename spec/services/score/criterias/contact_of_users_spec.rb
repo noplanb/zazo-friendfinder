@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criterias::OthersHavingThisContact do
+RSpec.describe Score::Criterias::ContactOfUsers do
   let(:connection) { FactoryGirl.create :contact, vectors: vectors }
   let(:instance) { described_class.new connection }
   let(:email) { 'elfishawy.sani@gmail.com' }
@@ -64,7 +64,7 @@ RSpec.describe Score::Criterias::OthersHavingThisContact do
     subject { instance.save }
 
     it { is_expected.to be_valid }
-    it { expect(subject.name).to eq 'others_having_this_contact' }
+    it { expect(subject.name).to eq 'contact_of_users' }
     it { expect(subject.persisted?).to be true }
   end
 end

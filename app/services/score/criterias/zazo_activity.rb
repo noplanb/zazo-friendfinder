@@ -1,4 +1,4 @@
-class Score::Criterias::ActivityOnZazo < Score::Criterias::Base
+class Score::Criterias::ZazoActivity < Score::Criterias::Base
   def calculate
     contact.zazo_mkey ? get_activity : 0
   end
