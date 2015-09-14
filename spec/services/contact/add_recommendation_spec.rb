@@ -12,7 +12,7 @@ RSpec.describe Contact::AddRecommendation do
   let!(:contact_2) { FactoryGirl.create :contact, owner: recommended_to_2.mkey }
 
   describe '#do' do
-    context 'with correct params when contact exist' do
+    context 'when contact exist' do
       let(:recommended_to) { FactoryGirl.build(:user) }
       let(:params) do
         { 'contact_mkey' => recommended_contact.mkey,
@@ -27,7 +27,7 @@ RSpec.describe Contact::AddRecommendation do
       it { expect(contacts.first.zazo_mkey).to eq recommended_contact.mkey }
     end
 
-    context 'with correct params when contact not exist' do
+    context 'when contact not exist' do
       let(:params) do
         { 'contact_mkey' => recommended_contact.mkey,
           'to_mkeys' => [recommended_to_1.mkey, recommended_to_2.mkey] }
@@ -45,6 +45,29 @@ RSpec.describe Contact::AddRecommendation do
   end
 
   describe 'validations' do
-    it 'add validation specs'
+    context 'raw_params' do
+      let!(:subject) { instance.do }
+
+      context 'raw_params[\'to_mkeys\'] must be type of Array' do
+        let(:params) { { 'contact_mkey' => recommended_contact.mkey, 'to_mkeys' => 'some string' } }
+
+        it { is_expected.to eq false }
+        it { expect(instance.errors.messages).to eq({ raw_params: ['raw_params[\'to_mkeys\'] must be type of Array'] }) }
+      end
+
+      context 'raw_params must be type of Hash' do
+        let(:params) { 'some string' }
+
+        it { is_expected.to eq false }
+        it { expect(instance.errors.messages).to eq({ raw_params: ['raw_params must be type of Hash'] }) }
+      end
+
+      context 'raw_params[\'contact_mkey\'] must be present' do
+        let(:params) { { 'to_mkeys' => [] } }
+
+        it { is_expected.to eq false }
+        it { expect(instance.errors.messages).to eq({ raw_params: ['raw_params[\'contact_mkey\'] must be present'] }) }
+      end
+    end
   end
 end

@@ -1,5 +1,6 @@
 class Api::V1::ContactsController < ApplicationController
   def create
+    manager = Contact::AddContacts.new(current_user, contacts_params)
     if manager.do
       render json: { status: :success }
     else
@@ -8,10 +9,6 @@ class Api::V1::ContactsController < ApplicationController
   end
 
   private
-
-  def manager
-    @manager ||= Contact::AddContacts.new(current_user, contacts_params)
-  end
 
   def contacts_params
     params['contacts']

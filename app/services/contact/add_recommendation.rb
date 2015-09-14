@@ -1,7 +1,10 @@
 class Contact::AddRecommendation
+  include ActiveModel::Validations
+
   attr_reader :current_user, :raw_params
 
-  # todo: add validations
+  validates :current_user, :raw_params, presence: true
+  validate :raw_params_with_correct_structure
 
   def initialize(current_user, params)
     @current_user = current_user
@@ -9,7 +12,7 @@ class Contact::AddRecommendation
   end
 
   def do
-    wrap_transaction do
+    valid? && wrap_transaction do
       raw_params['to_mkeys'].each { |mkey| add_recommendation_to_owner mkey }
     end
   end
@@ -40,5 +43,18 @@ class Contact::AddRecommendation
     # todo: set zazo_id and name for contact in new thread - Contact::SetZazoIdAndName
     contact = Contact.new owner: owner, zazo_mkey: raw_params['contact_mkey'], additions: { recommended_by: [current_user.mkey] }
     contact.save || fail(ActiveRecord::Rollback)
+  end
+
+  #
+  # validations
+  #
+
+  def raw_params_with_correct_structure
+    if raw_params.kind_of? Hash
+      errors.add(:raw_params, 'raw_params[\'to_mkeys\'] must be type of Array') unless raw_params['to_mkeys'].kind_of? Array
+      errors.add(:raw_params, 'raw_params[\'contact_mkey\'] must be present') if raw_params['contact_mkey'].nil?
+    else
+      errors.add(:raw_params, 'raw_params must be type of Hash')
+    end
   end
 end

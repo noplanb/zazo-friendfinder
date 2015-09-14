@@ -8,7 +8,12 @@ class Api::V1::SuggestionsController < ApplicationController
   end
 
   def recommend
-    Contact::AddRecommendation.new(current_user, recommendation_params)
+    manager = Contact::AddRecommendation.new(current_user, recommendation_params)
+    if manager.do
+      render json: { status: :success }
+    else
+      render status: :unprocessable_entity, json: { status: :failure, errors: manager.errors.messages }
+    end
   end
 
   private
