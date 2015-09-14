@@ -15,15 +15,6 @@ class Score::Criterias::ContactOfUsers < Score::Criterias::Base
   private
 
   def update_contact
-    contact.vectors.each { |v| update_vector_with_additions v }
-  end
-
-  def update_vector_with_additions(vector)
-    mkeys = @vector_mkeys[vector.name]
-    unless mkeys.nil? || mkeys.empty?
-      vector.additions ||= {}
-      vector.additions['users_with_contact'] = mkeys
-      vector.save
-    end
+    update_contact_vectors contact, @vector_mkeys, 'users_with_contact'
   end
 end

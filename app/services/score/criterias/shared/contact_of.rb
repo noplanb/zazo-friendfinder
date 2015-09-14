@@ -27,4 +27,15 @@ module Score::Criterias::Shared::ContactOf
         GROUP BY name
     SQL
   end
+
+  def update_contact_vectors(contact, vector_mkeys, addition_key)
+    contact.vectors.each do |v|
+      mkeys = vector_mkeys[v.name]
+      unless mkeys.nil? || mkeys.empty?
+        v.additions ||= {}
+        v.additions[addition_key] = mkeys
+        v.save
+      end
+    end
+  end
 end
