@@ -6,4 +6,12 @@ class Score::Criterias::ContactOfFriends < Score::Criterias::Base
   def calculate
     0
   end
+
+  private
+
+  def query
+    <<-SQL
+
+    SQL
+  end
 end
