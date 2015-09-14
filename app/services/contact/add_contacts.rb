@@ -40,8 +40,7 @@ class Contact::AddContacts
   def new_contact_attrs(contact_data)
     { owner: current_user.mkey,
       first_name: contact_data['first_name'],
-      last_name: contact_data['last_name'],
-      expires_at: 5.days.from_now }
+      last_name: contact_data['last_name'] }
   end
 
   def new_vector_params(vector_data, contact)
