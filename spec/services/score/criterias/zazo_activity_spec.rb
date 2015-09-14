@@ -11,14 +11,14 @@ RSpec.describe Score::Criterias::ZazoActivity do
       use_vcr_cassette 'score/criterias/zazo_activity_by_7qdanSEmctZ2jPnYA0a1', api_base_urls
       let(:mkey) { '7qdanSEmctZ2jPnYA0a1' }
 
-      it { is_expected.to eq 273 }
+      it { is_expected.to eq 216 }
     end
 
     context 'with correct mkey by not very active user' do
       use_vcr_cassette 'score/criterias/zazo_activity_by_GBAHb0482YxlJ0kYwbIS', api_base_urls
       let(:mkey) { 'GBAHb0482YxlJ0kYwbIS' }
 
-      it { is_expected.to eq 7 }
+      it { is_expected.to eq 16 }
     end
 
     context 'with incorrect mkey' do
