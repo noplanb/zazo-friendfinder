@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criterias::ContactOfFriends do
+  use_vcr_cassette 'contact/get_zazo_friends_GBAHb0482YxlJ0kYwbIS', api_base_urls
+
   let(:owner) { 'GBAHb0482YxlJ0kYwbIS' }
   let(:friend_1) { '0DAQEVtmNKQiW6aoQrvo' }
   let(:friend_2) { '7qdanSEmctZ2jPnYA0a1' }
@@ -22,6 +24,7 @@ RSpec.describe Score::Criterias::ContactOfFriends do
       before do
         FactoryGirl.create :contact, owner: friend_1, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)]
         FactoryGirl.create :contact, owner: friend_2, vectors: [FactoryGirl.create(:vector_email, value: email)]
+        FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email)]
       end
 
       it { is_expected.to eq 16 }

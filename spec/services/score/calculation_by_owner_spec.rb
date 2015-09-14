@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Score::CalculationByOwner do
+  use_vcr_cassette 'contact/get_zazo_friends_for_nonexistent_user', api_base_urls
+
   let(:owner) { 'xxxxxxxxxxxx' }
   let(:instance) { described_class.new owner }
 
