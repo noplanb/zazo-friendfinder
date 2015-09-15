@@ -1,20 +1,20 @@
 class Contact::AddRecommendation
-  include ActiveModel::Validations
-
-  attr_reader :current_user, :raw_params
-
-  validates :current_user, :raw_params, presence: true
-  validate :raw_params_with_correct_structure
+  attr_reader :current_user, :raw_params, :validation
 
   def initialize(current_user, params)
     @current_user = current_user
     @raw_params   = params
+    @validation   = RawParamsValidation.new raw_params
   end
 
   def do
-    valid? && wrap_transaction do
+    validation.valid? && wrap_transaction do
       raw_params['to_mkeys'].each { |mkey| add_recommendation_to_owner mkey }
     end
+  end
+
+  def errors
+    validation.errors.messages
   end
 
   private
@@ -49,12 +49,25 @@ class Contact::AddRecommendation
   # validations
   #
 
-  def raw_params_with_correct_structure
-    if raw_params.kind_of? Hash
-      errors.add(:raw_params, 'raw_params[\'to_mkeys\'] must be type of Array') unless raw_params['to_mkeys'].kind_of? Array
-      errors.add(:raw_params, 'raw_params[\'contact_mkey\'] must be present') if raw_params['contact_mkey'].nil?
-    else
-      errors.add(:raw_params, 'raw_params must be type of Hash')
+  class RawParamsValidation
+    include ActiveModel::Validations
+
+    attr_reader :raw_params
+
+    validates :raw_params, presence: true
+    validate :raw_params_with_correct_structure
+
+    def initialize(raw_params)
+      @raw_params = raw_params
+    end
+
+    def raw_params_with_correct_structure
+      if raw_params.kind_of? Hash
+        errors.add(:raw_params, 'raw_params[\'to_mkeys\'] must be type of Array') unless raw_params['to_mkeys'].kind_of? Array
+        errors.add(:raw_params, 'raw_params[\'contact_mkey\'] must be present') if raw_params['contact_mkey'].nil?
+      else
+        errors.add(:raw_params, 'raw_params must be type of Hash')
+      end
     end
   end
 end

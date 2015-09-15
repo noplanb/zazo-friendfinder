@@ -52,21 +52,21 @@ RSpec.describe Contact::AddRecommendation do
         let(:params) { { 'contact_mkey' => recommended_contact.mkey, 'to_mkeys' => 'some string' } }
 
         it { is_expected.to eq false }
-        it { expect(instance.errors.messages).to eq({ raw_params: ['raw_params[\'to_mkeys\'] must be type of Array'] }) }
+        it { expect(instance.errors).to eq({ raw_params: ['raw_params[\'to_mkeys\'] must be type of Array'] }) }
       end
 
       context 'raw_params must be type of Hash' do
         let(:params) { 'some string' }
 
         it { is_expected.to eq false }
-        it { expect(instance.errors.messages).to eq({ raw_params: ['raw_params must be type of Hash'] }) }
+        it { expect(instance.errors).to eq({ raw_params: ['raw_params must be type of Hash'] }) }
       end
 
       context 'raw_params[\'contact_mkey\'] must be present' do
         let(:params) { { 'to_mkeys' => [] } }
 
         it { is_expected.to eq false }
-        it { expect(instance.errors.messages).to eq({ raw_params: ['raw_params[\'contact_mkey\'] must be present'] }) }
+        it { expect(instance.errors).to eq({ raw_params: ['raw_params[\'contact_mkey\'] must be present'] }) }
       end
     end
   end

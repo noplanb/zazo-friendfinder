@@ -12,7 +12,7 @@ class Api::V1::SuggestionsController < ApplicationController
     if manager.do
       render json: { status: :success }
     else
-      render status: :unprocessable_entity, json: { status: :failure, errors: manager.errors.messages }
+      render status: :unprocessable_entity, json: { status: :failure, errors: manager.errors }
     end
   end
 
