@@ -4,8 +4,7 @@ class Score::Criterias::RejectedByOwner < Score::Criterias::Base
   end
 
   def calculate
-    additions = contact.additions || {}
-    additions['rejected_by_owner'] ? 1 : 0
+    contact.additions_value('rejected_by_owner') ? 1 : 0
   end
 end
 
