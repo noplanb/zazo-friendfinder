@@ -13,11 +13,11 @@ class Api::V1::SuggestionsController < ApplicationController
 
   private
 
-  def recommendation_params
+  def reject_params
     params
   end
 
-  def reject_params
+  def recommendation_params
     params
   end
 end
