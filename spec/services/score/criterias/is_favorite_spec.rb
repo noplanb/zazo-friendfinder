@@ -1,42 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criterias::IsFavorite do
-  let(:contact) { FactoryGirl.create :contact, vectors: vectors }
   let(:instance) { described_class.new contact }
 
   describe '#calculate_with_ratio' do
     subject { instance.calculate_with_ratio }
 
     context 'when contact is marked as favorite once' do
-      let(:vectors) {[
-        FactoryGirl.create(:vector_mobile, additions: { marked_as_favorite: true }),
-        FactoryGirl.create(:vector_email)
-      ]}
-
-      it { is_expected.to eq 48 }
-    end
-
-    context 'when contact is double marked as favorite' do
-      let(:vectors) {[
-        FactoryGirl.create(:vector_mobile, additions: { marked_as_favorite: true }),
-        FactoryGirl.create(:vector_email,  additions: { marked_as_favorite: true })
-      ]}
+      let(:contact) { FactoryGirl.create :contact, additions: { marked_as_favorite: true } }
 
       it { is_expected.to eq 48 }
     end
 
     context 'when contact is not marked' do
-      let(:vectors) {[
-        FactoryGirl.create(:vector_mobile),
-        FactoryGirl.create(:vector_email, additions: { email_messages_sent: 12 })
-      ]}
+      let(:contact) { FactoryGirl.create :contact }
 
       it { is_expected.to eq 0 }
     end
   end
 
   describe '#save' do
-    let(:vectors) { [FactoryGirl.create(:vector_mobile_marked_as_favorite)] }
+    let(:contact) { FactoryGirl.create :contact, additions: { marked_as_favorite: true } }
     subject { instance.save }
 
     it { is_expected.to be_valid }

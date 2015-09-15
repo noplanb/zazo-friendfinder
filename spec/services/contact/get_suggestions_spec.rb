@@ -7,15 +7,15 @@ RSpec.describe Contact::GetSuggestions do
   describe '#do' do
     let(:vectors_1) {[
       FactoryGirl.create(:vector_mobile_sms_messages_sent),
-      FactoryGirl.create(:vector_email_marked_as_favorite),
+      FactoryGirl.create(:vector_email),
       FactoryGirl.create(:vector_email)
     ]}
     let(:vectors_2) {[
-      FactoryGirl.create(:vector_email_marked_as_favorite),
+      FactoryGirl.create(:vector_email),
       FactoryGirl.create(:vector_facebook)
     ]}
-    let!(:contact_1) { FactoryGirl.create :contact, owner: user.mkey, vectors: vectors_1 }
-    let!(:contact_2) { FactoryGirl.create :contact, owner: user.mkey, vectors: vectors_2 }
+    let!(:contact_1) { FactoryGirl.create :contact, owner: user.mkey, vectors: vectors_1, additions: { marked_as_favorite: true } }
+    let!(:contact_2) { FactoryGirl.create :contact, owner: user.mkey, vectors: vectors_2, additions: { marked_as_favorite: true } }
     subject { instance.do }
 
     before do

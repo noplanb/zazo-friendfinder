@@ -12,15 +12,15 @@ RSpec.describe Contact::AddContacts do
       let(:params) do
         vectors = [
           { 'name'  => 'email',
-            'value' => 'elfishawy.sani@gmail.com',
-            'additions' => { 'marked_as_favorite' => true } },
+            'value' => 'elfishawy.sani@gmail.com' },
           { 'name'  => 'mobile',
             'value' => '+16502453537',
             'additions' => { 'sms_messages_sent' => 15 } }
         ]
         [{ 'first_name' => 'Sani',
            'last_name'  => 'Elfishawy',
-           'vectors'    => vectors }]
+           'vectors'    => vectors,
+           'additions'  => { 'marked_as_favorite' => true } }]
       end
       let(:contact)  { contacts.first }
 
@@ -44,7 +44,8 @@ RSpec.describe Contact::AddContacts do
         ]
         [{ 'first_name' => 'Sani',
            'last_name'  => 'Elfishawy',
-           'vectors'    => vectors }]
+           'vectors'    => vectors,
+           'additions'  => { 'email_messages_sent' => 15 } }]
       end
 
       it { is_expected.to be false }
@@ -54,6 +55,9 @@ RSpec.describe Contact::AddContacts do
           vectors: [
             { additions: ['\'sms_messages_sent\' is not allowed condition for \'email\' vector'], value: ['\'asdasd@asdasd\' has incorrect format for \'email\' vector'] },
             { additions: ['\'email_messages_sent\' is not allowed condition for \'mobile\' vector'], value: ['\'xxxxxxxxx\' has incorrect format for \'mobile\' vector'] }
+          ],
+          contacts: [
+            { additions: ['\'email_messages_sent\' is not allowed addition'] }
           ]
         }
         expect(instance.errors).to eq expect

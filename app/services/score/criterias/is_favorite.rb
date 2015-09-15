@@ -4,8 +4,6 @@ class Score::Criterias::IsFavorite < Score::Criterias::Base
   end
 
   def calculate
-    contact.vectors.find do |vector|
-      vector.additions_value 'marked_as_favorite'
-    end.nil? ? 0 : 1
+    contact.additions_value('marked_as_favorite') ? 1 : 0
   end
 end
