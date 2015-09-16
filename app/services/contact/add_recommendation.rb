@@ -40,9 +40,15 @@ class Contact::AddRecommendation
   end
 
   def create_contact_with_recommendation(owner)
-    # todo: set zazo_id and name for contact in new thread - Contact::SetZazoIdAndName
     contact = Contact.new owner: owner, zazo_mkey: raw_params['contact_mkey'], additions: { recommended_by: [current_user.mkey] }
-    contact.save ? Score::CalculationByContact.new(contact).do_async : fail(ActiveRecord::Rollback)
+    contact.save.tap do |is_success|
+      if is_success
+        Contact::UpdateZazoInfo.new(contact).do_async
+        Score::CalculationByContact.new(contact).do_async
+      else
+        fail ActiveRecord::Rollback
+      end
+    end
   end
 
   #

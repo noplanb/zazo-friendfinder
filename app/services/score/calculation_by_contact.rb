@@ -1,4 +1,7 @@
 class Score::CalculationByContact
+  include PerformAsync
+  allow_async :do
+
   attr_reader :contact
 
   def initialize(contact)
@@ -8,12 +11,6 @@ class Score::CalculationByContact
   def do
     contact.total_score = save_scores_and_get_total
     contact.save
-  end
-
-  def do_async
-    Thread.new do
-      ActiveRecord::Base.connection_pool.with_connection { |conn| self.do }
-    end
   end
 
   private
