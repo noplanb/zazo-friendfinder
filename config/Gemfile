@@ -33,6 +33,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'dredd-rack'
   gem 'pry-rescue'
   gem 'pry-remote'
   gem 'pry-byebug', '= 1.3.3'
