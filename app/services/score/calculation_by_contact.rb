@@ -10,6 +10,12 @@ class Score::CalculationByContact
     contact.save
   end
 
+  def do_async
+    Thread.new do
+      ActiveRecord::Base.connection_pool.with_connection { |conn| self.do }
+    end
+  end
+
   private
 
   def save_scores_and_get_total

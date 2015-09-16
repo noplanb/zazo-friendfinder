@@ -13,8 +13,7 @@ class Score::CalculationByOwner
 
   def do_async
     Thread.new do
-      self.do
-      ActiveRecord::Base.connection.close
+      ActiveRecord::Base.connection_pool.with_connection { |conn| self.do }
     end
   end
 end
