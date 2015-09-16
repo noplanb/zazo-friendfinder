@@ -17,17 +17,15 @@ RSpec.describe Contact::AddContacts do
             'value' => '+16502453537',
             'additions' => { 'sms_messages_sent' => 15 } }
         ]
-        [{ 'first_name' => 'Sani',
-           'last_name'  => 'Elfishawy',
-           'vectors'    => vectors,
-           'additions'  => { 'marked_as_favorite' => true } }]
+        [{ 'display_name' => 'Sani Elfishawy',
+           'vectors'      => vectors,
+           'additions'    => { 'marked_as_favorite' => true } }]
       end
       let(:contact)  { contacts.first }
 
       it { is_expected.to be true }
       it { expect(contacts.count).to eq 1 }
-      it { expect(contact.first_name).to eq 'Sani' }
-      it { expect(contact.last_name).to eq 'Elfishawy' }
+      it { expect(contact.display_name).to eq 'Sani Elfishawy' }
       it { expect(contact.vectors.count).to eq 2 }
       it { expect(contact.vectors.pluck(:name)).to eq %w(mobile email) }
     end
@@ -58,7 +56,7 @@ RSpec.describe Contact::AddContacts do
           ],
           contacts: [
             { additions: ['\'email_messages_sent\' is not allowed addition'] }
-          ]
+          ],
         }
         expect(instance.errors).to eq expect
       end

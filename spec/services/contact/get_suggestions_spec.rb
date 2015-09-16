@@ -26,8 +26,8 @@ RSpec.describe Contact::GetSuggestions do
 
     it do
       suggestions = [
-        { first_name: contact_1.first_name, last_name: contact_1.last_name, total_score: contact_1.total_score },
-        { first_name: contact_2.first_name, last_name: contact_2.last_name, total_score: contact_2.total_score }
+        { first_name: contact_1.first_name, last_name: contact_1.last_name, display_name: "#{contact_1.first_name} #{contact_1.last_name}", zazo_mkey: nil, zazo_id: nil, total_score: contact_1.total_score },
+        { first_name: contact_2.first_name, last_name: contact_2.last_name, display_name: "#{contact_2.first_name} #{contact_2.last_name}", zazo_mkey: nil, zazo_id: nil, total_score: contact_2.total_score }
       ]
       is_expected.to eq suggestions
     end

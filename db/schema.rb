@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914123936) do
+ActiveRecord::Schema.define(version: 20150916102902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150914123936) do
     t.integer  "zazo_id"
     t.string   "zazo_mkey"
     t.json     "additions"
+    t.string   "display_name"
   end
 
   add_index "contacts", ["owner"], name: "index_contacts_on_owner", using: :btree
