@@ -1,4 +1,4 @@
-class Contact::SetZazoIdAndMkey
+class Contact::SetZazoIdAndMkeyByContact
   attr_reader :contact
 
   def initialize(contact)

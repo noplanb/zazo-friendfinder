@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Contact::SetZazoIdAndMkey do
+RSpec.describe Contact::SetZazoIdAndMkeyByContact do
   let(:contact) { FactoryGirl.create :contact, vectors: vectors }
   let(:instance) { described_class.new contact }
   let(:mobile) { '+16502453537' }
