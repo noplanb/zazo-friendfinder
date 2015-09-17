@@ -18,6 +18,6 @@ class Api::V1::SuggestionsController < ApplicationController
   end
 
   def recommendation_params
-    params
+    params['recommendations']
   end
 end

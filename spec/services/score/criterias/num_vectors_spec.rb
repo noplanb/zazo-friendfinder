@@ -8,20 +8,20 @@ RSpec.describe Score::Criterias::NumVectors do
     subject { instance.calculate_with_ratio }
 
     context 'contact with 3 vectors' do
-      let(:vectors) {[
-        FactoryGirl.create(:vector_mobile),
-        FactoryGirl.create(:vector_email),
-        FactoryGirl.create(:vector_facebook)
-      ]}
+      let(:vectors) do
+        [ FactoryGirl.create(:vector_mobile),
+          FactoryGirl.create(:vector_email),
+          FactoryGirl.create(:vector_facebook) ]
+      end
 
       it { is_expected.to eq 3 }
     end
 
     context 'contact with 2 vectors' do
-      let(:vectors) {[
-        FactoryGirl.create(:vector_mobile),
-        FactoryGirl.create(:vector_email)
-      ]}
+      let(:vectors) do
+        [ FactoryGirl.create(:vector_mobile),
+          FactoryGirl.create(:vector_email) ]
+      end
 
       it { is_expected.to eq 2 }
     end
