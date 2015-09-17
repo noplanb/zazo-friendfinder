@@ -6,7 +6,7 @@ default: &default
   password: <%= ENV['POSTGRES_ENV_POSTGRES_PASSWORD'] || Figaro.env.db_password || ENV['MYSQL_ENV_MYSQL_ROOT_PASSWORD'] %>
   host: <%= ENV['POSTGRES_PORT_5432_TCP_ADDR'] || Figaro.env.db_host %>
   port: <%= ENV['POSTGRES_PORT_5432_TCP_PORT'] || Figaro.env.db_port %>
-  pool: <%= Figaro.env.db_pool || 10 %>
+  pool: <%= Figaro.env.db_pool || 30 %>
 
 development:
   <<: *default
