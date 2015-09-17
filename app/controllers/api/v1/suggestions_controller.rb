@@ -4,20 +4,10 @@ class Api::V1::SuggestionsController < ApplicationController
   end
 
   def reject
-    handle_with_manager Contact::RejectSuggestion.new(current_user, reject_params)
+    handle_with_manager Contact::RejectSuggestion.new(current_user, { 'rejected' => params['rejected'] })
   end
 
   def recommend
-    handle_with_manager Contact::AddRecommendation.new(current_user, recommendation_params)
-  end
-
-  private
-
-  def reject_params
-    params
-  end
-
-  def recommendation_params
-    params['recommendations']
+    handle_with_manager Contact::AddRecommendation.new(current_user, params['recommendations'])
   end
 end
