@@ -184,7 +184,7 @@ Reject contacts by contact id (see `data->id` in **Get Suggestions List** respon
         {
             "status": "success"
         }
-        
+
 + Request Failure (application/json)
 
     + Headers
@@ -201,9 +201,9 @@ Reject contacts by contact id (see `data->id` in **Get Suggestions List** respon
 
         {
             "status": "failure",
-            "errors": [
+            "errors": {
                 "raw_params": ["raw_params['rejected'] must be type of Array"]
-            ]
+            }
         }
         
 + Request Failure (application/json)
@@ -222,9 +222,95 @@ Reject contacts by contact id (see `data->id` in **Get Suggestions List** respon
 
         {
             "status": "failure",
-            "errors": [
+            "errors": {
                 "raw_params_id": ["contact with id=1982 is not exist"]
-            ]
+            }
+        }
+        
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
+        
+### Recommend Contact [POST /recommend]
+
+Recommend specific zazo-user (freshly invited) to others zazo-friends.
+
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "recommendations": {
+                    "contact_mkey": "0DAQEVtmNKQiW6aoQrvo",
+                    "to_mkeys": [
+                        "7qdanSEmctZ2jPnYA0a1",
+                        "dz4X0EvprPJO6fGysT8X"
+                    ]
+                }
+            }
+
++ Response 200 (application/json)
+
+        {
+            "status": "success"
+        }
+        
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "recommendations": {
+                    "contact_mkey": "0DAQEVtmNKQiW6aoQrvo",
+                    "to_mkeys": "7qdanSEmctZ2jPnYA0a1"
+                }
+            }
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "raw_params": ["raw_params['to_mkeys'] must be type of Array"]
+            }
+        }
+        
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "recommendations": {
+                    "to_mkeys": [
+                        "7qdanSEmctZ2jPnYA0a1",
+                        "dz4X0EvprPJO6fGysT8X"
+                    ]
+                }
+            }
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "raw_params": ["raw_params['contact_mkey'] must be present"]
+            }
         }
         
 + Request Unauthorized (application/json)
