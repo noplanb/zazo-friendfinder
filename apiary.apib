@@ -49,7 +49,7 @@ Validate and save contact list into database.
                 ]
             }
 
-+ Response 200 (application/json;)
++ Response 200 (application/json)
 
         {
             "status": "success"
@@ -136,6 +136,7 @@ Return contacts in order by total score by all criterias.
             "status": "success",
             "data": [
                 {
+                    "id": 1,
                     "first_name": null,
                     "last_name": null,
                     "display_name": "Sani El-Fishawy",
@@ -143,6 +144,7 @@ Return contacts in order by total score by all criterias.
                     "zazo_id": 1,
                     "total_score": 164
                 }, {
+                    "id": 2,
                     "first_name": nil,
                     "last_name": nil,
                     "display_name": "Ivan",
@@ -150,6 +152,78 @@ Return contacts in order by total score by all criterias.
                     "zazo_id": nil,
                     "total_score": 26
                 }
+            ]
+        }
+        
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
+        
+### Reject Contacts Suggestions [POST /reject]
+
+Reject contacts by contact id (see `data->id` in **Get Suggestions List** response).
+
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "rejected": [1, 2, 3]
+            }
+
++ Response 200 (application/json)
+
+        {
+            "status": "success"
+        }
+        
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "rejected": 1
+            }
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": [
+                "raw_params": ["raw_params['rejected'] must be type of Array"]
+            ]
+        }
+        
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "rejected": [1982]
+            }
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": [
+                "raw_params_id": ["contact with id=1982 is not exist"]
             ]
         }
         
