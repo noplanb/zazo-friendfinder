@@ -15,6 +15,15 @@ The **HTTP Basic** works only for `development` environment (as in examples).
 
 Validate and save contact list into database.
 
++ Parameters
+    + contacts (array) - array of contacts with specific contact structure:
+        + display_name (string) - user name as it shows in phone contact list
+        + additions (hash) - contact specific attributes from the allowed list
+        + vectors (array) - different communication vectors by contact:
+            + name (string) - name of vector
+            + value (string) - value of vector
+            + additions (hash) - vector specific attributes from the allowed list
+
 + Request Success (application/json)
 
     + Headers
@@ -167,6 +176,9 @@ Return contacts in order by total score by all criterias.
 
 Reject contacts by contact id (see `data->id` in **Get Suggestions List** response).
 
++ Parameters
+    + rejected (array) - array of contacts ids to reject suggestions
+
 + Request Success (application/json)
 
     + Headers
@@ -238,6 +250,11 @@ Reject contacts by contact id (see `data->id` in **Get Suggestions List** respon
 ### Recommend Contact [POST /recommend]
 
 Recommend specific zazo-user (freshly invited) to others zazo-friends.
+
++ Parameters
+    + recommendations (hash)
+        + contact_mkey (string) - contact mkey to recommend
+        + to_mkeys (array) - array of string of contacts mkeys will be recomended an another contact
 
 + Request Success (application/json)
 
