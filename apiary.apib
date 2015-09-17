@@ -9,7 +9,7 @@ The default mehtod is **HTTP Digest** with service's `username` and `password`.
 
 The **HTTP Basic** works only for `development` environment (as in examples).
 
-## Contacts [/contacts]
+## Contacts [/api/v1/contacts]
 
 ### Add Contact List [POST]
 
@@ -39,7 +39,7 @@ Validate and save contact list into database.
                                 }
                             }, {
                                 "name": "email",
-                                "value": "",
+                                "value": "elfishawy.sani@gmail.com",
                                 "additions": {
                                     "email_messages_sent": 23
                                 }
@@ -112,17 +112,52 @@ Validate and save contact list into database.
         
 + Request Unauthorized (application/json)
 
-+ Response 401 (application/json; charset=utf-8')
++ Response 401 (application/json)
 
         {
             "status": "unauthorized"
         }
         
+## Suggestions [/api/v1/suggestions]
+
+### Get Suggestions List [GET]
+
+Return contacts in order by total score by all criterias.
         
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
         
++ Response 200 (application/json;)
+
+        {
+            "status": "success",
+            "data": [
+                {
+                    "first_name": null,
+                    "last_name": null,
+                    "display_name": "Sani El-Fishawy",
+                    "zazo_mkey": "7qdanSEmctZ2jPnYA0a1",
+                    "zazo_id": 1,
+                    "total_score": 164
+                }, {
+                    "first_name": nil,
+                    "last_name": nil,
+                    "display_name": "Ivan",
+                    "zazo_mkey": nil,
+                    "zazo_id": nil,
+                    "total_score": 26
+                }
+            ]
+        }
         
-        
-        
-        
-        
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
         
