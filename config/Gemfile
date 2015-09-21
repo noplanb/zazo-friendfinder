@@ -18,6 +18,7 @@ gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'remote_syslog_logger'
 gem 'foreman'
+gem 'resque'
 
 group :development do
   gem 'better_errors'

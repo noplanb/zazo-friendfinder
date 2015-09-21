@@ -14,6 +14,9 @@ newrelic_api_key:
 papertrail_host:
 papertrail_port:
 
+redis_host: redis://localhost
+redis_post: '6379'
+
 test:
   db_name:
 
