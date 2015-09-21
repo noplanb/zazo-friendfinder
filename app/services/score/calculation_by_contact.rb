@@ -27,7 +27,7 @@ class Score::CalculationByContact
         total_score += score.value
       end
     end
-    total_score
+    total_score < 0 ? 0 : total_score
   end
 
   def wrap_transaction
