@@ -1,7 +1,4 @@
 class Contact::SetZazoIdAndMkeyByOwnerContacts
-  include PerformAsync
-  allow_async :do
-
   attr_reader :owner
 
   def initialize(owner)

@@ -1,7 +1,4 @@
 class Contact::UpdateZazoInfo
-  include PerformAsync
-  allow_async :do
-
   attr_reader :contact
 
   def initialize(contact)
