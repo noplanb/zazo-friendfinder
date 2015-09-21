@@ -5,12 +5,10 @@ gem 'pg'
 
 gem 'faraday_middleware'
 gem 'faraday-digestauth'
-gem 'whenever', require: false
-gem 'settingslogic'
-gem 'active_model_serializers'
-gem 'pry-rails'
 
 gem 'global_phone'
+gem 'settingslogic'
+gem 'active_model_serializers'
 
 gem 'figaro', github: 'asux/figaro', branch: 'feature/eb-set-command'
 gem 'puma'
@@ -18,7 +16,10 @@ gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'remote_syslog_logger'
 gem 'foreman'
+gem 'pry-rails'
+
 gem 'resque'
+gem 'whenever', require: false
 
 group :development do
   gem 'better_errors'
