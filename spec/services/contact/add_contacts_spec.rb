@@ -21,7 +21,7 @@ RSpec.describe Contact::AddContacts do
            'vectors'      => vectors,
            'additions'    => { 'marked_as_favorite' => true } }]
       end
-      let(:contact)  { contacts.first }
+      let(:contact) { contacts.first }
 
       it { is_expected.to be true }
       it { expect(contacts.count).to eq 1 }
