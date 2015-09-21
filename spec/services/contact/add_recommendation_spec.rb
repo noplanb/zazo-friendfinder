@@ -41,6 +41,8 @@ RSpec.describe Contact::AddRecommendation do
       it { expect(contact_by_2_last.zazo_mkey).to eq recommended_contact.mkey }
       it { expect(contact_by_1_last.additions['recommended_by']).to eq [user.mkey] }
       it { expect(contact_by_2_last.additions['recommended_by']).to eq [user.mkey] }
+      it { expect(UpdateMkeyDefinedContactWorker).to have_queued(contact_by_1_last.id).in(:update_contacts) }
+      it { expect(UpdateMkeyDefinedContactWorker).to have_queued(contact_by_1_last.id).in(:update_contacts) }
     end
   end
 
