@@ -8,25 +8,18 @@ class Contact::AddContacts
   end
 
   def do
-    wrap_transaction do
-      raw_params.each do |contact_data|
-        instance = Contact.create new_contact_attrs(contact_data)
-        add_errors(:contacts, instance.errors.messages) unless instance.valid?
-        add_vectors_to_contact instance, contact_data['vectors']
-      end
-      raise ActiveRecord::Rollback unless errors.empty?
+    raw_params.each do |contact_data|
+      instance = Contact.create new_contact_attrs(contact_data)
+      add_errors(:contacts, instance.errors.messages) unless instance.valid?
+      add_vectors_to_contact instance, contact_data['vectors']
     end
+    errors.empty? ? true : false
   end
 
   private
 
-  def wrap_transaction
-    ActiveRecord::Base.transaction { yield; return true }
-    false
-  end
-
   def add_vectors_to_contact(contact, vectors)
-    vectors.each do |vector_data|
+    vectors && vectors.each do |vector_data|
       instance = Vector.create new_vector_params(vector_data, contact)
       add_errors(:vectors, instance.errors.messages) unless instance.valid?
     end

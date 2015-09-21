@@ -30,7 +30,7 @@ RSpec.describe Contact::AddContacts do
       it { expect(contact.vectors.pluck(:name)).to eq %w(mobile email) }
     end
 
-    context 'with incorrect params' do
+    context 'with incorrect vectors params' do
       let(:params) do
         vectors = [
           { 'name'  => 'email',
@@ -40,23 +40,36 @@ RSpec.describe Contact::AddContacts do
             'value' => 'xxxxxxxxx',
             'additions' => { 'email_messages_sent' => 15 } }
         ]
-        [{ 'first_name' => 'Sani',
-           'last_name'  => 'Elfishawy',
-           'vectors'    => vectors,
-           'additions'  => { 'email_messages_sent' => 15 } }]
+        [{ 'display_name' => 'Sani Elfishawy',
+           'vectors'      => vectors }]
+      end
+
+      it { is_expected.to be false }
+      it { expect(contacts.count).to eq 1 }
+      it do
+        expect = {
+          vectors: [
+            { additions: ['\'sms_messages_sent\' is not allowed condition for \'email\' vector'], value: ['\'asdasd@asdasd\' has incorrect format for \'email\' vector'] },
+            { additions: ['\'email_messages_sent\' is not allowed condition for \'mobile\' vector'], value: ['\'xxxxxxxxx\' has incorrect format for \'mobile\' vector'] }
+          ]
+        }
+        expect(instance.errors).to eq expect
+      end
+    end
+
+    context 'with incorrect contact params' do
+      let(:params) do
+        [{ 'display_name' => 'Sani Elfishawy',
+           'additions'    => { 'email_messages_sent' => 15 } }]
       end
 
       it { is_expected.to be false }
       it { expect(contacts.count).to eq 0 }
       it do
         expect = {
-          vectors: [
-            { additions: ['\'sms_messages_sent\' is not allowed condition for \'email\' vector'], value: ['\'asdasd@asdasd\' has incorrect format for \'email\' vector'] },
-            { additions: ['\'email_messages_sent\' is not allowed condition for \'mobile\' vector'], value: ['\'xxxxxxxxx\' has incorrect format for \'mobile\' vector'] }
-          ],
           contacts: [
             { additions: ['\'email_messages_sent\' is not allowed addition'] }
-          ],
+          ]
         }
         expect(instance.errors).to eq expect
       end
