@@ -27,7 +27,7 @@ RSpec.describe Contact::AddContacts do
       it { expect(contacts.count).to eq 1 }
       it { expect(contact.display_name).to eq 'Sani Elfishawy' }
       it { expect(contact.vectors.count).to eq 2 }
-      it { expect(contact.vectors.pluck(:name)).to eq %w(mobile email) }
+      it { expect(contact.vectors.pluck(:name)).to include *%w(mobile email) }
     end
 
     context 'with incorrect vectors params' do

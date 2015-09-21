@@ -69,8 +69,8 @@ RSpec.describe Score::Criterias::ContactOfUsers do
     it { expect(subject.name).to eq 'contact_of_users' }
     it { expect(subject.persisted?).to be true }
 
-    it { expect(contact.vectors.mobile.first.additions).to eq ({ 'users_with_contact' => [contact_2.owner, contact_1.owner] }) }
-    it { expect(contact.vectors.email.first.additions).to eq ({ 'users_with_contact' => [contact_1.owner] }) }
+    it { expect(contact.vectors.mobile.first.additions['users_with_contact']).to include *[contact_2.owner, contact_1.owner] }
+    it { expect(contact.vectors.email.first.additions['users_with_contact']).to eq [contact_1.owner] }
     it { expect(contact.vectors.facebook.first.additions).to be_nil }
   end
 end

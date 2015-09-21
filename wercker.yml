@@ -1,0 +1,26 @@
+box: zazo/rails
+build:
+  services:
+    - id: postgres
+      tag: 9.4
+      env:
+        POSTGRES_PASSWORD: secret888zazo
+        POSTGRES_USER: postgres
+  steps:
+    - asux/bundle-install@1.1.8:
+        gemfile: config/Gemfile
+        path: /usr/local/bundle
+        without: development production
+    - script:
+        name: db setup
+        code: rake db:create db:migrate RAILS_ENV=test
+    - script:
+        name: create rspec and coverage dir
+        code: mkdir -p $WERCKER_REPORT_ARTIFACTS_DIR/rspec $WERCKER_REPORT_ARTIFACTS_DIR/coverage
+    - script:
+        name: rspec
+        code: rspec
+  after-steps:
+    - asux/pretty-slack-notify:
+        webhook_url: $slack_url
+        channel: devops
