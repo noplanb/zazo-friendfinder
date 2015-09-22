@@ -47,7 +47,7 @@ http_interactions:
   recorded_at: Thu, 10 Sep 2015 17:52:47 GMT
 - request:
     method: get
-    uri: http://0.0.0.0:3000/api/v1/fetch/users/find_by_mobile_or_email?email=admin@google.com
+    uri: <%= statistics_api_base_url %>/api/v1/fetch/users/find_by_mobile_or_email?email=admin@google.com
     body:
       encoding: US-ASCII
       string: ''
