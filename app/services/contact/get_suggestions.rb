@@ -6,6 +6,7 @@ class Contact::GetSuggestions
   end
 
   def do
+    WriteLog.info self, "suggestions sent at #{Time.now} to '#{current_user.mkey}' owner"
     contacts.map do |contact|
       ContactSerializer.new(contact).serializable_hash
     end

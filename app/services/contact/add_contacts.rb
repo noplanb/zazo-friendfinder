@@ -1,6 +1,14 @@
 class Contact::AddContacts
   attr_reader :current_user, :raw_params, :errors
 
+  def self.log_messages(status)
+    if status == :success
+      WriteLog.info self, "contacts was added successfully at #{Time.now} for '#{current_user.mkey}' owner"
+    else
+      WriteLog.info self, "contacts was added at #{Time.now} for '#{current_user.mkey}' owner with errors: #{errors.inspect}"
+    end
+  end
+
   def initialize(current_user, params)
     @current_user = current_user
     @raw_params   = params || []
@@ -13,7 +21,7 @@ class Contact::AddContacts
       add_errors(:contacts, instance.errors.messages) unless instance.valid?
       add_vectors_to_contact instance, contact_data['vectors']
     end
-    errors.empty? ? true : false
+    errors.empty?
   end
 
   private

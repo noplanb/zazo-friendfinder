@@ -1,6 +1,14 @@
 class Contact::AddRecommendation
   attr_reader :current_user, :raw_params, :validation
 
+  def self.log_messages(status)
+    if status == :success
+      WriteLog.info self, "recommendation was added successfully at #{Time.now} from '#{current_user.mkey}' owner, with params: #{raw_params.inspect}"
+    else
+      WriteLog.info self, "errors occurred with adding recommendation at #{Time.now} from '#{current_user.mkey}' owner: #{errors.inspect}, with params: #{raw_params.inspect}"
+    end
+  end
+
   def initialize(current_user, params)
     @current_user = current_user
     @raw_params   = params
@@ -41,9 +49,7 @@ class Contact::AddRecommendation
 
   def create_contact_with_recommendation(owner)
     contact = Contact.new owner: owner, zazo_mkey: raw_params['contact_mkey'], additions: { recommended_by: [current_user.mkey] }
-    is_success = contact.save
-    is_success ? Resque.enqueue(UpdateMkeyDefinedContactWorker, contact.id) : fail(ActiveRecord::Rollback)
-    contact
+    contact.save.tap { |is_success| is_success ? Resque.enqueue(UpdateMkeyDefinedContactWorker, contact.id) : fail(ActiveRecord::Rollback) }
   end
 
   #

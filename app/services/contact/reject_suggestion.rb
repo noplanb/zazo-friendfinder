@@ -1,6 +1,14 @@
 class Contact::RejectSuggestion
   attr_reader :current_user, :raw_params, :validation
 
+  def self.log_messages(status)
+    if status == :success
+      WriteLog.info self, "reject was completed successfully at #{Time.now} by '#{current_user.mkey}' owner, with params: #{raw_params.inspect}"
+    else
+      WriteLog.info self, "errors occurred when rejecting at #{Time.now} by '#{current_user.mkey}' owner: #{errors.inspect}, with params: #{raw_params.inspect}"
+    end
+  end
+
   def initialize(current_user, params)
     @current_user = current_user
     @raw_params   = params
