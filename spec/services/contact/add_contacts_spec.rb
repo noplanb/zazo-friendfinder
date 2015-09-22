@@ -1,26 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe Contact::AddContacts do
-  let(:user) { FactoryGirl.build :user }
-  let(:instance) { described_class.new user, params }
+  let(:current_user) { FactoryGirl.build :user }
+  let(:instance) { described_class.new current_user, params }
+
+  let (:correct_params) do
+    vectors = [
+      { 'name'  => 'email',
+        'value' => 'elfishawy.sani@gmail.com' },
+      { 'name'  => 'mobile',
+        'value' => '+16502453537',
+        'additions' => { 'sms_messages_sent' => 15 } }
+    ]
+    [{ 'display_name' => 'Sani Elfishawy',
+       'vectors'      => vectors,
+       'additions'    => { 'marked_as_favorite' => true } }]
+  end
 
   describe '#do' do
-    let!(:subject) { instance.do }
-    let(:contacts) { Contact.by_owner user.mkey }
+    let(:contacts) { Contact.by_owner current_user.mkey }
 
     context 'with correct params' do
-      let(:params) do
-        vectors = [
-          { 'name'  => 'email',
-            'value' => 'elfishawy.sani@gmail.com' },
-          { 'name'  => 'mobile',
-            'value' => '+16502453537',
-            'additions' => { 'sms_messages_sent' => 15 } }
-        ]
-        [{ 'display_name' => 'Sani Elfishawy',
-           'vectors'      => vectors,
-           'additions'    => { 'marked_as_favorite' => true } }]
-      end
+      let!(:subject) { instance.do }
+      let(:params)  { correct_params }
       let(:contact) { contacts.first }
 
       it { is_expected.to be true }
@@ -30,7 +32,24 @@ RSpec.describe Contact::AddContacts do
       it { expect(contact.vectors.pluck(:name)).to include *%w(mobile email) }
     end
 
+    context 'with already persisted contacts' do
+      let(:subject) { instance.do }
+      let(:params) { correct_params }
+
+      before do
+        FactoryGirl.create :contact, owner: current_user.mkey
+        instance.do
+      end
+
+      it { is_expected.to be false }
+      it do
+        expect = { contacts: ['contacts by this user already persisted'] }
+        expect(instance.errors).to eq expect
+      end
+    end
+
     context 'with incorrect vectors params' do
+      let!(:subject) { instance.do }
       let(:params) do
         vectors = [
           { 'name'  => 'email',
@@ -58,6 +77,7 @@ RSpec.describe Contact::AddContacts do
     end
 
     context 'with incorrect contact params' do
+      let!(:subject) { instance.do }
       let(:params) do
         [{ 'display_name' => 'Sani Elfishawy',
            'additions'    => { 'email_messages_sent' => 15 } }]

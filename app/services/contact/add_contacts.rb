@@ -8,6 +8,10 @@ class Contact::AddContacts
   end
 
   def do
+    if contacts_persisted?
+      add_errors(:contacts, 'contacts by this user already persisted')
+      return false
+    end
     raw_params.each do |contact_data|
       instance = Contact.create new_contact_attrs(contact_data)
       add_errors(:contacts, instance.errors.messages) unless instance.valid?
@@ -49,5 +53,9 @@ class Contact::AddContacts
       name: vector_data['name'],
       value: vector_data['value'],
       additions: vector_data['additions'] }
+  end
+
+  def contacts_persisted?
+    Contact.by_owner(current_user.mkey).select { |c| !c.additions_value('recommended_by') }.size != 0
   end
 end
