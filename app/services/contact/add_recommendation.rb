@@ -1,14 +1,6 @@
 class Contact::AddRecommendation
   attr_reader :current_user, :raw_params, :validation
 
-  def self.log_messages(status)
-    if status == :success
-      WriteLog.info self, "recommendation was added successfully at #{Time.now} from '#{current_user.mkey}' owner, with params: #{raw_params.inspect}"
-    else
-      WriteLog.info self, "errors occurred with adding recommendation at #{Time.now} from '#{current_user.mkey}' owner: #{errors.inspect}, with params: #{raw_params.inspect}"
-    end
-  end
-
   def initialize(current_user, params)
     @current_user = current_user
     @raw_params   = params
@@ -23,6 +15,14 @@ class Contact::AddRecommendation
 
   def errors
     validation.errors.messages
+  end
+
+  def log_messages(status)
+    if status == :success
+      WriteLog.info self, "recommendation was added successfully at #{Time.now} from '#{current_user.mkey}' owner, with params: #{raw_params.inspect}"
+    else
+      WriteLog.info self, "errors occurred with adding recommendation at #{Time.now} from '#{current_user.mkey}' owner: #{errors.inspect}, with params: #{raw_params.inspect}"
+    end
   end
 
   private
