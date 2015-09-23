@@ -2,6 +2,7 @@ class BaseApi
   class << self
     attr_reader :api_version,
                 :api_base_uri,
+                :api_auth_name,
                 :api_auth_token,
                 :api_raise_errors,
                 :api_map
@@ -16,6 +17,11 @@ class BaseApi
 
     def mapper(map)
       @api_map = map
+    end
+
+    def digest_auth(name, token)
+      @api_auth_name  = name
+      @api_auth_token = token
     end
 
     def auth_token(token)
@@ -35,7 +41,7 @@ class BaseApi
       c.request  :json
       c.response :json, content_type: /\bjson$/
       c.response(:raise_error) if raise_errors?
-      c.request(:digest, Settings.app_name_key, auth_token) if auth_token
+      c.request(:digest, auth_credentials(:name), auth_credentials(:token)) if auth_credentials(:token)
       c.adapter Faraday.default_adapter
       c.use Faraday::Response::Logger, Logger.new('log/faraday.log')
     end
@@ -55,9 +61,13 @@ class BaseApi
     self.class.api_map
   end
 
-  def auth_token
-    token = self.class.api_auth_token
-    token ? URI::encode(token) : nil
+  def auth_credentials(key)
+    if key == :token
+      token = self.class.api_auth_token
+      token ? URI::encode(token) : nil
+    else
+      self.class.api_auth_name
+    end
   end
 
   def raise_errors?
