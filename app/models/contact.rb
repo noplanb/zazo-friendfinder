@@ -1,5 +1,9 @@
 class Contact < ActiveRecord::Base
-  ALLOWED_ADDITIONS = %w(marked_as_favorite rejected_by_owner recommended_by)
+  ALLOWED_ADDITIONS = [
+    'marked_as_favorite', # attrs coming from client
+    'rejected_by_owner', 'recommended_by', # attrs for persist contact status data, cannot be reproduced
+    'users_with_contact', 'friends_with_contact', 'friends_who_are_friends_with_contact' # attrs for caching criteria data
+  ]
 
   has_many :vectors
   has_many :scores

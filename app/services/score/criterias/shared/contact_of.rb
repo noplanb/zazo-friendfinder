@@ -1,12 +1,9 @@
 module Score::Criterias::Shared::ContactOf
   def split_by_names(results)
-    distinct_mkeys = Set.new
-    vector_mkeys = results.each_with_object({}) do |row, memo|
+    results.each_with_object(Set.new) do |row, memo|
       mkeys_by_name = row['mkeys'][1...-1].split(',')
-      memo[row['name']] = yield mkeys_by_name
-      distinct_mkeys.merge memo[row['name']]
+      memo.merge yield(mkeys_by_name)
     end
-    [vector_mkeys, distinct_mkeys]
   end
 
   def query_by_contact(contact)
@@ -28,14 +25,9 @@ module Score::Criterias::Shared::ContactOf
     SQL
   end
 
-  def update_contact_vectors(contact, vector_mkeys, addition_key)
-    contact.vectors.each do |v|
-      mkeys = vector_mkeys[v.name]
-      unless mkeys.nil? || mkeys.empty?
-        v.additions ||= {}
-        v.additions[addition_key] = mkeys
-        v.save
-      end
-    end
+  def update_contact_additions(contact, key, data)
+    contact.additions ||= {}
+    contact.additions[key] = data
+    contact.save
   end
 end

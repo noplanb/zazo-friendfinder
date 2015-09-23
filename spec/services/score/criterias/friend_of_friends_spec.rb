@@ -37,6 +37,7 @@ RSpec.describe Score::Criterias::FriendOfFriends do
 
   describe '#save' do
     let!(:subject) { instance.save }
+    before { contact.reload }
 
     it { is_expected.to be_valid }
     it { expect(subject.name).to eq 'friend_of_friends' }

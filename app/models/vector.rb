@@ -1,9 +1,9 @@
 class Vector < ActiveRecord::Base
   ALLOWED_NAMES = %w(mobile email facebook).freeze
   ALLOWED_ADDITIONS = {
-    mobile:   %w(sms_messages_sent users_with_contact friends_with_contact),
-    email:    %w(email_messages_sent users_with_contact friends_with_contact),
-    facebook: %w(users_with_contact friends_with_contact)
+    mobile:   %w(sms_messages_sent),
+    email:    %w(email_messages_sent),
+    facebook: %w()
   }.stringify_keys.freeze
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
 

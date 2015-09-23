@@ -8,13 +8,13 @@ class Score::Criterias::ContactOfUsers < Score::Criterias::Base
 
   def calculate
     query = query_by_contact contact
-    @vector_mkeys, mkeys = split_by_names(run_raw_sql(query)) { |mk| mk }
-    mkeys.size
+    @distinct_mkeys = split_by_names(run_raw_sql(query)) { |mk| mk }
+    @distinct_mkeys.size
   end
 
   private
 
   def update_contact
-    update_contact_vectors contact, @vector_mkeys, 'users_with_contact'
+    update_contact_additions contact, 'users_with_contact', @distinct_mkeys.to_a
   end
 end

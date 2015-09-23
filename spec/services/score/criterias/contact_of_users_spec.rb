@@ -17,9 +17,9 @@ RSpec.describe Score::Criterias::ContactOfUsers do
     context 'several others have this contact' do
       context 'by one vector overlap' do
         before do
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email,    value: email)]
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email)]
           FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email)]
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email,    value: email), FactoryGirl.create(:vector_facebook, value: email)]
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email), FactoryGirl.create(:vector_facebook, value: email)]
         end
 
         it { is_expected.to eq 12 }
@@ -27,10 +27,10 @@ RSpec.describe Score::Criterias::ContactOfUsers do
 
       context 'by two vectors overlap' do
         before do
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email,    value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
           FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
           FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email)]
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile,   value: mobile)]
+          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)]
         end
 
         it { is_expected.to eq 16 }
@@ -64,13 +64,11 @@ RSpec.describe Score::Criterias::ContactOfUsers do
     let!(:contact_1) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email), FactoryGirl.create(:vector_mobile, value: mobile)] }
     let!(:contact_2) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)] }
     let!(:subject) { instance.save }
+    before { contact.reload }
 
     it { is_expected.to be_valid }
     it { expect(subject.name).to eq 'contact_of_users' }
     it { expect(subject.persisted?).to be true }
-
-    it { expect(contact.vectors.mobile.first.additions['users_with_contact']).to include *[contact_2.owner, contact_1.owner] }
-    it { expect(contact.vectors.email.first.additions['users_with_contact']).to eq [contact_1.owner] }
-    it { expect(contact.vectors.facebook.first.additions).to be_nil }
+    it { expect(contact.additions['users_with_contact']).to include *[contact_1.owner, contact_2.owner] }
   end
 end

@@ -1,4 +1,6 @@
 class Score::Criterias::FriendOfFriends < Score::Criterias::Base
+  include Score::Criterias::Shared::ContactOf
+
   def self.ratio
     16
   end
@@ -11,9 +13,7 @@ class Score::Criterias::FriendOfFriends < Score::Criterias::Base
   private
 
   def update_contact
-    contact.additions ||= {}
-    contact.additions['friends_who_are_friends_with_contact'] = @friends
-    contact.save
+    update_contact_additions contact, 'friends_who_are_friends_with_contact', @friends
   end
 
   def get_friends

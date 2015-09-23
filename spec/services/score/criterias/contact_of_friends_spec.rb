@@ -53,12 +53,11 @@ RSpec.describe Score::Criterias::ContactOfFriends do
     let!(:contact_1) { FactoryGirl.create :contact, owner: friend_1, vectors: [FactoryGirl.create(:vector_mobile, value: mobile), FactoryGirl.create(:vector_email, value: email)] }
     let!(:contact_2) { FactoryGirl.create :contact, owner: friend_2, vectors: [FactoryGirl.create(:vector_email, value: email)] }
     let!(:subject) { instance.save }
+    before { contact.reload }
 
     it { is_expected.to be_valid }
     it { expect(subject.name).to eq 'contact_of_friends' }
     it { expect(subject.persisted?).to be true }
-
-    it { expect(contact.vectors.mobile.first.additions).to eq ({ 'friends_with_contact' => [contact_1.owner] }) }
-    it { expect(contact.vectors.email.first.additions).to eq ({ 'friends_with_contact' => [contact_1.owner, contact_2.owner] }) }
+    it { expect(contact.additions['friends_with_contact']).to include *[contact_1.owner, contact_2.owner] }
   end
 end
