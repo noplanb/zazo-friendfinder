@@ -1,21 +1,27 @@
 class Vector < ActiveRecord::Base
-  ALLOWED_NAMES = %w(mobile email facebook).freeze
   ALLOWED_ADDITIONS = {
     mobile:   %w(sms_messages_sent),
     email:    %w(email_messages_sent),
-    facebook: %w()
+    facebook: %w(),
+    skype:    %w(),
+    linkedin: %w(),
+    whatsapp: %w(),
+    vk:       %w(),
+    viber:    %w(),
+    telegram: %w(),
+    gplus:    %w()
   }.stringify_keys.freeze
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
 
   belongs_to :contact
 
   validates :contact, :name, :value, presence: true
-  validates :name, inclusion: { in: ALLOWED_NAMES, message: '%{value} is not a allowed vector name' }
+  validates :name, inclusion: { in: ALLOWED_ADDITIONS.keys, message: '%{value} is not a allowed vector name' }
   validate :additions_must_be_allowed, :value_has_correct_format, unless: 'name.nil?'
 
-  scope :mobile,    -> { where name: 'mobile' }
-  scope :email,     -> { where name: 'email' }
-  scope :facebook,  -> { where name: 'facebook' }
+  scope :mobile,   -> { where name: 'mobile' }
+  scope :email,    -> { where name: 'email' }
+  scope :facebook, -> { where name: 'facebook' }
 
   def additions_value(key, default = nil)
     (additions.try :[], key) || default
