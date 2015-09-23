@@ -17,6 +17,9 @@ papertrail_port:
 redis_host: redis://localhost
 redis_post: '6379'
 
+http_basic_name:
+http_basic_password:
+
 test:
   db_name:
 
