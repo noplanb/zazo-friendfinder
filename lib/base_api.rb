@@ -35,7 +35,7 @@ class BaseApi
       c.request  :json
       c.response :json, content_type: /\bjson$/
       c.response(:raise_error) if raise_errors?
-      c.request(:digest, 'renotification', auth_token) if auth_token
+      c.request(:digest, Settings.app_name_key, auth_token) if auth_token
       c.adapter Faraday.default_adapter
       c.use Faraday::Response::Logger, Logger.new('log/faraday.log')
     end
