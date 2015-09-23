@@ -1,3 +1,5 @@
+require 'resque_web'
+
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
@@ -8,5 +10,6 @@ Rails.application.routes.draw do
     end
   end
 
+  mount ResqueWeb::Engine => '/resque'
   get 'status', to: Proc.new { [200, {}, ['']] }
 end
