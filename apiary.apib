@@ -11,7 +11,7 @@ The **HTTP Basic** works only for `development` environment (as in examples).
 
 ## Contacts [/api/v1/contacts]
 
-### Add Contact List [POST /{?contacts}]
+### Add Contact List [POST]
 
 Validate and save contact list into database.
 
@@ -129,7 +129,7 @@ Validate and save contact list into database.
         
 ## Suggestions [/api/v1/suggestions]
 
-### Get Suggestions List [GET]
+### Get Suggestions List [GET /api/v1/suggestions]
 
 Return contacts in order by total score by all criterias.
         
@@ -172,7 +172,7 @@ Return contacts in order by total score by all criterias.
             "status": "unauthorized"
         }
         
-### Reject Contacts Suggestions [POST /reject{?rejected}]
+### Reject Contacts Suggestions [POST /api/v1/suggestions/reject]
 
 Reject contacts by contact id (see `data->id` in **Get Suggestions List** response).
 
@@ -247,7 +247,7 @@ Reject contacts by contact id (see `data->id` in **Get Suggestions List** respon
             "status": "unauthorized"
         }
         
-### Recommend Contact [POST /recommend{?recommendations}]
+### Recommend Contact [POST /api/v1/suggestions/recommend]
 
 Recommend specific zazo-user (freshly invited) to others zazo-friends.
 
