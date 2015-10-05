@@ -15,7 +15,28 @@ RSpec.describe Contact::AddContacts::MergeContacts do
   end
 
   describe '#do' do
+    let(:vectors) do
+      [ { 'name' => 'mobile', 'value' => '+16502453537' },
+        { 'name' => 'email',  'value' => 'sani.elfishawy@gmail.com' },
+        { 'name' => 'gplus',  'value' => 'sani.elfishawy@gmail.com' } ]
+    end
+    let(:existing_contact_vectors) do
+      existing_contact.reload.vectors.map { |v| [v.name, v.value] }
+    end
+    before do
+      instance.do do |contact, vector_data|
+        Vector.create contact: contact, name: vector_data['name'], value: vector_data['value']
+      end
+    end
 
+    it do
+      expect = [
+        %w(mobile +16502453537),
+        %w(email elfishawy.sani@gmail.com), %w(gplus elfishawy.sani@gmail.com),
+        %w(email sani.elfishawy@gmail.com), %w(gplus sani.elfishawy@gmail.com)
+      ]
+      expect(existing_contact_vectors).to include *expect
+    end
   end
 
   describe '#necessary_to?' do

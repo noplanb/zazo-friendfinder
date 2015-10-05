@@ -6,15 +6,12 @@ RSpec.describe Contact::AddContacts do
 
   let (:correct_params) do
     vectors = [
-      { 'name'  => 'email',
-        'value' => 'elfishawy.sani@gmail.com' },
-      { 'name'  => 'mobile',
-        'value' => '+16502453537',
-        'additions' => { 'sms_messages_sent' => 15 } }
+      { 'name' => 'email',  'value' => 'elfishawy.sani@gmail.com' },
+      { 'name' => 'mobile', 'value' => '+16502453537', 'additions' => { 'sms_messages_sent' => 15 } }
     ]
     [{ 'display_name' => 'Sani Elfishawy',
        'vectors'      => vectors,
-       'additions'    => { 'marked_as_favorite' => true } }]
+       'additions'    => { 'marked_as_favorite' => true, 'rejected_by_owner' => true } }]
   end
 
   describe '#do' do
@@ -32,19 +29,32 @@ RSpec.describe Contact::AddContacts do
       it { expect(contact.vectors.pluck(:name)).to include *%w(mobile email) }
     end
 
-    context 'with already persisted contacts' do
+    context 'with correct params that need to be merged' do
+      let(:contact) { contacts.first }
+      let(:params) do
+        vectors = [
+          { 'name' => 'mobile', 'value' => '+16502453537' },
+          { 'name' => 'gplus',  'value' => 'elfishawy.sani@gmail.com' }
+        ]
+        [{ 'display_name' => 'Sani Elfishawy', 'vectors' => vectors }]
+      end
       let(:subject) { instance.do }
-      let(:params) { correct_params }
+      let(:all_contact_vectors) do
+        contact.reload.vectors.map { |v| [v.name, v.value] }
+      end
 
       before do
-        FactoryGirl.create :contact, owner: current_user.mkey
+        described_class.new(current_user, correct_params).do
         instance.do
       end
 
-      it { is_expected.to be false }
+      it { is_expected.to be true }
+      it { expect(contact.reload.vectors.count).to eq 3 }
       it do
-        expect = { contacts: ['contacts by this user already persisted'] }
-        expect(instance.errors).to eq expect
+        expect = [
+          %w(mobile +16502453537), %w(email elfishawy.sani@gmail.com), %w(gplus elfishawy.sani@gmail.com)
+        ]
+        expect(all_contact_vectors).to include *expect
       end
     end
 
@@ -86,11 +96,7 @@ RSpec.describe Contact::AddContacts do
       it { is_expected.to be false }
       it { expect(contacts.count).to eq 0 }
       it do
-        expect = {
-          contacts: [
-            { additions: ['\'email_messages_sent\' is not allowed addition'] }
-          ]
-        }
+        expect = { contacts: [ { additions: ['\'email_messages_sent\' is not allowed addition'] } ] }
         expect(instance.errors).to eq expect
       end
     end

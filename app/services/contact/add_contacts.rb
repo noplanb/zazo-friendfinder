@@ -30,7 +30,7 @@ class Contact::AddContacts
   def add_or_merge_contact(contact_data)
     merge_contacts = MergeContacts.new current_user.mkey, contact_data
     if merge_contacts.necessary_to?
-      merge_contacts.do
+      merge_contacts.do { |contact, vector_data| add_vector_to_contact contact, vector_data }
     else
       instance = Contact.create new_contact_attrs(contact_data)
       add_errors(:contacts, instance.errors.messages) unless instance.valid?
@@ -38,11 +38,13 @@ class Contact::AddContacts
     end
   end
 
-  def add_vectors_to_contact(contact, vectors)
-    vectors && vectors.each do |vector_data|
-      instance = Vector.create new_vector_params(vector_data, contact)
-      add_errors(:vectors, instance.errors.messages) unless instance.valid?
-    end
+  def add_vectors_to_contact(contact, vectors_data)
+    vectors_data && vectors_data.each { |vector_data| add_vector_to_contact contact, vector_data }
+  end
+
+  def add_vector_to_contact(contact, vector_data)
+    instance = Vector.create new_vector_params(vector_data, contact)
+    add_errors(:vectors, instance.errors.messages) unless instance.valid?
   end
 
   #

@@ -7,7 +7,12 @@ class Contact::AddContacts::MergeContacts
   end
 
   def do
-
+    return false unless last_coincidence || necessary_to?
+    contact_data['vectors'].select do |vector_data|
+      Contact.by_owner(owner).each do |contact|
+        yield contact, vector_data if block_given? && !vector_already_exist?(contact, vector_data)
+      end
+    end
   end
 
   def necessary_to?
@@ -32,7 +37,11 @@ class Contact::AddContacts::MergeContacts
 
   def total_vectors_matches(contact)
     contact_data['vectors'].select do |vector_data|
-      contact.vectors.select { |vector| vector.name == vector_data['name'] && vector.value == vector_data['value'] }.size > 0
+      vector_already_exist? contact, vector_data
     end.size
+  end
+
+  def vector_already_exist?(contact, vector_data)
+    contact.vectors.select { |vector| vector.name == vector_data['name'] && vector.value == vector_data['value'] }.size > 0
   end
 end
