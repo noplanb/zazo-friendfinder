@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criterias::ContactOfUsers do
+RSpec.describe Score::Criteria::ContactOfUsers do
   let(:contact) { FactoryGirl.create :contact, vectors: vectors }
   let(:instance) { described_class.new contact }
   let(:email) { 'elfishawy.sani@gmail.com' }

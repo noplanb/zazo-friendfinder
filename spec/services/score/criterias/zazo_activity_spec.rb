@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criterias::ZazoActivity do
+RSpec.describe Score::Criteria::ZazoActivity do
   let(:connection) { FactoryGirl.create :contact, zazo_mkey: mkey }
   let(:instance) { described_class.new connection }
 
@@ -8,21 +8,21 @@ RSpec.describe Score::Criterias::ZazoActivity do
     subject { instance.calculate_with_ratio }
 
     context 'with correct mkey by very active user' do
-      use_vcr_cassette 'score/criterias/zazo_activity_by_7qdanSEmctZ2jPnYA0a1', api_base_urls
+      use_vcr_cassette 'score/criteria/zazo_activity_by_7qdanSEmctZ2jPnYA0a1', api_base_urls
       let(:mkey) { '7qdanSEmctZ2jPnYA0a1' }
 
       it { is_expected.to eq 216 }
     end
 
     context 'with correct mkey by not very active user' do
-      use_vcr_cassette 'score/criterias/zazo_activity_by_GBAHb0482YxlJ0kYwbIS', api_base_urls
+      use_vcr_cassette 'score/criteria/zazo_activity_by_GBAHb0482YxlJ0kYwbIS', api_base_urls
       let(:mkey) { 'GBAHb0482YxlJ0kYwbIS' }
 
       it { is_expected.to eq 16 }
     end
 
     context 'with incorrect mkey' do
-      use_vcr_cassette 'score/criterias/zazo_activity_by_incorrect', api_base_urls
+      use_vcr_cassette 'score/criteria/zazo_activity_by_incorrect', api_base_urls
       let(:mkey) { 'xxxxxxxxxxxx' }
 
       it { is_expected.to eq 0 }
@@ -36,7 +36,7 @@ RSpec.describe Score::Criterias::ZazoActivity do
   end
 
   describe '#save' do
-    use_vcr_cassette 'score/criterias/zazo_activity_by_7qdanSEmctZ2jPnYA0a1', api_base_urls
+    use_vcr_cassette 'score/criteria/zazo_activity_by_7qdanSEmctZ2jPnYA0a1', api_base_urls
     let(:mkey) { '7qdanSEmctZ2jPnYA0a1' }
     subject { instance.save }
 

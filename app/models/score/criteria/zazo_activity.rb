@@ -1,4 +1,4 @@
-class Score::Criterias::ZazoActivity < Score::Criterias::Base
+class Score::Criteria::ZazoActivity < Score::Criteria::Base
   def self.ratio
     4
   end

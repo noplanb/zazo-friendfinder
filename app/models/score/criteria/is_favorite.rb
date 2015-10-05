@@ -1,4 +1,4 @@
-class Score::Criterias::IsFavorite < Score::Criterias::Base
+class Score::Criteria::IsFavorite < Score::Criteria::Base
   def self.ratio
     48
   end

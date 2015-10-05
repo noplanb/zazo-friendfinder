@@ -15,7 +15,7 @@ class Score::CalculationByContact
   def save_scores_and_get_total
     total_score = 0
     wrap_transaction do
-      criterias.each do |calculated|
+      criteria.each do |calculated|
         score = Score.create!({
           contact: contact,
           name:  calculated[:name],
@@ -31,10 +31,10 @@ class Score::CalculationByContact
     Score.transaction { yield }
   end
 
-  def criterias
+  def criteria
     Score::ALLOWED_METHODS.map do |name|
-      criteria = Classifier.new([:score, :criterias, name]).klass
-      { name: name, score: criteria.new(contact).calculate_with_ratio }
+      criterion = Classifier.new([:score, :criteria, name]).klass
+      { name: name, score: criterion.new(contact).calculate_with_ratio }
     end
   end
 end

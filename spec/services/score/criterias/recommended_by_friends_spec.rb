@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criterias::RecommendedByFriends do
+RSpec.describe Score::Criteria::RecommendedByFriends do
   let(:instance) { described_class.new contact }
 
   let(:user_1) { FactoryGirl.build :user }

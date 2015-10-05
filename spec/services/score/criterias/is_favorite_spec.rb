@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criterias::IsFavorite do
+RSpec.describe Score::Criteria::IsFavorite do
   let(:instance) { described_class.new contact }
 
   describe '#calculate_with_ratio' do

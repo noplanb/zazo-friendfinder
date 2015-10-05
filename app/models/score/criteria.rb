@@ -1,0 +1,2 @@
+module Score::Criteria
+end

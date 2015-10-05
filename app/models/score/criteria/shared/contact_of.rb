@@ -1,4 +1,4 @@
-module Score::Criterias::Shared::ContactOf
+module Score::Criteria::Shared::ContactOf
   def split_by_names(results)
     results.each_with_object(Set.new) do |row, memo|
       mkeys_by_name = row['mkeys'][1...-1].split(',')

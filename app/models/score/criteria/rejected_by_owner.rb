@@ -1,4 +1,4 @@
-class Score::Criterias::RejectedByOwner < Score::Criterias::Base
+class Score::Criteria::RejectedByOwner < Score::Criteria::Base
   def self.ratio
     -100000
   end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criterias::ContactOfFriends do
+RSpec.describe Score::Criteria::ContactOfFriends do
   use_vcr_cassette 'contact/get_zazo_friends_GBAHb0482YxlJ0kYwbIS', api_base_urls
 
   let(:owner) { 'GBAHb0482YxlJ0kYwbIS' }

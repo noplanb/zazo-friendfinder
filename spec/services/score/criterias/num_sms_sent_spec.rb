@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criterias::NumSmsSent do
+RSpec.describe Score::Criteria::NumSmsSent do
   let(:contact) { FactoryGirl.create :contact, vectors: vectors }
   let(:instance) { described_class.new contact }
 

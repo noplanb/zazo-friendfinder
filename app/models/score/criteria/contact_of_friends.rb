@@ -1,6 +1,6 @@
-class Score::Criterias::ContactOfFriends < Score::Criterias::Base
-  include Score::Criterias::Shared::ContactOf
-  include Score::Criterias::Shared::RunRawSql
+class Score::Criteria::ContactOfFriends < Score::Criteria::Base
+  include Score::Criteria::Shared::ContactOf
+  include Score::Criteria::Shared::RunRawSql
 
   def self.ratio
     8

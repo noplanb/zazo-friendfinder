@@ -1,4 +1,4 @@
-module Score::Criterias::Shared::RunRawSql
+module Score::Criteria::Shared::RunRawSql
   def run_raw_sql(sql)
     Contact.connection.select_all sql
   end

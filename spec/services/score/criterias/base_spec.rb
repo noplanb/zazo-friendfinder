@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criterias::Base do
+RSpec.describe Score::Criteria::Base do
   let(:instance) { described_class.new FactoryGirl.create(:contact) }
 
   describe '#save' do

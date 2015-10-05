@@ -1,4 +1,4 @@
-class Score::Criterias::RecommendedByFriends < Score::Criterias::Base
+class Score::Criteria::RecommendedByFriends < Score::Criteria::Base
   def self.ratio
     24
   end

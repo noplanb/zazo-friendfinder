@@ -1,5 +1,5 @@
-class Score::Criterias::FriendOfFriends < Score::Criterias::Base
-  include Score::Criterias::Shared::ContactOf
+class Score::Criteria::FriendOfFriends < Score::Criteria::Base
+  include Score::Criteria::Shared::ContactOf
 
   def self.ratio
     16
