@@ -8,15 +8,8 @@ class Contact::AddContacts
   end
 
   def do
-    if contacts_persisted?
-      add_errors(:contacts, 'contacts by this user already persisted')
-      return false
-    end
-    raw_params.each do |contact_data|
-      instance = Contact.create new_contact_attrs(contact_data)
-      add_errors(:contacts, instance.errors.messages) unless instance.valid?
-      add_vectors_to_contact instance, contact_data['vectors']
-    end
+    DropBeforeUpdate.new(current_user.mkey).do
+    raw_params.each { |contact_data| add_or_merge_contact contact_data }
     errors.empty?
   end
 
@@ -30,6 +23,21 @@ class Contact::AddContacts
 
   private
 
+  #
+  # business logic
+  #
+
+  def add_or_merge_contact(contact_data)
+    merge_contacts = MergeContacts.new current_user.mkey, contact_data
+    if merge_contacts.necessary_to?
+      merge_contacts.do
+    else
+      instance = Contact.create new_contact_attrs(contact_data)
+      add_errors(:contacts, instance.errors.messages) unless instance.valid?
+      add_vectors_to_contact instance, contact_data['vectors']
+    end
+  end
+
   def add_vectors_to_contact(contact, vectors)
     vectors && vectors.each do |vector_data|
       instance = Vector.create new_vector_params(vector_data, contact)
@@ -37,10 +45,9 @@ class Contact::AddContacts
     end
   end
 
-  def add_errors(prefix, errors)
-    @errors[prefix] ||= []
-    @errors[prefix] << errors
-  end
+  #
+  # complex attributes
+  #
 
   def new_contact_attrs(contact_data)
     { owner: current_user.mkey,
@@ -55,7 +62,12 @@ class Contact::AddContacts
       additions: vector_data['additions'] }
   end
 
-  def contacts_persisted?
-    Contact.by_owner(current_user.mkey).select { |c| !c.additions_value('recommended_by') }.size != 0
+  #
+  # helpers
+  #
+
+  def add_errors(prefix, errors)
+    @errors[prefix] ||= []
+    @errors[prefix] << errors
   end
 end
