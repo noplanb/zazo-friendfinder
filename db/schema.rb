@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916102902) do
+ActiveRecord::Schema.define(version: 20151105100030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,16 +32,6 @@ ActiveRecord::Schema.define(version: 20150916102902) do
 
   add_index "contacts", ["owner"], name: "index_contacts_on_owner", using: :btree
 
-  create_table "score", force: true do |t|
-    t.string   "method"
-    t.integer  "value"
-    t.integer  "contact_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "score", ["contact_id"], name: "index_score_on_contact_id", using: :btree
-
   create_table "scores", force: true do |t|
     t.string   "name"
     t.integer  "value"
@@ -51,6 +41,15 @@ ActiveRecord::Schema.define(version: 20150916102902) do
   end
 
   add_index "scores", ["contact_id"], name: "index_scores_on_contact_id", using: :btree
+
+  create_table "templates", force: true do |t|
+    t.string   "category"
+    t.string   "kind"
+    t.boolean  "is_active"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "vectors", force: true do |t|
     t.string   "name"
