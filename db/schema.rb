@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105100030) do
+ActiveRecord::Schema.define(version: 20151106132950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,21 @@ ActiveRecord::Schema.define(version: 20151105100030) do
   end
 
   add_index "contacts", ["owner"], name: "index_contacts_on_owner", using: :btree
+
+  create_table "notifications", force: true do |t|
+    t.string   "state"
+    t.string   "status"
+    t.json     "additions"
+    t.string   "nkey"
+    t.string   "compiled_content"
+    t.integer  "template_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "contact_id"
+  end
+
+  add_index "notifications", ["contact_id"], name: "index_notifications_on_contact_id", using: :btree
+  add_index "notifications", ["template_id"], name: "index_notifications_on_template_id", using: :btree
 
   create_table "scores", force: true do |t|
     t.string   "name"
