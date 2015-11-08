@@ -1,3 +1,5 @@
+# resque worker
+
 class UpdateNewContactsByOwnerWorker
   @queue = :update_contacts
 

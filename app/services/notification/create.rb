@@ -1,0 +1,3 @@
+class Notification::Create
+
+end

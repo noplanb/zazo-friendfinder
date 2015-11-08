@@ -21,8 +21,7 @@
 
 set :output, '/usr/src/app/log/cron.log'
 
-[
-  :PATH, :GEM_HOME, :RACK_ENV, :RAILS_ENV,
+[ :PATH, :GEM_HOME, :RACK_ENV, :RAILS_ENV,
   :db_name, :db_host, :db_port, :db_username, :db_password,
   :statistics_api_base_url, :events_api_base_url,
   :rollbar_access_token, :newrelic_license_key, :newrelic_api_key,
@@ -30,6 +29,6 @@ set :output, '/usr/src/app/log/cron.log'
   :papertrail_host, :papertrail_port
 ].each { |key| env key, ENV[key.to_s] }
 
-every 1.hour do
-  runner 'ScoresRecalculationWorker.perform'
-end
+every(3.hours) { runner 'ScoresRecalculationWorker.perform' }
+every(1.day)   { runner 'Notification::UserJoinedWorker.perform' }
+every(2.days)  { runner 'Notification::FakeUserJoinedWorker.perform' }
