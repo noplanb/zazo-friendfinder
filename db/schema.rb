@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20151106132950) do
   create_table "notifications", force: true do |t|
     t.string   "state"
     t.string   "status"
+    t.string   "category"
     t.json     "additions"
     t.string   "nkey"
     t.string   "compiled_content"
@@ -60,7 +61,6 @@ ActiveRecord::Schema.define(version: 20151106132950) do
   create_table "templates", force: true do |t|
     t.string   "category"
     t.string   "kind"
-    t.boolean  "is_active"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"

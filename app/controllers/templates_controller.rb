@@ -12,7 +12,8 @@ class TemplatesController < ApplicationController
   end
 
   def create
-
+    @template = Template.new templates_params
+    @template.save ? redirect_to(templates_path) : render(:new)
   end
 
   def update
@@ -26,6 +27,6 @@ class TemplatesController < ApplicationController
   private
 
   def templates_params
-    params.require(:templates).permit(:name)
+    params.require(:template).permit(:kind, :category, :content)
   end
 end

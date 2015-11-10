@@ -3,11 +3,10 @@
     .col-sm-6
       h2.col-sm-offset-3.form-action-title= title
 
-= simple_form_for @template, html: { class: 'form-horizontal template-form' }, wrapper: :horizontal_form do |f|
+= simple_form_for @template, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f|
   .row = f.input :kind, collection: ::Template::ALLOWED_KINDS, include_blank: false, wrapper_html: { class: 'col-sm-6' }
   .row = f.input :category, collection: ::Template::ALLOWED_CATEGORIES, include_blank: false, wrapper_html: { class: 'col-sm-6' }
-  .row = f.input :content, wrapper_html: { class: 'col-sm-6 x-template-body' }, input_html: { rows: 6 }
-
+  .row = f.input :content, wrapper_html: { class: 'col-sm-6' }, input_html: { rows: 6 }
   .row
     .col-sm-6
       .col-sm-offset-3

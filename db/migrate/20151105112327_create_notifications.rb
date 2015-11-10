@@ -3,6 +3,7 @@ class CreateNotifications < ActiveRecord::Migration
     create_table :notifications do |t|
       t.string :state
       t.string :status
+      t.string :category
       t.json :additions
       t.string :nkey
       t.string :compiled_content
