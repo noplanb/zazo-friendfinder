@@ -1,5 +1,5 @@
 defaults: &defaults
-  app_name: Zazo Friend Finder
+  app_name: Zazo FriendFinder
   app_name_key: friendfinder
   version: 0.1.0
 

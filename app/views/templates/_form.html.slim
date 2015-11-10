@@ -1,0 +1,18 @@
+- if defined? title
+  .row
+    .col-sm-6
+      h2.col-sm-offset-3.form-action-title= title
+
+= simple_form_for @template, html: { class: 'form-horizontal template-form' }, wrapper: :horizontal_form do |f|
+  .row = f.input :kind, collection: ::Template::ALLOWED_KINDS, wrapper_html: { class: 'col-sm-6' }
+  .row = f.input :kind, collection: ::Template::ALLOWED_KINDS, wrapper_html: { class: 'col-sm-6' }
+  .row = f.input :name,  wrapper_html: { class: 'col-sm-6' }
+  .row = f.input :title, wrapper_html: { class: 'col-sm-6' }
+  .row = f.input :body, wrapper_html: { class: 'col-sm-6 x-template-body' }, input_html: { rows: 6 }
+
+  .row
+    .col-sm-6
+      .col-sm-offset-3
+        = f.submit class: 'btn btn-sm btn-primary'
+        '&nbsp;
+        = link_to 'Back', templates_path, class: 'btn btn-sm btn-default'

@@ -8,4 +8,8 @@ class Notification < ActiveRecord::Base
   validates :contact, :template, :compiled_content, presence: true
   validates :state, inclusion: { in: ALLOWED_STATES, message: '%{value} is not a allowed state' }, allow_nil: true
   validates :status, inclusion: { in: ALLOWED_STATUES, message: '%{value} is not a allowed status' }, allow_nil: true
+
+  def match_by_contact?
+
+  end
 end

@@ -3,7 +3,7 @@ module Authentication
   include ActionController::HttpAuthentication::Basic::ControllerMethods
   include ActionController::HttpAuthentication::Digest::ControllerMethods
 
-  REALM = Settings.app_name
+  REALM = AppConfig.app_name
 
   included do
     attr_accessor :current_client
