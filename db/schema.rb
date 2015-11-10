@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20151106132950) do
     t.string   "category"
     t.string   "kind"
     t.boolean  "is_active"
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

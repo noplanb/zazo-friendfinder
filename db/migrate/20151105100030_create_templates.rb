@@ -4,7 +4,7 @@ class CreateTemplates < ActiveRecord::Migration
       t.string :category
       t.string :kind
       t.boolean :is_active
-      t.string :content
+      t.text :content
 
       t.timestamps
     end
