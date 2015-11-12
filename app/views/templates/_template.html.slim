@@ -1,0 +1,19 @@
+.template
+  ul.nav.nav-tabs
+    li.active
+      a href='#overview-#{template.id}' data-toggle='tab' = "(#{template.kind},#{template.category})"
+    li
+      a href='#preview-#{template.id}' data-toggle='tab' preview
+    li.dropdown
+      a.dropdown-toggle data-toggle='dropdown' href='#'
+        | actions
+        span.caret
+      ul.dropdown-menu
+        li = link_to 'edit', edit_template_path(template)
+        li = link_to 'destroy', template, data: { confirm: 'Are you sure?' }, method: :delete
+
+  .tab-content
+    .tab-pane.active id='overview-#{template.id}'
+      p == template.content
+    .tab-pane id='preview-#{template.id}'
+      /p == template.preview

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :templates
+  resources :templates, except: [:show]
   resources :documentation, only: [:show]
 
   get 'status', to: Proc.new { [200, {}, ['']] }
