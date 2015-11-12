@@ -12,6 +12,8 @@ gem 'bootswatch-rails'
 gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'slim-rails'
+gem 'draper'
+gem 'hashie'
 
 gem 'faraday_middleware'
 gem 'faraday-digestauth'

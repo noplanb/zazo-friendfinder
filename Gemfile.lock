@@ -77,6 +77,11 @@ GEM
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    draper (2.1.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
     erubis (2.7.0)
     execjs (2.6.0)
     factory_girl (4.5.0)
@@ -127,6 +132,7 @@ GEM
     guard-rubocop (1.2.0)
       guard (~> 2.0)
       rubocop (~> 0.20)
+    hashie (3.4.3)
     hike (1.2.3)
     i18n (0.7.0)
     interception (0.5)
@@ -204,6 +210,7 @@ GEM
       redis (~> 3.0, >= 3.0.4)
     remote_syslog_logger (1.0.3)
       syslog_protocol
+    request_store (1.2.0)
     resque (1.25.2)
       mono_logger (~> 1.0)
       multi_json (~> 1.0)
@@ -332,6 +339,7 @@ DEPENDENCIES
   bootswatch-rails
   coffee-rails
   database_cleaner
+  draper
   factory_girl_rails
   faker
   faraday-digestauth
@@ -346,6 +354,7 @@ DEPENDENCIES
   guard-pow
   guard-rspec
   guard-rubocop
+  hashie
   jquery-rails
   newrelic_rpm
   pg
