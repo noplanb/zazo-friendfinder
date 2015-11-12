@@ -13,8 +13,8 @@ RSpec.describe Template::Compiler do
   describe '#compile' do
     let(:notification) { FactoryGirl.build :notification }
     let(:template_data) { TemplateData.new notification }
-
     before { compiler.compile template_data }
+
     it { expect(compiler.content).to eq "#{notification.contact.display_name} joined Zazo!" }
   end
 end
