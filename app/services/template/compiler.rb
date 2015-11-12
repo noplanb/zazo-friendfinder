@@ -14,9 +14,9 @@ class Template::Compiler
     content
   end
 
-  def validate(key)
+  def validate
     compile preview_data
-    send key
+    content
     return true
   rescue => e
     return false, e.message
@@ -29,9 +29,8 @@ class Template::Compiler
   private
 
   def preview_data
-    TemplateData::Preview.new add_link: 'ff.zazoapp.com/w/3c18885dbd804b4c38d35681985fa377/add',
-                              ignore_link: 'ff.zazoapp.com/w/3c18885dbd804b4c38d35681985fa377/ignore',
-                              unsubscribe_link: 'ff.zazoapp.com/w/3c18885dbd804b4c38d35681985fa377/unsubscribe',
-                              contact: Hashie::Mash.new(name:'Syd Barrett')
+    notification = Notification.new nkey: '3c18885dbd804b4c38d35681985fa377'
+    contact      = Contact.new display_name: 'Syd Barrett'
+    TemplateData.new notification, contact
   end
 end

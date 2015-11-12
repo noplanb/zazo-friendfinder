@@ -8,4 +8,5 @@ class Template < ActiveRecord::Base
   validates :category, inclusion: { in: ALLOWED_CATEGORIES, message: '%{value} is not a allowed category' }
   validates :kind, inclusion: { in: ALLOWED_KINDS, message: '%{value} is not a allowed kind' }
   validates_with UniqueKindCategory
+  validates_with SyntaxValidator
 end

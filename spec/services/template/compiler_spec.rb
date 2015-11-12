@@ -6,6 +6,7 @@ RSpec.describe Template::Compiler do
 
   describe '#preview' do
     subject { compiler.preview }
+
     it { is_expected.to eq 'Syd Barrett joined Zazo!' }
   end
 

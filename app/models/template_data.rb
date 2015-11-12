@@ -1,13 +1,7 @@
 class TemplateData
-  class Preview < Hashie::Mash
-    def bind
-      binding
-    end
-  end
-
   attr_reader :contact
 
-  class Contact
+  class ContactData
     attr_reader :name
 
     def initialize(contact)
@@ -15,9 +9,9 @@ class TemplateData
     end
   end
 
-  def initialize(notification)
+  def initialize(notification, contact = nil)
     @notification = notification
-    @contact = Contact.new notification.contact
+    @contact = ContactData.new contact || notification.contact
   end
 
   def add_link
