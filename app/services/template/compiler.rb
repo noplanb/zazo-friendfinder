@@ -24,6 +24,7 @@ class Template::Compiler
 
   def compile(template_data)
     @data = template_data.bind
+    self
   end
 
   private

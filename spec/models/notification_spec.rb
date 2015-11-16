@@ -10,6 +10,7 @@ RSpec.describe Notification, type: :model do
 
     it { is_expected.to validate_presence_of :contact }
     it { is_expected.to validate_presence_of :compiled_content }
+    it { is_expected.to validate_presence_of :nkey }
 
     context 'state' do
       it { expect(instance_errors(:state, 'send')).to be nil }

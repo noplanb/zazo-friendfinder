@@ -6,7 +6,7 @@ class Notification < ActiveRecord::Base
   belongs_to :template
   belongs_to :contact
 
-  validates :contact, :compiled_content, presence: true
+  validates :contact, :compiled_content, :nkey, presence: true
   validates :state, inclusion: { in: ALLOWED_STATES, message: '%{value} is not a allowed state' }, allow_nil: true
   validates :status, inclusion: { in: ALLOWED_STATUES, message: '%{value} is not a allowed status' }, allow_nil: true
   validates :category, inclusion: { in: ALLOWED_CATEGORIES, message: '%{value} is not a allowed category' }
