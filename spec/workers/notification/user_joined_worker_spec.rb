@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Notification::UserJoinedWorker do
-  let!(:contact_1) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: '+380930127802')] }
+  let!(:contact_1) do
+    FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: '+380930127802'),
+                                           FactoryGirl.create(:vector_mobile, value: '+380951035160')]
+  end
   let!(:contact_2) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: '+380951035160')] }
   let!(:contact_3) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: '+380508891332')] }
   let!(:contact_4) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: '+380951035161')] }
@@ -29,6 +32,7 @@ RSpec.describe Notification::UserJoinedWorker do
     notification_nkeys_count    = -> { Notification.distinct.pluck(:nkey).count }
     notification_with_templates = -> { Notification.where.not(template: nil).count }
 
+    subject { described_class.perform }
     before do
       allow(described_class).to receive(:recently_joined_users).and_return recently_joined_users
     end
@@ -37,7 +41,7 @@ RSpec.describe Notification::UserJoinedWorker do
       before do
         FactoryGirl.create :template, category: 'user_joined', kind: 'mobile_notification'
         FactoryGirl.create :template, category: 'user_joined', kind: 'email'
-        described_class.perform
+        subject
       end
 
       it { expect(Notification.count).to eq 6 }
@@ -48,7 +52,7 @@ RSpec.describe Notification::UserJoinedWorker do
     context 'when not all templates persisted' do
       before do
         FactoryGirl.create :template, category: 'user_joined', kind: 'email'
-        described_class.perform
+        subject
       end
 
       it { expect(Notification.count).to eq 6 }
