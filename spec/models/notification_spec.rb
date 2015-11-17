@@ -9,7 +9,6 @@ RSpec.describe Notification, type: :model do
     end
 
     it { is_expected.to validate_presence_of :contact }
-    it { is_expected.to validate_presence_of :compiled_content }
     it { is_expected.to validate_presence_of :nkey }
 
     context 'state' do

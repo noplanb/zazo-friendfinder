@@ -16,11 +16,7 @@ class Score::CalculationByContact
     total_score = 0
     wrap_transaction do
       criteria.each do |calculated|
-        score = Score.create!({
-          contact: contact,
-          name:  calculated[:name],
-          value: calculated[:score]
-        })
+        score = Score.create! contact: contact, name: calculated[:name], value: calculated[:score]
         total_score += score.value
       end
     end

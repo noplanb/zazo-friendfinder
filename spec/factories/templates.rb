@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :template do
-    content  'Hello!'
+    content  '<%= contact.name %> joined Zazo!'
     category 'user_joined'
-    kind     'mobile'
+    kind     'mobile_notification'
   end
 end

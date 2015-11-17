@@ -1,11 +1,10 @@
 class Notification::Send
-  attr_reader :notification
+  attr_reader :notifications
 
-  def initialize(notification)
-    @notification = notification
+  def initialize(notifications)
+    @notifications = notifications
   end
 
   def do
-
   end
 end

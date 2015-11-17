@@ -2,7 +2,7 @@ class Notification::Create
   attr_reader :category, :contact
 
   def initialize(category, contact)
-    @category = category
+    @category = category.to_s
     @contact  = contact
   end
 
@@ -10,8 +10,7 @@ class Notification::Create
     Template::ALLOWED_KINDS.map do |kind|
       notification = Notification.new params
       set_compiled_content notification, kind
-      yield notification if notification.save && block_given?
-      notification.persisted? ? notification : nil
+      save(notification) ? notification : nil
     end.compact
   end
 
@@ -25,6 +24,13 @@ class Notification::Create
     Digest::SHA256.hexdigest category + contact.owner + contact.id.to_s
   end
 
+  def save(notification)
+    unless notification.save
+      WriteLog.info self, "notification was not saved with errors: #{notification.errors.messages}, inspected: #{notification.inspect}", rollbar: :error
+      return false
+    end; true
+  end
+
   def set_compiled_content(notification, kind)
     template = Template.by_kind_category kind, category
     if template
@@ -32,6 +38,8 @@ class Notification::Create
       template_data = TemplateData.new notification
       notification.template = template
       notification.compiled_content = compiler.compile(template_data).content
+    else
+      WriteLog.info self, "template by pair (#{kind},#{category}) not found", rollbar: :error
     end
   end
 end
