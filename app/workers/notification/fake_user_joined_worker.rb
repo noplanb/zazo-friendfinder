@@ -4,9 +4,8 @@ class Notification::FakeUserJoinedWorker
   def self.perform
     WriteLog.info self, "cron job was executed at #{Time.now}"
     Contact.uniq.pluck(:owner).each do |owner|
-      Contact.by_owner(owner).select { |contact| !Notification.match_by_contact?(contact) }.each do |contact|
-        Notification::Send.new(Notification::Create.new(:fake_user_joined, contact).do).do
-      end
+      contact = Contact.by_owner(owner).select { |contact| !Notification.match_by_contact?(contact) }.first
+      contact && Notification::Send.new(Notification::Create.new(:fake_user_joined, contact).do).do
     end
   end
 end
