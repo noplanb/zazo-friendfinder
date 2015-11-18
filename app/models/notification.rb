@@ -14,4 +14,8 @@ class Notification < ActiveRecord::Base
   def self.match_by_contact?(contact)
     !where(contact: contact).empty?
   end
+
+  def self.find_notifications(nkey)
+    where(nkey: nkey, status: nil).to_a
+  end
 end

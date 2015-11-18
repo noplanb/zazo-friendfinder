@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :templates, except: [:show]
+  resources :web_client, path: 'w', only: [] do
+    get :add, :ignore, :unsubscribe, on: :member
+  end
   resources :documentation, only: [:show]
 
   get 'status', to: Proc.new { [200, {}, ['']] }

@@ -25,10 +25,7 @@ class Notification::Create
   end
 
   def save(notification)
-    unless notification.save
-      WriteLog.info self, "notification was not saved with errors: #{notification.errors.messages}, inspected: #{notification.inspect}", rollbar: :error
-      return false
-    end; true
+    Notification::Save.new(notification).do
   end
 
   def set_compiled_content(notification, kind)

@@ -1,4 +1,7 @@
 class TemplatesController < ApplicationController
+  http_basic_authenticate_with name: Figaro.env.http_basic_name,
+                               password: Figaro.env.http_basic_password
+
   before_action :set_template, only: [:edit, :update, :destroy]
 
   def index
