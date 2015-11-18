@@ -8,7 +8,7 @@ class WebClient::ActionHandler
 
   def do(action)
     notifications.each do |notification|
-      notification.status = action.to_s
+      notification.status = action && action.to_s
       Notification::Save.new(notification).do
     end
   end

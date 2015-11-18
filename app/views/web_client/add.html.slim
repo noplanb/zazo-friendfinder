@@ -1,10 +1,5 @@
 p = "You and #{@web_client.contact_first_name} are now connected. Happy Zazoing."
 
-p Other people you may want to add on Zazo:
-ul.contact
-  - @web_client.another_contacts.each do |contact|
-    li.contact
-      | [
-      = link_to 'Add', add_another_web_client_path(@web_client.nkey, contact_id: contact.id), method: :post
-      | ]
-      = " #{contact.display_name}"
+p
+  | Other people you may want to add on Zazo:
+  = render 'another_contacts'

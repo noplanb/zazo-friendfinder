@@ -16,8 +16,13 @@ class WebClientController < ApplicationController
     handle_action :unsubscribed
   end
 
+  def subscribe
+    handle_action nil
+    redirect_to web_client_path
+  end
+
   def add_another
-    render text: params[:contact_id]
+    WebClient::AddContact.new(Contact.find(params[:contact_id])).do
   end
 
   private
