@@ -1,6 +1,9 @@
 class WebClientController < ApplicationController
   before_action :set_web_client
 
+  def show
+  end
+
   def add
     handle_action :added
   end
@@ -13,6 +16,10 @@ class WebClientController < ApplicationController
     handle_action :unsubscribed
   end
 
+  def add_another
+    render text: params[:contact_id]
+  end
+
   private
 
   def handle_action(action)
@@ -20,7 +27,7 @@ class WebClientController < ApplicationController
   end
 
   def set_web_client
-    @web_client = WebClientActionHandler.new params[:id]
+    @web_client = WebClientDecorator.decorate WebClient::ActionHandler.new(params[:id])
     render :default unless @web_client.valid?
   end
 end

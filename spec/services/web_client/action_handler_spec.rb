@@ -1,12 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe WebClientActionHandler do
+RSpec.describe WebClient::ActionHandler do
   let(:contact) { FactoryGirl.create :contact }
   let(:instance) { described_class.new nkey }
 
   describe '#do' do
     let(:notification) { FactoryGirl.create :notification, contact: contact }
     let(:nkey) { notification.nkey }
+
     before do
       instance.do action
       notification.reload

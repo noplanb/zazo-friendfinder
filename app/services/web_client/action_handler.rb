@@ -1,4 +1,4 @@
-class WebClientActionHandler
+class WebClient::ActionHandler
   attr_reader :nkey, :notifications
 
   def initialize(nkey)

@@ -16,6 +16,6 @@ class Notification < ActiveRecord::Base
   end
 
   def self.find_notifications(nkey)
-    where(nkey: nkey, status: nil).to_a
+    where(nkey: nkey).to_a
   end
 end

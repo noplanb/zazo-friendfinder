@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :templates, except: [:show]
-  resources :web_client, path: 'w', only: [] do
+  resources :web_client, path: 'w', only: [:show] do
     get :add, :ignore, :unsubscribe, on: :member
+    post :add_another, on: :member
   end
   resources :documentation, only: [:show]
 
