@@ -15,10 +15,10 @@ describe WebClientDecorator do
   end
 
   describe '#another_contacts' do
-    let(:another_contact_1) { FactoryGirl.create :contact, owner: contact.owner.mkey, total_score: 4 }
-    let(:another_contact_2) { FactoryGirl.create :contact, owner: contact.owner.mkey, total_score: 6 }
-    let(:another_contact_3) { FactoryGirl.create :contact, owner: contact.owner.mkey, total_score: 5 }
-    let(:another_contact_4) { FactoryGirl.create :contact, owner: contact.owner.mkey, total_score: 3 }
+    let(:another_contact_1) { FactoryGirl.create :contact, owner_mkey: contact.owner.mkey, total_score: 4 }
+    let(:another_contact_2) { FactoryGirl.create :contact, owner_mkey: contact.owner.mkey, total_score: 6 }
+    let(:another_contact_3) { FactoryGirl.create :contact, owner_mkey: contact.owner.mkey, total_score: 5 }
+    let(:another_contact_4) { FactoryGirl.create :contact, owner_mkey: contact.owner.mkey, total_score: 3 }
     subject { instance.another_contacts }
 
     it do

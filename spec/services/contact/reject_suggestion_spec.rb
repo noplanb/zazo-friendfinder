@@ -4,8 +4,8 @@ RSpec.describe Contact::RejectSuggestion do
   let(:user) { FactoryGirl.build :user }
   let(:instance) { described_class.new user, params }
 
-  let(:contact_1) { FactoryGirl.create :contact, owner: user.mkey }
-  let(:contact_2) { FactoryGirl.create :contact, owner: user.mkey }
+  let(:contact_1) { FactoryGirl.create :contact, owner_mkey: user.mkey }
+  let(:contact_2) { FactoryGirl.create :contact, owner_mkey: user.mkey }
 
   describe '#do' do
     let(:params) { { 'rejected' => [contact_1.id, contact_2.id] } }

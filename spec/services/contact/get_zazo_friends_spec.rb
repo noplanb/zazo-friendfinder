@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Contact::GetZazoFriends do
   let(:owner) { 'GBAHb0482YxlJ0kYwbIS' }
-  let(:contact) { FactoryGirl.create :contact, owner: owner }
+  let(:contact) { FactoryGirl.create :contact, owner_mkey: owner }
   let(:instance) { described_class.new contact }
 
   describe '#do' do

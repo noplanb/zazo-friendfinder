@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20151106132950) do
   enable_extension "plpgsql"
 
   create_table "contacts", force: true do |t|
-    t.string   "owner"
+    t.string   "owner_mkey"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "total_score"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20151106132950) do
     t.string   "display_name"
   end
 
-  add_index "contacts", ["owner"], name: "index_contacts_on_owner", using: :btree
+  add_index "contacts", ["owner_mkey"], name: "index_contacts_on_owner_mkey", using: :btree
 
   create_table "notifications", force: true do |t|
     t.string   "state"

@@ -13,11 +13,11 @@ RSpec.describe Score::CalculationByOwner do
         FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 12 }),
         FactoryGirl.create(:vector_email)
       ]
-      FactoryGirl.create :contact, owner: owner, vectors: vectors, additions: { marked_as_favorite: true }
+      FactoryGirl.create :contact, owner_mkey: owner, vectors: vectors, additions: { marked_as_favorite: true }
 
       # second owner's contact
       vectors = [FactoryGirl.create(:vector_mobile)]
-      FactoryGirl.create :contact, owner: owner, vectors: vectors, additions: { marked_as_favorite: true }
+      FactoryGirl.create :contact, owner_mkey: owner, vectors: vectors, additions: { marked_as_favorite: true }
 
       # non owner's contact
       vectors = [FactoryGirl.create(:vector_mobile, value: vectors.last.value)]

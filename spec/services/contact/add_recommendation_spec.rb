@@ -8,8 +8,8 @@ RSpec.describe Contact::AddRecommendation do
   let(:recommended_to_1) { FactoryGirl.build(:user) }
   let(:recommended_to_2) { FactoryGirl.build(:user) }
 
-  let(:contact_1) { FactoryGirl.create :contact, owner: recommended_to_1.mkey }
-  let(:contact_2) { FactoryGirl.create :contact, owner: recommended_to_2.mkey }
+  let(:contact_1) { FactoryGirl.create :contact, owner_mkey: recommended_to_1.mkey }
+  let(:contact_2) { FactoryGirl.create :contact, owner_mkey: recommended_to_2.mkey }
 
   describe '#do' do
     context 'when contact exist' do
@@ -18,7 +18,7 @@ RSpec.describe Contact::AddRecommendation do
         { 'contact_mkey' => recommended_contact.mkey,
           'to_mkeys'     => [recommended_to.mkey] }
       end
-      let!(:contact) { FactoryGirl.create :contact, owner: recommended_to.mkey, zazo_mkey: recommended_contact.mkey }
+      let!(:contact) { FactoryGirl.create :contact, owner_mkey: recommended_to.mkey, zazo_mkey: recommended_contact.mkey }
       let(:contacts) { Contact.by_owner(recommended_to.mkey) }
       let!(:subject) { instance.do }
 

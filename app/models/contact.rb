@@ -8,10 +8,10 @@ class Contact < ActiveRecord::Base
   has_many :vectors
   has_many :scores
 
-  validates :owner, presence: true
+  validates :owner_mkey, presence: true
   validate :additions_must_be_allowed
 
-  scope :by_owner, -> (owner) { where(owner: owner).order('total_score DESC') }
+  scope :by_owner, -> (owner_mkey) { where(owner_mkey: owner_mkey).order('total_score DESC') }
   scope :expired,  -> { where 'expires_at < ?', Time.now }
 
   before_save { self.expires_at = 5.days.from_now }
@@ -21,7 +21,7 @@ class Contact < ActiveRecord::Base
   end
 
   def owner
-    Owner.new self[:owner]
+    Owner.new owner_mkey
   end
 
   private

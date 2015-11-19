@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Notification::FakeUserJoinedWorker do
   def create_contact(owner, total_score, client_mobile)
-    contact = FactoryGirl.create :contact, owner: owner, total_score: total_score
+    contact = FactoryGirl.create :contact, owner_mkey: owner, total_score: total_score
     FactoryGirl.create :vector_mobile, contact: contact, value: client_mobile
     contact
   end

@@ -7,7 +7,7 @@ RSpec.describe Score::Criteria::FriendOfFriends do
   let(:friend) { '7qdanSEmctZ2jPnYA0a1' }
   let(:mutual) { '0DAQEVtmNKQiW6aoQrvo' }
 
-  let(:contact) { FactoryGirl.create :contact, owner: owner, zazo_mkey: friend }
+  let(:contact) { FactoryGirl.create :contact, owner_mkey: owner, zazo_mkey: friend }
   let(:instance) { described_class.new contact }
 
   describe '#calculate_with_ratio' do
@@ -28,7 +28,7 @@ RSpec.describe Score::Criteria::FriendOfFriends do
       use_vcr_cassette 'score/criteria/friend_of_friends_by_incorrect_mkeys', api_base_urls
 
       let(:incorrect) { 'xxxxxxxxxxxx' }
-      let(:contact) { FactoryGirl.create :contact, owner: incorrect, zazo_mkey: incorrect }
+      let(:contact) { FactoryGirl.create :contact, owner_mkey: incorrect, zazo_mkey: incorrect }
       subject { instance.calculate_with_ratio }
 
       it { is_expected.to eq 0 }

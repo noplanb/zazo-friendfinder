@@ -7,7 +7,7 @@ RSpec.describe Contact::AddContacts::MergeContacts do
     { 'display_name' => 'Sani Elfishawy', 'vectors' => vectors }
   end
   let!(:existing_contact) do
-    FactoryGirl.create :contact, owner: owner, vectors: [
+    FactoryGirl.create :contact, owner_mkey: owner, vectors: [
       FactoryGirl.build(:vector, name: 'mobile', value: '+16502453537'),
       FactoryGirl.build(:vector, name: 'email',  value: 'elfishawy.sani@gmail.com'),
       FactoryGirl.build(:vector, name: 'gplus',  value: 'elfishawy.sani@gmail.com')

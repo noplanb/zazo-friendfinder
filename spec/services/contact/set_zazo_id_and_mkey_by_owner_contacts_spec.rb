@@ -7,8 +7,8 @@ RSpec.describe Contact::SetZazoIdAndMkeyByOwnerContacts do
   let(:owner) { 'xxxxxxxxxxxx' }
   let(:mobile) { '+16502453537' }
   let(:email)  { 'admin@google.com' }
-  let!(:contact_1) { FactoryGirl.create :contact, owner: owner, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)] }
-  let!(:contact_2) { FactoryGirl.create :contact, owner: owner, vectors: [FactoryGirl.create(:vector_email,  value: email)] }
+  let!(:contact_1) { FactoryGirl.create :contact, owner_mkey: owner, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)] }
+  let!(:contact_2) { FactoryGirl.create :contact, owner_mkey: owner, vectors: [FactoryGirl.create(:vector_email,  value: email)] }
   let(:instance) { described_class.new owner }
 
   describe '#do' do

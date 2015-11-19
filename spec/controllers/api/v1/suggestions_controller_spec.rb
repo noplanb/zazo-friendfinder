@@ -6,8 +6,8 @@ RSpec.describe Api::V1::SuggestionsController, type: :controller do
   let(:user_auth) { 'yLPv2hZ4DPRq1wGlQvqm' }
 
   describe 'GET #index' do
-    let!(:contact_1) { FactoryGirl.create :contact, owner: user_mkey }
-    let!(:contact_2) { FactoryGirl.create :contact, owner: user_mkey }
+    let!(:contact_1) { FactoryGirl.create :contact, owner_mkey: user_mkey }
+    let!(:contact_2) { FactoryGirl.create :contact, owner_mkey: user_mkey }
     before do
       authenticate_with_http_digest(user_mkey, user_auth) { get :index, format: :json }
     end
@@ -16,8 +16,8 @@ RSpec.describe Api::V1::SuggestionsController, type: :controller do
   end
 
   describe 'POST #reject' do
-    let(:contact_1) { FactoryGirl.create :contact, owner: user_mkey }
-    let(:contact_2) { FactoryGirl.create :contact, owner: user_mkey }
+    let(:contact_1) { FactoryGirl.create :contact, owner_mkey: user_mkey }
+    let(:contact_2) { FactoryGirl.create :contact, owner_mkey: user_mkey }
     let(:params) do
       { rejected: [contact_1.id, contact_2.id] }
     end
@@ -29,7 +29,7 @@ RSpec.describe Api::V1::SuggestionsController, type: :controller do
   end
 
   describe 'POST #recommend' do
-    let(:contact) { FactoryGirl.create :contact, owner: FactoryGirl.build(:user).mkey }
+    let(:contact) { FactoryGirl.create :contact, owner_mkey: FactoryGirl.build(:user).mkey }
     let(:params) do
       { recommendations: {
           contact_mkey: FactoryGirl.build(:user).mkey,
