@@ -33,7 +33,7 @@ RSpec.describe Api::V1::SuggestionsController, type: :controller do
     let(:params) do
       { recommendations: {
           contact_mkey: FactoryGirl.build(:user).mkey,
-          to_mkeys: [contact.owner] } }
+          to_mkeys: [contact.owner.mkey] } }
     end
     before do
       authenticate_with_http_digest(user_mkey, user_auth) { post :recommend, params.merge({format: :json}) }

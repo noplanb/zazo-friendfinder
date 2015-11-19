@@ -6,6 +6,6 @@ class Contact::GetZazoFriends
   end
 
   def do
-    StatisticsApi.new(user_mkey: contact.owner).users :get_zazo_friends
+    StatisticsApi.new(user_mkey: contact.owner.mkey).users :get_zazo_friends
   end
 end

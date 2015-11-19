@@ -10,7 +10,7 @@ class WebClientDecorator < Draper::Decorator
   end
 
   def another_contacts
-    contact.owner_instance.not_proposed_contacts.first(3)
+    contact.owner.not_proposed_contacts.first(3)
   end
 
   private

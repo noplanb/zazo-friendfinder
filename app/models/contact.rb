@@ -20,8 +20,8 @@ class Contact < ActiveRecord::Base
     (additions.try :[], key) || default
   end
 
-  def owner_instance
-    Owner.new owner
+  def owner
+    Owner.new self[:owner]
   end
 
   private

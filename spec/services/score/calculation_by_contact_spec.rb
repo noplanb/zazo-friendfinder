@@ -8,10 +8,10 @@ RSpec.describe Score::CalculationByContact do
   let(:instance) { described_class.new contact }
 
   describe '#do' do
-    let(:vectors) {[
-      FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 12 }),
-      FactoryGirl.create(:vector_email)
-    ]}
+    let(:vectors) do
+      [ FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 12 }),
+        FactoryGirl.create(:vector_email) ]
+    end
     before do
       FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: vectors.last.value)]
     end

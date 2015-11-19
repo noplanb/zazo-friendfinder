@@ -21,7 +21,7 @@ class Notification::Create
   end
 
   def nkey
-    Digest::SHA256.hexdigest category + contact.owner + contact.id.to_s
+    Digest::SHA256.hexdigest category + contact.owner.mkey + contact.id.to_s
   end
 
   def save(notification)
