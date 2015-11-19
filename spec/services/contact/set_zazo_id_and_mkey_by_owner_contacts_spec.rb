@@ -4,12 +4,12 @@ RSpec.describe Contact::SetZazoIdAndMkeyByOwnerContacts do
   use_vcr_cassette 'contact/set_zazo_id_and_mkey_by_mobile', api_base_urls
   use_vcr_cassette 'contact/set_zazo_id_and_mkey_for_nonexistent_user', api_base_urls
 
-  let(:owner) { 'xxxxxxxxxxxx' }
+  let(:owner_mkey) { 'xxxxxxxxxxxx' }
   let(:mobile) { '+16502453537' }
   let(:email)  { 'admin@google.com' }
-  let!(:contact_1) { FactoryGirl.create :contact, owner_mkey: owner, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)] }
-  let!(:contact_2) { FactoryGirl.create :contact, owner_mkey: owner, vectors: [FactoryGirl.create(:vector_email,  value: email)] }
-  let(:instance) { described_class.new owner }
+  let!(:contact_1) { FactoryGirl.create :contact, owner_mkey: owner_mkey, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)] }
+  let!(:contact_2) { FactoryGirl.create :contact, owner_mkey: owner_mkey, vectors: [FactoryGirl.create(:vector_email,  value: email)] }
+  let(:instance) { described_class.new owner_mkey }
 
   describe '#do' do
     before { instance.do; [contact_1, contact_2].each &:reload }

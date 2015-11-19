@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Score::Criteria::ContactOfFriends do
   use_vcr_cassette 'contact/get_zazo_friends_GBAHb0482YxlJ0kYwbIS', api_base_urls
 
-  let(:owner) { 'GBAHb0482YxlJ0kYwbIS' }
+  let(:owner_mkey) { 'GBAHb0482YxlJ0kYwbIS' }
   let(:friend_1) { '0DAQEVtmNKQiW6aoQrvo' }
   let(:friend_2) { '7qdanSEmctZ2jPnYA0a1' }
 
-  let(:contact) { FactoryGirl.create :contact, owner_mkey: owner, vectors: vectors }
+  let(:contact) { FactoryGirl.create :contact, owner_mkey: owner_mkey, vectors: vectors }
   let(:instance) { described_class.new contact }
 
   let(:email) { 'elfishawy.sani@gmail.com' }

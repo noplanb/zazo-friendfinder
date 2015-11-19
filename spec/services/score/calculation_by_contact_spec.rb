@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Score::CalculationByContact do
   use_vcr_cassette 'contact/get_zazo_friends_for_nonexistent_user', api_base_urls
 
-  let(:owner) { 'xxxxxxxxxxxx' }
-  let(:contact) { FactoryGirl.create :contact, owner_mkey: owner, vectors: vectors, additions: { marked_as_favorite: true } }
+  let(:owner_mkey) { 'xxxxxxxxxxxx' }
+  let(:contact) { FactoryGirl.create :contact, owner_mkey: owner_mkey, vectors: vectors, additions: { marked_as_favorite: true } }
   let(:instance) { described_class.new contact }
 
   describe '#do' do
