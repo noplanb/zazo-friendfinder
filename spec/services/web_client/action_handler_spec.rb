@@ -27,6 +27,12 @@ RSpec.describe WebClient::ActionHandler do
       let(:action) { :unsubscribed }
       it { expect(notification.status).to eq 'unsubscribed' }
     end
+
+    context 'nil' do
+      let(:action) { nil }
+      before { :unsubscribed }
+      it { expect(notification.status).to eq nil }
+    end
   end
 
   describe '#valid?' do
