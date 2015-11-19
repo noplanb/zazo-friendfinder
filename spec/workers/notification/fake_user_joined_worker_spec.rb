@@ -15,19 +15,33 @@ RSpec.describe Notification::FakeUserJoinedWorker do
   let!(:contact_41) { create_contact 'xxxxxxxxx_4', 4, '+380951035164' }
 
   describe '.perform' do
+    subject { described_class.perform }
     before do
       FactoryGirl.create :template, category: 'fake_user_joined', kind: 'mobile_notification'
       FactoryGirl.create :template, category: 'fake_user_joined', kind: 'email'
-      FactoryGirl.create :notification, contact: contact_41
-      described_class.perform
+      FactoryGirl.create :notification, status: 'added', contact: contact_41
     end
 
-    it { expect(Notification.count).to eq 7 }
-    it { expect(Notification.distinct.pluck(:nkey).count).to eq 4 }
-    it { expect(Notification.where.not(template: nil).count).to eq 6 }
-    it do
-      expected = [contact_11.id, contact_22.id, contact_31.id, contact_41.id]
-      expect(Notification.distinct.pluck(:contact_id)).to match_array expected
+    context 'when one contact is unsubscribed' do
+      before do
+        FactoryGirl.create :notification, status: 'unsubscribed', contact: contact_12
+        subject
+      end
+      it { expect(Notification.count).to eq 6 }
+      it { expect(Notification.distinct.pluck(:nkey).count).to eq 4 }
+      it { expect(Notification.where.not(template: nil).count).to eq 4 }
+      it { expect(Notification.where(status: nil).count).to eq 4 }
+    end
+
+    context 'when all contacts is subscribed' do
+      before { subject }
+      it { expect(Notification.count).to eq 7 }
+      it { expect(Notification.distinct.pluck(:nkey).count).to eq 4 }
+      it { expect(Notification.where.not(template: nil).count).to eq 6 }
+      it do
+        expected = [contact_11.id, contact_22.id, contact_31.id, contact_41.id]
+        expect(Notification.distinct.pluck(:contact_id)).to match_array expected
+      end
     end
   end
 end

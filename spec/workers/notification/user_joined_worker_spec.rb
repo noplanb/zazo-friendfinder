@@ -41,12 +41,25 @@ RSpec.describe Notification::UserJoinedWorker do
       before do
         FactoryGirl.create :template, category: 'user_joined', kind: 'mobile_notification'
         FactoryGirl.create :template, category: 'user_joined', kind: 'email'
-        subject
       end
 
-      it { expect(Notification.count).to eq 6 }
-      it { expect(notification_nkeys_count.call).to eq 3 }
-      it { expect(notification_with_templates.call).to eq 6 }
+      context 'when one contact is unsubscribed' do
+        before do
+          FactoryGirl.create :notification, status: 'unsubscribed', contact: contact_4
+          subject
+        end
+
+        it { expect(Notification.count).to eq 5 }
+        it { expect(notification_nkeys_count.call).to eq 3 }
+        it { expect(notification_with_templates.call).to eq 4 }
+      end
+
+      context 'when all contacts is subscribed' do
+        before { subject }
+        it { expect(Notification.count).to eq 6 }
+        it { expect(notification_nkeys_count.call).to eq 3 }
+        it { expect(notification_with_templates.call).to eq 6 }
+      end
     end
 
     context 'when not all templates persisted' do
