@@ -2,10 +2,10 @@ class Contact::SetZazoIdAndMkeyByOwnerContacts
   attr_reader :owner
 
   def initialize(owner)
-    @owner = owner
+    @owner = Owner.new(owner)
   end
 
   def do
-    Contact.by_owner(owner).map { |contact| Contact::SetZazoIdAndMkeyByContact.new(contact).do }
+    owner.contacts.map { |contact| Contact::SetZazoIdAndMkeyByContact.new(contact).do }
   end
 end

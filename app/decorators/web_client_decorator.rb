@@ -10,12 +10,12 @@ class WebClientDecorator < Draper::Decorator
   end
 
   def another_contacts
-    Contact.by_owner(contact.owner).select { |contact| !Notification.match_by_contact?(contact) }.first(3)
+    contact.decorate.owner.not_proposed_contacts.first(3)
   end
 
   private
 
   def contact
-    self.notifications.first.contact
+    @contact ||= self.notifications.first.contact
   end
 end

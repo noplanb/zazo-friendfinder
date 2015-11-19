@@ -9,6 +9,10 @@ class Owner
     Contact.by_owner mkey
   end
 
+  def not_proposed_contacts
+    contacts.select { |contact| !Notification.match_by_contact?(contact) }
+  end
+
   def unsubscribed?
     !Notification.where(status: 'unsubscribed', contact: contacts).empty?
   end
