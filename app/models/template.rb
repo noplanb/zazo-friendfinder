@@ -1,5 +1,5 @@
 class Template < ActiveRecord::Base
-  ALLOWED_KINDS = %w(email mobile_notification)
+  ALLOWED_KINDS = %w(email mobile)
   ALLOWED_CATEGORIES = %w(user_joined fake_user_joined)
 
   has_many :notifications

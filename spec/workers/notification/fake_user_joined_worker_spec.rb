@@ -17,7 +17,7 @@ RSpec.describe Notification::FakeUserJoinedWorker do
   describe '.perform' do
     subject { described_class.perform }
     before do
-      FactoryGirl.create :template, category: 'fake_user_joined', kind: 'mobile_notification'
+      FactoryGirl.create :template, category: 'fake_user_joined', kind: 'mobile'
       FactoryGirl.create :template, category: 'fake_user_joined', kind: 'email'
       FactoryGirl.create :notification, status: 'added', contact: contact_41
     end

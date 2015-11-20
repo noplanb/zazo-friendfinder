@@ -12,7 +12,7 @@ RSpec.describe Notification, type: :model do
     it { is_expected.to validate_presence_of :nkey }
 
     context 'state' do
-      it { expect(instance_errors(:state, 'send')).to be nil }
+      it { expect(instance_errors(:state, 'sent')).to be nil }
       it { expect(instance_errors(:state, 'error')).to be nil }
       it { expect(instance_errors(:state, 'unexpected')).to_not be nil }
       it { expect(instance_errors(:state, nil)).to be nil }

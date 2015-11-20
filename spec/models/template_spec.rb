@@ -20,13 +20,13 @@ RSpec.describe Template, type: :model do
 
     context 'kind' do
       it { expect(instance_errors(:kind, 'email')).to be nil }
-      it { expect(instance_errors(:kind, 'mobile_notification')).to be nil }
+      it { expect(instance_errors(:kind, 'mobile')).to be nil }
       it { expect(instance_errors(:kind, 'unexpected')).to_not be nil }
     end
 
     context 'unique kind category' do
       context 'when unique' do
-        let(:instance) { described_class.new category: 'user_joined', kind: 'mobile_notification' }
+        let(:instance) { described_class.new category: 'user_joined', kind: 'mobile' }
         before do
           FactoryGirl.create :template, category: 'user_joined', kind: 'email'
           instance.valid?

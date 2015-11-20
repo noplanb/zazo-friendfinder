@@ -4,8 +4,11 @@ db_password:
 db_host: localhost
 db_port: '5432'
 
-statistics_api_base_url:
 events_api_base_url:
+statistics_api_base_url:
+statistics_api_token
+notification_api_base_url:
+notification_api_token:
 
 rollbar_access_token:
 newrelic_license_key:

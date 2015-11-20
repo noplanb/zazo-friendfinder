@@ -39,7 +39,7 @@ RSpec.describe Notification::UserJoinedWorker do
 
     context 'when all templates persisted' do
       before do
-        FactoryGirl.create :template, category: 'user_joined', kind: 'mobile_notification'
+        FactoryGirl.create :template, category: 'user_joined', kind: 'mobile'
         FactoryGirl.create :template, category: 'user_joined', kind: 'email'
       end
 

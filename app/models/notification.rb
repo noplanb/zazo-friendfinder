@@ -1,5 +1,5 @@
 class Notification < ActiveRecord::Base
-  ALLOWED_STATES = %w(send error)
+  ALLOWED_STATES = %w(sent error)
   ALLOWED_STATUES = %w(added ignored unsubscribed)
   ALLOWED_CATEGORIES = %w(user_joined fake_user_joined)
 

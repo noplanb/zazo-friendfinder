@@ -18,7 +18,7 @@ RSpec.describe Notification::Create do
 
     context 'with all templates' do
       let!(:template_mobile_notification) do
-        FactoryGirl.create :template, category: category, kind: 'mobile_notification', content: content
+        FactoryGirl.create :template, category: category, kind: 'mobile', content: content
       end
 
       it do
