@@ -1,4 +1,4 @@
-class Notification::Data
+class Notification::BaseData
   include ActiveModel::Validations
 
   attr_reader :object
