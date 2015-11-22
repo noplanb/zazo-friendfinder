@@ -8,4 +8,16 @@ class NotificationDecorator < Draper::Decorator
   def has_template?
     !template.nil?
   end
+
+  def data
+    send "#{kind}_data"
+  end
+
+  def email_data
+    Notification::EmailData.new(object).get
+  end
+
+  def mobile_data
+    Notification::MobileData.new(object).get
+  end
 end

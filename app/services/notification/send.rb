@@ -6,34 +6,32 @@ class Notification::Send
   end
 
   def do
-    notifications.each do |notification|
-      send "send_#{notification.kind}", notification if notification.has_template?
-    end
+    notifications.each { |notification| send_notification notification }
   end
 
   private
 
-  def send_email(notification)
-    params = { to: '',
-               subject: '',
-               body: notification.compiled_content }
-    handle_response NotificationApi.new(params).email, notification
-  end
-
-  def send_mobile_notification(notification)
-    params = { subject: '',
-               body: notification.compiled_content }
-    handle_response NotificationApi.new(params).mobile, notification
+  def send_notification(notification)
+    data = notification.data
+    if data.valid?
+      handle_response NotificationApi.new(data).send(notification.kind), notification
+    else
+      notification.update state: 'canceled'
+      WriteLog.info self, "was canceled at #{Time.now} as '#{notification.kind}' because data is not valid, data errors: #{data.errors.messages}, #{notification.inspect}"
+    end
+  rescue Exception => exception
+    notification.update state: 'error'
+    raise exception
   end
 
   def handle_response(response, notification)
     if response['status'] == 'success'
       notification.update state: 'sent'
-      WriteLog.info self, "was sent as '#{notification.kind}' at #{Time.now}, #{notification.inspect}."
+      WriteLog.info self, "was sent at #{Time.now} as '#{notification.kind}', #{notification.inspect}."
       true
     else
       notification.update state: 'error'
-      WriteLog.info self, "errors occurred while sending as '#{notification.kind}' at #{Time.now}, errors: #{response['errors']}, #{notification.inspect}."
+      WriteLog.info self, "errors occurred at #{Time.now} while sending as '#{notification.kind}', errors: #{response['errors']}, #{notification.inspect}", rollbar: :error
       false
     end
   end

@@ -14,6 +14,7 @@ RSpec.describe Notification, type: :model do
     context 'state' do
       it { expect(instance_errors(:state, 'sent')).to be nil }
       it { expect(instance_errors(:state, 'error')).to be nil }
+      it { expect(instance_errors(:state, 'canceled')).to be nil }
       it { expect(instance_errors(:state, 'unexpected')).to_not be nil }
       it { expect(instance_errors(:state, nil)).to be nil }
     end
