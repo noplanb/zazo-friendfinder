@@ -22,7 +22,8 @@ class Notification::Send
   rescue Exception => exception
     notification.update state: 'error'
     inspected_exception = "(#{exception.class}: #{exception.message})"
-    WriteLog.info self, "exception fired at #{Time.now} while sending as '#{notification.kind}': #{inspected_exception}, #{notification.inspect}", rollbar: :error
+    WriteLog.info self, "exception fired at #{Time.now} while sending as '#{notification.kind}': #{inspected_exception}, #{notification.inspect}"
+    raise exception
   end
 
   def handle_response(response, notification)

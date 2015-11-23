@@ -14,6 +14,10 @@ RSpec.describe Notification::FakeUserJoinedWorker do
   let!(:contact_31) { create_contact 'xxxxxxxxx_3', 4, '+380951035163' }
   let!(:contact_41) { create_contact 'xxxxxxxxx_4', 4, '+380951035164' }
 
+  before do
+    allow_any_instance_of(Notification::Send).to receive(:do).and_return true
+  end
+
   describe '.perform' do
     subject { described_class.perform }
     before do

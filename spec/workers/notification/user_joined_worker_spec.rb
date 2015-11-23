@@ -28,6 +28,10 @@ RSpec.describe Notification::UserJoinedWorker do
     ].map { |data| data.stringify_keys }
   end
 
+  before do
+    allow_any_instance_of(Notification::Send).to receive(:do).and_return true
+  end
+
   describe '.perform' do
     notification_nkeys_count    = -> { Notification.distinct.pluck(:nkey).count }
     notification_with_templates = -> { Notification.where.not(template: nil).count }

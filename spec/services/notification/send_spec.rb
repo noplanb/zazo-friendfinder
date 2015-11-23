@@ -4,6 +4,9 @@ RSpec.describe Notification::Send do
   let(:instance) { described_class.new [notification] }
 
   describe '#do' do
+    def instance_do_without_exceptions
+      instance.do; rescue
+    end
 
     #
     # email notification
@@ -39,9 +42,12 @@ RSpec.describe Notification::Send do
 
       context 'when contact owner is not exist' do
         let(:contact) { FactoryGirl.create :contact, owner_mkey: 'xxxxxxxxxxxx' }
-        before { instance.do }
 
-        it { is_expected.to eq 'error' }
+        it do
+          instance_do_without_exceptions
+          is_expected.to eq 'error'
+        end
+        it { expect { instance.do }.to raise_error(Faraday::ClientError) }
       end
 
       context 'when email is not correct' do
