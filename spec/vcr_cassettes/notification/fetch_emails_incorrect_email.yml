@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%= statistics_api_base_url %>/api/v1/fetch/attributes?attrs%5B%5D=emails&user=ZcAK4dM9S4m0IFui6ok6
+    uri: <%= statistics_api_base_url %>/api/v1/fetch/attributes?attrs%5B%5D=emails&user=1IsLHzYF4sM52M7jEgQe
     body:
       encoding: US-ASCII
       string: ''
@@ -42,7 +42,7 @@ http_interactions:
       - chunked
     body:
       encoding: UTF-8
-      string: '{"emails":["vano468@gmail.com","docanod@gmail.com","anod@i.ua"]}'
+      string: '{"emails":["xxxxxxxxxxxx"]}'
     http_version: 
   recorded_at: Sun, 22 Nov 2015 11:50:27 GMT
 recorded_with: VCR 2.9.3

@@ -14,10 +14,14 @@ class NotificationDecorator < Draper::Decorator
   end
 
   def email_data
-    Notification::EmailData.new(object).get
+    Notification::EmailData.new object
   end
 
   def mobile_data
-    Notification::MobileData.new(object).get
+    Notification::MobileData.new object
+  end
+
+  def inspect
+    object.inspect
   end
 end

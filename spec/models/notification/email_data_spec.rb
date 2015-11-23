@@ -13,7 +13,7 @@ RSpec.describe Notification::EmailData, type: :model do
     subject { instance.get }
 
     it do
-      is_expected.to eq to: 'docanod@gmail.com',
+      is_expected.to eq to: 'vano468@gmail.com',
                         subject: "#{contact.display_name} joined Zazo!",
                         body: 'Hello from Russia!'
     end
