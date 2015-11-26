@@ -42,12 +42,9 @@ RSpec.describe Notification::Send do
 
       context 'when contact owner is not exist' do
         let(:contact) { FactoryGirl.create :contact, owner_mkey: 'xxxxxxxxxxxx' }
+        before { instance.do }
 
-        it do
-          instance_do_without_exceptions
-          is_expected.to eq 'error'
-        end
-        it { expect { instance.do }.to raise_error(Faraday::ClientError) }
+        it { is_expected.to eq 'canceled' }
       end
 
       context 'when email is not correct' do
