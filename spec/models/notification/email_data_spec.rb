@@ -19,7 +19,7 @@ RSpec.describe Notification::EmailData, type: :model do
     end
   end
 
-  describe '#valid?' do
+  describe 'validations' do
     subject { instance.valid? }
     before  { subject }
 
