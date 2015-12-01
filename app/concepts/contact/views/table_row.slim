@@ -1,7 +1,8 @@
 tr
-  td = id
+  td = link_to id, admin_contact_path(id)
   td = link_to owner_mkey, admin_owner_path(owner_mkey)
   td = display_name
-  td = total_score
   td = zazo_id
+  td = total_score
+  td = vectors.count
   td = expires_at

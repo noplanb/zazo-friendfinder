@@ -12,7 +12,8 @@ class Contact::Cell < Cell::Concept
   end
 
   property :id, :owner_mkey, :display_name,
-           :total_score, :zazo_id, :expires_at
+           :zazo_id, :total_score, :expires_at,
+           :vectors
 
   def table_row
     render :table_row
