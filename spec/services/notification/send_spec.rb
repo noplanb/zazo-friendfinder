@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Notification::Send do
   let(:instance) { described_class.new [notification] }
   let(:notification) do
-    FactoryGirl.create :notification, compiled_content: 'Hello from Russia!', contact: contact, template: template
+    FactoryGirl.create :notification, kind: kind, compiled_content: 'Hello from Russia!', contact: contact
   end
 
   describe '#do' do
@@ -21,7 +21,7 @@ RSpec.describe Notification::Send do
       use_vcr_cassette 'notification/fetch_emails_incorrect_email', api_base_urls
       use_vcr_cassette 'notification/fetch_emails_nonexistent_owner', api_base_urls
 
-      let(:template) { FactoryGirl.create :template_email }
+      let(:kind) { 'email' }
       subject { notification.reload.state }
 
       context 'when contact owner is existing zazo user with persisted emails' do
@@ -65,7 +65,7 @@ RSpec.describe Notification::Send do
       use_vcr_cassette 'notification/fetch_push_user_valid_mkey', api_base_urls
       use_vcr_cassette 'notification/fetch_push_user_invalid_mkey', api_base_urls
 
-      let(:template) { FactoryGirl.create :template_mobile }
+      let(:kind) { 'mobile' }
       subject { notification.reload.state }
 
       context 'when contact owner is existing zazo push_user' do

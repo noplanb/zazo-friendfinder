@@ -33,48 +33,26 @@ RSpec.describe Notification::UserJoinedWorker do
   end
 
   describe '.perform' do
-    notification_nkeys_count    = -> { Notification.distinct.pluck(:nkey).count }
-    notification_with_templates = -> { Notification.where.not(template: nil).count }
-
     subject { described_class.perform }
     before do
       allow(described_class).to receive(:recently_joined_users).and_return recently_joined_users
     end
 
-    context 'when all templates persisted' do
+    context 'when one contact is unsubscribed' do
       before do
-        FactoryGirl.create :template, category: 'user_joined', kind: 'mobile'
-        FactoryGirl.create :template, category: 'user_joined', kind: 'email'
-      end
-
-      context 'when one contact is unsubscribed' do
-        before do
-          FactoryGirl.create :notification, status: 'unsubscribed', contact: contact_4
-          subject
-        end
-
-        it { expect(Notification.count).to eq 5 }
-        it { expect(notification_nkeys_count.call).to eq 3 }
-        it { expect(notification_with_templates.call).to eq 4 }
-      end
-
-      context 'when all contacts is subscribed' do
-        before { subject }
-        it { expect(Notification.count).to eq 6 }
-        it { expect(notification_nkeys_count.call).to eq 3 }
-        it { expect(notification_with_templates.call).to eq 6 }
-      end
-    end
-
-    context 'when not all templates persisted' do
-      before do
-        FactoryGirl.create :template, category: 'user_joined', kind: 'email'
+        FactoryGirl.create :notification, status: 'unsubscribed', contact: contact_4
         subject
       end
 
+      it { expect(Notification.count).to eq 5 }
+      it { expect(Notification.distinct.pluck(:nkey).count).to eq 3 }
+    end
+
+    context 'when all contacts is subscribed' do
+      before { subject }
+
       it { expect(Notification.count).to eq 6 }
-      it { expect(notification_nkeys_count.call).to eq 3 }
-      it { expect(notification_with_templates.call).to eq 3 }
+      it { expect(Notification.distinct.pluck(:nkey).count).to eq 3 }
     end
   end
 end

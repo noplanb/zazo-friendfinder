@@ -6,7 +6,7 @@ class Notification::Send
   end
 
   def do
-    notifications.each { |notification| send_notification notification if notification.has_template? }
+    notifications.each { |notification| send_notification notification }
   end
 
   private

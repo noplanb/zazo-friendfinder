@@ -21,8 +21,6 @@ RSpec.describe Notification::FakeUserJoinedWorker do
   describe '.perform' do
     subject { described_class.perform }
     before do
-      FactoryGirl.create :template, category: 'fake_user_joined', kind: 'mobile'
-      FactoryGirl.create :template, category: 'fake_user_joined', kind: 'email'
       FactoryGirl.create :notification, status: 'added', contact: contact_41
     end
 
@@ -33,7 +31,6 @@ RSpec.describe Notification::FakeUserJoinedWorker do
       end
       it { expect(Notification.count).to eq 6 }
       it { expect(Notification.distinct.pluck(:nkey).count).to eq 4 }
-      it { expect(Notification.where.not(template: nil).count).to eq 4 }
       it { expect(Notification.where(status: nil).count).to eq 4 }
     end
 
@@ -41,7 +38,6 @@ RSpec.describe Notification::FakeUserJoinedWorker do
       before { subject }
       it { expect(Notification.count).to eq 7 }
       it { expect(Notification.distinct.pluck(:nkey).count).to eq 4 }
-      it { expect(Notification.where.not(template: nil).count).to eq 6 }
       it do
         expected = [contact_11.id, contact_22.id, contact_31.id, contact_41.id]
         expect(Notification.distinct.pluck(:contact_id)).to match_array expected
