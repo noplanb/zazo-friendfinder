@@ -12,6 +12,13 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :owners, only: [:index, :show]
+    resources :contacts, only: [:index, :show]
+    resources :notifications, only: [:index, :show]
+    root to: 'dashboard#index'
+  end
+
   resources :web_client, path: 'w', only: [:show] do
     get :add, :ignore, :unsubscribe, :subscribe, on: :member
     post :add_another, on: :member

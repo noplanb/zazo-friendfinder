@@ -60,6 +60,12 @@ GEM
     byebug (2.7.0)
       columnize (~> 0.3)
       debugger-linecache (~> 1.2)
+    cells (4.0.3)
+      tilt (>= 1.4, < 3)
+      uber (~> 0.0.9)
+    cells-slim (0.0.3)
+      cells (~> 4.0.0.beta6)
+      slim (~> 3.0)
     chronic (0.10.2)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -316,6 +322,7 @@ GEM
       railties (~> 4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    uber (0.0.15)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -337,6 +344,8 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   bootswatch-rails
+  cells
+  cells-slim
   coffee-rails
   database_cleaner
   draper
