@@ -1,0 +1,145 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <%= statistics_api_base_url %>/api/v1/fetch/push_user?mkey=ZcAK4dM9S4m0IFui6ok6
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 7d3a9e50-3365-4315-94e1-6eaba1ad3d79
+      X-Runtime:
+      - '4.173069'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["h57vo2e0py6iizx612ke","77hobrieufm3us3azpg5","v71j09eiu0dya88zaayt"]'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"mkey":"ZcAK4dM9S4m0IFui6ok6","push_token":"APA91bGhOCbKugdDIhi9SWRxjCaFzsQcCXsKG8FZMUdY5FmvKFntQyAp94Li4bm0Qy3ylXWO3eRmzHn2DE74WBRfTOsOm55QRdN6L0C9zXg3-JHQMMErFtF4nfWmphXBKmSKXuCem3tc","device_platform":"android","device_build":null}'
+    http_version: 
+  recorded_at: Mon, 30 Nov 2015 15:32:31 GMT
+- request:
+    method: post
+    uri: <%= notification_api_base_url %>/api/v1/notifications/mobile
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo Notification", qop="auth", algorithm=MD5, nonce="MTQ0ODg5NzU1MTphY2QwZjdlZTM1NmM4ZTQ5YzM0NzYwMjVkNDNmNzBhMA==",
+        opaque="1bada4e4faf11d9675b0e01e3ee23df0"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - f5ce42ff-ff05-42b0-a25a-e989be921101
+      X-Runtime:
+      - '0.018353'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Mon, 30 Nov 2015 15:32:31 GMT
+- request:
+    method: post
+    uri: <%= notification_api_base_url %>/api/v1/notifications/mobile
+    body:
+      encoding: UTF-8
+      string: '{"subject":"Julianne Schneider joined Zazo!","device_platform":"android","device_build":null,"device_token":"APA91bGhOCbKugdDIhi9SWRxjCaFzsQcCXsKG8FZMUdY5FmvKFntQyAp94Li4bm0Qy3ylXWO3eRmzHn2DE74WBRfTOsOm55QRdN6L0C9zXg3-JHQMMErFtF4nfWmphXBKmSKXuCem3tc","payload":{"type":"friend_joined","content":"Hello
+        from Russia!","subject":"Julianne Schneider joined Zazo!"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo Notification", algorithm=MD5,
+        qop=auth, uri="/api/v1/notifications/mobile", nonce="MTQ0ODg5NzU1MTphY2QwZjdlZTM1NmM4ZTQ5YzM0NzYwMjVkNDNmNzBhMA==",
+        nc=00000000, cnonce="d1d06b3bb2e7d59f08bc6a1752c34b7c", response="32794d4426f54e214e93f9f4df070cf4",
+        opaque="1bada4e4faf11d9675b0e01e3ee23df0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"ce6d1726884c5953f8210e11d4a5b80b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - ccfae4a0-f485-4442-9e2c-3f17597ab5cf
+      X-Runtime:
+      - '0.652302'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"status":"success","original_response":{"multicast_id":6851285751407109412,"success":1,"failure":0,"canonical_ids":0,"results":[{"message_id":"0:1448897551728596%7c7dc9e1f9fd7ecd"}]}}'
+    http_version: 
+  recorded_at: Mon, 30 Nov 2015 15:32:31 GMT
+recorded_with: VCR 2.9.3

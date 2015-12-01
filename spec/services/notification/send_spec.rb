@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Notification::Send do
   let(:instance) { described_class.new [notification] }
+  let(:notification) do
+    FactoryGirl.create :notification, compiled_content: 'Hello from Russia!', contact: contact, template: template
+  end
 
   describe '#do' do
     def instance_do_without_exceptions
@@ -19,9 +22,6 @@ RSpec.describe Notification::Send do
       use_vcr_cassette 'notification/fetch_emails_nonexistent_owner', api_base_urls
 
       let(:template) { FactoryGirl.create :template_email }
-      let(:notification) do
-        FactoryGirl.create :notification, compiled_content: 'Hello from Russia!', contact: contact, template: template
-      end
       subject { notification.reload.state }
 
       context 'when contact owner is existing zazo user with persisted emails' do
@@ -51,7 +51,7 @@ RSpec.describe Notification::Send do
         use_vcr_cassette 'notification/send_email_notification_failure', api_base_urls
 
         let(:contact) { FactoryGirl.create :contact, owner_mkey: '1IsLHzYF4sM52M7jEgQe' }
-        before { instance.do }
+        before { instance_do_without_exceptions }
 
         it { is_expected.to eq 'error' }
       end
@@ -62,7 +62,24 @@ RSpec.describe Notification::Send do
     #
 
     context 'when mobile notification' do
+      use_vcr_cassette 'notification/fetch_push_user_valid_mkey', api_base_urls
+      use_vcr_cassette 'notification/fetch_push_user_invalid_mkey', api_base_urls
 
+      let(:template) { FactoryGirl.create :template_mobile }
+      subject { notification.reload.state }
+
+      context 'when contact owner is existing zazo push_user' do
+        use_vcr_cassette 'notification/send_mobile_notification_success', api_base_urls
+
+        let(:contact) { FactoryGirl.create :contact, owner_mkey: 'ZcAK4dM9S4m0IFui6ok6' }
+        before { instance.do }
+
+        it { is_expected.to eq 'sent' }
+      end
+
+      context 'when contact owner is existing zazo push_user' do
+
+      end
     end
   end
 end
