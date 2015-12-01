@@ -1,0 +1,11 @@
+table.table.table-striped
+  thead
+    tr
+      th Id
+      th Owner
+      th Display name
+      th Total score
+      th Zazo id
+      th Expires at
+  tbody
+    == concept 'contact/cell', collection: contacts, method: :table_row

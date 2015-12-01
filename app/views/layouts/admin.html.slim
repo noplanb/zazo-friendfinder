@@ -6,12 +6,12 @@ html
     title
       = content_for?(:title) ? "#{yield(:title)} - #{AppConfig.app_name}" : AppConfig.app_name
     meta name='description' content='#{content_for?(:description) ? yield(:description) : AppConfig.app_name}'
-    == stylesheet_link_tag 'application', media: 'all'
+    == stylesheet_link_tag 'admin', media: 'all'
     == csrf_meta_tags
   body
     .container
-      == render 'layouts/menu'
-      == render 'layouts/flash'
+      == render 'layouts/admin/menu'
+      == render 'layouts/admin/flash'
       == yield
-    == javascript_include_tag 'application'
+    == javascript_include_tag 'admin'
     == yield :page_specific_scripts
