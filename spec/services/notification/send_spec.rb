@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Notification::Send do
-  let(:instance) { described_class.new [notification] }
+  let(:instance) { described_class.new notification }
   let(:notification) do
     FactoryGirl.create :notification, kind: kind, compiled_content: 'Hello from Russia!', contact: contact
   end

@@ -4,7 +4,6 @@ class Notification < ActiveRecord::Base
   ALLOWED_STATUES = %w(added ignored unsubscribed)
   ALLOWED_CATEGORIES = %w(user_joined fake_user_joined)
 
-  belongs_to :template
   belongs_to :contact
 
   validates :contact, :nkey, presence: true

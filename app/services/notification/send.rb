@@ -1,17 +1,11 @@
 class Notification::Send
-  attr_reader :notifications
+  attr_reader :notification
 
-  def initialize(notifications)
-    @notifications = NotificationDecorator.decorate_collection notifications
+  def initialize(notification)
+    @notification = notification.decorate
   end
 
   def do
-    notifications.each { |notification| send_notification notification }
-  end
-
-  private
-
-  def send_notification(notification)
     data = notification.data
     if data.valid?
       handle_response NotificationApi.new(data.get).send(notification.kind), notification
@@ -25,6 +19,8 @@ class Notification::Send
     WriteLog.info self, "exception fired at #{Time.now} while sending as '#{notification.kind}': #{inspected_exception}, #{notification.inspect}"
     raise exception
   end
+
+  private
 
   def handle_response(response, notification)
     if response['status'] == 'success'

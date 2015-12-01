@@ -5,6 +5,10 @@ class NotificationDecorator < Draper::Decorator
     @data ||= send "#{kind}_data"
   end
 
+  def send_notification
+    Notification::Send.new(object).do
+  end
+
   def email_data
     Notification::EmailData.new object
   end
