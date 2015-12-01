@@ -26,7 +26,7 @@ class Notification::Create
 
   def compiled_content
     template = Template.new @last_notification
-    Template::Render.new(template).compile
+    Template::Render.new(template).content
   end
 
   def save

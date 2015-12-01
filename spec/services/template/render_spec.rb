@@ -1,20 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Template::Render do
-  let(:template) { FactoryGirl.build :template, content: '<%= contact.name %> joined Zazo!' }
-  let(:compiler) { described_class.new template }
+  let(:template) { Template.new notification }
+  let(:instance) { described_class.new template }
 
-  describe '#preview' do
-    subject { compiler.preview }
+  describe '#content' do
+    subject { instance.content.class }
 
-    it { is_expected.to eq 'Syd Barrett joined Zazo!' }
-  end
+    context 'when mobile notification' do
+      let(:notification) { FactoryGirl.build :notification_mobile }
+      it { is_expected.to eq ActiveSupport::SafeBuffer }
+    end
 
-  describe '#compile' do
-    let(:notification) { FactoryGirl.build :notification }
-    let(:template_data) { TemplateData.new notification }
-    before { compiler.compile template_data }
-
-    it { expect(compiler.content).to eq "#{notification.contact.display_name} joined Zazo!" }
+    context 'when email notification' do
+      let(:notification) { FactoryGirl.build :notification_email }
+      it { is_expected.to eq ActiveSupport::SafeBuffer }
+    end
   end
 end
