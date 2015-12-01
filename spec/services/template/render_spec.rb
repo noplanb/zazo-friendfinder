@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Template::Compiler do
+RSpec.describe Template::Render do
   let(:template) { FactoryGirl.build :template, content: '<%= contact.name %> joined Zazo!' }
   let(:compiler) { described_class.new template }
 
