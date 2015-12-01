@@ -5,8 +5,8 @@ class Notification::UserJoinedWorker
     WriteLog.info self, "cron job was executed at #{Time.now}"
     recently_joined_users.each do |contact_data|
       Contact::FindOwnersByContactMatching.new(contact_data).do.each do |contact|
-        unless contact.owner.unsubscribed? || Notification.match_by_contact?(contact)
-          Notification::Create.new(:user_joined, contact).do.each { |n| n.decorate.send_notification }
+        unless contact.owner.unsubscribed? || contact.notified?
+          Notification::Create.new(:user_joined, contact).do.each { |n| n.send_notification }
         end
       end
     end

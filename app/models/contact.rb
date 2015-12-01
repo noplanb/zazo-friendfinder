@@ -1,4 +1,7 @@
 class Contact < ActiveRecord::Base
+  include OwnerExtension
+  include FilterExtension
+
   ALLOWED_ADDITIONS = [
     'marked_as_favorite', # attrs coming from client
     'rejected_by_owner', 'recommended_by', # attrs for persist contact status data, cannot be reproduced
@@ -20,9 +23,7 @@ class Contact < ActiveRecord::Base
     (additions.try :[], key) || default
   end
 
-  def owner
-    Owner.new owner_mkey
-  end
+
 
   private
 

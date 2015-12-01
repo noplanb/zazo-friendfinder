@@ -2,7 +2,7 @@ class Notification::Send
   attr_reader :notification
 
   def initialize(notification)
-    @notification = notification.decorate
+    @notification = notification
   end
 
   def do

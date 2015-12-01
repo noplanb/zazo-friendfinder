@@ -1,4 +1,6 @@
 class Notification < ActiveRecord::Base
+  include SendingExtension
+
   ALLOWED_KINDS = %w(email mobile)
   ALLOWED_STATES = %w(sent error canceled)
   ALLOWED_STATUES = %w(added ignored unsubscribed)
@@ -11,6 +13,8 @@ class Notification < ActiveRecord::Base
   validates :state, inclusion: { in: ALLOWED_STATES, message: '%{value} is not a allowed state' }, allow_nil: true
   validates :status, inclusion: { in: ALLOWED_STATUES, message: '%{value} is not a allowed status' }, allow_nil: true
   validates :category, inclusion: { in: ALLOWED_CATEGORIES, message: '%{value} is not a allowed category' }
+
+  scope :unsubscribed_by_contacts, -> (contacts) { where(status: 'unsubscribed', contact: contacts) }
 
   def self.match_by_contact?(contact)
     !where(contact: contact).empty?
