@@ -9,6 +9,7 @@ class CreateContacts < ActiveRecord::Migration
 
       t.timestamps
     end
+
     add_index :contacts, :owner_mkey
   end
 end

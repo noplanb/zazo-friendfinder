@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe TemplateData, type: :model do
+RSpec.describe Template::ViewData, type: :model do
   let(:notification) { FactoryGirl.build :notification }
   let(:instance) { described_class.new notification }
 

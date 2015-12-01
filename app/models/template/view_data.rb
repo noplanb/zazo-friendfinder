@@ -1,4 +1,4 @@
-class TemplateData
+class Template::ViewData
   attr_reader :contact
 
   class ContactData
@@ -24,10 +24,6 @@ class TemplateData
 
   def unsubscribe_link
     action_link :unsubscribe
-  end
-
-  def bind
-    binding
   end
 
   private

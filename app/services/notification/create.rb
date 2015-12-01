@@ -7,36 +7,29 @@ class Notification::Create
   end
 
   def do
-    Template::ALLOWED_KINDS.map do |kind|
-      notification = Notification.new params
-      set_compiled_content notification, kind
-      save(notification) ? notification : nil
+    Notification::ALLOWED_KINDS.map do |kind|
+      @last_notification = Notification.new params(kind)
+      @last_notification.compiled_content = compiled_content
+      save ? @last_notification : nil
     end.compact
   end
 
   private
 
-  def params
-    { category: category, contact: contact, nkey: nkey }
+  def params(kind)
+    { kind: kind, category: category, contact: contact, nkey: nkey }
   end
 
   def nkey
     Digest::SHA256.hexdigest category + contact.owner.mkey + contact.id.to_s
   end
 
-  def save(notification)
-    Notification::Save.new(notification).do
+  def compiled_content
+    template = Template.new @last_notification
+    Template::Render.new(template).compile
   end
 
-  def set_compiled_content(notification, kind)
-    template = Template.by_kind_category kind, category
-    if template
-      compiler = Template::Compiler.new template
-      template_data = TemplateData.new notification
-      notification.template = template
-      notification.compiled_content = compiler.compile(template_data).content
-    else
-      WriteLog.info self, "template by pair (#{kind},#{category}) not found", rollbar: :error
-    end
+  def save
+    Notification::Save.new(@last_notification).do
   end
 end

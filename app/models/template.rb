@@ -1,16 +1,12 @@
-class Template < ActiveRecord::Base
-  ALLOWED_KINDS = %w(email mobile)
-  ALLOWED_CATEGORIES = %w(user_joined fake_user_joined)
+class Template
+  attr_reader :view_data, :notification
 
-  has_many :notifications
+  def initialize(notification)
+    @notification = notification
+    @view_data = ViewData.new notification
+  end
 
-  validates :category, :kind, :content, presence: true
-  validates :category, inclusion: { in: ALLOWED_CATEGORIES, message: '%{value} is not a allowed category' }
-  validates :kind, inclusion: { in: ALLOWED_KINDS, message: '%{value} is not a allowed kind' }
-  validates_with UniqueKindCategory
-  validates_with SyntaxValidator
-
-  def self.by_kind_category(kind, category)
-    where(kind: kind, category: category).first
+  def view_path
+    "templates/_#{notification.kind}_template"
   end
 end

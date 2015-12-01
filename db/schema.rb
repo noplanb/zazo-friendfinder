@@ -33,20 +33,19 @@ ActiveRecord::Schema.define(version: 20151106132950) do
   add_index "contacts", ["owner_mkey"], name: "index_contacts_on_owner_mkey", using: :btree
 
   create_table "notifications", force: true do |t|
+    t.string   "kind"
     t.string   "state"
     t.string   "status"
     t.string   "category"
     t.json     "additions"
     t.string   "nkey"
     t.string   "compiled_content"
-    t.integer  "template_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "contact_id"
   end
 
   add_index "notifications", ["contact_id"], name: "index_notifications_on_contact_id", using: :btree
-  add_index "notifications", ["template_id"], name: "index_notifications_on_template_id", using: :btree
 
   create_table "scores", force: true do |t|
     t.string   "name"
@@ -57,14 +56,6 @@ ActiveRecord::Schema.define(version: 20151106132950) do
   end
 
   add_index "scores", ["contact_id"], name: "index_scores_on_contact_id", using: :btree
-
-  create_table "templates", force: true do |t|
-    t.string   "category"
-    t.string   "kind"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "vectors", force: true do |t|
     t.string   "name"
