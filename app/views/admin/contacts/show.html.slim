@@ -1,0 +1,10 @@
+- content_for(:title) { "Contact ##{@contact.id}" }
+
+.row
+  .col-sm-6
+    h2.page-title = "Contact ##{@contact.id}"
+    == concept 'contact/cell', @contact
+
+  .col-sm-6
+    h2.page-title Scores
+    == concept 'score/cell/table', @contact.scores
