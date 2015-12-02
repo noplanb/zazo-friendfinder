@@ -1,11 +1,17 @@
 class Admin::ContactsController < AdminController
-  before_action :set_contact, only: [:show]
+  before_action :set_contact, only: [:show, :recalculation]
 
   def index
     @contacts = Contact.all
   end
 
   def show
+  end
+
+  def recalculation
+    @contact.scores.each &:destroy
+    Score::CalculationByContact.new(@contact).do
+    redirect_to admin_contact_path
   end
 
   private

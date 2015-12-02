@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :owners, only: [:index, :show]
-    resources :contacts, only: [:index, :show]
+    resources :contacts, only: [:index, :show] do
+      post :recalculation, on: :member
+    end
     resources :notifications, only: [:index, :show]
     root to: 'dashboard#index'
   end
