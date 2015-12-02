@@ -1,0 +1,8 @@
+- content_for(:title) { "Owner ##{@owner.mkey}" }
+
+.row
+  .col-sm-6
+    h2.page-title Owner data
+    == concept 'owner/cell', @owner
+
+== concept 'owner/cell/contacts', @owner, show: params[:show]

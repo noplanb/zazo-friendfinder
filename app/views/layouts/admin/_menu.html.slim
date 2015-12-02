@@ -1,6 +1,6 @@
 nav.navbar.navbar-default
   .container-fluid
     .navbar-header
-      a.navbar-brand href='/' == "#{AppConfig.app_name} v.#{AppConfig.version}"
+      a.navbar-brand href='/admin' == "#{AppConfig.app_name} v.#{AppConfig.version}"
     ul.nav.navbar-nav
-      /li = link_to 'Templates', templates_path
+      li = link_to 'Contacts', admin_contacts_path

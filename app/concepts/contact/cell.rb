@@ -1,6 +1,6 @@
 class Contact::Cell < Cell::Concept
   ATTRIBUTES = [ :owner_mkey, :display_name, :zazo_id,:zazo_mkey, :total_score,
-                 :expires_at, :additions, :created_at, :updated_at ]
+                 :expires_at, :additions, :notified?, :created_at, :updated_at ]
 
   class Table < Cell::Concept
     def show
