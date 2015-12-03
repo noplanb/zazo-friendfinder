@@ -19,6 +19,10 @@ class Owner
     contacts.select { |contact| !contact.notified? }
   end
 
+  def notifications
+    Notification.by_owner_mkey mkey
+  end
+
   def unsubscribed?
     !Notification.unsubscribed_by_contacts(contacts).empty?
   end

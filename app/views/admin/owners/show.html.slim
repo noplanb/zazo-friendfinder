@@ -5,4 +5,11 @@
     h2.page-title Owner data
     == concept 'owner/cell', @owner
 
-== concept 'owner/cell/contacts', @owner, show: params[:show]
+.row
+  .col-sm-12
+    == concept 'owner/cell/contacts', @owner, show: params[:show]
+
+.row
+  .col-sm-12
+    h2.page-title Notifications
+    == concept 'notification/cell/table', @owner.notifications

@@ -1,0 +1,13 @@
+- if notifications.empty?
+  .well No associated notifications.
+- else
+  table.table.table-striped
+    thead
+      tr
+        th Nkey
+        th Kind
+        th State
+        th Status
+        th Category
+    tbody
+      == concept 'notification/cell', collection: notifications, method: :table_row
