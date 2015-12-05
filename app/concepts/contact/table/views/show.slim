@@ -1,12 +1,15 @@
-table.table.table-striped
-  thead
-    tr
-      th Id
-      th Owner
-      th Display name
-      th Zazo id
-      th Total score
-      th Vectors
-      th Expires at
-  tbody
-    == concept 'contact/cell', collection: contacts, method: :table_row
+- if contacts.empty?
+  .well No associated notifications.
+- else
+  table.table.table-striped
+    thead
+      tr
+        th Id
+        th Owner
+        th Display name
+        th Zazo id
+        th Total score
+        th Vectors
+        th Expires at
+    tbody
+      == concept 'contact/cell', collection: contacts, method: :table_row
