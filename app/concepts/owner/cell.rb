@@ -1,5 +1,5 @@
 class Owner::Cell < Cell::Concept
-  ATTRIBUTES = [ :mkey, :unsubscribed?, :contacts, :not_proposed_contacts, :other_services ]
+  ATTRIBUTES = [:mkey, :unsubscribed?, :contacts, :not_proposed_contacts, :other_services]
 
   class Contacts < Cell::Concept
     def show
@@ -30,10 +30,26 @@ class Owner::Cell < Cell::Concept
     end
   end
 
+  class Table < Cell::Concept
+    def show
+      render
+    end
+
+    private
+
+    def owners
+      model
+    end
+  end
+
   property :mkey, :unsubscribed?
 
   def show
     render
+  end
+
+  def table_row
+    render :table_row
   end
 
   private
@@ -50,6 +66,10 @@ class Owner::Cell < Cell::Concept
     model.not_proposed_contacts.count
   end
 
+  def notifications_count
+    model.notifications.count
+  end
+
   def other_services
     statistics_link + ' | ' + renotification_link
   end
@@ -60,6 +80,10 @@ class Owner::Cell < Cell::Concept
 
   def renotification_link
     link_to 'renotification', "#{Figaro.env.renotification_base_url}/users/#{mkey}"
+  end
+
+  def link_to_owner
+    link_to mkey, admin_owner_path(mkey)
   end
 end
 

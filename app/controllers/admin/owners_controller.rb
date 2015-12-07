@@ -2,6 +2,7 @@ class Admin::OwnersController < AdminController
   before_action :set_owner, only: :show
 
   def index
+    @owners = Kaminari.paginate_array(Owner.all).page params[:page]
   end
 
   def show

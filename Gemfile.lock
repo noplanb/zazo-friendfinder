@@ -149,9 +149,6 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    kaminari-cells (0.0.4)
-      cells (>= 4.0.0, <= 5.0.0)
-      kaminari (>= 0.16.0)
     listen (3.0.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -371,7 +368,7 @@ DEPENDENCIES
   guard-rubocop
   hashie
   jquery-rails
-  kaminari-cells
+  kaminari
   newrelic_rpm
   pg
   pry-byebug (= 1.3.3)

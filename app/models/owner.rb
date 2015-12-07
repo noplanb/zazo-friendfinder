@@ -1,10 +1,12 @@
 class Owner
   attr_reader :mkey
 
+  def self.all
+    Contact.uniq.pluck(:owner_mkey).map { |owner_mkey| new owner_mkey }
+  end
+
   def self.subscribed
-    Contact.uniq.pluck(:owner_mkey).map do |owner_mkey|
-      new owner_mkey
-    end.select { |owner| !owner.unsubscribed? }
+    all.select { |owner| !owner.unsubscribed? }
   end
 
   def initialize(mkey)

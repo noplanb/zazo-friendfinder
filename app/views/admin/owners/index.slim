@@ -1,0 +1,7 @@
+- content_for(:title) { 'Owners' }
+
+h2.page-title All owners
+
+.owners.with-pagination
+  == concept 'owner/cell/table', @owners
+  == paginate @owners

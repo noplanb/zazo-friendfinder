@@ -1,0 +1,12 @@
+- if owners.empty?
+  .well No owners.
+- else
+  table.table.table-striped
+    thead
+      tr
+        th Mkey
+        th Unsubscribed?
+        th Contacts / Not proposed
+        th Notifications
+    tbody
+      == concept 'owner/cell', collection: owners, method: :table_row
