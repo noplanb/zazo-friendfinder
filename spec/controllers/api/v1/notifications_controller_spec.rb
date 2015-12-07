@@ -25,6 +25,7 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
       it { expect(response).to be_unprocessable }
       it { expect(notification.status).to be nil }
       it { expect(response.body).to eq "{\"status\":\"failure\",\"errors\":{\"nkey\":[\"nkey is incorrect\"]}}" }
+      it { expect(response.header['Content-Type']).to include 'application/json'  }
     end
   end
 
