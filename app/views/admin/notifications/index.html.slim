@@ -1,1 +1,7 @@
-' 1
+- content_for(:title) { 'Notifications' }
+
+h2.page-title = "All notifications [#{Notification.count}]"
+
+.contacts.with-pagination
+  == concept 'notification/cell/table', @notifications
+  == paginate @notifications

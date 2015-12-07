@@ -12,6 +12,10 @@ class Contact::Cell < Cell::Concept
     def contacts
       model
     end
+
+    def disable_link_to_owner?
+      !!options[:disable_link_to_owner]
+    end
   end
 
   property :id, :display_name, :zazo_id,
@@ -32,6 +36,14 @@ class Contact::Cell < Cell::Concept
   end
 
   def owner_mkey
+    disable_link_to_owner? ? model.owner_mkey : link_to_owner
+  end
+
+  def link_to_owner
     link_to model.owner_mkey, admin_owner_path(model.owner_mkey)
+  end
+
+  def disable_link_to_owner?
+    !!options[:disable_link_to_owner]
   end
 end
