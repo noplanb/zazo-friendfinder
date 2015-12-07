@@ -1,0 +1,11 @@
+.status-wrapper.panel.panel-default
+  .panel-body.row
+    - items.each_with_index do |item, index|
+      .status-item.col-sm-2
+        span.text
+          = item[:text]
+          span.unit = item[:unit]
+        - if item[:link]
+          = link_to item[:desc], item[:link], class: 'desc'
+        - else
+          span.desc = item[:desc]
