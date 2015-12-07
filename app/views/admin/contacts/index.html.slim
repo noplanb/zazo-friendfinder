@@ -2,4 +2,6 @@
 
 h2.page-title All contacts
 
-.contacts == concept 'contact/cell/table', @contacts
+.contacts.with-pagination
+  == concept 'contact/cell/table', @contacts
+  == paginate @contacts

@@ -15,6 +15,7 @@ gem 'slim-rails'
 gem 'draper'
 gem 'cells'
 gem 'cells-slim'
+gem 'kaminari-cells'
 gem 'hashie'
 
 gem 'faraday_middleware'
