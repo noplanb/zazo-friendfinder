@@ -1,6 +1,6 @@
 - content_for(:title) { 'Contacts' }
 
-h2.page-title All contacts
+h2.page-title = "All contacts [#{Contact.count}]"
 
 .contacts.with-pagination
   == concept 'contact/cell/table', @contacts

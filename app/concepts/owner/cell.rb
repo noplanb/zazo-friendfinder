@@ -17,7 +17,7 @@ class Owner::Cell < Cell::Concept
     end
 
     def contacts_title(reverse = false)
-      show_not_proposed? ^ reverse ? 'Not proposed contacts' : 'All contacts'
+      show_not_proposed? ^ reverse ? 'Not proposed contacts' : 'Contacts'
     end
 
     def contacts

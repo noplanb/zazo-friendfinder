@@ -11,7 +11,7 @@ class Notification::Cell < Cell::Concept
     end
   end
 
-  property :nkey, :kind, :state, :status, :category
+  property :nkey, :kind, :state, :status, :category, :created_at, :updated_at
 
   def show
     render

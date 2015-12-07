@@ -11,5 +11,5 @@
 
 .row
   .col-sm-12
-    h2.page-title Notifications
+    h2.page-title = "Notifications [#{@owner.notifications.count}]"
     == concept 'notification/cell/table', @owner.notifications

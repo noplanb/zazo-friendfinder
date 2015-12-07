@@ -11,5 +11,5 @@
       = link_to 'Recalculation', recalculation_admin_contact_path(@contact), class: 'btn btn-sm btn-primary pull-right', method: :post, data: { confirm: 'Are you sure?' }
     == concept 'score/cell/table', @contact.scores
 
-h2.page-title Vectors
+h2.page-title = "Vectors [#{@contact.vectors.count}]"
 == concept 'vector/cell/table', @contact.vectors
