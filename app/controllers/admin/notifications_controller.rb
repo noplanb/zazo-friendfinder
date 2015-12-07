@@ -11,6 +11,7 @@ class Admin::NotificationsController < AdminController
   private
 
   def set_notification
-    @notification = Notification.find params[:id]
+    @notification = Notification.find_by_nkey params[:id]
+    @notification = Notification.find params[:id] unless @notification
   end
 end

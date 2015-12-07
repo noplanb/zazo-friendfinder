@@ -10,6 +10,7 @@ class Contact < ActiveRecord::Base
 
   has_many :vectors
   has_many :scores
+  has_many :notifications
 
   validates :owner_mkey, presence: true
   validate :additions_must_be_allowed

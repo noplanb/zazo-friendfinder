@@ -4,7 +4,9 @@
   table.table.table-striped
     thead
       tr
+        th Id
         th Nkey
+        th Contact
         th Kind
         th State
         th Status
@@ -12,4 +14,4 @@
         th Created at
         th Updated at
     tbody
-      == concept 'notification/cell', collection: notifications, method: :table_row
+      == concept 'notification/cell', collection: notifications, disable_contact_link: disable_contact_link?, method: :table_row
