@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       resources :suggestions, only: [:index] do
         get :recommend, :reject, on: :collection
       end
+      resources :notifications, only: [] do
+        post :add, :ignore, :unsubscribe, :subscribe, on: :member
+      end
     end
   end
 

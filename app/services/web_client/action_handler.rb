@@ -1,5 +1,8 @@
 class WebClient::ActionHandler
+  include ActiveModel::Validations
+
   attr_reader :nkey, :notifications
+  validate :nkey_should_be_correct
 
   def initialize(nkey)
     @nkey = nkey
@@ -13,7 +16,9 @@ class WebClient::ActionHandler
     end
   end
 
-  def valid?
-    !notifications.empty?
+  private
+
+  def nkey_should_be_correct
+    errors.add(:nkey, 'nkey is incorrect') if notifications.empty?
   end
 end
