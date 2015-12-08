@@ -7,6 +7,7 @@ html
     == csrf_meta_tags
   body
     == render 'layouts/web_client/navbar'
-    .container == yield
+    .container
+      == yield
+      == render 'notification'
     == javascript_include_tag 'web_client'
-

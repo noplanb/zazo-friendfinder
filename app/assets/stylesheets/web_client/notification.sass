@@ -1,0 +1,76 @@
+.ff-notification-wrapper
+  .ff-notification
+    margin-right: auto
+    margin-left: auto
+
+.ff-notification
+  width: 800px
+  background: #323232
+  border-radius: 3px 3px 1px 1px
+  border: none
+  margin: 0
+  padding: 12px
+  font-family: Roboto, Arial, serif
+
+  .icon
+    position: relative
+    display: inline-block
+    padding-top: 15px
+    text-align: center
+    margin-right: 5px
+    width: 12%
+
+    .placeholder
+      width: 42px
+      height: 42px
+
+    .initials
+      position: absolute
+      color: white
+      width: 100%
+      top: 27px
+
+    &:after
+      position: absolute
+      bottom: -8px
+      right: 20px
+
+    &.added
+      &:after
+        content: image-url('web_client/added_icon.png')
+
+    &.ignored
+      &:after
+        content: image-url('web_client/ignored_icon.png')
+
+    &.unsubscribed
+      &:after
+        content: image-url('web_client/unsubscribed_icon.png')
+
+  .text
+    vertical-align: top
+    display: inline-block
+    width: 60%
+    color: white
+
+    .contact-name
+      font-weight: normal
+      font-size: 20px
+      margin-top: 15px
+
+    .description
+      font-size: 15px
+      margin: 0 0 5px
+
+  .action
+    vertical-align: top
+    display: inline-block
+    padding-left: 100px
+    width: 20%
+
+    a
+      text-transform: uppercase
+      font-size: 15px
+      color: #ffff00
+      margin-top: 38px
+      display: block
