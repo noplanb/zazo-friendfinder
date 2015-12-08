@@ -23,7 +23,11 @@ class Notification::MobileData < Notification::BaseData
     @payload = {
       type: 'friend_joined',
       content: content,
-      subject: subject
+      subject: subject,
+      nkey: object.nkey,
+      additions: {
+        friend_name: object.contact.display_name
+      }
     }
   end
 
