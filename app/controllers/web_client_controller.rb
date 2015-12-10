@@ -23,6 +23,7 @@ class WebClientController < ApplicationController
 
   def add_another
     WebClient::AddContact.new(Contact.find(params[:contact_id])).do
+    render json: { status: 'feature in progress' }
   end
 
   private
