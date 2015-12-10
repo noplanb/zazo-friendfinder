@@ -37,6 +37,6 @@ class WebClientController < ApplicationController
 
   def set_web_client
     @web_client = WebClientDecorator.decorate WebClient::ActionHandler.new(params[:id])
-    render :default unless @web_client.valid?
+    raise WebClient::NotFound unless @web_client.valid?
   end
 end

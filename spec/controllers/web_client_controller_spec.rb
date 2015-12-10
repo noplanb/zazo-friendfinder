@@ -16,10 +16,7 @@ RSpec.describe WebClientController, type: :controller, authenticate_with_http_ba
     end
 
     context 'with incorrect nkey' do
-      before { get :show, id: 'xxxxxxxxxxxx' }
-
-      it_behaves_like 'response status'
-      it { expect(response).to render_template(:default) }
+      it { expect { get :show, id: 'xxxxxxxxxxxx' }.to raise_error(WebClient::NotFound) }
     end
   end
 
@@ -27,7 +24,7 @@ RSpec.describe WebClientController, type: :controller, authenticate_with_http_ba
     before { get :add, id: nkey }
 
     it_behaves_like 'response status'
-    it { expect(response).to render_template(:add) }
+    it { expect(response).to render_template(:action_handeled) }
     it { expect(notification.reload.status).to eq 'added' }
   end
 
@@ -35,7 +32,7 @@ RSpec.describe WebClientController, type: :controller, authenticate_with_http_ba
     before { get :ignore, id: nkey }
 
     it_behaves_like 'response status'
-    it { expect(response).to render_template(:ignore) }
+    it { expect(response).to render_template(:action_handeled) }
     it { expect(notification.reload.status).to eq 'ignored' }
   end
 
@@ -43,7 +40,7 @@ RSpec.describe WebClientController, type: :controller, authenticate_with_http_ba
     before { get :unsubscribe, id: nkey }
 
     it_behaves_like 'response status'
-    it { expect(response).to render_template(:unsubscribe) }
+    it { expect(response).to render_template(:action_handeled) }
     it { expect(notification.reload.status).to eq 'unsubscribed' }
   end
 
@@ -51,7 +48,7 @@ RSpec.describe WebClientController, type: :controller, authenticate_with_http_ba
     let!(:notification) { FactoryGirl.create :notification, contact: contact, status: 'unsubscribed' }
     before { get :subscribe, id: notification.nkey }
 
-    it { expect(notification.reload.status).to eq nil }
+    it { expect(notification.reload.status).to eq 'ignored' }
     it { expect(response).to redirect_to(web_client_path) }
   end
 end
