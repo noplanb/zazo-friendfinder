@@ -1,15 +1,12 @@
 .ff-contacts.row
   h2.title.col-xs-12 Add others on Zazo:
-  - @web_client.another_contacts.each do |contact|
-    - 8.times do
-      .contact-wrapper.col-sm-3
-        .contact
-          .info-block
-            .icon
-              = image_tag('web_client/placeholders/1.png')
-              .initials AH
-            .name = contact.display_name
-            .subtitle 000 000 00 00
-          = link_to 'ADD', add_another_web_client_path(@web_client.nkey, contact_id: contact.id), method: :post, class: 'add-link'
-
-
+  - @web_client.others_contacts.each do |contact|
+    .contact-wrapper.col-sm-3
+      .contact
+        .info-block
+          .icon
+            = @web_client.placeholder_icon
+            .initials = contact.initials
+          .name = contact.display_name
+          .subtitle = contact.vector_value
+        = link_to 'ADD', add_another_web_client_path(@web_client.notification.nkey, contact_id: contact.id), method: :post, class: 'add-link'

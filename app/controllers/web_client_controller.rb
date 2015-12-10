@@ -6,18 +6,21 @@ class WebClientController < ApplicationController
 
   def add
     handle_action :added
+    render :action_handeled
   end
 
   def ignore
     handle_action :ignored
+    render :action_handeled
   end
 
   def unsubscribe
     handle_action :unsubscribed
+    render :action_handeled
   end
 
   def subscribe
-    handle_action nil
+    handle_action :ignored
     redirect_to web_client_path
   end
 

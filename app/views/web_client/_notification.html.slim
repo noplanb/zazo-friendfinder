@@ -1,10 +1,10 @@
 .ff-notification-wrapper
   .ff-notification.alert.alert-info role='alert' data-notify='container'
-    /button.close type='button' aria-hidden='true' data-notify='dismiss' ×
-    .icon.unsubscribed
-      = image_tag 'web_client/placeholders/1.png', class: 'placeholder'
-      .initials MH
+    button type='button' aria-hidden='true' class='close' data-notify='dismiss' ×
+    .icon class="#{@web_client.notification.status}"
+      = @web_client.placeholder_icon 'placeholder'
+      .initials = @web_client.contact.initials
     .text
-      h3.contact-name Mark Hopkins
-      p.description Unsubscribed! You will no longer receive notifications from Zazo when friends join.
-    .action = link_to 'subscribe', '/'
+      h3.contact-name = @web_client.contact.display_name
+      p.description = I18n.translate("web_client.notifications.#{@web_client.notification.status}", contact_name: @web_client.contact.display_name)
+    .action = @web_client.action_link

@@ -24,8 +24,6 @@ class Contact < ActiveRecord::Base
     (additions.try :[], key) || default
   end
 
-
-
   private
 
   #

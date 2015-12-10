@@ -1,21 +1,33 @@
 class WebClientDecorator < Draper::Decorator
   delegate_all
 
-  def contact_first_name
-    contact_full_name.split(' ').first
+  def others_contacts
+    ContactsDecorator.decorate_collection contact.owner.not_proposed_contacts.first(8)
   end
 
-  def contact_full_name
-    contact.display_name
+  def notification
+    self.notifications.first
   end
 
-  def another_contacts
-    contact.owner.not_proposed_contacts.first(3)
+  def contact
+    @contact ||= ContactsDecorator.decorate notification.contact
+  end
+
+  def action_link
+    notification.status == 'unsubscribed' ? subscribe_link : got_it_link
+  end
+
+  def placeholder_icon(classes = '')
+    h.image_tag("web_client/placeholders/#{(1..5).to_a.sample}.png", class: classes)
   end
 
   private
 
-  def contact
-    @contact ||= self.notifications.first.contact
+  def subscribe_link
+    h.link_to 'subscribe', h.subscribe_web_client_path(notification.nkey)
+  end
+
+  def got_it_link
+    h.link_to 'got it', 'javascript:void(0)', data: { notify: 'dismiss' }
   end
 end

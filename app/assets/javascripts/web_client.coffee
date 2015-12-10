@@ -9,23 +9,23 @@ $ ->
   $.notify {}, {
     element: 'body',
     position: null,
-    type: "info",
+    type: 'info',
     allow_dismiss: true,
     newest_on_top: false,
     showProgressbar: false,
     placement: {
-      from: "bottom",
-      align: "center"
+      from: 'bottom',
+      align: 'center'
     },
     offset: 0,
     spacing: 10,
     z_index: 1031,
-    delay: 1000000,
+    delay: 0,
     timer: 1000,
     mouse_over: null,
     animate: {
-      enter: 'fadeInDown',
-      exit: 'animated fadeOutUp'
+      enter: 'animated fadeInUp',
+      exit: 'animated fadeOutDown'
     },
     onShow: null,
     onShown: null,
