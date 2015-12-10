@@ -23,7 +23,11 @@ RSpec.describe Notification::MobileData, type: :model do
         payload: {
           type: 'friend_joined',
           content: 'Hello from Russia!',
-          subject: "#{contact.display_name} joined Zazo!"
+          subject: "#{contact.display_name} joined Zazo!",
+          nkey: notification.nkey,
+          additions: {
+            friend_name: contact.display_name
+          }
         }
       }
       is_expected.to eq expected

@@ -1,6 +1,10 @@
 class WebClientDecorator < Draper::Decorator
   delegate_all
 
+  def owner_full_name
+    contact.owner.fetch_data.full_name
+  end
+
   def others_contacts
     ContactsDecorator.decorate_collection contact.owner.not_proposed_contacts.first(8)
   end
@@ -28,6 +32,6 @@ class WebClientDecorator < Draper::Decorator
   end
 
   def got_it_link
-    h.link_to 'got it', 'javascript:void(0)', data: { notify: 'dismiss' }
+    h.link_to 'got it', h.web_client_path(notification.nkey)
   end
 end

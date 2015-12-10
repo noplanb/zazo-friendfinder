@@ -4,7 +4,7 @@ html
     meta charset='utf-8'
     meta name='viewport' content='width=device-width, initial-scale=1.0'
     title
-      = content_for?(:title) ? "#{yield(:title)} - #{AppConfig.app_name}" : AppConfig.app_name
+      = content_for?(:title) ? "#{yield(:title)} - Admin | #{AppConfig.app_name}" : "Admin | #{AppConfig.app_name}"
     meta name='description' content='#{content_for?(:description) ? yield(:description) : AppConfig.app_name}'
     == stylesheet_link_tag 'admin', media: 'all'
     == csrf_meta_tags

@@ -21,6 +21,7 @@
 
 en:
   web_client:
+    app_name: Friends Finder
     notifications:
       added: 'You and %{contact_name} are now connected. Happy Zazoing.'
       ignored: 'Ignored! %{contact_name} was not added.'

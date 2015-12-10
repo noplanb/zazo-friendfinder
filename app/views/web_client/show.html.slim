@@ -1,8 +1,1 @@
-p = "#{@web_client.contact_first_name} joined Zazo."
-
-p
-  = link_to 'Add', add_web_client_path(@web_client.nkey)
-  = ' | '
-  = link_to 'Ignore', ignore_web_client_path(@web_client.nkey)
-  = ' | '
-  = link_to 'Unsubscribe', unsubscribe_web_client_path(@web_client.nkey)
+== render 'contacts'
