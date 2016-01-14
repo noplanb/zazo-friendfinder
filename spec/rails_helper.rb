@@ -64,4 +64,7 @@ RSpec.configure do |config|
   if ENV.key?('CI')
     config.add_formatter :html, File.join(reports_dir, 'rspec', 'rspec.html')
   end
+
+  config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
 end
