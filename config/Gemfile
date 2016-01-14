@@ -45,6 +45,7 @@ group :development do
   gem 'guard-bundler', require: false
   gem 'guard-pow', require: false
   gem 'guard-rspec', require: false
+  gem 'guard-zeus'
   gem 'guard-migrate'
   gem 'guard-rubocop'
   gem 'terminal-notifier-guard'

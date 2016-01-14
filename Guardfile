@@ -26,7 +26,13 @@ guard 'pow' do
   watch(%r{^config/initializers/.*\.rb$})
 end
 
-guard :rspec, cmd: 'bundle exec rspec' do
+rspec_options = {
+  results_file: 'tmp/guard_rspec_results.txt',
+  cmd: 'zeus rspec',
+  failed_mode: :focus
+}
+
+guard :rspec, rspec_options do
   require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
 
@@ -78,3 +84,4 @@ guard 'migrate' do
   watch(%r{^db/migrate/(\d+).+\.rb})
   watch('db/seeds.rb')
 end
+
