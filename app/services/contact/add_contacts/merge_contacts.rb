@@ -2,14 +2,14 @@ class Contact::AddContacts::MergeContacts
   attr_reader :owner, :contact_data, :last_coincidence
 
   def initialize(owner, contact_data)
-    @owner = owner
+    @owner = Owner.new(owner)
     @contact_data = contact_data
   end
 
   def do
     return false unless last_coincidence || necessary_to?
     contact_data['vectors'].select do |vector_data|
-      Contact.by_owner(owner).each do |contact|
+      owner.contacts.each do |contact|
         yield contact, vector_data if block_given? && !vector_already_exist?(contact, vector_data)
       end
     end
@@ -23,7 +23,7 @@ class Contact::AddContacts::MergeContacts
   private
 
   def find_by_coincidence
-    Contact.by_owner(owner).each do |contact|
+    owner.contacts.each do |contact|
       return contact if match_by_mobile_vector?(contact) || total_vectors_matches(contact) > 1
     end && nil
   end

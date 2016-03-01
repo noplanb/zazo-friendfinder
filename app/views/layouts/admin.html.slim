@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    meta charset='utf-8'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    title
+      = content_for?(:title) ? "#{yield(:title)} - Admin | #{AppConfig.app_name}" : "Admin | #{AppConfig.app_name}"
+    meta name='description' content='#{content_for?(:description) ? yield(:description) : AppConfig.app_name}'
+    == stylesheet_link_tag 'admin', media: 'all'
+    == csrf_meta_tags
+  body
+    .container
+      == render 'layouts/admin/menu'
+      == render 'layouts/admin/flash'
+      == yield
+    == javascript_include_tag 'admin'
+    == yield :page_specific_scripts

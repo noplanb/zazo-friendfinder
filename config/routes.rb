@@ -9,9 +9,25 @@ Rails.application.routes.draw do
       resources :suggestions, only: [:index] do
         get :recommend, :reject, on: :collection
       end
+      resources :notifications, only: [] do
+        post :add, :ignore, :unsubscribe, :subscribe, on: :member
+      end
     end
   end
 
+  namespace :admin do
+    resources :owners, only: [:index, :show]
+    resources :contacts, only: [:index, :show] do
+      post :recalculation, on: :member
+    end
+    resources :notifications, only: [:index, :show]
+    root to: 'dashboard#index'
+  end
+
+  resources :web_client, path: 'w', only: [:show] do
+    get :add, :ignore, :unsubscribe, :subscribe, on: :member
+    post :add_another, on: :member
+  end
   resources :documentation, only: [:show]
 
   get 'status', to: Proc.new { [200, {}, ['']] }

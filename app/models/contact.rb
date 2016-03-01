@@ -1,4 +1,7 @@
 class Contact < ActiveRecord::Base
+  include OwnerExtension
+  include FilterExtension
+
   ALLOWED_ADDITIONS = [
     'marked_as_favorite', # attrs coming from client
     'rejected_by_owner', 'recommended_by', # attrs for persist contact status data, cannot be reproduced
@@ -7,11 +10,12 @@ class Contact < ActiveRecord::Base
 
   has_many :vectors
   has_many :scores
+  has_many :notifications
 
-  validates :owner, presence: true
+  validates :owner_mkey, presence: true
   validate :additions_must_be_allowed
 
-  scope :by_owner, -> (owner) { where(owner: owner).order('total_score DESC') }
+  scope :by_owner, -> (owner_mkey) { where(owner_mkey: owner_mkey).order('total_score DESC') }
   scope :expired,  -> { where 'expires_at < ?', Time.now }
 
   before_save { self.expires_at = 5.days.from_now }

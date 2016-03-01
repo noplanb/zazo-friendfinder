@@ -52,7 +52,7 @@ class Contact::AddContacts
   #
 
   def new_contact_attrs(contact_data)
-    { owner: current_user.mkey,
+    { owner_mkey: current_user.mkey,
       display_name: contact_data['display_name'],
       additions: contact_data['additions'] }
   end

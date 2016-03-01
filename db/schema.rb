@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916102902) do
+ActiveRecord::Schema.define(version: 20151106132950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "contacts", force: true do |t|
-    t.string   "owner"
+    t.string   "owner_mkey"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "total_score"
@@ -30,17 +30,22 @@ ActiveRecord::Schema.define(version: 20150916102902) do
     t.string   "display_name"
   end
 
-  add_index "contacts", ["owner"], name: "index_contacts_on_owner", using: :btree
+  add_index "contacts", ["owner_mkey"], name: "index_contacts_on_owner_mkey", using: :btree
 
-  create_table "score", force: true do |t|
-    t.string   "method"
-    t.integer  "value"
-    t.integer  "contact_id"
+  create_table "notifications", force: true do |t|
+    t.string   "kind"
+    t.string   "state"
+    t.string   "status"
+    t.string   "category"
+    t.json     "additions"
+    t.string   "nkey"
+    t.string   "compiled_content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contact_id"
   end
 
-  add_index "score", ["contact_id"], name: "index_score_on_contact_id", using: :btree
+  add_index "notifications", ["contact_id"], name: "index_notifications_on_contact_id", using: :btree
 
   create_table "scores", force: true do |t|
     t.string   "name"

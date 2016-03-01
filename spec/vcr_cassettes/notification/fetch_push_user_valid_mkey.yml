@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <%= statistics_api_base_url %>/api/v1/fetch/push_user?mkey=FaGUU1xx60N2cOufnV1v
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - b90b65ba-8fec-41be-894c-6f288e5ce432
+      X-Runtime:
+      - '0.545282'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["l2sjz6m2cyygv4wwv81t","wpyz4t1znmfr7gjq2svg","icid9oz2b8jzw2jvtqc2"]'
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"mkey":"FaGUU1xx60N2cOufnV1v","push_token":"APA91bH8Xy20cWQaP0kbEnps63ziDqwKjEC9GNn-BUsQ7avs8OkMATHSskfZbvLJe02qf9N_qsmxsqgqEaPVdL5iPGOhAhhtLZqo_njxViZUBThdD2ISAiaYfvAJ14ow6_mcydaj_Ubr","device_platform":"android","device_build":null}'
+    http_version: 
+  recorded_at: Wed, 25 Nov 2015 12:32:29 GMT
+recorded_with: VCR 2.9.3

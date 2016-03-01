@@ -1,0 +1,15 @@
+- if contacts.empty?
+  .well No contacts.
+- else
+  table.table.table-striped
+    thead
+      tr
+        th Id
+        th Owner
+        th Display name
+        th Zazo id
+        th Total score
+        th Vectors
+        th Expires at
+    tbody
+      == concept 'contact/cell', collection: contacts, disable_owner_link: disable_owner_link?, method: :table_row

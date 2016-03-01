@@ -1,0 +1,16 @@
+defaults: &defaults
+  app_name: Zazo FriendsFinder
+  app_name_key: friendfinder
+  version: 0.1.0
+  email_notification_from: support@zazoapp.com
+
+development:
+  <<: *defaults
+  authentication_method: basic
+  stub_mobile_number: true
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

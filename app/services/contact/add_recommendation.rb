@@ -47,8 +47,8 @@ class Contact::AddRecommendation
     contact.save
   end
 
-  def create_contact_with_recommendation(owner)
-    contact = Contact.new owner: owner, zazo_mkey: raw_params['contact_mkey'], additions: { recommended_by: [current_user.mkey] }
+  def create_contact_with_recommendation(owner_mkey)
+    contact = Contact.new owner_mkey: owner_mkey, zazo_mkey: raw_params['contact_mkey'], additions: { recommended_by: [current_user.mkey] }
     contact.save.tap { |is_success| is_success ? Resque.enqueue(UpdateMkeyDefinedContactWorker, contact.id) : fail(ActiveRecord::Rollback) }
   end
 

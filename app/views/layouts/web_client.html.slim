@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta charset='utf-8'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    title
+      = content_for?(:title) ? "#{yield(:title)} - #{AppConfig.app_name}" : AppConfig.app_name
+    == stylesheet_link_tag 'web_client', media: 'all'
+    == csrf_meta_tags
+  body
+    == render 'layouts/web_client/navbar'
+    == yield :outside_of_container
+    .container == yield
+    == javascript_include_tag 'web_client'

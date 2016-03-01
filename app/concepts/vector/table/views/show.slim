@@ -1,0 +1,11 @@
+- if vectors.empty?
+  .well No vectors.
+- else
+  table.table.table-striped
+    thead
+      tr
+        th Name
+        th Value
+        th Additions
+    tbody
+      == concept 'vector/cell', collection: vectors, method: :table_row

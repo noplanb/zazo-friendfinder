@@ -3,6 +3,22 @@ source 'https://rubygems.org'
 gem 'rails'
 gem 'pg'
 
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+gem 'jquery-rails'
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
+gem 'bootstrap-growl-rails'
+gem 'font-awesome-rails'
+gem 'simple_form'
+gem 'slim-rails'
+gem 'draper'
+gem 'cells'
+gem 'cells-slim'
+gem 'kaminari'
+gem 'hashie'
+
 gem 'faraday_middleware'
 gem 'faraday-digestauth'
 
@@ -29,6 +45,7 @@ group :development do
   gem 'guard-bundler', require: false
   gem 'guard-pow', require: false
   gem 'guard-rspec', require: false
+  gem 'guard-zeus'
   gem 'guard-migrate'
   gem 'guard-rubocop'
   gem 'terminal-notifier-guard'

@@ -1,0 +1,8 @@
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      a.navbar-brand href='/admin' == "#{AppConfig.app_name} v.#{AppConfig.version}"
+    ul.nav.navbar-nav
+      li = link_to 'Owners', admin_owners_path
+      li = link_to 'Contacts', admin_contacts_path
+      li = link_to 'Notifications', admin_notifications_path

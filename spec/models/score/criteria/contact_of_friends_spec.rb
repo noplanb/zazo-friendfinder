@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Score::Criteria::ContactOfFriends do
   use_vcr_cassette 'contact/get_zazo_friends_GBAHb0482YxlJ0kYwbIS', api_base_urls
 
-  let(:owner) { 'GBAHb0482YxlJ0kYwbIS' }
+  let(:owner_mkey) { 'GBAHb0482YxlJ0kYwbIS' }
   let(:friend_1) { '0DAQEVtmNKQiW6aoQrvo' }
   let(:friend_2) { '7qdanSEmctZ2jPnYA0a1' }
 
-  let(:contact) { FactoryGirl.create :contact, owner: owner, vectors: vectors }
+  let(:contact) { FactoryGirl.create :contact, owner_mkey: owner_mkey, vectors: vectors }
   let(:instance) { described_class.new contact }
 
   let(:email) { 'elfishawy.sani@gmail.com' }
@@ -22,8 +22,8 @@ RSpec.describe Score::Criteria::ContactOfFriends do
 
     context 'by two friends overlap' do
       before do
-        FactoryGirl.create :contact, owner: friend_1, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)]
-        FactoryGirl.create :contact, owner: friend_2, vectors: [FactoryGirl.create(:vector_email, value: email)]
+        FactoryGirl.create :contact, owner_mkey: friend_1, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)]
+        FactoryGirl.create :contact, owner_mkey: friend_2, vectors: [FactoryGirl.create(:vector_email, value: email)]
         FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email)]
       end
 
@@ -32,7 +32,7 @@ RSpec.describe Score::Criteria::ContactOfFriends do
 
     context 'by one friend overlap' do
       before do
-        FactoryGirl.create :contact, owner: friend_1, vectors: [FactoryGirl.create(:vector_mobile, value: mobile), FactoryGirl.create(:vector_email, value: email)]
+        FactoryGirl.create :contact, owner_mkey: friend_1, vectors: [FactoryGirl.create(:vector_mobile, value: mobile), FactoryGirl.create(:vector_email, value: email)]
         FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email)]
       end
 
@@ -50,14 +50,14 @@ RSpec.describe Score::Criteria::ContactOfFriends do
   end
 
   describe '#save' do
-    let!(:contact_1) { FactoryGirl.create :contact, owner: friend_1, vectors: [FactoryGirl.create(:vector_mobile, value: mobile), FactoryGirl.create(:vector_email, value: email)] }
-    let!(:contact_2) { FactoryGirl.create :contact, owner: friend_2, vectors: [FactoryGirl.create(:vector_email, value: email)] }
+    let!(:contact_1) { FactoryGirl.create :contact, owner_mkey: friend_1, vectors: [FactoryGirl.create(:vector_mobile, value: mobile), FactoryGirl.create(:vector_email, value: email)] }
+    let!(:contact_2) { FactoryGirl.create :contact, owner_mkey: friend_2, vectors: [FactoryGirl.create(:vector_email, value: email)] }
     let!(:subject) { instance.save }
     before { contact.reload }
 
     it { is_expected.to be_valid }
     it { expect(subject.name).to eq 'contact_of_friends' }
     it { expect(subject.persisted?).to be true }
-    it { expect(contact.additions['friends_with_contact']).to include *[contact_1.owner, contact_2.owner] }
+    it { expect(contact.additions['friends_with_contact']).to include *[contact_1.owner.mkey, contact_2.owner.mkey] }
   end
 end

@@ -69,6 +69,6 @@ RSpec.describe Score::Criteria::ContactOfUsers do
     it { is_expected.to be_valid }
     it { expect(subject.name).to eq 'contact_of_users' }
     it { expect(subject.persisted?).to be true }
-    it { expect(contact.additions['users_with_contact']).to include *[contact_1.owner, contact_2.owner] }
+    it { expect(contact.additions['users_with_contact']).to include *[contact_1.owner.mkey, contact_2.owner.mkey] }
   end
 end

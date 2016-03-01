@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Contact::GetZazoFriends do
-  let(:owner) { 'GBAHb0482YxlJ0kYwbIS' }
-  let(:contact) { FactoryGirl.create :contact, owner: owner }
+  let(:owner_mkey) { 'GBAHb0482YxlJ0kYwbIS' }
+  let(:contact) { FactoryGirl.create :contact, owner_mkey: owner_mkey }
   let(:instance) { described_class.new contact }
 
   describe '#do' do
@@ -16,7 +16,7 @@ RSpec.describe Contact::GetZazoFriends do
 
     context 'for nonexistent user' do
       use_vcr_cassette 'contact/get_zazo_friends_for_nonexistent_user', api_base_urls
-      let(:owner) { 'xxxxxxxxxxxx' }
+      let(:owner_mkey) { 'xxxxxxxxxxxx' }
 
       it { is_expected.to eq [] }
     end

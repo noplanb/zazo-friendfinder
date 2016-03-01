@@ -1,0 +1,15 @@
+- content_for(:title) { "Owner ##{@owner.mkey}" }
+
+.row
+  .col-sm-6
+    h2.page-title Owner data
+    == concept 'owner/cell', @owner
+
+.row
+  .col-sm-12
+    == concept 'owner/cell/contacts', @owner, show: params[:show]
+
+.row
+  .col-sm-12
+    h2.page-title = "Notifications [#{@owner.notifications.count}]"
+    == concept 'notification/cell/table', @owner.notifications, disable_contact_link: true

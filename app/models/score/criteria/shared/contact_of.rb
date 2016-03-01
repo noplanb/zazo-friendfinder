@@ -16,7 +16,7 @@ module Score::Criteria::Shared::ContactOf
         WHERE contacts.id = #{contact.id}
       ) SELECT
           name,
-          array_agg(owner) mkeys
+          array_agg(owner_mkey) mkeys
         FROM contacts
           JOIN vectors ON contacts.id = vectors.contact_id
           JOIN contact_values ON contact_values.value = vectors.value

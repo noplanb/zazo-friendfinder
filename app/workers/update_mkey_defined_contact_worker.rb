@@ -1,3 +1,5 @@
+# resque worker
+
 class UpdateMkeyDefinedContactWorker
   @queue = :update_contacts
 

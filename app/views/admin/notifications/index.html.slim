@@ -1,0 +1,8 @@
+- content_for(:title) { 'Notifications' }
+
+.row
+  .col-sm-12
+    h2.page-title = "All notifications [#{Notification.count}]"
+    .notifications.with-pagination
+      == concept 'notification/cell/table', @notifications
+      == paginate @notifications

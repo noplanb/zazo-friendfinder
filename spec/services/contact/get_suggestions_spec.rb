@@ -14,8 +14,8 @@ RSpec.describe Contact::GetSuggestions do
       [ FactoryGirl.create(:vector_email),
         FactoryGirl.create(:vector_facebook) ]
     end
-    let!(:contact_1) { FactoryGirl.create :contact, owner: user.mkey, vectors: vectors_1, additions: { marked_as_favorite: true } }
-    let!(:contact_2) { FactoryGirl.create :contact, owner: user.mkey, vectors: vectors_2, additions: { marked_as_favorite: true } }
+    let!(:contact_1) { FactoryGirl.create :contact, owner_mkey: user.mkey, vectors: vectors_1, additions: { marked_as_favorite: true } }
+    let!(:contact_2) { FactoryGirl.create :contact, owner_mkey: user.mkey, vectors: vectors_2, additions: { marked_as_favorite: true } }
     subject { instance.do }
 
     before do

@@ -1,0 +1,9 @@
+.ff-notification-wrapper
+  .ff-notification.alert.alert-info role='alert' data-notify='container'
+    .icon class="#{@web_client.notification.status}"
+      = @web_client.placeholder_icon 'placeholder'
+      .initials = @web_client.contact.initials
+    .text
+      h3.contact-name = @web_client.contact.display_name
+      p.description = I18n.translate("web_client.notifications.#{@web_client.notification.status}", contact_name: @web_client.contact.display_name)
+    .action = @web_client.action_link

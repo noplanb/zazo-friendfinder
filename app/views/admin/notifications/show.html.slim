@@ -1,0 +1,6 @@
+- content_for(:title) { "Notification ##{@notification.id}" }
+
+.row
+  .col-sm-6
+    h2.page-title = "Notification ##{@notification.id}"
+    == concept 'notification/cell', @notification
