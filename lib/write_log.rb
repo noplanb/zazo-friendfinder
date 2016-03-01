@@ -2,14 +2,14 @@ class WriteLog
   def self.info(context, message, settings = {})
     tag = get_class_name context
     logging_local   :info, tag, message
-    logging_syslog  :info, tag, message
+    #logging_syslog  :info, tag, message
     logging_rollbar settings[:rollbar], tag, message if settings[:rollbar]
   end
 
   def self.debug(context, message)
     tag = "#{get_class_name context} [DEBUG]"
     logging_local  :debug, tag, message
-    logging_syslog :debug, tag, message
+    #logging_syslog :debug, tag, message
   end
 
   private
