@@ -9,5 +9,6 @@ html
     == csrf_meta_tags
   body
     == render 'layouts/web_client/navbar'
+    == yield :outside_of_container
     .container == yield
     == javascript_include_tag 'web_client'
