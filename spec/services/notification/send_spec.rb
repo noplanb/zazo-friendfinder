@@ -27,7 +27,7 @@ RSpec.describe Notification::Send do
       context 'when contact owner is existing zazo user with persisted emails' do
         use_vcr_cassette 'notification/send_email_notification_success', api_base_urls
 
-        let(:contact) { FactoryGirl.create :contact, owner_mkey: 'ZcAK4dM9S4m0IFui6ok6' }
+        let(:contact) { FactoryGirl.create :contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS' }
         before { instance.do }
 
         it { is_expected.to eq 'sent' }
