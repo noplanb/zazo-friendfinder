@@ -7,6 +7,7 @@ RSpec.describe Contact::UpdateZazoInfo do
 
   describe '#do' do
     use_vcr_cassette 'contact/update_zazo_contact_by_GBAHb0482YxlJ0kYwbIS', api_base_urls
+
     subject { contact.reload }
     before { instance.do }
 

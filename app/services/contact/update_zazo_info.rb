@@ -20,8 +20,8 @@ class Contact::UpdateZazoInfo
   private
 
   def attributes
-    @attributes ||= StatisticsApi.new(user: contact.zazo_mkey, attrs: [:id, :first_name, :last_name]).attributes
+    @attributes ||= DataProviderApi.new(user: contact.zazo_mkey, attrs: [:id, :first_name, :last_name]).query :attributes
   rescue Faraday::ClientError
-    Hash.new
+    {}
   end
 end
