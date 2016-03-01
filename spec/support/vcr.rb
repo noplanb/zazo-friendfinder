@@ -7,6 +7,6 @@ end
 
 def api_base_urls
   { erb: { statistics_api_base_url:   Figaro.env.statistics_api_base_url,
-           events_api_base_url:       Figaro.env.events_api_base_url,
+           dataprovider_api_base_url: Figaro.env.dataprovider_api_base_url,
            notification_api_base_url: Figaro.env.notification_api_base_url } }
 end

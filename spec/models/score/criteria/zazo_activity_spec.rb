@@ -13,15 +13,14 @@ RSpec.describe Score::Criteria::ZazoActivity do
       let(:vcr_cassette) { 'score/criteria/zazo_activity_by_7qdanSEmctZ2jPnYA0a1' }
       let(:mkey) { '7qdanSEmctZ2jPnYA0a1' }
 
-      it { is_expected.to eq 216 }
+      it { is_expected.to eq 396 }
     end
-
 
     context 'with correct mkey by not very active user' do
       let(:vcr_cassette) { 'score/criteria/zazo_activity_by_GBAHb0482YxlJ0kYwbIS' }
       let(:mkey) { 'GBAHb0482YxlJ0kYwbIS' }
 
-      it { is_expected.to eq 16 }
+      it { is_expected.to eq 28 }
     end
 
     context 'with incorrect mkey' do

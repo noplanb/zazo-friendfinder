@@ -1,16 +1,67 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: <%= events_api_base_url %>/api/v1/metrics/messages_count_by_user
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/messages_count?user_mkey=xxxxxxxxxxxx
     body:
-      encoding: UTF-8
-      string: '{"user_mkey":"xxxxxxxxxxxx"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       User-Agent:
       - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1NjgzNDc2Mjo2NDM0NTBhODY2M2U0MzM3MWI0YTI2ODFiNzIxYmExMA==",
+        opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
-      - application/json
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 0d917552-8a21-48f6-b286-69d17c179daa
+      X-Runtime:
+      - '0.191410'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Tue, 01 Mar 2016 12:19:22 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Tue, 01 Mar 2016 12:19:22 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/messages_count?user_mkey=xxxxxxxxxxxx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/messages_count?user_mkey=xxxxxxxxxxxx",
+        nonce="MTQ1NjgzNDc2Mjo2NDM0NTBhODY2M2U0MzM3MWI0YTI2ODFiNzIxYmExMA==", nc=00000000,
+        cnonce="7ca11cfe0ed70f9c015a67c48c9b994b", response="f6a330eaa671b25cd7dbb7cb0555851a",
+        opaque="822778b6350cbc116426dfdce7488072"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -28,19 +79,25 @@ http_interactions:
       - nosniff
       Content-Type:
       - application/json; charset=utf-8
-      Etag:
-      - W/"788aed6d0583e165c895845f905c10bd"
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - c447abf0-67b9-4d7c-8585-410188ad4b1f
+      - d003f1c2-ad09-4169-8c3b-cb27a8f1b0ed
       X-Runtime:
-      - '0.350606'
-      Transfer-Encoding:
-      - chunked
+      - '3.068185'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["s6pu8oxk5mvhgyfblcua","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Tue, 01 Mar 2016 12:19:25 GMT
+      Connection:
+      - close
     body:
       encoding: UTF-8
       string: '{"outgoing":"0","incoming":"0","active_friends":"0"}'
     http_version: 
-  recorded_at: Thu, 10 Sep 2015 09:52:15 GMT
+  recorded_at: Tue, 01 Mar 2016 12:19:25 GMT
 recorded_with: VCR 2.9.3
