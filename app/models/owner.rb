@@ -26,7 +26,7 @@ class Owner
   end
 
   def fetch_data
-    attributes = StatisticsApi.new(user: mkey, attrs: [:first_name, :last_name]).attributes rescue nil
+    attributes = DataProviderApi.new(user: mkey, attrs: [:first_name, :last_name]).query(:attributes) rescue nil
     @full_name = "#{attributes['first_name']} #{attributes['last_name']}" if attributes
     self
   end

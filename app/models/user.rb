@@ -11,7 +11,7 @@ class User
   end
 
   def self.get_user_data(mkey)
-    StatisticsApi.new(user: mkey, attrs: [:mkey, :auth]).attributes
+    DataProviderApi.new(user: mkey, attrs: [:mkey, :auth]).query(:attributes)
   rescue Faraday::ClientError
     raise NotFound, "user with #{mkey} not found"
   end

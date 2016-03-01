@@ -5,7 +5,7 @@ RSpec.describe Notification::EmailData, type: :model do
   use_vcr_cassette 'notification/fetch_emails_not_persisted', api_base_urls
   use_vcr_cassette 'notification/fetch_emails_nonexistent_owner', api_base_urls
 
-  let(:contact) { FactoryGirl.create :contact, owner_mkey: 'ZcAK4dM9S4m0IFui6ok6' }
+  let(:contact) { FactoryGirl.create :contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS' }
   let(:notification) do
     FactoryGirl.create :notification, compiled_content: 'Hello from Russia!', contact: contact
   end
