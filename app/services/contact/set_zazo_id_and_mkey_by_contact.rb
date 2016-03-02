@@ -27,6 +27,6 @@ class Contact::SetZazoIdAndMkeyByContact
   end
 
   def data_by_vector(vector)
-    StatisticsApi.new(vector.name => vector.value).users :find_by_mobile_or_email
+    DataProviderApi.new(vector.name => vector.value).query :find_by_mobile_or_email
   end
 end

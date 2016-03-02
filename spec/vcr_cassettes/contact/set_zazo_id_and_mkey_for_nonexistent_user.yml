@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%= statistics_api_base_url %>/api/v1/fetch/users/find_by_mobile_or_email?mobile=%2B79999999999
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B79999999999
     body:
       encoding: US-ASCII
       string: ''
@@ -15,8 +15,8 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -24,36 +24,44 @@ http_interactions:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1NjkyNDAyNjplZTE3NGZhYjdkYTVjMjg3MWMyOGFmY2ZjYmNiZWQ1Nw==",
+        opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
-      - application/json; charset=utf-8
+      - text/html; charset=utf-8
       Cache-Control:
-      - no-store, must-revalidate, private, max-age=0
+      - no-cache
       X-Request-Id:
-      - 8bb5ef11-e8ad-4c0a-ada0-70002a017d39
+      - a36f9a65-fb18-460d-9622-cac5d428a49e
       X-Runtime:
-      - '0.029153'
+      - '0.194012'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
-      - __profilin=p%3Dt; path=/
-      X-Miniprofiler-Ids:
-      - '["iwq5pueteah74glv5et0","cu4jlmz68qqaitc0o0c2","gsv5hiyaew4moad7a2ku"]'
-      Transfer-Encoding:
-      - chunked
+      Date:
+      - Wed, 02 Mar 2016 13:07:06 GMT
+      Connection:
+      - close
     body:
       encoding: UTF-8
-      string: '{"id":null,"mkey":null}'
+      string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Thu, 10 Sep 2015 17:52:47 GMT
+  recorded_at: Wed, 02 Mar 2016 13:07:06 GMT
 - request:
     method: get
-    uri: <%= statistics_api_base_url %>/api/v1/fetch/users/find_by_mobile_or_email?email=admin@google.com
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B79999999999
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B79999999999",
+        nonce="MTQ1NjkyNDAyNjplZTE3NGZhYjdkYTVjMjg3MWMyOGFmY2ZjYmNiZWQ1Nw==", nc=00000000,
+        cnonce="77295135fe1e0910c6c6f86a647ec5a2", response="ae8d1dccd76f586a379e0ac55a206d50",
+        opaque="822778b6350cbc116426dfdce7488072"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -74,20 +82,122 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - c9299cdf-bbf9-494d-b400-4fa1e74e078c
+      - 4de4320e-8547-43e5-ad12-fc7143257de4
       X-Runtime:
-      - '0.024073'
+      - '0.383874'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       X-Miniprofiler-Ids:
-      - '["vkmeogivmcwrdeiwhlmz","cu4jlmz68qqaitc0o0c2","gsv5hiyaew4moad7a2ku","iwq5pueteah74glv5et0"]'
-      Transfer-Encoding:
-      - chunked
+      - '["n41p7kv5xxsrohnjl26c","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Wed, 02 Mar 2016 13:07:06 GMT
+      Connection:
+      - close
     body:
       encoding: UTF-8
       string: '{"id":null,"mkey":null}'
     http_version: 
-  recorded_at: Thu, 10 Sep 2015 17:52:47 GMT
+  recorded_at: Wed, 02 Mar 2016 13:07:06 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?email=admin@google.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1NjkyNDAyNjplZTE3NGZhYjdkYTVjMjg3MWMyOGFmY2ZjYmNiZWQ1Nw==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 5473f9ba-9b3b-4bdf-9aea-25f2fa31fe6c
+      X-Runtime:
+      - '0.192655'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Wed, 02 Mar 2016 13:07:06 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 13:07:06 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?email=admin@google.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/find_by_mobile_or_email?email=admin%40google.com",
+        nonce="MTQ1NjkyNDAyNjplZTE3NGZhYjdkYTVjMjg3MWMyOGFmY2ZjYmNiZWQ1Nw==", nc=00000000,
+        cnonce="09ac55c662f714e26ed681fcd7beb4fd", response="11f0a2e076ea16d94c95e32f25b42f34",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 19257d5a-cb00-4e8b-8668-c40ef28539d7
+      X-Runtime:
+      - '0.390801'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["rc6v2nttc5qyst5kur6c","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Wed, 02 Mar 2016 13:07:07 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"id":null,"mkey":null}'
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 13:07:07 GMT
 recorded_with: VCR 2.9.3

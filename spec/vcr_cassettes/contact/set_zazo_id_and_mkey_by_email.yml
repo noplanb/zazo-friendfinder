@@ -2,13 +2,66 @@
 http_interactions:
 - request:
     method: get
-    uri: <%= statistics_api_base_url %>/api/v1/fetch/users/find_by_mobile_or_email?email=elfishawy.sani@gmail.com
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?email=elfishawy.sani@gmail.com
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
       - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1NjkyMzk4MjoxYWQ5MDc4YTU5NzU3MzAyYjQwODQwZTUxYzA1Nzk0OA==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 94f8a5f5-11fb-4669-831f-1163e77044ba
+      X-Runtime:
+      - '0.196005'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Wed, 02 Mar 2016 13:06:22 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 13:06:22 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?email=elfishawy.sani@gmail.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/find_by_mobile_or_email?email=elfishawy.sani%40gmail.com",
+        nonce="MTQ1NjkyMzk4MjoxYWQ5MDc4YTU5NzU3MzAyYjQwODQwZTUxYzA1Nzk0OA==", nc=00000000,
+        cnonce="66db777d8e7bc8bbc97d3494bf719ce9", response="1bac17ba163d9e606c041b666828bbeb",
+        opaque="822778b6350cbc116426dfdce7488072"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -29,20 +82,22 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - f437948c-e36e-4f1d-94b8-27bbd818ecf8
+      - ca870f3f-4d59-4e7b-9f0d-d4650e95e2bd
       X-Runtime:
-      - '0.016663'
+      - '0.384233'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       X-Miniprofiler-Ids:
-      - '["s5nqurb69rnjqxzumj9r","ghanbbmwr3xjkfj9a0k9","volrysezy45fuxg4ow4x","mbroqgqgalsqkvwfh7bz","5wioxy5qx080n9fythra","fb0dsmsxwhfph7lvqlc4","upl4efx00vqn3u842l98","fu7cq5nvadstacpptdhl","nnsanjqc56kb4o71yq36","ewtmz8r4byjq8dlcg0ar"]'
-      Transfer-Encoding:
-      - chunked
+      - '["u98wbpdlxs8jvrcesbyr","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Wed, 02 Mar 2016 13:06:22 GMT
+      Connection:
+      - close
     body:
       encoding: UTF-8
       string: '{"id":1,"mkey":"7qdanSEmctZ2jPnYA0a1"}'
     http_version: 
-  recorded_at: Wed, 09 Sep 2015 10:01:17 GMT
+  recorded_at: Wed, 02 Mar 2016 13:06:22 GMT
 recorded_with: VCR 2.9.3
