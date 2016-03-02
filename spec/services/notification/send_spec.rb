@@ -77,8 +77,8 @@ RSpec.describe Notification::Send do
         it { is_expected.to eq 'sent' }
       end
 
-      context 'when contact owner is existing zazo push_user' do
-
+      context 'when contact owner is not existing zazo push_user' do
+        it
       end
     end
   end
