@@ -11,7 +11,7 @@ RSpec.describe Contact::GetZazoFriends do
     context 'for existing user' do
       use_vcr_cassette 'contact/get_zazo_friends_GBAHb0482YxlJ0kYwbIS', api_base_urls
 
-      it { is_expected.to include *%w(0DAQEVtmNKQiW6aoQrvo e0kvxfgua1EQJvUOzVC1 yLK6i5VpMW9ZZy5BnXZZ 7qdanSEmctZ2jPnYA0a1) }
+      it { is_expected.to match_array %w(0DAQEVtmNKQiW6aoQrvo e0kvxfgua1EQJvUOzVC1 yLK6i5VpMW9ZZy5BnXZZ 7qdanSEmctZ2jPnYA0a1 gpIES8adSGtrB5O5933c LVXE6gyoxb6eHNvPd96f) }
     end
 
     context 'for nonexistent user' do

@@ -6,6 +6,7 @@ class Contact::GetZazoFriends
   end
 
   def do
-    StatisticsApi.new(user_mkey: contact.owner.mkey).users :get_zazo_friends
+    params = { user: contact.owner.mkey, attrs: :friends }
+    DataProviderApi.new(params).query(:attributes)['friends'] rescue []
   end
 end

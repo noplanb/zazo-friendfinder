@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%= statistics_api_base_url %>/api/v1/fetch/users/get_zazo_friends?user_mkey=xxxxxxxxxxxx
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs=friends&user=xxxxxxxxxxxx
     body:
       encoding: US-ASCII
       string: ''
@@ -15,8 +15,61 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1NjkyMjA1MTozMzQwYWI5MmQ4ZjU5ZjA4MzEyMmFiNGE5NjRjYzUzNQ==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 2a5de3b2-87f5-4e44-8715-43d323972ab8
+      X-Runtime:
+      - '0.193591'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Wed, 02 Mar 2016 12:34:11 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Wed, 02 Mar 2016 12:34:11 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs=friends&user=xxxxxxxxxxxx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs=friends&user=xxxxxxxxxxxx",
+        nonce="MTQ1NjkyMjA1MTozMzQwYWI5MmQ4ZjU5ZjA4MzEyMmFiNGE5NjRjYzUzNQ==", nc=00000000,
+        cnonce="4bd4fb056fb8c20168281dce373b58e4", response="5288be82fa2ae4cb472b9cbf77cb8fbe",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
     headers:
       X-Frame-Options:
       - SAMEORIGIN
@@ -27,22 +80,21 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Cache-Control:
-      - no-store, must-revalidate, private, max-age=0
+      - no-cache
       X-Request-Id:
-      - 808f97af-6830-4994-89a5-5087d9e2e761
+      - e9641da7-6b84-4370-b1da-ede442590d5d
       X-Runtime:
-      - '0.014643'
+      - '0.388659'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
-      - __profilin=p%3Dt; path=/
-      X-Miniprofiler-Ids:
-      - '["54h4h75uogta2bzwyzvk","qoxi4h45yj5lrfcs8sda","dzbz4qg54vivs9qghm75","t8rf328fzyfmeyu3czqo","2h1alazdedn5fymh8r1","12y3reol5evqklj994ye","4ohgydsmdi4ixy4idl6a","dpm5pxqwd3qdhposgfwq"]'
-      Transfer-Encoding:
-      - chunked
+      Date:
+      - Wed, 02 Mar 2016 12:34:11 GMT
+      Connection:
+      - close
     body:
       encoding: UTF-8
-      string: "[]"
+      string: '{"errors":{"user":["can''t be blank"]}}'
     http_version: 
-  recorded_at: Mon, 14 Sep 2015 08:13:37 GMT
+  recorded_at: Wed, 02 Mar 2016 12:34:11 GMT
 recorded_with: VCR 2.9.3

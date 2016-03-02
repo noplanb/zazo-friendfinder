@@ -15,6 +15,6 @@ class Notification::UserJoinedWorker
   private
 
   def self.recently_joined_users
-    StatisticsApi.new(time_frame_in_days: '3').users :recently_joined
+    DataProviderApi.new(time_frame_in_days: '3').filter :recently_joined
   end
 end
