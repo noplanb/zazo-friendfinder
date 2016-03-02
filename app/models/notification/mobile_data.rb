@@ -32,12 +32,13 @@ class Notification::MobileData < Notification::BaseData
   end
 
   def fetch_push_user
+    @response = DataProviderApi.new(user_mkey: object.contact.owner_mkey).query :push_user
     @response = StatisticsApi.new(mkey: object.contact.owner_mkey).push_user
   rescue Faraday::ClientError => e
     @response = JSON.parse e.response[:body]
   end
 
   def validate_response
-    errors.add :response, JSON.parse(response['errors']) if response['errors']
+    errors.add :response, response['errors'] if response['errors']
   end
 end

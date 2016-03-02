@@ -71,7 +71,7 @@ RSpec.describe Notification::Send do
       context 'when contact owner is existing zazo push_user' do
         use_vcr_cassette 'notification/send_mobile_notification_success', api_base_urls
 
-        let(:contact) { FactoryGirl.create :contact, owner_mkey: 'ZcAK4dM9S4m0IFui6ok6' }
+        let(:contact) { FactoryGirl.create :contact, owner_mkey: '7qdanSEmctZ2jPnYA0a1' }
         before { instance.do }
 
         it { is_expected.to eq 'sent' }
