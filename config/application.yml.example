@@ -10,6 +10,7 @@ dataprovider_api_token:
 notification_api_base_url:
 notification_api_token:
 
+admin_base_url:
 renotification_base_url:
 
 rollbar_access_token:

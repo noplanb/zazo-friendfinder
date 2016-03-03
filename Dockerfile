@@ -2,7 +2,7 @@ FROM zazo/rails
 
 ENV APP_HOME /usr/src/app
 
-RUN apt-get -y -q install cron
+RUN apt-get -y -q install cron redis-server
 
 COPY config/Gemfile $APP_HOME/
 COPY Gemfile.lock $APP_HOME/

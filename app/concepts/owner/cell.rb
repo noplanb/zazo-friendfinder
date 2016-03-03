@@ -71,11 +71,11 @@ class Owner::Cell < Cell::Concept
   end
 
   def other_services
-    statistics_link + ' | ' + renotification_link
+    admin_link + ' | ' + renotification_link
   end
 
-  def statistics_link
-    link_to 'statistics', "#{Figaro.env.statistics_api_base_url}/users?user_id_or_mkey=#{mkey}"
+  def admin_link
+    link_to 'admin', "#{Figaro.env.admin_base_url}/users?user_id_or_mkey=#{mkey}"
   end
 
   def renotification_link
