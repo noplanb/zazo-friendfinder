@@ -23,22 +23,27 @@ class Contact::AddContacts::MergeContacts
   private
 
   def find_by_coincidence
-    owner.contacts.each do |contact|
-      return contact if match_by_mobile_vector?(contact) || total_vectors_matches(contact) > 1
-    end && nil
+    return if !contact_data['vectors'] || contact_data['vectors'].empty?
+    matches_by_vectors = contact_data['vectors'].each_with_object({}) do |vector_data, matches|
+      contacts = owner.contacts.includes(:vectors)
+      conditions = { vectors: { name: vector_data['name'], value: vector_data['value'] } }
+      matches[vector_data['name']] ||= []
+      matches[vector_data['name']] += contacts.where(conditions).to_a
+    end
+    contact_by_mobile_vector(matches_by_vectors) || contact_by_total_vectors(matches_by_vectors)
   end
 
-  def match_by_mobile_vector?(contact)
-    existing_vector = contact.vectors.mobile.first
-    existing_vector && contact_data['vectors'].select do |vector_data|
-      vector_data['name'] == 'mobile' && vector_data['value'] == existing_vector.value
-    end.size > 0
+  def contact_by_mobile_vector(matches)
+    matches['mobile'] && (matches['mobile'].empty? ? nil : matches['mobile'].first)
   end
 
-  def total_vectors_matches(contact)
-    contact_data['vectors'].select do |vector_data|
-      vector_already_exist? contact, vector_data
-    end.size
+  def contact_by_total_vectors(matches)
+    matches.except('mobile').each_with_object({}) do |(_, contacts), matches_by_contact|
+      contacts.each do |contact|
+        matches_by_contact[contact] ||= 0
+        matches_by_contact[contact] += 1
+      end
+    end.select { |_, count| count > 1 }.sort_by { |_, count| count }.reverse.try(:first).try(:first)
   end
 
   def vector_already_exist?(contact, vector_data)
