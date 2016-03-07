@@ -30,5 +30,7 @@ Rails.application.routes.draw do
   end
   resources :documentation, only: [:show]
 
+  root to: 'documentation#show', id: 'api'
+
   get 'status', to: Proc.new { [200, {}, ['']] }
 end
