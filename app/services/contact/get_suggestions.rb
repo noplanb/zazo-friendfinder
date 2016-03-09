@@ -1,20 +1,18 @@
 class Contact::GetSuggestions
-  attr_reader :current_user
+  attr_reader :owner_mkey
 
-  def initialize(current_user)
-    @current_user = current_user
+  def initialize(owner_mkey)
+    @owner_mkey = owner_mkey
   end
 
   def do
-    WriteLog.info self, "suggestions sent at #{Time.now} to '#{current_user.mkey}' owner"
-    contacts.map do |contact|
-      ContactSerializer.new(contact).serializable_hash
-    end
+    WriteLog.info(self, "suggestions was sent to owner_mkey=#{owner_mkey}")
+    contacts.map { |contact| ContactSerializer.new(contact).serializable_hash }
   end
 
   private
 
   def contacts
-    Contact.by_owner current_user.mkey
+    Contact.by_owner(owner_mkey)
   end
 end
