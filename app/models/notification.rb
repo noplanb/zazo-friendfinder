@@ -15,8 +15,8 @@ class Notification < ActiveRecord::Base
   validates :category, inclusion: { in: ALLOWED_CATEGORIES, message: '%{value} is not a allowed category' }
 
   scope :unsubscribed_by_contacts, -> (contacts) { where(status: 'unsubscribed', contact: contacts) }
-  scope :by_owner_mkey, -> (owner_mkey) { Notification.includes(:contact).where(contacts: { owner_mkey: owner_mkey }) }
-  scope :by_state, -> (state) { Notification.where state: state }
+  scope :by_owner_mkey, -> (owner_mkey) { includes(:contact).where(contacts: { owner_mkey: owner_mkey }) }
+  scope :by_state, -> (state) { where(state: state) }
 
   def self.match_by_contact?(contact)
     !where(contact: contact).empty?

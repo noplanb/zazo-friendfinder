@@ -4,14 +4,14 @@ module Notification::SendingExtension
   end
 
   def data
-    @data ||= send "#{kind}_data"
+    @data ||= send("#{kind}_data")
   end
 
   def email_data
-    Notification::EmailData.new self
+    Notification::EmailData.new(self)
   end
 
   def mobile_data
-    Notification::MobileData.new self
+    Notification::MobileData.new(self)
   end
 end

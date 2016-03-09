@@ -16,7 +16,7 @@ class Contact < ActiveRecord::Base
   validate :additions_must_be_allowed
 
   scope :by_owner, -> (owner_mkey) { where(owner_mkey: owner_mkey).order('total_score DESC') }
-  scope :expired,  -> { where 'expires_at < ?', Time.now }
+  scope :expired,  -> { where('expires_at < ?', Time.now) }
 
   before_save { self.expires_at = 5.days.from_now }
 

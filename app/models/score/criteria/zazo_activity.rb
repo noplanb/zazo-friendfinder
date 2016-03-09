@@ -10,7 +10,7 @@ class Score::Criteria::ZazoActivity < Score::Criteria::Base
   private
 
   def get_activity
-    data = DataProviderApi.new(user_mkey: contact.zazo_mkey).query :messages_count
+    data = DataProviderApi.new(user_mkey: contact.zazo_mkey).query(:messages_count)
     data['active_friends'].to_i
   end
 end

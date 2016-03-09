@@ -3,7 +3,7 @@ class Owner
 
   class << self
     def all
-      uniq_mkeys.map { |owner_mkey| new owner_mkey }
+      uniq_mkeys.map { |owner_mkey| new(owner_mkey) }
     end
 
     def count
@@ -36,7 +36,7 @@ class Owner
   end
 
   def not_proposed_contacts
-    contacts.select { |contact| !contact.notified? }
+    contacts.includes(:notifications).where(notifications: { id: nil })
   end
 
   def notifications
