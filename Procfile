@@ -1,4 +1,5 @@
 web: puma
 nginx: service nginx start
 redis: redis-server
-resque: TERM_CHILD=1 QUEUES=* rake resque:work
+resque_add_contacts: TERM_CHILD=1 QUEUES=add_contacts rake resque:work
+resque_update_contacts: TERM_CHILD=1 QUEUES=update_contacts rake resque:work

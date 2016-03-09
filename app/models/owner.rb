@@ -32,7 +32,7 @@ class Owner
   end
 
   def contacts
-    Contact.by_owner mkey
+    Contact.by_owner(mkey)
   end
 
   def not_proposed_contacts
@@ -40,7 +40,7 @@ class Owner
   end
 
   def notifications
-    Notification.by_owner_mkey mkey
+    Notification.by_owner_mkey(mkey)
   end
 
   def unsubscribed?
