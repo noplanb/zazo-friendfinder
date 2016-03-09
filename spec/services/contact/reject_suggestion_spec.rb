@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Contact::RejectSuggestion do
   let(:user) { FactoryGirl.build :user }
-  let(:instance) { described_class.new user, params }
+  let(:instance) { described_class.new(user.mkey, params) }
 
   let(:contact_1) { FactoryGirl.create :contact, owner_mkey: user.mkey }
   let(:contact_2) { FactoryGirl.create :contact, owner_mkey: user.mkey }

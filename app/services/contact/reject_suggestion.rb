@@ -1,36 +1,36 @@
 # controller manager service
 
 class Contact::RejectSuggestion
-  attr_reader :current_user, :raw_params, :validation
+  attr_reader :owner_mkey, :raw_params, :validation
 
-  def initialize(current_user, params)
-    @current_user = current_user
-    @raw_params   = params
-    @validation   = RawParamsValidation.new raw_params
+  def initialize(owner_mkey, raw_params)
+    @owner_mkey = owner_mkey
+    @raw_params = raw_params
+    @validation = RawParamsValidation.new raw_params
   end
 
   def do
     validation.valid? && wrap_transaction do
       raw_params['rejected'].each do |id|
-        contact = Contact.find_by_id id
+        contact = Contact.find_by_id(id)
         unless contact
           add_error(:raw_params_id, "contact with id=#{id} is not exist")
           fail(ActiveRecord::Rollback)
         end
-        reject_contact contact
+        reject_contact(contact)
       end
     end
   end
 
   def errors
-    validation.errors.messages.merge @errors || {}
+    validation.errors.messages.merge(@errors || {})
   end
 
   def log_messages(status)
     if status == :success
-      WriteLog.info(self, "success; current_user: '#{current_user.mkey}'; params: #{raw_params.inspect}")
+      WriteLog.info(self, "success; owner_mkey: '#{owner_mkey}'; params: #{raw_params.inspect}")
     else
-      WriteLog.info(self, "failure; current_user: '#{current_user.mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
+      WriteLog.info(self, "failure; owner_mkey: '#{owner_mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
     end
   end
 
