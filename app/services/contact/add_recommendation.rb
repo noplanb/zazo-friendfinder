@@ -1,3 +1,5 @@
+# controller manager service
+
 class Contact::AddRecommendation
   attr_reader :current_user, :raw_params, :validation
 
@@ -19,9 +21,9 @@ class Contact::AddRecommendation
 
   def log_messages(status)
     if status == :success
-      WriteLog.info self, "recommendation was added successfully at #{Time.now} from '#{current_user.mkey}' owner, with params: #{raw_params.inspect}"
+      WriteLog.info(self, "success; current_user: '#{current_user.mkey}'; params: #{raw_params.inspect}")
     else
-      WriteLog.info self, "errors occurred with adding recommendation at #{Time.now} from '#{current_user.mkey}' owner: #{errors.inspect}, with params: #{raw_params.inspect}"
+      WriteLog.info(self, "failure; current_user: '#{current_user.mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
     end
   end
 

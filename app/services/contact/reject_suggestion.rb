@@ -1,3 +1,5 @@
+# controller manager service
+
 class Contact::RejectSuggestion
   attr_reader :current_user, :raw_params, :validation
 
@@ -12,7 +14,7 @@ class Contact::RejectSuggestion
       raw_params['rejected'].each do |id|
         contact = Contact.find_by_id id
         unless contact
-          add_error :raw_params_id, "contact with id=#{id} is not exist"
+          add_error(:raw_params_id, "contact with id=#{id} is not exist")
           fail(ActiveRecord::Rollback)
         end
         reject_contact contact
@@ -26,9 +28,9 @@ class Contact::RejectSuggestion
 
   def log_messages(status)
     if status == :success
-      WriteLog.info self, "reject was completed successfully at #{Time.now} by '#{current_user.mkey}' owner, with params: #{raw_params.inspect}"
+      WriteLog.info(self, "success; current_user: '#{current_user.mkey}'; params: #{raw_params.inspect}")
     else
-      WriteLog.info self, "errors occurred when rejecting at #{Time.now} by '#{current_user.mkey}' owner: #{errors.inspect}, with params: #{raw_params.inspect}"
+      WriteLog.info(self, "failure; current_user: '#{current_user.mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
     end
   end
 
@@ -61,7 +63,7 @@ class Contact::RejectSuggestion
     attr_reader :raw_params
 
     validates :raw_params, presence: true
-    validate :raw_params_with_correct_structure
+    validate  :raw_params_with_correct_structure
 
     def initialize(raw_params)
       @raw_params = raw_params

@@ -9,9 +9,7 @@ class Contact::AddContacts::MergeContacts
   def do
     return false unless last_coincidence || necessary_to?
     contact_data['vectors'].select do |vector_data|
-      owner.contacts.each do |contact|
-        yield contact, vector_data if block_given? && !vector_already_exist?(contact, vector_data)
-      end
+      yield(last_coincidence, vector_data) if block_given? && !vector_already_exist?(vector_data)
     end
   end
 
@@ -46,7 +44,9 @@ class Contact::AddContacts::MergeContacts
     end.select { |_, count| count > 1 }.sort_by { |_, count| count }.reverse.try(:first).try(:first)
   end
 
-  def vector_already_exist?(contact, vector_data)
-    contact.vectors.select { |vector| vector.name == vector_data['name'] && vector.value == vector_data['value'] }.size > 0
+  def vector_already_exist?(vector_data)
+    last_coincidence.vectors.select do |vector|
+      vector.name == vector_data['name'] && vector.value == vector_data['value']
+    end.size > 0
   end
 end
