@@ -1,12 +1,12 @@
 # controller manager service
 
 class Contact::AddRecommendation
-  attr_reader :current_user, :raw_params, :validation
+  attr_reader :current_user_mkey, :raw_params, :validation
 
-  def initialize(current_user, params)
-    @current_user = current_user
-    @raw_params   = params
-    @validation   = RawParamsValidation.new raw_params
+  def initialize(current_user_mkey, params)
+    @current_user_mkey = current_user_mkey
+    @raw_params = params
+    @validation = RawParamsValidation.new raw_params
   end
 
   def do
@@ -21,9 +21,9 @@ class Contact::AddRecommendation
 
   def log_messages(status)
     if status == :success
-      WriteLog.info(self, "success; current_user: '#{current_user.mkey}'; params: #{raw_params.inspect}")
+      WriteLog.info(self, "success; current_user: '#{current_user_mkey}'; params: #{raw_params.inspect}")
     else
-      WriteLog.info(self, "failure; current_user: '#{current_user.mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
+      WriteLog.info(self, "failure; current_user: '#{current_user_mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
     end
   end
 
@@ -43,14 +43,14 @@ class Contact::AddRecommendation
     contact.additions ||= {}
     contact.additions['recommended_by'].tap do |recommended_by|
       recommended_by ||= []
-      recommended_by << current_user.mkey
+      recommended_by << current_user_mkey
       recommended_by.uniq!
     end
     contact.save
   end
 
   def create_contact_with_recommendation(owner_mkey)
-    contact = Contact.new owner_mkey: owner_mkey, zazo_mkey: raw_params['contact_mkey'], additions: { recommended_by: [current_user.mkey] }
+    contact = Contact.new owner_mkey: owner_mkey, zazo_mkey: raw_params['contact_mkey'], additions: { recommended_by: [current_user_mkey] }
     contact.save.tap { |is_success| is_success ? Resque.enqueue(UpdateMkeyDefinedContactWorker, contact.id) : fail(ActiveRecord::Rollback) }
   end
 

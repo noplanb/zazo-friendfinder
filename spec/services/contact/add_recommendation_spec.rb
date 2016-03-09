@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Contact::AddRecommendation do
   let(:user) { FactoryGirl.build :user }
-  let(:instance) { described_class.new user, params }
+  let(:instance) { described_class.new(user.mkey, params) }
 
   let(:recommended_contact) { FactoryGirl.build :user }
   let(:recommended_to_1) { FactoryGirl.build(:user) }
