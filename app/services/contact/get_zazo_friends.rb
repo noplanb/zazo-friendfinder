@@ -1,12 +1,12 @@
 class Contact::GetZazoFriends
-  attr_reader :contact
+  attr_reader :owner_mkey
 
-  def initialize(contact)
-    @contact = contact
+  def initialize(owner_mkey)
+    @owner_mkey = owner_mkey
   end
 
   def do
-    params = { user: contact.owner.mkey, attrs: :friends }
+    params = { user: owner_mkey, attrs: :friends }
     DataProviderApi.new(params).query(:attributes)['friends'] rescue []
   end
 end

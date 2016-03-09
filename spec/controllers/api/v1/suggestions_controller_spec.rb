@@ -21,6 +21,7 @@ RSpec.describe Api::V1::SuggestionsController, type: :controller do
     let(:params) do
       { rejected: [contact_1.id, contact_2.id] }
     end
+
     before do
       authenticate_with_http_digest(user_mkey, user_auth) { post :reject, params.merge({format: :json}) }
     end
@@ -31,10 +32,10 @@ RSpec.describe Api::V1::SuggestionsController, type: :controller do
   describe 'POST #recommend' do
     let(:contact) { FactoryGirl.create :contact, owner_mkey: FactoryGirl.build(:user).mkey }
     let(:params) do
-      { recommendations: {
-          contact_mkey: FactoryGirl.build(:user).mkey,
-          to_mkeys: [contact.owner.mkey] } }
+      { recommendations: { contact_mkey: FactoryGirl.build(:user).mkey,
+                           to_mkeys: [contact.owner.mkey] } }
     end
+
     before do
       authenticate_with_http_digest(user_mkey, user_auth) { post :recommend, params.merge({format: :json}) }
     end

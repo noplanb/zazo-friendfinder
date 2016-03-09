@@ -1,7 +1,7 @@
 class Api::V1::ContactsController < ApiController
   def create
-    handle_with_manager Contact::AddContacts.new(current_user, params['contacts']) do
-      Resque.enqueue UpdateNewContactsByOwnerWorker, current_user.mkey
+    handle_with_manager Contact::ControllerManager::ValidateRawParams.new(current_user.mkey, params) do
+      Resque.enqueue(Contact::AddContactsWorker, current_user.mkey, params['contacts'])
     end
   end
 end

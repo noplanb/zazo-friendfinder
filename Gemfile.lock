@@ -387,6 +387,7 @@ DEPENDENCIES
   puma
   quiet_assets
   rails
+  rake (< 11)
   remote_syslog_logger
   resque
   resque-web

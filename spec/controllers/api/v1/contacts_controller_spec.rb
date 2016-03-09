@@ -7,19 +7,22 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
 
   describe 'POST #create' do
     let(:contacts) do
-      vectors = [
-        { 'name'  => 'email',
-          'value' => 'elfishawy.sani@gmail.com' },
-        { 'name'  => 'mobile',
-          'value' => '+16502453537',
-          'additions' => { 'sms_messages_sent' => 15 } }
+      [
+        {
+          'display_name' => 'Sani Elfishawy',
+          'vectors'      => [
+            { 'name'  => 'email',
+              'value' => 'elfishawy.sani@gmail.com' },
+            { 'name'  => 'mobile',
+              'value' => '+16502453537',
+              'additions' => { 'sms_messages_sent' => 15 } }
+          ],
+          'additions'    => { 'marked_as_favorite' => true }
+        }
       ]
-      [{ 'display_name' => 'Sani Elfishawy',
-         'vectors'      => vectors,
-         'additions'    => { 'marked_as_favorite' => true } }]
     end
     let(:params) { { 'contacts' => contacts }.merge(format: :json) }
-    let(:subject) { Contact.by_owner user_mkey }
+    let(:subject) { Contact.by_owner(user_mkey) }
 
     before do
       ResqueSpec.reset!
@@ -27,7 +30,6 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
     end
 
     it { expect(response).to be_success }
-    it { expect(subject.size).to eq 1 }
-    it { expect(UpdateNewContactsByOwnerWorker).to have_queued(user_mkey).in(:update_contacts) }
+    it { expect(Contact::AddContactsWorker).to have_queued(user_mkey, params['contacts']).in(:add_contacts) }
   end
 end

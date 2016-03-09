@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Contact::GetSuggestions do
   let(:user) { FactoryGirl.build :user }
-  let(:instance) { described_class.new user }
+  let(:instance) { described_class.new(user.mkey) }
 
   describe '#do' do
     let(:vectors_1) do

@@ -2,20 +2,25 @@ require 'rails_helper'
 
 RSpec.describe Contact::AddContacts do
   let(:current_user) { FactoryGirl.build :user }
-  let(:instance) { described_class.new current_user, params }
+  let(:instance) { described_class.new(current_user.mkey, params) }
 
-  let (:correct_params) do
-    vectors = [
-      { 'name' => 'email',  'value' => 'elfishawy.sani@gmail.com' },
-      { 'name' => 'mobile', 'value' => '+16502453537', 'additions' => { 'sms_messages_sent' => 15 } }
+  let(:correct_params) do
+    [
+      {
+        'display_name' => 'Sani Elfishawy',
+        'vectors' => [
+          { 'name' => 'email',  'value' => 'elfishawy.sani@gmail.com' },
+          { 'name' => 'mobile', 'value' => '+16502453537', 'additions' => { 'sms_messages_sent' => 15 } }
+        ],
+        'additions' => {
+          'marked_as_favorite' => true,
+          'rejected_by_owner' => true }
+      }
     ]
-    [{ 'display_name' => 'Sani Elfishawy',
-       'vectors'      => vectors,
-       'additions'    => { 'marked_as_favorite' => true, 'rejected_by_owner' => true } }]
   end
 
   describe '#do' do
-    let(:contacts) { Contact.by_owner current_user.mkey }
+    let(:contacts) { Contact.by_owner(current_user.mkey) }
 
     context 'with correct params' do
       let!(:subject) { instance.do }
@@ -26,17 +31,21 @@ RSpec.describe Contact::AddContacts do
       it { expect(contacts.count).to eq 1 }
       it { expect(contact.display_name).to eq 'Sani Elfishawy' }
       it { expect(contact.vectors.count).to eq 2 }
-      it { expect(contact.vectors.pluck(:name)).to include *%w(mobile email) }
+      it { expect(contact.vectors.pluck(:name)).to match_array %w(mobile email) }
     end
 
     context 'with correct params that need to be merged' do
       let(:contact) { contacts.first }
       let(:params) do
-        vectors = [
-          { 'name' => 'mobile', 'value' => '+16502453537' },
-          { 'name' => 'gplus',  'value' => 'elfishawy.sani@gmail.com' }
+        [
+          {
+            'display_name' => 'Sani Elfishawy',
+            'vectors' => [
+              { 'name' => 'mobile', 'value' => '+16502453537' },
+              { 'name' => 'gplus',  'value' => 'elfishawy.sani@gmail.com' }
+            ]
+          }
         ]
-        [{ 'display_name' => 'Sani Elfishawy', 'vectors' => vectors }]
       end
       let(:subject) { instance.do }
       let(:all_contact_vectors) do
@@ -44,60 +53,71 @@ RSpec.describe Contact::AddContacts do
       end
 
       before do
-        described_class.new(current_user, correct_params).do
+        described_class.new(current_user.mkey, correct_params).do
         instance.do
       end
 
       it { is_expected.to be true }
       it { expect(contact.reload.vectors.count).to eq 3 }
       it do
-        expect = [
-          %w(mobile +16502453537), %w(email elfishawy.sani@gmail.com), %w(gplus elfishawy.sani@gmail.com)
+        expected = [
+          %w(mobile +16502453537),
+          %w(email elfishawy.sani@gmail.com),
+          %w(gplus elfishawy.sani@gmail.com)
         ]
-        expect(all_contact_vectors).to include *expect
+        expect(all_contact_vectors).to match_array expected
       end
     end
 
     context 'with incorrect vectors params' do
       let!(:subject) { instance.do }
       let(:params) do
-        vectors = [
-          { 'name'  => 'email',
-            'value' => 'asdasd@asdasd',
-            'additions' => { 'sms_messages_sent' => 15 } },
-          { 'name'  => 'mobile',
-            'value' => 'xxxxxxxxx',
-            'additions' => { 'email_messages_sent' => 15 } }
+        [
+          {
+            'display_name' => 'Sani Elfishawy',
+            'vectors'      => [
+              { 'name'  => 'email',
+                'value' => 'asdasd@asdasd',
+                'additions' => { 'sms_messages_sent' => 15 } },
+              { 'name'  => 'mobile',
+                'value' => 'xxxxxxxxx',
+                'additions' => { 'email_messages_sent' => 15 } }
+            ]
+          }
         ]
-        [{ 'display_name' => 'Sani Elfishawy',
-           'vectors'      => vectors }]
       end
 
       it { is_expected.to be false }
       it { expect(contacts.count).to eq 1 }
       it do
-        expect = {
+        expected = {
           vectors: [
             { additions: ['\'sms_messages_sent\' is not allowed condition for \'email\' vector'], value: ['\'asdasd@asdasd\' has incorrect format for \'email\' vector'] },
             { additions: ['\'email_messages_sent\' is not allowed condition for \'mobile\' vector'], value: ['\'xxxxxxxxx\' has incorrect format for \'mobile\' vector'] }
           ]
         }
-        expect(instance.errors).to eq expect
+        expect(instance.errors).to eq expected
       end
     end
 
     context 'with incorrect contact params' do
       let!(:subject) { instance.do }
       let(:params) do
-        [{ 'display_name' => 'Sani Elfishawy',
-           'additions'    => { 'email_messages_sent' => 15 } }]
+        [
+          {
+            'display_name' => 'Sani Elfishawy',
+            'additions'    => { 'email_messages_sent' => 15 }
+          }
+        ]
       end
 
       it { is_expected.to be false }
       it { expect(contacts.count).to eq 0 }
       it do
-        expect = { contacts: [ { additions: ['\'email_messages_sent\' is not allowed addition'] } ] }
-        expect(instance.errors).to eq expect
+        expected = {
+          contacts: [ { additions: ['\'email_messages_sent\' is not allowed addition'] } ]
+        }
+        expect(instance.errors).to eq expected
       end
     end
   end

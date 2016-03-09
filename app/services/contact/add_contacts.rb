@@ -1,23 +1,17 @@
 class Contact::AddContacts
-  attr_reader :current_user, :raw_params, :errors
+  attr_reader :owner_mkey, :raw_params, :errors
 
-  def initialize(current_user, params)
-    @current_user = current_user
-    @raw_params   = params || []
+  def initialize(owner_mkey, raw_params)
+    @owner_mkey = owner_mkey
+    @raw_params = raw_params
     @errors = {}
   end
 
   def do
-    DropBeforeUpdate.new(current_user.mkey).do
-    raw_params.each { |contact_data| add_or_merge_contact contact_data }
-    errors.empty?
-  end
-
-  def log_messages(status)
-    if status == :success
-      WriteLog.info self, "contacts was added successfully at #{Time.now} for '#{current_user.mkey}' owner"
-    else
-      WriteLog.info self, "contacts was added at #{Time.now} for '#{current_user.mkey}' owner with errors: #{errors.inspect}"
+    Contact::DropContacts.new(owner_mkey).do
+    raw_params.each { |contact_data| add_or_merge_contact(contact_data) }
+    errors.empty?.tap do |status|
+      WriteLog.info(self, "contacts added with errors for owner=#{owner_mkey}; errors: #{errors.inspect}") unless status
     end
   end
 
@@ -28,22 +22,22 @@ class Contact::AddContacts
   #
 
   def add_or_merge_contact(contact_data)
-    merge_contacts = MergeContacts.new current_user.mkey, contact_data
+    merge_contacts = Contact::MergeContacts.new(owner_mkey, contact_data)
     if merge_contacts.necessary_to?
-      merge_contacts.do { |contact, vector_data| add_vector_to_contact contact, vector_data }
+      merge_contacts.do { |contact, vector_data| add_vector_to_contact(contact, vector_data) }
     else
-      instance = Contact.create new_contact_attrs(contact_data)
+      instance = Contact.create(new_contact_attrs(contact_data))
       add_errors(:contacts, instance.errors.messages) unless instance.valid?
-      add_vectors_to_contact instance, contact_data['vectors']
+      add_vectors_to_contact(instance, contact_data['vectors'])
     end
   end
 
   def add_vectors_to_contact(contact, vectors_data)
-    vectors_data && vectors_data.each { |vector_data| add_vector_to_contact contact, vector_data }
+    vectors_data && vectors_data.each { |vector_data| add_vector_to_contact(contact, vector_data) }
   end
 
   def add_vector_to_contact(contact, vector_data)
-    instance = Vector.create new_vector_params(vector_data, contact)
+    instance = Vector.create(new_vector_params(vector_data, contact))
     add_errors(:vectors, instance.errors.messages) unless instance.valid?
   end
 
@@ -52,7 +46,7 @@ class Contact::AddContacts
   #
 
   def new_contact_attrs(contact_data)
-    { owner_mkey: current_user.mkey,
+    { owner_mkey: owner_mkey,
       display_name: contact_data['display_name'],
       additions: contact_data['additions'] }
   end
