@@ -13,11 +13,6 @@ module Authentication
   protected
 
   def authenticate
-    WriteLog.info self, "trying authenticate with digest, params: #{params}"
-    authenticate_with_digest
-  end
-
-  def authenticate_with_digest
     authenticate_or_request_with_http_digest(REALM) do |mkey|
       WriteLog.info self, "Authenticating user: #{mkey}"
       self.current_user = User.find(mkey)
