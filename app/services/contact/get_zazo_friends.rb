@@ -2,6 +2,7 @@ class Contact::GetZazoFriends
   attr_reader :contact
 
   def initialize(contact)
+    # todo: refactor this to get owner mkey not contact
     @contact = contact
   end
 

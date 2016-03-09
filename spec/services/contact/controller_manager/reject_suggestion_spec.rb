@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Contact::RejectSuggestion do
+RSpec.describe Contact::ControllerManager::RejectSuggestion do
   let(:user) { FactoryGirl.build :user }
   let(:instance) { described_class.new(user.mkey, params) }
 

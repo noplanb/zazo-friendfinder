@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Contact::AddContacts::MergeContacts do
+RSpec.describe Contact::MergeContacts do
   let(:owner_mkey) { FactoryGirl.build(:user).mkey }
   let(:instance) { described_class.new owner_mkey, contact_data }
   let(:contact_data) do

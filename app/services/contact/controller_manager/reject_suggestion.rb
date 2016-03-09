@@ -1,6 +1,4 @@
-# controller manager service
-
-class Contact::RejectSuggestion
+class Contact::ControllerManager::RejectSuggestion
   attr_reader :current_user_mkey, :raw_params, :validation
 
   def initialize(current_user_mkey, raw_params)

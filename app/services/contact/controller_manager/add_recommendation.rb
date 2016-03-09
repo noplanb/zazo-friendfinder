@@ -1,17 +1,15 @@
-# controller manager service
-
-class Contact::AddRecommendation
+class Contact::ControllerManager::AddRecommendation
   attr_reader :current_user_mkey, :raw_params, :validation
 
   def initialize(current_user_mkey, params)
     @current_user_mkey = current_user_mkey
     @raw_params = params
-    @validation = RawParamsValidation.new raw_params
+    @validation = RawParamsValidation.new(raw_params)
   end
 
   def do
     validation.valid? && wrap_transaction do
-      raw_params['to_mkeys'].each { |mkey| add_recommendation_to_owner mkey }
+      raw_params['to_mkeys'].each { |mkey| add_recommendation_to_owner(mkey) }
     end
   end
 

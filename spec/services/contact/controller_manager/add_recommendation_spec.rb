@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Contact::AddRecommendation do
+RSpec.describe Contact::ControllerManager::AddRecommendation do
   let(:user) { FactoryGirl.build :user }
   let(:instance) { described_class.new(user.mkey, params) }
 

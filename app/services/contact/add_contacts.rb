@@ -8,7 +8,7 @@ class Contact::AddContacts
   end
 
   def do
-    DropBeforeUpdate.new(current_user_mkey).do
+    Contact::DropContacts.new(current_user_mkey).do
     raw_params.each { |contact_data| add_or_merge_contact(contact_data) }
     errors.empty? # todo: log errors
   end
@@ -20,7 +20,7 @@ class Contact::AddContacts
   #
 
   def add_or_merge_contact(contact_data)
-    merge_contacts = MergeContacts.new(current_user_mkey, contact_data)
+    merge_contacts = Contact::MergeContacts.new(current_user_mkey, contact_data)
     if merge_contacts.necessary_to?
       merge_contacts.do { |contact, vector_data| add_vector_to_contact(contact, vector_data) }
     else

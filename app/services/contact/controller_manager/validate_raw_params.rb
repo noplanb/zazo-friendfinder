@@ -1,6 +1,4 @@
-# controller manager service
-
-class Contact::ValidateRawParams
+class Contact::ControllerManager::ValidateRawParams
   attr_reader :current_user_mkey, :raw_params, :errors
 
   def initialize(current_user_mkey, raw_params)
