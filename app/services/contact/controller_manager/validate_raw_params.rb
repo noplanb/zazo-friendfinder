@@ -1,8 +1,10 @@
-class Contact::ControllerManager::ValidateRawParams
-  attr_reader :current_user_mkey, :raw_params, :errors
+# TODO: write some specs
 
-  def initialize(current_user_mkey, raw_params)
-    @current_user_mkey = current_user_mkey
+class Contact::ControllerManager::ValidateRawParams
+  attr_reader :owner_mkey, :raw_params, :errors
+
+  def initialize(owner_mkey, raw_params)
+    @owner_mkey = owner_mkey
     @raw_params = raw_params
     @errors = {}
   end
@@ -17,9 +19,9 @@ class Contact::ControllerManager::ValidateRawParams
 
   def log_messages(status)
     if status == :success
-      WriteLog.info(self, "success; current_user: '#{current_user_mkey}'")
+      WriteLog.info(self, "success; owner_mkey: '#{owner_mkey}'")
     else
-      WriteLog.info(self, "failure; current_user: '#{current_user_mkey}'; errors: #{errors.inspect}")
+      WriteLog.info(self, "failure; owner_mkey: '#{owner_mkey}'; errors: #{errors.inspect}")
     end
   end
 

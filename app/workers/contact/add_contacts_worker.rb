@@ -3,8 +3,8 @@
 class Contact::AddContactsWorker
   @queue = :add_contacts
 
-  def self.perform(current_user_mkey, contacts_data)
-    Contact::AddContacts.new(current_user_mkey, contacts_data).do
-    Resque.enqueue(UpdateNewContactsByOwnerWorker, current_user_mkey)
+  def self.perform(owner_mkey, contacts_data)
+    Contact::AddContacts.new(owner_mkey, contacts_data).do
+    Resque.enqueue(UpdateNewContactsByOwnerWorker, owner_mkey)
   end
 end

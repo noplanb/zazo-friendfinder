@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Contact::GetZazoFriends do
   let(:owner_mkey) { 'GBAHb0482YxlJ0kYwbIS' }
-  let(:contact) { FactoryGirl.create :contact, owner_mkey: owner_mkey }
-  let(:instance) { described_class.new contact }
+  let(:instance) { described_class.new(owner_mkey) }
 
   describe '#do' do
     subject { instance.do }
