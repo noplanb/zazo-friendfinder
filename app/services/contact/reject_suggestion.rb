@@ -1,10 +1,10 @@
 # controller manager service
 
 class Contact::RejectSuggestion
-  attr_reader :owner_mkey, :raw_params, :validation
+  attr_reader :current_user_mkey, :raw_params, :validation
 
-  def initialize(owner_mkey, raw_params)
-    @owner_mkey = owner_mkey
+  def initialize(current_user_mkey, raw_params)
+    @current_user_mkey = current_user_mkey
     @raw_params = raw_params
     @validation = RawParamsValidation.new raw_params
   end
@@ -28,9 +28,9 @@ class Contact::RejectSuggestion
 
   def log_messages(status)
     if status == :success
-      WriteLog.info(self, "success; owner_mkey: '#{owner_mkey}'; params: #{raw_params.inspect}")
+      WriteLog.info(self, "success; current_user: '#{current_user_mkey}'; params: #{raw_params.inspect}")
     else
-      WriteLog.info(self, "failure; owner_mkey: '#{owner_mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
+      WriteLog.info(self, "failure; current_user: '#{current_user_mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
     end
   end
 
