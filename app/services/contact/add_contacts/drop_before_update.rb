@@ -6,6 +6,9 @@ class Contact::AddContacts::DropBeforeUpdate
   end
 
   def do
-    owner.contacts.select { |c| !(c.additions_value('recommended_by') || c.additions_value('rejected_by_owner')) }.each &:destroy
+    # todo: speed up this
+    owner.contacts.select do |c|
+      !(c.additions_value('recommended_by') || c.additions_value('rejected_by_owner'))
+    end.each(&:destroy)
   end
 end

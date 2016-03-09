@@ -1,8 +1,8 @@
 class Contact::AddContacts::MergeContacts
   attr_reader :owner, :contact_data, :last_coincidence
 
-  def initialize(owner, contact_data)
-    @owner = Owner.new(owner)
+  def initialize(owner_mkey, contact_data)
+    @owner = Owner.new(owner_mkey)
     @contact_data = contact_data
   end
 

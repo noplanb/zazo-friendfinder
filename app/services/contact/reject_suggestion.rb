@@ -6,7 +6,7 @@ class Contact::RejectSuggestion
   def initialize(current_user_mkey, raw_params)
     @current_user_mkey = current_user_mkey
     @raw_params = raw_params
-    @validation = RawParamsValidation.new raw_params
+    @validation = RawParamsValidation.new(raw_params)
   end
 
   def do
@@ -70,8 +70,8 @@ class Contact::RejectSuggestion
     end
 
     def raw_params_with_correct_structure
-      if raw_params.kind_of? Hash
-        errors.add(:raw_params, 'raw_params[\'rejected\'] must be type of Array') unless raw_params['rejected'].kind_of? Array
+      if raw_params.kind_of?(Hash)
+        errors.add(:raw_params, 'raw_params[\'rejected\'] must be type of Array') unless raw_params['rejected'].kind_of?(Array)
       else
         errors.add(:raw_params, 'raw_params must be type of Hash')
       end
