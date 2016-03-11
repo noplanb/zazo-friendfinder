@@ -8,8 +8,8 @@ class Contact < ActiveRecord::Base
     'users_with_contact', 'friends_with_contact', 'friends_who_are_friends_with_contact' # attrs for caching criteria data
   ]
 
-  has_many :vectors
-  has_many :scores
+  has_many :vectors, dependent: :destroy
+  has_many :scores, dependent: :destroy
   has_many :notifications
 
   validates :owner_mkey, presence: true
