@@ -16,8 +16,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :owners, only: [:index, :show]
+    resources :owners, only: [:index, :show] do
+      post :recalculate, on: :member
+    end
     resources :contacts, only: [:index, :show] do
+      # TODO: rename to recalculate
       post :recalculation, on: :member
     end
     resources :notifications, only: [:index, :show]

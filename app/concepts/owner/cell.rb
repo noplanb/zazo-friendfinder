@@ -26,7 +26,11 @@ class Owner::Cell < Cell::Concept
 
     def switch_contacts_link(css_class)
       params = show_not_proposed? ? {} : { show: 'not_proposed' }
-      link_to contacts_title(true), admin_owner_path(owner.mkey, params), class: css_class
+      link_to(contacts_title(true), admin_owner_path(owner.mkey, params), class: css_class)
+    end
+
+    def recalculate_contacts_link(css_class)
+      link_to('Recalculate contacts', recalculate_admin_owner_path(owner.mkey), class: css_class, method: :post, data: { confirm: 'Are you sure?' })
     end
   end
 
@@ -75,15 +79,15 @@ class Owner::Cell < Cell::Concept
   end
 
   def admin_link
-    link_to 'admin', "#{Figaro.env.admin_base_url}/users?user_id_or_mkey=#{mkey}"
+    link_to('admin', "#{Figaro.env.admin_base_url}/users?user_id_or_mkey=#{mkey}")
   end
 
   def renotification_link
-    link_to 'renotification', "#{Figaro.env.renotification_base_url}/users/#{mkey}"
+    link_to('renotification', "#{Figaro.env.renotification_base_url}/users/#{mkey}")
   end
 
   def link_to_owner
-    link_to mkey, admin_owner_path(mkey)
+    link_to(mkey, admin_owner_path(mkey))
   end
 end
 
