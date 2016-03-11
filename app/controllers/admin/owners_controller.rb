@@ -10,6 +10,7 @@ class Admin::OwnersController < AdminController
 
   def recalculate
     Resque.enqueue(ResqueWorker::ScoreRecalculation, @owner.mkey) if @owner.contacts.count > 0
+    redirect_to(admin_owners_path, notice: "Recalculation for owner (#{@owner.mkey}) was started")
   end
 
   private
