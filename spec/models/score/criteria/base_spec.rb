@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criteria::Base do
-  let(:instance) { described_class.new FactoryGirl.create(:contact) }
+  let(:instance) { described_class.new(FactoryGirl.create(:contact)) }
 
   describe '#save' do
     context 'with invalid name' do

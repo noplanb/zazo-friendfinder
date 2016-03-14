@@ -10,11 +10,9 @@ class Score::Criteria::Base
   end
 
   def save
-    instance = Score.new({
-      name: name,
-      contact: contact,
-      value: calculate_with_ratio
-    })
+    instance = Score.new(name: name,
+                         contact: contact,
+                         value: calculate_with_ratio)
     instance.save && update_contact
     instance
   end
