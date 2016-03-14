@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=friends&user=GBAHb0482YxlJ0kYwbIS
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=active_friends&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -25,31 +25,31 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1Nzk1NzIzMTpiN2M1MzZlMGU0NGJmNjQ3YWQ4MDkzZmQxYWM2NWQ2OA==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1Nzk3MjM3MTo5ODgwOTI1ZjU4NWI1NmM5ZjQ2OWUyOTQ4ODdhYTgzYQ==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 961a28c8-bc80-4c1c-b15d-bd92239d0380
+      - f3f99a10-34d7-4273-808f-e14a50c502ed
       X-Runtime:
-      - '0.189267'
+      - '0.192971'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       Date:
-      - Mon, 14 Mar 2016 12:07:11 GMT
+      - Mon, 14 Mar 2016 16:19:31 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Mon, 14 Mar 2016 12:07:11 GMT
+  recorded_at: Mon, 14 Mar 2016 16:19:31 GMT
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=friends&user=GBAHb0482YxlJ0kYwbIS
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=active_friends&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -58,9 +58,9 @@ http_interactions:
       - Faraday v0.9.1
       Authorization:
       - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
-        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=friends&user=GBAHb0482YxlJ0kYwbIS",
-        nonce="MTQ1Nzk1NzIzMTpiN2M1MzZlMGU0NGJmNjQ3YWQ4MDkzZmQxYWM2NWQ2OA==", nc=00000000,
-        cnonce="6cab3819c8966c546b5dcf4d2271ac39", response="16ff4ab372775c06f440d589198f8205",
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=active_friends&user=GBAHb0482YxlJ0kYwbIS",
+        nonce="MTQ1Nzk3MjM3MTo5ODgwOTI1ZjU4NWI1NmM5ZjQ2OWUyOTQ4ODdhYTgzYQ==", nc=00000000,
+        cnonce="526005d46af96e5ce93bf3d4f494aab0", response="c19677527ade8c5e47de6b5a1333525b",
         opaque="822778b6350cbc116426dfdce7488072"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -82,22 +82,22 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - 25f58640-fa03-4be9-b67e-ff92cc1f3810
+      - f03f8afd-c644-4806-87d9-6f75f2ea21a7
       X-Runtime:
-      - '0.947401'
+      - '0.971468'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       X-Miniprofiler-Ids:
-      - '["3ckz20u3y10e2xb6fyav","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["6rpp71ywlglmulhlnb7r","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Mon, 14 Mar 2016 12:07:12 GMT
+      - Mon, 14 Mar 2016 16:19:32 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
-      string: '{"friends":["0DAQEVtmNKQiW6aoQrvo","e0kvxfgua1EQJvUOzVC1","yLK6i5VpMW9ZZy5BnXZZ","7qdanSEmctZ2jPnYA0a1","gpIES8adSGtrB5O5933c","LVXE6gyoxb6eHNvPd96f"]}'
+      string: '{"active_friends":["0DAQEVtmNKQiW6aoQrvo","e0kvxfgua1EQJvUOzVC1","yLK6i5VpMW9ZZy5BnXZZ","7qdanSEmctZ2jPnYA0a1","gpIES8adSGtrB5O5933c","LVXE6gyoxb6eHNvPd96f"]}'
     http_version: 
-  recorded_at: Mon, 14 Mar 2016 12:07:12 GMT
+  recorded_at: Mon, 14 Mar 2016 16:19:32 GMT
 recorded_with: VCR 2.9.3
