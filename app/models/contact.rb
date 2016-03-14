@@ -32,7 +32,7 @@ class Contact < ActiveRecord::Base
 
   def additions_must_be_allowed
     additions && additions.keys.each do |key|
-      errors.add(:additions, "'#{key}' is not allowed addition") unless ALLOWED_ADDITIONS.include? key
+      errors.add(:additions, "'#{key}' is not allowed addition") unless ALLOWED_ADDITIONS.include?(key)
     end
   end
 end

@@ -1,5 +1,7 @@
 class Owner::Cell < Cell::Concept
-  ATTRIBUTES = [:mkey, :unsubscribed?, :contacts, :not_proposed_contacts, :other_services]
+  include ServicesLinksHelper
+
+  ATTRIBUTES = [:mkey, :unsubscribed?, :contacts, :not_proposed_contacts, :owner_links]
 
   class Contacts < Cell::Concept
     def show
@@ -74,20 +76,12 @@ class Owner::Cell < Cell::Concept
     model.notifications.count
   end
 
-  def other_services
-    admin_link + ' | ' + renotification_link
+  def owner_link
+    friendfinder_link(mkey)
   end
 
-  def admin_link
-    link_to('admin', "#{Figaro.env.admin_base_url}/users?user_id_or_mkey=#{mkey}")
-  end
-
-  def renotification_link
-    link_to('renotification', "#{Figaro.env.renotification_base_url}/users/#{mkey}")
-  end
-
-  def link_to_owner
-    link_to(mkey, admin_owner_path(mkey))
+  def owner_links
+    services_links(mkey)
   end
 end
 

@@ -1,22 +1,26 @@
 class Admin::ContactsController < AdminController
-  before_action :set_contact, only: [:show, :recalculation]
+  before_action :set_contact, only: [:show, :update_info, :recalculate]
 
   def index
-    @contacts = Contact.all.page params[:page]
+    @contacts = Contact.all.page(params[:page])
   end
 
   def show
   end
 
-  def recalculation
-    @contact.scores.each &:destroy
+  def update_info
+    Contact::SetZazoIdAndMkeyByContact.new(@contact).do
+    redirect_to(admin_contact_path, notice: 'Contact info (zazo id/mkey) was updated')
+  end
+
+  def recalculate
     Score::CalculationByContact.new(@contact).do
-    redirect_to admin_contact_path
+    redirect_to(admin_contact_path, notice: 'Score was recalculated')
   end
 
   private
 
   def set_contact
-    @contact = Contact.find params[:id]
+    @contact = Contact.find(params[:id])
   end
 end

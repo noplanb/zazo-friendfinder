@@ -2,7 +2,7 @@ module Score::Criteria::Shared::ContactOf
   def split_by_names(results)
     results.each_with_object(Set.new) do |row, memo|
       mkeys_by_name = row['mkeys'][1...-1].split(',')
-      memo.merge yield(mkeys_by_name)
+      memo.merge(yield(mkeys_by_name))
     end
   end
 
@@ -26,8 +26,7 @@ module Score::Criteria::Shared::ContactOf
   end
 
   def update_contact_additions(contact, key, data)
-    contact.additions ||= {}
-    contact.additions[key] = data
-    contact.save
+    additions = contact.additions ||= {}
+    contact.update_attributes(additions: additions.merge(key => data))
   end
 end
