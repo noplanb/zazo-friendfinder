@@ -1,5 +1,7 @@
 class Contact::Cell < Cell::Concept
-  ATTRIBUTES = [:owner_mkey, :display_name, :zazo_id,:zazo_mkey, :total_score,
+  include ServicesLinksHelper
+
+  ATTRIBUTES = [:owner_mkey, :display_name, :zazo_id, :zazo_mkey, :total_score,
                 :expires_at, :additions, :notified?, :created_at, :updated_at,
                 :contact_links]
 
@@ -37,22 +39,22 @@ class Contact::Cell < Cell::Concept
   end
 
   def owner_mkey
-    disable_owner_link? ? model.owner_mkey : link_to_owner
+    disable_owner_link? ? model.owner_mkey : friendfinder_link(model.owner_mkey)
   end
 
-  def link_to_owner
-    link_to(model.owner_mkey, admin_owner_path(model.owner_mkey))
-  end
-
-  def disable_owner_link?
-    !!options[:disable_owner_link]
+  def zazo_mkey
+    friendfinder_link(model.zazo_mkey)
   end
 
   def contact_links
-    return '' unless model.zazo_mkey
-    admin          = link_to('admin', "#{Figaro.env.admin_base_url}/users?user_id_or_mkey=#{model.zazo_mkey}")
-    friendfinder   = link_to('friendfinder', admin_owner_path(model.zazo_mkey))
-    renotification = link_to('renotification', "#{Figaro.env.renotification_base_url}/users/#{model.zazo_mkey}")
-    "#{admin} | #{friendfinder} | #{renotification}"
+    services_links(model.zazo_mkey)
+  end
+
+  #
+  # options
+  #
+
+  def disable_owner_link?
+    !!options[:disable_owner_link]
   end
 end

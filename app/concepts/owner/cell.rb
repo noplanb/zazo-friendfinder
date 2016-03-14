@@ -1,4 +1,6 @@
 class Owner::Cell < Cell::Concept
+  include ServicesLinksHelper
+
   ATTRIBUTES = [:mkey, :unsubscribed?, :contacts, :not_proposed_contacts, :owner_links]
 
   class Contacts < Cell::Concept
@@ -75,19 +77,7 @@ class Owner::Cell < Cell::Concept
   end
 
   def owner_links
-    "#{admin_link} | #{renotification_link}"
-  end
-
-  def admin_link
-    link_to('admin', "#{Figaro.env.admin_base_url}/users?user_id_or_mkey=#{mkey}")
-  end
-
-  def renotification_link
-    link_to('renotification', "#{Figaro.env.renotification_base_url}/users/#{mkey}")
-  end
-
-  def link_to_owner
-    link_to(mkey, admin_owner_path(mkey))
+    services_links(mkey)
   end
 end
 
