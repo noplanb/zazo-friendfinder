@@ -1,7 +1,6 @@
 module ServicesLinksHelper
   def services_links(mkey)
-    return '' unless mkey
-    "#{admin_link(mkey)} | #{renotification_link(mkey)}"
+    mkey && "#{admin_link(mkey)} | #{renotification_link(mkey)}"
   end
 
   def admin_link(mkey)

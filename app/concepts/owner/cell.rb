@@ -76,6 +76,10 @@ class Owner::Cell < Cell::Concept
     model.notifications.count
   end
 
+  def owner_link
+    friendfinder_link(mkey)
+  end
+
   def owner_links
     services_links(mkey)
   end
