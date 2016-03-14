@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criteria::ZazoActivity do
-  let(:connection) { FactoryGirl.create :contact, zazo_mkey: mkey }
-  let(:instance) { described_class.new connection }
+  let(:connection) { FactoryGirl.create(:contact, zazo_mkey: mkey) }
+  let(:instance) { described_class.new(connection) }
 
   describe '#calculate_with_ratio' do
     subject do
@@ -13,14 +13,14 @@ RSpec.describe Score::Criteria::ZazoActivity do
       let(:vcr_cassette) { 'score/criteria/zazo_activity_by_7qdanSEmctZ2jPnYA0a1' }
       let(:mkey) { '7qdanSEmctZ2jPnYA0a1' }
 
-      it { is_expected.to eq 396 }
+      it { is_expected.to eq 568 }
     end
 
     context 'with correct mkey by not very active user' do
       let(:vcr_cassette) { 'score/criteria/zazo_activity_by_GBAHb0482YxlJ0kYwbIS' }
       let(:mkey) { 'GBAHb0482YxlJ0kYwbIS' }
 
-      it { is_expected.to eq 28 }
+      it { is_expected.to eq 24 }
     end
 
     context 'with incorrect mkey' do
@@ -32,7 +32,7 @@ RSpec.describe Score::Criteria::ZazoActivity do
 
     context 'when user in not registered on zazo' do
       let(:vcr_cassette) { '' }
-      let(:connection) { FactoryGirl.create :contact }
+      let(:connection) { FactoryGirl.create(:contact) }
 
       it { is_expected.to eq 0 }
     end
