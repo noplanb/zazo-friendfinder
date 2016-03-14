@@ -7,8 +7,8 @@ RSpec.describe Score::Criteria::FriendOfFriends do
   let(:friend) { '7qdanSEmctZ2jPnYA0a1' }
   let(:mutual) { '0DAQEVtmNKQiW6aoQrvo' }
 
-  let(:contact) { FactoryGirl.create :contact, owner_mkey: owner_mkey, zazo_mkey: friend }
-  let(:instance) { described_class.new contact }
+  let(:contact) { FactoryGirl.create(:contact, owner_mkey: owner_mkey, zazo_mkey: friend) }
+  let(:instance) { described_class.new(contact) }
 
   describe '#calculate_with_ratio' do
     context 'with defined zazo_mkey' do
@@ -18,7 +18,7 @@ RSpec.describe Score::Criteria::FriendOfFriends do
     end
 
     context 'without defined zazo_mkey' do
-      let(:contact) { FactoryGirl.create :contact }
+      let(:contact) { FactoryGirl.create(:contact) }
       subject { instance.calculate_with_ratio }
 
       it { is_expected.to eq 0 }
@@ -28,7 +28,7 @@ RSpec.describe Score::Criteria::FriendOfFriends do
       use_vcr_cassette 'score/criteria/friend_of_friends_by_incorrect_mkeys', api_base_urls
 
       let(:incorrect) { 'xxxxxxxxxxxx' }
-      let(:contact) { FactoryGirl.create :contact, owner_mkey: incorrect, zazo_mkey: incorrect }
+      let(:contact) { FactoryGirl.create(:contact, owner_mkey: incorrect, zazo_mkey: incorrect) }
       subject { instance.calculate_with_ratio }
 
       it { is_expected.to eq 0 }
@@ -43,6 +43,6 @@ RSpec.describe Score::Criteria::FriendOfFriends do
     it { expect(subject.name).to eq 'friend_of_friends' }
     it { expect(subject.persisted?).to be true }
 
-    it { expect(contact.additions).to eq({ 'friends_who_are_friends_with_contact' => [mutual] }) }
+    it { expect(contact.additions).to eq 'friends_who_are_friends_with_contact' => [mutual] }
   end
 end
