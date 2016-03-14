@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Score::Criteria::NumEmailSent do
+RSpec.describe Score::Criteria::NumEmailsSent do
   let(:contact) { FactoryGirl.create(:contact, vectors: vectors) }
   let(:instance) { described_class.new(contact) }
 
@@ -50,7 +50,7 @@ RSpec.describe Score::Criteria::NumEmailSent do
     subject { instance.save }
 
     it { is_expected.to be_valid }
-    it { expect(subject.name).to eq 'num_email_sent' }
+    it { expect(subject.name).to eq 'num_emails_sent' }
     it { expect(subject.persisted?).to be true }
   end
 end

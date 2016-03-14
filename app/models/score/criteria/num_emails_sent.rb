@@ -1,4 +1,4 @@
-class Score::Criteria::NumEmailSent < Score::Criteria::Base
+class Score::Criteria::NumEmailsSent < Score::Criteria::Base
   def self.ratio
     16
   end
