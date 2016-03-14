@@ -40,7 +40,7 @@ class Contact::Cell < Cell::Concept
   end
 
   def link_to_owner
-    link_to model.owner_mkey, admin_owner_path(model.owner_mkey)
+    link_to(model.owner_mkey, admin_owner_path(model.owner_mkey))
   end
 
   def disable_owner_link?

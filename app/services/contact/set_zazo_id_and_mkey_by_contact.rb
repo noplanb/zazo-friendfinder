@@ -21,12 +21,12 @@ class Contact::SetZazoIdAndMkeyByContact
 
   def user_data
     (contact.vectors.mobile + contact.vectors.email).each do |vector|
-      data = data_by_vector vector
+      data = data_by_vector(vector)
       return data if data['id'] && data['mkey']
     end && nil
   end
 
   def data_by_vector(vector)
-    DataProviderApi.new(vector.name => vector.value).query :find_by_mobile_or_email
+    DataProviderApi.new(vector.name => vector.value).query(:find_by_mobile_or_email)
   end
 end

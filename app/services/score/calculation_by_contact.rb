@@ -6,6 +6,7 @@ class Score::CalculationByContact
   end
 
   def do
+    contact.scores.destroy_all
     contact.total_score = save_scores_and_get_total
     contact.save
   end

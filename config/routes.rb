@@ -20,8 +20,8 @@ Rails.application.routes.draw do
       post :recalculate, on: :member
     end
     resources :contacts, only: [:index, :show] do
-      # TODO: rename to recalculate
-      post :recalculation, on: :member
+      post :recalculate, on: :member
+      post :update_info, on: :member
     end
     resources :notifications, only: [:index, :show]
     root to: 'dashboard#index'
