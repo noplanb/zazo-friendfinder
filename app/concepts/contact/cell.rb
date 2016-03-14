@@ -1,6 +1,7 @@
 class Contact::Cell < Cell::Concept
   ATTRIBUTES = [:owner_mkey, :display_name, :zazo_id,:zazo_mkey, :total_score,
-                :expires_at, :additions, :notified?, :created_at, :updated_at]
+                :expires_at, :additions, :notified?, :created_at, :updated_at,
+                :contact_links]
 
   class Table < Cell::Concept
     def show
@@ -45,5 +46,13 @@ class Contact::Cell < Cell::Concept
 
   def disable_owner_link?
     !!options[:disable_owner_link]
+  end
+
+  def contact_links
+    return '' unless model.zazo_mkey
+    admin          = link_to('admin', "#{Figaro.env.admin_base_url}/users?user_id_or_mkey=#{model.zazo_mkey}")
+    friendfinder   = link_to('friendfinder', admin_owner_path(model.zazo_mkey))
+    renotification = link_to('renotification', "#{Figaro.env.renotification_base_url}/users/#{model.zazo_mkey}")
+    "#{admin} | #{friendfinder} | #{renotification}"
   end
 end

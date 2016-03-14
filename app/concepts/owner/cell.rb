@@ -1,5 +1,5 @@
 class Owner::Cell < Cell::Concept
-  ATTRIBUTES = [:mkey, :unsubscribed?, :contacts, :not_proposed_contacts, :other_services]
+  ATTRIBUTES = [:mkey, :unsubscribed?, :contacts, :not_proposed_contacts, :owner_links]
 
   class Contacts < Cell::Concept
     def show
@@ -74,8 +74,8 @@ class Owner::Cell < Cell::Concept
     model.notifications.count
   end
 
-  def other_services
-    admin_link + ' | ' + renotification_link
+  def owner_links
+    "#{admin_link} | #{renotification_link}"
   end
 
   def admin_link
