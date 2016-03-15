@@ -49,7 +49,7 @@ class Contact::ControllerManager::AddRecommendation
 
   def create_contact_with_recommendation(mkey)
     contact = Contact.new(owner_mkey: mkey, zazo_mkey: raw_params['contact_mkey'], additions: { recommended_by: [owner_mkey] })
-    contact.save.tap { |is_success| is_success ? Resque.enqueue(UpdateMkeyDefinedContactWorker, contact.id) : fail(ActiveRecord::Rollback) }
+    contact.save.tap { |is_success| is_success ? Resque.enqueue(ResqueWorker::UpdateMkeyDefinedContact, contact.id) : fail(ActiveRecord::Rollback) }
   end
 
   #

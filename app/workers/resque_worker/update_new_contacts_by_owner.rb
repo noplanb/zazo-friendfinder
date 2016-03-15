@@ -1,6 +1,4 @@
-# resque worker
-
-class UpdateNewContactsByOwnerWorker
+class ResqueWorker::UpdateNewContactsByOwner
   @queue = :update_contacts
 
   def self.perform(owner_mkey)

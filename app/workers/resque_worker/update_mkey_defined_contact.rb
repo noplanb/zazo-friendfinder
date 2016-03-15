@@ -1,6 +1,4 @@
-# resque worker
-
-class UpdateMkeyDefinedContactWorker
+class ResqueWorker::UpdateMkeyDefinedContact
   @queue = :update_contacts
 
   def self.perform(contact_id)
