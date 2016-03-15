@@ -1,6 +1,4 @@
-# cron worker
-
-class Notification::UserJoinedWorker
+class CronWorker::UserJoinedNotification
   def self.perform
     WriteLog.info(self, 'cron job was executed')
     recently_joined_users.each do |contact_data|
