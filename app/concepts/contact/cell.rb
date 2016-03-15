@@ -24,7 +24,8 @@ class Contact::Cell < Cell::Concept
   end
 
   property :id, :display_name, :zazo_id,
-           :total_score, :expires_at, :vectors
+           :total_score, :marked_as_friend?,
+           :expires_at, :vectors
 
   def show
     render

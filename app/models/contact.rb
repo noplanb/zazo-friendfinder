@@ -1,6 +1,7 @@
 class Contact < ActiveRecord::Base
   include OwnerExtension
   include FilterExtension
+  include AdditionsExtension
 
   ALLOWED_ADDITIONS = [
     'marked_as_favorite', # attrs coming from client
@@ -20,10 +21,6 @@ class Contact < ActiveRecord::Base
   scope :expired,  -> { where('expires_at < ?', Time.now) }
 
   before_save { self.expires_at = 5.days.from_now }
-
-  def additions_value(key, default = nil)
-    (additions.try :[], key) || default
-  end
 
   private
 
