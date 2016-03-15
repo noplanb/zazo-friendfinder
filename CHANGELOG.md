@@ -1,5 +1,7 @@
 # Changelog
 
+### v0.3.1
+
 ### v0.3.0
 - :bulb: Added `NumEmailsSent` score criteria
 - :bulb: Added update info button to `contact#show` page
