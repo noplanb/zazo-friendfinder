@@ -69,7 +69,7 @@ class Owner::Cell < Cell::Concept
   end
 
   def not_proposed_contacts
-    model.not_proposed_contacts.count
+    model.contacts.not_proposed.count
   end
 
   def notifications_count
