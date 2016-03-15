@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Contact::SetZazoIdAndMkeyByOwnerContacts do
+RSpec.describe Contact::SetZazoInfoByOwner do
   use_vcr_cassette 'contact/set_zazo_id_and_mkey_by_mobile', api_base_urls
   use_vcr_cassette 'contact/set_zazo_id_and_mkey_for_nonexistent_user', api_base_urls
 

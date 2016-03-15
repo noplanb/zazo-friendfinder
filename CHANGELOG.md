@@ -1,6 +1,7 @@
 # Changelog
 
 ### v0.3.1
+- :buib: Added caching for `marked_as_friend` contact additions
 - :hammer: Fixed `ZazoActivity` score criteria (calculate all friends, raised ratio)
 
 ### v0.3.0

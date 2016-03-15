@@ -9,7 +9,7 @@ class Admin::ContactsController < AdminController
   end
 
   def update_info
-    Contact::SetZazoIdAndMkeyByContact.new(@contact).do
+    Contact::SetZazoInfoByContact.new(@contact).do
     redirect_to(admin_contact_path, notice: 'Contact info (zazo id/mkey) was updated')
   end
 
