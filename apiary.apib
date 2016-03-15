@@ -11,7 +11,7 @@ The default mehtod is **HTTP Digest** with service's `username` and `password`.
 
 ### Add Contact List [POST]
 
-Validate and save contact list into database.
+Validate and save contacts list (via background job) into database.
 
 + Parameters
     + contacts (array) - array of contacts with specific contact structure:
@@ -74,45 +74,21 @@ Validate and save contact list into database.
                 "contacts": [
                     {
                         "display_name": "Sani El-Fishawy",
-                        "additions": {
-                            "email_messages_sent": 23
-                        }
-                        "vectors": [
-                            {
-                                "name": "email",
-                                "value": "asdasd@asdasd",
-                                "additions": {
-                                    "sms_messages_sent": 15
-                                }
-                            }, {
-                                "name": "mobile",
-                                "value": "xxxxxxxxx",
-                                "additions": {
-                                    "email_messages_sent": 23
-                                }
-                            }
-                        ]
+                        "vectors": []
                     }
                 ]
             }
             
-+ Response 422 (application/json;)
++ Response 422 (application/json)
 
         {
             "status": "failure",
             "errors": {
-                "vectors": [
+                "invalid_contacts": [
                     {
-                        "additions": ["'sms_messages_sent' is not allowed condition for 'email' vector"],
-                        "value": ["'asdasd@asdasd' has incorrect format for 'email' vector"]
-                    },
-                    {
-                        "additions": ["'email_messages_sent' is not allowed condition for 'mobile' vector"],
-                        "value": ["'xxxxxxxxx' has incorrect format for 'mobile' vector"]
+                        "display_name": "Sani El-Fishawy",
+                        "vectors":null
                     }
-                ],
-                "contacts": [
-                    "additions": ["'email_messages_sent' is not allowed addition"]
                 ]
             }
         }
@@ -129,7 +105,7 @@ Validate and save contact list into database.
 
 ### Get Suggestions List [GET /api/v1/suggestions]
 
-Return contacts in order by total score by all criteria.
+Return first 100 non-friend contacts in order by total score by all criteria.
         
 + Request Success (application/json)
 

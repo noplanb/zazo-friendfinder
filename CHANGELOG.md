@@ -2,7 +2,9 @@
 
 ### v0.3.1
 - :buib: Added caching for `marked_as_friend` contact additions
+- :buib: Updated API documentation
 - :hammer: Fixed `ZazoActivity` score criteria (calculate all friends, raised ratio)
+- :hammer: Fixed `Contact::GetSuggestions` service to return only last non-friend contacts
 
 ### v0.3.0
 - :bulb: Added `NumEmailsSent` score criteria
