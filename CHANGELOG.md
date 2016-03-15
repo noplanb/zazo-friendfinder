@@ -1,6 +1,7 @@
 # Changelog
 
 ### v0.3.1
+- :hammer: Fixed `ZazoActivity` score criteria (calculate all friends, raised ratio)
 
 ### v0.3.0
 - :bulb: Added `NumEmailsSent` score criteria
