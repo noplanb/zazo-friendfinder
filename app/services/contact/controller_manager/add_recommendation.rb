@@ -33,7 +33,7 @@ class Contact::ControllerManager::AddRecommendation
   end
 
   def add_recommendation_to_owner(mkey)
-    contact = Contact.by_owner(mkey).where(zazo_mkey: raw_params['contact_mkey']).try(:first)
+    contact = Owner.new(mkey).contacts.where(zazo_mkey: raw_params['contact_mkey']).try(:first)
     contact ? update_contact_with_recommendation(contact) : create_contact_with_recommendation(mkey)
   end
 

@@ -19,7 +19,7 @@ RSpec.describe Contact::ControllerManager::AddRecommendation do
           'to_mkeys'     => [recommended_to.mkey] }
       end
       let!(:contact) { FactoryGirl.create :contact, owner_mkey: recommended_to.mkey, zazo_mkey: recommended_contact.mkey }
-      let(:contacts) { Contact.by_owner(recommended_to.mkey) }
+      let(:contacts) { Owner.new(recommended_to.mkey).contacts }
       let!(:subject) { instance.do }
 
       it { is_expected.to eq true }
@@ -32,8 +32,8 @@ RSpec.describe Contact::ControllerManager::AddRecommendation do
         { 'contact_mkey' => recommended_contact.mkey,
           'to_mkeys'     => [recommended_to_1.mkey, recommended_to_2.mkey] }
       end
-      let(:contact_by_1_last) { Contact.by_owner(recommended_to_1.mkey).last }
-      let(:contact_by_2_last) { Contact.by_owner(recommended_to_2.mkey).last }
+      let(:contact_by_1_last) { Owner.new(recommended_to_1.mkey).contacts.last }
+      let(:contact_by_2_last) { Owner.new(recommended_to_2.mkey).contacts.last }
       let!(:subject) { instance.do }
 
       it { is_expected.to eq true }

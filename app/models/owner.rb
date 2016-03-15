@@ -32,11 +32,7 @@ class Owner
   end
 
   def contacts
-    Contact.by_owner(mkey)
-  end
-
-  def not_proposed_contacts
-    contacts.includes(:notifications).where(notifications: { id: nil })
+    Contact.by_owner(mkey).order_by_score
   end
 
   def notifications

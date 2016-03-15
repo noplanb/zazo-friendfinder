@@ -23,7 +23,7 @@ class Owner::Cell < Cell::Concept
     end
 
     def contacts
-      show_not_proposed? ? owner.not_proposed_contacts : owner.contacts
+      show_not_proposed? ? owner.contacts.not_proposed : owner.contacts
     end
 
     def switch_contacts_link(css_class)

@@ -1,20 +1,20 @@
 class Contact::GetSuggestions
   RETURN_CONTACTS_COUNT = 100
 
-  attr_reader :owner_mkey
+  attr_reader :owner
 
   def initialize(owner_mkey)
-    @owner_mkey = owner_mkey
+    @owner = Owner.new(owner_mkey)
   end
 
   def do
-    WriteLog.info(self, "suggestions was sent to owner=#{owner_mkey}")
+    WriteLog.info(self, "suggestions was sent to owner=#{owner.mkey}")
     contacts.map { |contact| ContactSerializer.new(contact).serializable_hash }
   end
 
   private
 
   def contacts
-    Contact.by_owner(owner_mkey).select { |c| !c.marked_as_friend? }.take(RETURN_CONTACTS_COUNT)
+    owner.contacts.select { |c| !c.marked_as_friend? }.take(RETURN_CONTACTS_COUNT)
   end
 end

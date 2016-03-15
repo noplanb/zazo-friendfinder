@@ -22,7 +22,7 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
       ]
     end
     let(:params) { { 'contacts' => contacts }.merge(format: :json) }
-    let(:subject) { Contact.by_owner(user_mkey) }
+    let(:subject) { Owner.new(user_mkey).contacts }
 
     before do
       ResqueSpec.reset!

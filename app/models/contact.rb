@@ -17,8 +17,13 @@ class Contact < ActiveRecord::Base
   validates :owner_mkey, presence: true
   validate :additions_must_be_allowed
 
-  scope :by_owner, -> (owner_mkey) { where(owner_mkey: owner_mkey).order('total_score DESC') }
-  scope :expired,  -> { where('expires_at < ?', Time.now) }
+  scope :by_owner, -> (owner_mkey) { where(owner_mkey: owner_mkey) }
+  scope :order_by_score, -> { order('total_score DESC') }
+  scope :expired, -> { where('expires_at < ?', Time.now) }
+
+  scope :not_proposed, -> { includes(:notifications).where(notifications: { id: nil }) }
+  scope :not_friends_with_owner, -> { where("additions->>'marked_as_friend' = 'false'") }
+  scope :friends_with_owner, -> { where("additions->>'marked_as_friend' = 'true'") }
 
   before_save { self.expires_at = 5.days.from_now }
 

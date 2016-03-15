@@ -6,7 +6,7 @@ class WebClientDecorator < Draper::Decorator
   end
 
   def others_contacts
-    ContactsDecorator.decorate_collection contact.owner.not_proposed_contacts.first(8)
+    ContactsDecorator.decorate_collection(contact.owner.contacts.not_proposed.first(8))
   end
 
   def notification
@@ -14,7 +14,7 @@ class WebClientDecorator < Draper::Decorator
   end
 
   def contact
-    @contact ||= ContactsDecorator.decorate notification.contact
+    @contact ||= ContactsDecorator.decorate(notification.contact)
   end
 
   def action_link
@@ -28,10 +28,10 @@ class WebClientDecorator < Draper::Decorator
   private
 
   def subscribe_link
-    h.link_to 'subscribe', h.subscribe_web_client_path(notification.nkey)
+    h.link_to('subscribe', h.subscribe_web_client_path(notification.nkey))
   end
 
   def got_it_link
-    h.link_to 'got it', h.web_client_path(notification.nkey)
+    h.link_to('got it', h.web_client_path(notification.nkey))
   end
 end

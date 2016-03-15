@@ -5,6 +5,7 @@
 - :buib: Updated API documentation
 - :hammer: Fixed `ZazoActivity` score criteria (calculate all friends, raised ratio)
 - :hammer: Fixed `Contact::GetSuggestions` service to return only last non-friend contacts
+- :hammer: Refactored code
 
 ### v0.3.0
 - :bulb: Added `NumEmailsSent` score criteria

@@ -20,7 +20,7 @@ RSpec.describe Contact::AddContacts do
   end
 
   describe '#do' do
-    let(:contacts) { Contact.by_owner(current_user.mkey) }
+    let(:contacts) { Owner.new(current_user.mkey).contacts  }
 
     context 'with correct params' do
       let!(:subject) { instance.do }
