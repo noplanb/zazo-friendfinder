@@ -11,7 +11,11 @@ class Contact::UpdateZazoInfo
   end
 
   def do
-    contact.update_attributes(new_attrs) if contact.zazo_mkey && !attributes.empty?
+    if contact.zazo_mkey
+      contact.update_attributes(new_attrs) unless attributes.empty?
+    else
+      contact.update_attributes(additions: new_additions)
+    end
     contact
   end
 
@@ -29,11 +33,12 @@ class Contact::UpdateZazoInfo
   end
 
   def contact_is_friend?
-    attributes['friends'].include?(contact.owner_mkey)
+    !!attributes['friends'] && attributes['friends'].include?(contact.owner_mkey)
   end
 
   def attributes
     return @attributes if @attributes
+    return {} unless contact.zazo_mkey
     api_params = { user: contact.zazo_mkey, attrs: [:id, :first_name, :last_name, :friends] }
     @attributes = DataProviderApi.new(api_params).query(:attributes)
   rescue Faraday::ClientError
