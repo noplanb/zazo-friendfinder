@@ -8,7 +8,7 @@ class Notification::Create
 
   def do
     Notification::ALLOWED_KINDS.map do |kind|
-      @last_notification = Notification.new params(kind)
+      @last_notification = Notification.new(params(kind))
       @last_notification.compiled_content = compiled_content
       save ? @last_notification : nil
     end.compact
@@ -21,11 +21,11 @@ class Notification::Create
   end
 
   def nkey
-    Digest::SHA256.hexdigest category + contact.owner.mkey + contact.id.to_s
+    Digest::SHA256.hexdigest(category + contact.owner.mkey + contact.id.to_s)
   end
 
   def compiled_content
-    template = Template.new @last_notification
+    template = Template.new(@last_notification)
     Template::Render.new(template).content
   end
 

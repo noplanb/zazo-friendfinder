@@ -22,11 +22,11 @@ class Notification::EmailData < Notification::BaseData
     @response = DataProviderApi.new(user: object.contact.owner_mkey, attrs: [:emails]).query(:attributes)
     response['emails'] || []
   rescue Faraday::ClientError => e
-    @response = JSON.parse e.response[:body]
+    @response = JSON.parse(e.response[:body])
     []
   end
 
   def validate_response
-    errors.add :response, response['errors'] if response['errors']
+    errors.add(:response, response['errors']) if response['errors']
   end
 end

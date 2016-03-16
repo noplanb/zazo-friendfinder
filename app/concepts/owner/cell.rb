@@ -31,6 +31,10 @@ class Owner::Cell < Cell::Concept
       link_to(contacts_title(true), admin_owner_path(owner.mkey, params), class: css_class)
     end
 
+    def fake_notification_link(css_class)
+      link_to('Fake notification', fake_notification_admin_owner_path(owner.mkey), class: css_class, method: :post, data: { confirm: 'Are you sure?' })
+    end
+
     def recalculate_contacts_link(css_class)
       link_to('Recalculate contacts', recalculate_admin_owner_path(owner.mkey), class: css_class, method: :post, data: { confirm: 'Are you sure?' })
     end
