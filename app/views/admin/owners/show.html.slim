@@ -12,4 +12,4 @@
 .row
   .col-sm-12
     h2.page-title = "Notifications [#{@owner.notifications.count}]"
-    == concept 'notification/cell/table', @owner.notifications, disable_contact_link: true
+    == concept 'notification/cell/table', @owner.notifications, disable_contact_link: false

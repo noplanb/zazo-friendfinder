@@ -16,7 +16,7 @@ RSpec.describe Notification::EmailData, type: :model do
 
     it do
       is_expected.to eq to: 'vano468@gmail.com',
-                        from: 'support@zazoapp.com',
+                        #from: 'support@zazoapp.com',
                         subject: "#{contact.display_name} joined Zazo!",
                         body: 'Hello from Russia!'
     end
