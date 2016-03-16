@@ -15,6 +15,6 @@ class Contact::GetSuggestions
   private
 
   def contacts
-    owner.contacts.select { |c| !c.marked_as_friend? }.take(RETURN_CONTACTS_COUNT)
+    owner.contacts.not_friends_with_owner.take(RETURN_CONTACTS_COUNT)
   end
 end

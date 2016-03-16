@@ -17,10 +17,10 @@ RSpec.describe Contact::GetSuggestions do
     let(:vectors_3) { [FactoryGirl.create(:vector_mobile)] }
     let(:vectors_4) { [FactoryGirl.create(:vector_mobile)] }
 
-    let!(:contact_1) { FactoryGirl.create(:contact, owner_mkey: user.mkey, vectors: vectors_1, additions: { marked_as_favorite: true }) }
-    let!(:contact_2) { FactoryGirl.create(:contact, owner_mkey: user.mkey, vectors: vectors_2, additions: { marked_as_favorite: true }) }
+    let!(:contact_1) { FactoryGirl.create(:contact, owner_mkey: user.mkey, vectors: vectors_1, additions: { marked_as_friend: false, marked_as_favorite: true }) }
+    let!(:contact_2) { FactoryGirl.create(:contact, owner_mkey: user.mkey, vectors: vectors_2, additions: { marked_as_friend: false, marked_as_favorite: true }) }
     let!(:contact_3) { FactoryGirl.create(:contact, owner_mkey: user.mkey, vectors: vectors_3, additions: { marked_as_friend: true }) }
-    let!(:contact_4) { FactoryGirl.create(:contact, owner_mkey: user.mkey, vectors: vectors_4) }
+    let!(:contact_4) { FactoryGirl.create(:contact, owner_mkey: user.mkey, vectors: vectors_4, additions: { marked_as_friend: false }) }
 
     subject { instance.do }
 

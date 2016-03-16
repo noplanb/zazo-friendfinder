@@ -1,8 +1,8 @@
 class Contact::SetZazoInfoByOwner
   attr_reader :owner
 
-  def initialize(owner)
-    @owner = Owner.new(owner)
+  def initialize(owner_mkey)
+    @owner = Owner.new(owner_mkey)
   end
 
   def do
