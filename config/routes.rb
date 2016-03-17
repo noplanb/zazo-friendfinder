@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :owners, only: [:index, :show] do
       post :recalculate, on: :member
+      post :update_contacts, on: :member
       post :fake_notification, on: :member
     end
     resources :contacts, only: [:index, :show] do
