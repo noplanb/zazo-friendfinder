@@ -1,5 +1,7 @@
 # Changelog
 
+### v0.4.1
+
 ### v0.4.0
 - :buib: Added caching for `marked_as_friend` contact additions
 - :buib: Updated API documentation
