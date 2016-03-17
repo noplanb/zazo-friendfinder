@@ -1,5 +1,6 @@
 class Notification < ActiveRecord::Base
   include SendingExtension
+  include StatusesExtension
 
   ALLOWED_KINDS = %w(email mobile)
   ALLOWED_STATES = %w(sent error canceled)
@@ -17,12 +18,9 @@ class Notification < ActiveRecord::Base
   scope :unsubscribed_by_contacts, -> (contacts) { where(status: 'unsubscribed', contact: contacts) }
   scope :by_owner_mkey, -> (owner_mkey) { includes(:contact).where(contacts: { owner_mkey: owner_mkey }) }
   scope :by_state, -> (state) { where(state: state) }
+  scope :by_nkey, -> (nkey) { where(nkey: nkey) }
 
   def self.match_by_contact?(contact)
     !where(contact: contact).empty?
-  end
-
-  def self.find_notifications(nkey)
-    where(nkey: nkey).to_a
   end
 end

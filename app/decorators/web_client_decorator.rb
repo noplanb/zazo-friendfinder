@@ -1,6 +1,20 @@
 class WebClientDecorator < Draper::Decorator
   delegate_all
 
+  def do(action)
+    object.do(action)
+  rescue WebClient::ContactAlreadyAdded
+    @extended_status = :ignore_after_adding
+  end
+
+  def status
+    notification.status
+  end
+
+  def extended_status
+    @extended_status || notification.status
+  end
+
   def owner_full_name
     contact.owner.fetch_data.full_name
   end
@@ -19,7 +33,7 @@ class WebClientDecorator < Draper::Decorator
   end
 
   def action_link
-    notification.status == 'unsubscribed' ? subscribe_link : got_it_link
+    notification.unsubscribed? ? subscribe_link : got_it_link
   end
 
   def placeholder_icon(classes = '')
