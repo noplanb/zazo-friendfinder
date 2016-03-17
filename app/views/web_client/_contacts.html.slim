@@ -8,5 +8,4 @@
             = @web_client.placeholder_icon
             .initials = contact.initials
           .name = contact.display_name
-          .subtitle = contact.vector_value
         = link_to 'ADD', add_another_web_client_path(@web_client.notification.nkey, contact_id: contact.id), method: :post, class: 'add-link'
