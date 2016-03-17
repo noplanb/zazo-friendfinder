@@ -6,7 +6,8 @@ class WebClientDecorator < Draper::Decorator
   end
 
   def others_contacts
-    ContactsDecorator.decorate_collection(contact.owner.contacts.not_proposed.first(8))
+    contacts = contact.owner.contacts.not_proposed.not_friends_with_owner.first(8)
+    ContactsDecorator.decorate_collection(contacts)
   end
 
   def notification
