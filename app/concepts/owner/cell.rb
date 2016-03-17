@@ -38,6 +38,10 @@ class Owner::Cell < Cell::Concept
     def recalculate_contacts_link(css_class)
       link_to('Recalculate contacts', recalculate_admin_owner_path(owner.mkey), class: css_class, method: :post, data: { confirm: 'Are you sure?' })
     end
+
+    def update_contacts_link(css_class)
+      link_to('Update contacts', update_contacts_admin_owner_path(owner.mkey), class: css_class, method: :post, data: { confirm: 'Are you sure?' })
+    end
   end
 
   class Table < Cell::Concept

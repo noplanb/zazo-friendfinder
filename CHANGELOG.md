@@ -1,8 +1,12 @@
 # Changelog
 
+### v0.4.1
+- :bulb: Added feature to update all contacts by owner
+- :hammer: Fixed images assets
+
 ### v0.4.0
-- :buib: Added caching for `marked_as_friend` contact additions
-- :buib: Updated API documentation
+- :bulb: Added caching for `marked_as_friend` contact additions
+- :bulb: Updated API documentation
 - :hammer: Fixed `ZazoActivity` score criteria (calculate all friends, raised ratio)
 - :hammer: Fixed `Contact::GetSuggestions` service to return only last non-friend contacts
 - :hammer: Changed database type of `notifications.compiled_content` from `string` to `text`
