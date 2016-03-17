@@ -5,7 +5,8 @@
 - :buib: Updated API documentation
 - :hammer: Fixed `ZazoActivity` score criteria (calculate all friends, raised ratio)
 - :hammer: Fixed `Contact::GetSuggestions` service to return only last non-friend contacts
-- :hammer: Changed database type of `notifications.compiled_content` from `string` to `text` 
+- :hammer: Changed database type of `notifications.compiled_content` from `string` to `text`
+- :hammer: Fixed minor bugs
 - :hammer: Refactored code
 
 ### v0.3.0

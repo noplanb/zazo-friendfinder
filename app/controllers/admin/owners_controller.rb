@@ -9,8 +9,7 @@ class Admin::OwnersController < AdminController
   end
 
   def recalculate
-    Resque.enqueue(ResqueWorker::ScoreRecalculation, @owner.mkey) if @owner.contacts.count > 0
-    redirect_to(admin_owners_path, notice: "Recalculation for owner (#{@owner.mkey}) was started")
+    handle_admin_action(Admin::Owners::Recalculate.new(@owner), admin_owners_path)
   end
 
   def fake_notification
