@@ -36,8 +36,8 @@
 
     &:after
       position: absolute
-      bottom: -8px
-      right: 20px
+      bottom: -15px
+      right: 9px
 
     &.added
       &:after
@@ -48,8 +48,9 @@
         content: image-url('web_client/ignored_icon.png')
 
     &.unsubscribed
-      &:after
-        content: image-url('web_client/unsubscribed_icon.png')
+      .placeholder
+        width: 70px
+        height: 70px
 
   .text
     vertical-align: top

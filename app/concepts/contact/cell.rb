@@ -1,8 +1,10 @@
 class Contact::Cell < Cell::Concept
   include ServicesLinksHelper
 
-  ATTRIBUTES = [:owner_mkey, :display_name, :zazo_id, :zazo_mkey, :total_score,
-                :expires_at, :additions, :notified?, :created_at, :updated_at,
+  ATTRIBUTES = [:owner_mkey, :display_name,
+                :zazo_id, :zazo_mkey, :zazo_first_name, :zazo_last_name,
+                :total_score, :additions, :notified?,
+                :expires_at, :created_at, :updated_at,
                 :contact_links]
 
   class Table < Cell::Concept
@@ -22,7 +24,8 @@ class Contact::Cell < Cell::Concept
   end
 
   property :id, :display_name, :zazo_id,
-           :total_score, :expires_at, :vectors
+           :total_score, :marked_as_friend?,
+           :expires_at, :vectors
 
   def show
     render
@@ -36,6 +39,14 @@ class Contact::Cell < Cell::Concept
 
   def value(attr)
     respond_to?(attr, true) ? send(attr) : model.send(attr)
+  end
+
+  def zazo_first_name
+    model.first_name
+  end
+
+  def zazo_last_name
+    model.last_name
   end
 
   def owner_mkey

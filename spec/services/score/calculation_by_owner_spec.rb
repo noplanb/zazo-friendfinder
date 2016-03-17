@@ -26,7 +26,7 @@ RSpec.describe Score::CalculationByOwner do
     let!(:subject) { instance.do }
 
     it { is_expected.to be true }
-    it { expect(Contact.by_owner(owner_mkey).count).to eq 2 }
-    it { expect(Contact.by_owner(owner_mkey).map(&:total_score)).to include(75, 53) }
+    it { expect(Owner.new(owner_mkey).contacts.count).to eq 2 }
+    it { expect(Owner.new(owner_mkey).contacts.map(&:total_score)).to include(75, 53) }
   end
 end

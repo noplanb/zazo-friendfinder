@@ -6,7 +6,7 @@ class Score::Criteria::Base
   attr_reader :contact
 
   def initialize(contact)
-    @contact = contact
+    @contact = contact #include vectors
   end
 
   def save

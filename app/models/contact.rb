@@ -1,11 +1,13 @@
 class Contact < ActiveRecord::Base
   include OwnerExtension
   include FilterExtension
+  include AdditionsExtension
 
   ALLOWED_ADDITIONS = [
     'marked_as_favorite', # attrs coming from client
     'rejected_by_owner', 'recommended_by', # attrs for persist contact status data, cannot be reproduced
-    'users_with_contact', 'friends_with_contact', 'friends_who_are_friends_with_contact' # attrs for caching criteria data
+    'users_with_contact', 'friends_with_contact', 'friends_who_are_friends_with_contact', # attrs for caching criteria data
+    'marked_as_friend' # additional caching
   ]
 
   has_many :vectors, dependent: :destroy
@@ -15,14 +17,16 @@ class Contact < ActiveRecord::Base
   validates :owner_mkey, presence: true
   validate :additions_must_be_allowed
 
-  scope :by_owner, -> (owner_mkey) { where(owner_mkey: owner_mkey).order('total_score DESC') }
-  scope :expired,  -> { where('expires_at < ?', Time.now) }
+  scope :by_owner, -> (owner_mkey) { where(owner_mkey: owner_mkey) }
+  scope :order_by_score, -> { order('total_score DESC') }
+  scope :expired, -> { where('expires_at < ?', Time.now) }
+
+  scope :not_proposed, -> { includes(:notifications).where(notifications: { id: nil }) }
+  scope :not_equals_with_owner, -> { where('contacts.owner_mkey != contacts.zazo_mkey OR contacts.zazo_mkey IS NULL') }
+  scope :not_friends_with_owner, -> { not_equals_with_owner.where("contacts.additions->>'marked_as_friend' = 'false'") }
+  scope :friends_with_owner, -> { not_equals_with_owner.where("contacts.additions->>'marked_as_friend' = 'true'") }
 
   before_save { self.expires_at = 5.days.from_now }
-
-  def additions_value(key, default = nil)
-    (additions.try :[], key) || default
-  end
 
   private
 

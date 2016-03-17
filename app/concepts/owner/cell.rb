@@ -23,12 +23,16 @@ class Owner::Cell < Cell::Concept
     end
 
     def contacts
-      show_not_proposed? ? owner.not_proposed_contacts : owner.contacts
+      show_not_proposed? ? owner.contacts.not_proposed : owner.contacts
     end
 
     def switch_contacts_link(css_class)
       params = show_not_proposed? ? {} : { show: 'not_proposed' }
       link_to(contacts_title(true), admin_owner_path(owner.mkey, params), class: css_class)
+    end
+
+    def fake_notification_link(css_class)
+      link_to('Fake notification', fake_notification_admin_owner_path(owner.mkey), class: css_class, method: :post, data: { confirm: 'Are you sure?' })
     end
 
     def recalculate_contacts_link(css_class)
@@ -69,7 +73,7 @@ class Owner::Cell < Cell::Concept
   end
 
   def not_proposed_contacts
-    model.not_proposed_contacts.count
+    model.contacts.not_proposed.count
   end
 
   def notifications_count

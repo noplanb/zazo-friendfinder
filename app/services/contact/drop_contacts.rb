@@ -10,7 +10,7 @@ class Contact::DropContacts
 
   def do
     WriteLog.info(self, "contacts deleting was started for owner=#{owner_mkey}")
-    owner.not_proposed_contacts.select do |c|
+    owner.contacts.not_proposed.select do |c|
       !(c.additions_value('recommended_by') || c.additions_value('rejected_by_owner'))
     end.each(&:destroy)
   end

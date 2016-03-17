@@ -8,13 +8,13 @@ class Template::Render
   end
 
   def content
-    view.render render_attrs
+    view.render(render_attrs)
   end
 
   private
 
   def view
-    ActionView::Base.new VIEWS_PATH, { data: template.view_data }, ActionController::Base.new
+    ActionView::Base.new(VIEWS_PATH, { data: template.view_data }, ActionController::Base.new)
   end
 
   def render_attrs

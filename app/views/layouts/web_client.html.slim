@@ -4,7 +4,7 @@ html
     meta charset='utf-8'
     meta name='viewport' content='width=device-width, initial-scale=1.0'
     title
-      = content_for?(:title) ? "#{yield(:title)} - #{AppConfig.app_name}" : AppConfig.app_name
+      = content_for?(:title) ? "#{yield(:title)} - Zazo | #{t 'web_client.app_name'}" : "Zazo | #{t('web_client.app_name')}"
     == stylesheet_link_tag 'web_client', media: 'all'
     == csrf_meta_tags
   body

@@ -1,4 +1,6 @@
 class AdminController < ActionController::Base
+  include HandleAdminAction
+
   layout 'admin'
 
   http_basic_authenticate_with name: Figaro.env.http_basic_name,

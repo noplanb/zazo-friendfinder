@@ -1,4 +1,8 @@
-class Contact::SetZazoIdAndMkeyByContact
+#
+# set zazo_id and zazo_mkey one time
+#
+
+class Contact::SetZazoInfoByContact
   attr_reader :contact
 
   def initialize(contact)
@@ -8,7 +12,7 @@ class Contact::SetZazoIdAndMkeyByContact
   def do
     data = user_data
     update_contact(data) if data
-    contact
+    Contact::UpdateZazoInfo.new(contact).do
   end
 
   private

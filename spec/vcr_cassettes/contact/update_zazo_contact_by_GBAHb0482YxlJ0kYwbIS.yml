@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=id&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -25,31 +25,31 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1Njg0MzQ2NTo5YzRlY2NhZWVhYjQ4MjExZWRlZTZhMGVmMmQ1Yzg2Zg==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1ODAzNjQ2Nzo1YmVmNDAzMmM5YThmMzJkYTI4MmUzZDM3MzgxN2NmYw==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 9c78162e-2bba-442d-b08f-8b0f509fbe39
+      - 4ba911d8-1c8e-4657-a856-cf060b459681
       X-Runtime:
-      - '0.191724'
+      - '1.458309'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       Date:
-      - Tue, 01 Mar 2016 14:44:25 GMT
+      - Tue, 15 Mar 2016 10:07:47 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Tue, 01 Mar 2016 14:44:25 GMT
+  recorded_at: Tue, 15 Mar 2016 10:07:47 GMT
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=id&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -58,9 +58,9 @@ http_interactions:
       - Faraday v0.9.1
       Authorization:
       - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
-        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=id&attrs%5B%5D=first_name&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS",
-        nonce="MTQ1Njg0MzQ2NTo5YzRlY2NhZWVhYjQ4MjExZWRlZTZhMGVmMmQ1Yzg2Zg==", nc=00000000,
-        cnonce="6882e9c99cc2c1979d2533df261f85c5", response="4e0fa211fd747dbe8fe907ed5a60ec0a",
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=id&attrs%5B%5D=first_name&attrs%5B%5D=last_name&attrs%5B%5D=friends&user=GBAHb0482YxlJ0kYwbIS",
+        nonce="MTQ1ODAzNjQ2Nzo1YmVmNDAzMmM5YThmMzJkYTI4MmUzZDM3MzgxN2NmYw==", nc=00000000,
+        cnonce="67fcf115528dacfaff5b0b2366187f89", response="94e6eb0fc3556939d491145e480bd84d",
         opaque="822778b6350cbc116426dfdce7488072"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -82,22 +82,22 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - 1f855e73-813c-4fc6-806e-0975202eb916
+      - f2e93035-919d-4455-800d-e7a63b508260
       X-Runtime:
-      - '0.380191'
+      - '2.096706'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       X-Miniprofiler-Ids:
-      - '["a0rg1gyjygppa7jv6753","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["j5i8sjrr2vm61m5o9332","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Tue, 01 Mar 2016 14:44:25 GMT
+      - Tue, 15 Mar 2016 10:07:49 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
-      string: '{"id":3686,"first_name":"Ivan","last_name":"Kornilov"}'
+      string: '{"id":3686,"first_name":"Ivan","last_name":"Kornilov","friends":["0DAQEVtmNKQiW6aoQrvo","e0kvxfgua1EQJvUOzVC1","yLK6i5VpMW9ZZy5BnXZZ","7qdanSEmctZ2jPnYA0a1","gpIES8adSGtrB5O5933c","LVXE6gyoxb6eHNvPd96f"]}'
     http_version: 
-  recorded_at: Tue, 01 Mar 2016 14:44:25 GMT
+  recorded_at: Tue, 15 Mar 2016 10:07:49 GMT
 recorded_with: VCR 2.9.3

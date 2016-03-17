@@ -9,13 +9,11 @@ class Admin::ContactsController < AdminController
   end
 
   def update_info
-    Contact::SetZazoIdAndMkeyByContact.new(@contact).do
-    redirect_to(admin_contact_path, notice: 'Contact info (zazo id/mkey) was updated')
+    handle_admin_action(Admin::Contacts::UpdateInfo.new(@contact), admin_contact_path)
   end
 
   def recalculate
-    Score::CalculationByContact.new(@contact).do
-    redirect_to(admin_contact_path, notice: 'Score was recalculated')
+    handle_admin_action(Admin::Contacts::Recalculate.new(@contact), admin_contact_path)
   end
 
   private

@@ -5,4 +5,4 @@
     h2.page-title = "All notifications [#{Notification.count}]"
     .notifications.with-pagination
       == concept 'notification/cell/table', @notifications
-      == paginate @notifications
+      == paginate @notifications, views_prefix: 'admin'

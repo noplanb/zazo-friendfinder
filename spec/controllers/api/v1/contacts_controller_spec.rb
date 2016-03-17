@@ -22,7 +22,7 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
       ]
     end
     let(:params) { { 'contacts' => contacts }.merge(format: :json) }
-    let(:subject) { Contact.by_owner(user_mkey) }
+    let(:subject) { Owner.new(user_mkey).contacts }
 
     before do
       ResqueSpec.reset!
@@ -30,6 +30,6 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
     end
 
     it { expect(response).to be_success }
-    it { expect(Contact::AddContactsWorker).to have_queued(user_mkey, params['contacts']).in(:add_contacts) }
+    it { expect(ResqueWorker::AddContacts).to have_queued(user_mkey, params['contacts']).in(:add_contacts) }
   end
 end

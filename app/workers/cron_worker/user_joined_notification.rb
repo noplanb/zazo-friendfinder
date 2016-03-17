@@ -1,6 +1,4 @@
-# cron worker
-
-class Notification::UserJoinedWorker
+class CronWorker::UserJoinedNotification
   def self.perform
     WriteLog.info(self, 'cron job was executed')
     recently_joined_users.each do |contact_data|
@@ -15,6 +13,6 @@ class Notification::UserJoinedWorker
   private
 
   def self.recently_joined_users
-    DataProviderApi.new(time_frame_in_days: '3').filter :recently_joined
+    DataProviderApi.new(time_frame_in_days: '3').filter(:recently_joined)
   end
 end

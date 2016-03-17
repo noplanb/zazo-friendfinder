@@ -5,4 +5,4 @@
     h2.page-title = "All owners [#{Owner.count}]"
     .owners.with-pagination
       == concept 'owner/cell/table', @owners
-      == paginate @owners
+      == paginate @owners, views_prefix: 'admin'

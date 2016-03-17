@@ -1,5 +1,5 @@
 class Admin::OwnersController < AdminController
-  before_action :set_owner, only: [:show, :recalculate]
+  before_action :set_owner, only: [:show, :recalculate, :fake_notification]
 
   def index
     @owners = Kaminari.paginate_array(Owner.all).page(params[:page])
@@ -9,8 +9,11 @@ class Admin::OwnersController < AdminController
   end
 
   def recalculate
-    Resque.enqueue(ResqueWorker::ScoreRecalculation, @owner.mkey) if @owner.contacts.count > 0
-    redirect_to(admin_owners_path, notice: "Recalculation for owner (#{@owner.mkey}) was started")
+    handle_admin_action(Admin::Owners::Recalculate.new(@owner), admin_owners_path)
+  end
+
+  def fake_notification
+    handle_admin_action(Admin::Owners::FakeNotification.new(@owner), admin_owner_path(@owner.mkey))
   end
 
   private

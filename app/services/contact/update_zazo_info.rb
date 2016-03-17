@@ -1,3 +1,8 @@
+#
+# update zazo_id, first_name, last_name and additions['marked_as_friend']
+# this process will run periodically
+#
+
 class Contact::UpdateZazoInfo
   attr_reader :contact
 
@@ -6,21 +11,36 @@ class Contact::UpdateZazoInfo
   end
 
   def do
-    if contact.zazo_mkey && !attributes.empty?
-      contact.tap do |c|
-        c.zazo_id    = attributes['id']
-        c.first_name = attributes['first_name']
-        c.last_name  = attributes['last_name']
-        c.save
-      end
+    if contact.zazo_mkey
+      contact.update_attributes(new_attrs) unless attributes.empty?
+    else
+      contact.update_attributes(additions: new_additions)
     end
     contact
   end
 
   private
 
+  def new_attrs
+    { zazo_id:    attributes['id'],
+      first_name: attributes['first_name'],
+      last_name:  attributes['last_name'],
+      additions:  new_additions }
+  end
+
+  def new_additions
+    (contact.additions || {}).merge('marked_as_friend' => contact_is_friend?)
+  end
+
+  def contact_is_friend?
+    !!attributes['friends'] && attributes['friends'].include?(contact.owner_mkey)
+  end
+
   def attributes
-    @attributes ||= DataProviderApi.new(user: contact.zazo_mkey, attrs: [:id, :first_name, :last_name]).query :attributes
+    return @attributes if @attributes
+    return {} unless contact.zazo_mkey
+    api_params = { user: contact.zazo_mkey, attrs: [:id, :first_name, :last_name, :friends] }
+    @attributes = DataProviderApi.new(api_params).query(:attributes)
   rescue Faraday::ClientError
     {}
   end

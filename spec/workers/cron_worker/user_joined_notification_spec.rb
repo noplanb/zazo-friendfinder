@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Notification::UserJoinedWorker do
+RSpec.describe CronWorker::UserJoinedNotification do
   let!(:contact_1) do
     FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: '+380930127802'),
                                            FactoryGirl.create(:vector_mobile, value: '+380951035160')]
