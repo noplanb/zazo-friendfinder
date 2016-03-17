@@ -36,8 +36,12 @@ class WebClientDecorator < Draper::Decorator
     notification.unsubscribed? ? subscribe_link : got_it_link
   end
 
-  def placeholder_icon(classes = '')
-    h.image_tag("web_client/placeholders/#{(1..5).to_a.sample}.png", class: classes)
+  def placeholder_icon
+    h.image_tag("web_client/placeholders/#{(1..5).to_a.sample}.png", class: 'placeholder')
+  end
+
+  def unsubscribed_placeholder_icon
+    h.image_tag("web_client/unsubscribed_placeholder.png", class: 'placeholder')
   end
 
   private
