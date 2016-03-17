@@ -6,8 +6,8 @@ class Notification::EmailData < Notification::BaseData
   def get
     { to: email,
       subject: subject,
-      body: content }
-      #from: AppConfig.email_notification_from }
+      body: content,
+      from: AppConfig.email_notification_from }
   end
 
   private
