@@ -1,6 +1,7 @@
 # Changelog
 
 ### v0.4.1
+- :hammer: Fixed images assets
 
 ### v0.4.0
 - :buib: Added caching for `marked_as_friend` contact additions
