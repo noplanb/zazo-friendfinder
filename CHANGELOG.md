@@ -1,5 +1,8 @@
 # Changelog
 
+### v0.5.0
+- :hammer: Fixed dockerfile assets precompile
+
 ### v0.4.1
 - :bulb: Added feature to update all contacts by owner
 - :hammer: Fixed images assets
