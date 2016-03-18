@@ -4,5 +4,5 @@
   .col-sm-12
     h2.page-title = "All contacts [#{Contact.count}]"
     .contacts.with-pagination
-      == concept 'contact/cell/table', @contacts
+      == concept 'contact/cell/table', @contacts.decorate
       == paginate @contacts, views_prefix: 'admin'

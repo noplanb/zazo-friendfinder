@@ -32,7 +32,7 @@ class Owner
   end
 
   def contacts
-    Contact.by_owner(mkey).order_by_score
+    Contact.by_owner(mkey).order_by_score.with_notifications
   end
 
   def notifications

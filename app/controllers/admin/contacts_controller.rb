@@ -2,7 +2,7 @@ class Admin::ContactsController < AdminController
   before_action :set_contact, only: [:show, :update_info, :recalculate]
 
   def index
-    @contacts = Contact.all.page(params[:page])
+    @contacts = Contact.all.with_notifications.page(params[:page])
   end
 
   def show

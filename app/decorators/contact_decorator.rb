@@ -1,4 +1,4 @@
-class ContactsDecorator < Draper::Decorator
+class ContactDecorator < Draper::Decorator
   delegate_all
 
   def first_name
@@ -14,5 +14,11 @@ class ContactsDecorator < Draper::Decorator
     vector = vectors.email.first unless vector
     vector = vectors.first unless vector
     vector && vector.value
+  end
+
+  def status
+    notification = object.notifications.first
+    return '' unless notification
+    notification.status ? notification.status : 'notified'
   end
 end

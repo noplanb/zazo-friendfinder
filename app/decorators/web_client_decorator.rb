@@ -20,8 +20,7 @@ class WebClientDecorator < Draper::Decorator
   end
 
   def others_contacts
-    contacts = contact.owner.contacts.not_proposed.not_friends_with_owner.first(8)
-    ContactsDecorator.decorate_collection(contacts)
+    contact.owner.contacts.not_proposed.not_friends_with_owner.limit(8).decorate
   end
 
   def notification
@@ -29,7 +28,7 @@ class WebClientDecorator < Draper::Decorator
   end
 
   def contact
-    @contact ||= ContactsDecorator.decorate(notification.contact)
+    @contact ||= notification.contact.decorate
   end
 
   def action_link

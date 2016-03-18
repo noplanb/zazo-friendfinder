@@ -17,6 +17,8 @@ class Contact < ActiveRecord::Base
   validates :owner_mkey, presence: true
   validate :additions_must_be_allowed
 
+  scope :with_notifications, -> { includes(:notifications) }
+
   scope :by_owner, -> (owner_mkey) { where(owner_mkey: owner_mkey) }
   scope :order_by_score, -> { order('total_score DESC') }
   scope :expired, -> { where('expires_at < ?', Time.now) }
