@@ -4,6 +4,12 @@ class Owner::Cell < Cell::Concept
   ATTRIBUTES = [:mkey, :unsubscribed?, :contacts, :not_proposed_contacts, :owner_links]
 
   class Contacts < Cell::Concept
+    FILTER_MAP = {
+      friends: :friends_with_owner,
+      not_friends: :not_friends_with_owner,
+      not_proposed: :not_proposed
+    }
+
     def show
       render
     end
@@ -14,33 +20,24 @@ class Owner::Cell < Cell::Concept
       model
     end
 
-    def show_not_proposed?
-      options[:show] == 'not_proposed'
-    end
-
-    def contacts_title(reverse = false)
-      show_not_proposed? ^ reverse ? 'Not proposed contacts' : 'Contacts'
+    def subtitle
+      contacts_and_subtitle[:subtitle].empty? ?
+        '' : "(#{contacts_and_subtitle[:subtitle][1..-1]})"
     end
 
     def contacts
-      show_not_proposed? ? owner.contacts.not_proposed : owner.contacts
+      contacts_and_subtitle[:contacts]
     end
 
-    def switch_contacts_link(css_class)
-      params = show_not_proposed? ? {} : { show: 'not_proposed' }
-      link_to(contacts_title(true), admin_owner_path(owner.mkey, params), class: css_class)
-    end
-
-    def fake_notification_link(css_class)
-      link_to('Fake notification', fake_notification_admin_owner_path(owner.mkey), class: css_class, method: :post, data: { confirm: 'Are you sure?' })
-    end
-
-    def recalculate_contacts_link(css_class)
-      link_to('Recalculate contacts', recalculate_admin_owner_path(owner.mkey), class: css_class, method: :post, data: { confirm: 'Are you sure?' })
-    end
-
-    def update_contacts_link(css_class)
-      link_to('Update contacts', update_contacts_admin_owner_path(owner.mkey), class: css_class, method: :post, data: { confirm: 'Are you sure?' })
+    def contacts_and_subtitle
+      return @contacts_and_subtitle if @contacts_and_subtitle
+      filter_methods = (options[:show] || '').split(',').map(&:to_sym)
+      @contacts_and_subtitle = { contacts: owner.contacts, subtitle: '' }
+      @contacts_and_subtitle = filter_methods.inject(@contacts_and_subtitle) do |memo, method|
+        FILTER_MAP.key?(method) ?
+          { contacts: memo[:contacts].send(FILTER_MAP[method]),
+            subtitle: "#{memo[:subtitle]},#{method}" } : memo
+      end
     end
   end
 
