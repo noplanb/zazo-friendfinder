@@ -2,6 +2,7 @@
 
 ### v0.5.0
 - :hammer: Fixed dockerfile assets precompile
+- :hammer: Fixed minor bugs
 
 ### v0.4.1
 - :bulb: Added feature to update all contacts by owner
