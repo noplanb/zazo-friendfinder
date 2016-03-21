@@ -1,4 +1,4 @@
-class WebClient::AddContact
+class WebClient::IgnoreContact
   attr_reader :contact
 
   def initialize(contact)
@@ -6,11 +6,12 @@ class WebClient::AddContact
   end
 
   def do
-    # TODO: add contact via sending api request to zazo-prod worker
     contact.update_attributes(additions: new_attributes)
   end
 
+  private
+
   def new_attributes
-    (contact.additions || {}).merge('added_by_owner' => true)
+    (contact.additions || {}).merge('rejected_by_owner' => true)
   end
 end

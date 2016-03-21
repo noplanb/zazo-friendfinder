@@ -5,9 +5,13 @@ class Owner::Cell < Cell::Concept
 
   class Contacts < Cell::Concept
     FILTER_MAP = {
-      friends: :friends_with_owner,
-      not_friends: :not_friends_with_owner,
-      not_proposed: :not_proposed
+      friends: :friends,
+      not_friends: :not_friends,
+      rejected: :rejected,
+      not_rejected: :not_rejected,
+      proposed: :proposed,
+      not_proposed: :not_proposed,
+      suggestible: :suggestible
     }
 
     def show

@@ -27,6 +27,7 @@
         .name
           font-size: 20px
           color: #212121
+          margin-right: 5px
 
         .subtitle
           font-size: 15px
@@ -43,9 +44,9 @@
             top: 19px
             width: 100%
 
-    .add-link
-      display: block
-      background: #1976d2
+    .action-link
+      width: 50%
+      display: inline-block
       color: #FFF
       font-size: 16px
       padding: 12px 0
@@ -55,5 +56,16 @@
       &:hover, &:focus
         text-decoration: none
 
+    .add-link
+      background: #1976d2
+      border-bottom-right-radius: 1px
+
       &:hover
         background: #0d47a1
+
+    .remove-link
+      background: #989898
+      border-bottom-left-radius: 1px
+
+      &:hover
+        background: #606060

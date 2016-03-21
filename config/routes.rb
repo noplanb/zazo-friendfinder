@@ -17,21 +17,20 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :owners, only: [:index, :show] do
-      post :recalculate, on: :member
-      post :update_contacts, on: :member
-      post :fake_notification, on: :member
+      post :recalculate, :update_contacts, :fake_notification, on: :member
     end
     resources :contacts, only: [:index, :show] do
-      post :recalculate, on: :member
-      post :update_info, on: :member
+      post :recalculate, :update_info, on: :member
     end
     resources :notifications, only: [:index, :show]
     root to: 'dashboard#index'
   end
 
   resources :web_client, path: 'w', only: [:show] do
-    get :add, :ignore, :unsubscribe, :subscribe, on: :member
-    post :add_another, on: :member
+    member do
+      get :add, :ignore, :unsubscribe, :subscribe
+      post :add_another, :ignore_another
+    end
   end
   resources :documentation, only: [:show]
 

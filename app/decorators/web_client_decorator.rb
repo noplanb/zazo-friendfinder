@@ -20,7 +20,7 @@ class WebClientDecorator < Draper::Decorator
   end
 
   def others_contacts
-    contact.owner.contacts.not_proposed.not_friends_with_owner.limit(8).decorate
+    contact.owner.contacts.suggestible.limit(8).decorate
   end
 
   def notification

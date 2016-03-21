@@ -11,6 +11,6 @@ class Admin::Owners::FakeNotification < Admin::Owners
   private
 
   def contact
-    @contact ||= owner.contacts.not_proposed.not_friends_with_owner.first
+    @contact ||= owner.contacts.suggestible.first
   end
 end

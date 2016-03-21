@@ -16,9 +16,9 @@ h2.page-title
       span class='caret'
     ul class='dropdown-menu'
       li = link_to 'all', admin_owner_path(owner.mkey)
+      li = link_to 'rejected', admin_owner_path(owner.mkey, show: 'rejected')
       li = link_to 'friends', admin_owner_path(owner.mkey, show: 'friends')
-      li = link_to 'not friends', admin_owner_path(owner.mkey, show: 'not_friends')
-      li = link_to 'not proposed', admin_owner_path(owner.mkey, show: 'not_proposed')
-      li = link_to 'not proposed && not friends', admin_owner_path(owner.mkey, show: 'not_proposed,not_friends')
+      li = link_to 'proposed', admin_owner_path(owner.mkey, show: 'proposed')
+      li = link_to 'suggestible', admin_owner_path(owner.mkey, show: 'suggestible')
 
 == concept 'contact/cell/table', contacts.decorate, disable_owner_link: true
