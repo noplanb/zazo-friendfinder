@@ -1,6 +1,5 @@
 nav.ff-navbar-wrapper
-  .ff-navbar
-    span.app-title = t 'web_client.app_name'
-    .app-user
-      span.name = @web_client.owner_full_name
-      span.icon = image_tag('web_client/user_placeholder.png')
+  .container
+    .ff-navbar
+      .app-user
+        span.name = @web_client.owner_full_name
