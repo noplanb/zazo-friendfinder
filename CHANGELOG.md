@@ -3,7 +3,8 @@
 ### v0.5.0
 - :bulb: Added status field for contacts concepts
 - :bulb: Implemented filter system for contacts concepts
-- :hammer: Updated web-client navbar
+- :arrow_up: Updated web-client navbar
+- :arrow_up: Updated web-client notification messages
 - :hammer: Fixed dockerfile assets precompile
 - :hammer: Fixed minor bugs
 

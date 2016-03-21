@@ -7,6 +7,6 @@
         = @web_client.placeholder_icon
         .initials = @web_client.contact.initials
     .text
-      h3.contact-name = @web_client.contact.display_name
-      p.description = I18n.translate("web_client.notifications.#{@web_client.extended_status}", contact_name: @web_client.contact.display_name)
+      h3.contact-name = t "web_client.notifications.title.#{@web_client.status}", contact_name: @web_client.contact.display_name
+      p.description = t "web_client.notifications.description.#{@web_client.extended_status}", contact_name: @web_client.contact.display_name
     .action = @web_client.action_link
