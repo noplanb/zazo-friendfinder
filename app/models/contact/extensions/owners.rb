@@ -1,4 +1,4 @@
-module Contact::Extensions::Owner
+module Contact::Extensions::Owners
   def owner
     Owner.new(owner_mkey)
   end

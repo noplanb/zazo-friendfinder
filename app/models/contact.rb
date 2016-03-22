@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
-  include Extensions::Owner
-  include Extensions::Filter
+  include Extensions::Owners
+  include Extensions::Filters
   include Extensions::Additions
 
   ALLOWED_ADDITIONS = [
