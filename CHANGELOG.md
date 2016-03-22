@@ -1,5 +1,8 @@
 # Changelog
 
+### v0.5.1
+- :hammer: Fixed bug with `unsubscribed?` owner status
+
 ### v0.5.0
 - :bulb: Added status field for contacts concepts
 - :bulb: Implemented filter system for contacts concepts

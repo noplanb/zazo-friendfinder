@@ -14,7 +14,7 @@ module Owner::Extensions::Subscription
   end
 
   def unsubscribed?
-    additions && additions.unsubscribed
+    !!additions && additions.unsubscribed
   end
 
   def subscribed?
