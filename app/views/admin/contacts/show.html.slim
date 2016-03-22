@@ -5,7 +5,7 @@
     h2.page-title
       = "Contact ##{@contact.id}"
       = link_to 'Update info', update_info_admin_contact_path(@contact), class: 'btn btn-sm btn-primary pull-right', method: :post, data: { confirm: 'Are you sure?' }
-    == concept 'contact/cell', @contact
+    == concept 'contact/cell', @contact.decorate
 
   .col-sm-6
     h2.page-title

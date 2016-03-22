@@ -1,4 +1,6 @@
 class Owner
+  include Extensions::Subscription
+
   attr_reader :mkey, :full_name
 
   class << self
@@ -32,14 +34,15 @@ class Owner
   end
 
   def contacts
-    Contact.by_owner(mkey).order_by_score
+    Contact.by_owner(mkey).order_by_score.with_notifications
   end
 
   def notifications
     Notification.by_owner_mkey(mkey)
   end
 
-  def unsubscribed?
-    !Notification.unsubscribed_by_contacts(contacts).empty?
+  def additions(reload: false)
+    return @additions if @additions && !reload
+    @additions = Additions.by_mkey(mkey)
   end
 end

@@ -3,7 +3,7 @@ class Contact::Cell < Cell::Concept
 
   ATTRIBUTES = [:owner_mkey, :display_name,
                 :zazo_id, :zazo_mkey, :zazo_first_name, :zazo_last_name,
-                :total_score, :additions, :notified?,
+                :total_score, :additions, :notified?, :status, :notification_status,
                 :expires_at, :created_at, :updated_at,
                 :contact_links]
 
@@ -24,8 +24,8 @@ class Contact::Cell < Cell::Concept
   end
 
   property :id, :display_name, :zazo_id,
-           :total_score, :marked_as_friend?,
-           :expires_at, :vectors
+           :total_score, :marked_as_friend?, :status,
+           :notification_status, :expires_at, :vectors
 
   def show
     render

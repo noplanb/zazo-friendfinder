@@ -1,4 +1,4 @@
-module Notification::SendingExtension
+module Notification::Extensions::Sending
   def send_notification
     Notification::Send.new(self).do
   end

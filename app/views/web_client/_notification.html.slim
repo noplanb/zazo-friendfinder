@@ -1,12 +1,12 @@
-.ff-notification-wrapper
+#notification.ff-notification-wrapper
   .ff-notification.alert.alert-info role='alert' data-notify='container'
-    .icon class="#{@web_client.status}"
-      - if @web_client.notification.unsubscribed?
-        = @web_client.unsubscribed_placeholder_icon
+    .icon class="#{notice[:status]}"
+      - if notice[:status] == 'unsubscribed'
+        = web_client.unsubscribed_placeholder_icon
       - else
-        = @web_client.placeholder_icon
-        .initials = @web_client.contact.initials
+        = web_client.placeholder_icon
+        .initials = web_client.contact.initials
     .text
-      h3.contact-name = @web_client.contact.display_name
-      p.description = I18n.translate("web_client.notifications.#{@web_client.extended_status}", contact_name: @web_client.contact.display_name)
-    .action = @web_client.action_link
+      h3.contact-name = notice[:title]
+      p.description = notice[:description]
+    .action = web_client.action_link(notice[:status])

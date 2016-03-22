@@ -1,10 +1,10 @@
 class Notification < ActiveRecord::Base
-  include SendingExtension
-  include StatusesExtension
+  include Extensions::Sending
+  include AASM
 
   ALLOWED_KINDS = %w(email mobile)
   ALLOWED_STATES = %w(sent error canceled)
-  ALLOWED_STATUES = %w(added ignored unsubscribed)
+  ALLOWED_STATUES = %w(no_feedback added ignored)
   ALLOWED_CATEGORIES = %w(user_joined fake_user_joined)
 
   belongs_to :contact
@@ -15,7 +15,20 @@ class Notification < ActiveRecord::Base
   validates :status, inclusion: { in: ALLOWED_STATUES, message: '%{value} is not a allowed status' }, allow_nil: true
   validates :category, inclusion: { in: ALLOWED_CATEGORIES, message: '%{value} is not a allowed category' }
 
-  scope :unsubscribed_by_contacts, -> (contacts) { where(status: 'unsubscribed', contact: contacts) }
+  aasm column: :status do
+    state :no_feedback, initial: true
+    state :added
+    state :ignored
+
+    event :set_added do
+      transitions from: [:no_feedback, :ignored], to: :added
+    end
+
+    event :set_ignored do
+      transitions from: [:no_feedback], to: :ignored
+    end
+  end
+
   scope :by_owner_mkey, -> (owner_mkey) { includes(:contact).where(contacts: { owner_mkey: owner_mkey }) }
   scope :by_state, -> (state) { where(state: state) }
   scope :by_nkey, -> (nkey) { where(nkey: nkey) }

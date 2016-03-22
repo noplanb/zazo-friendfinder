@@ -28,26 +28,13 @@ RSpec.describe CronWorker::FakeUserJoinedNotification do
       FactoryGirl.create(:notification, status: 'added', contact: contact_41)
     end
 
-    context 'when one contact is unsubscribed' do
-      before do
-        FactoryGirl.create(:notification, status: 'unsubscribed', contact: contact_12)
-        subject
-      end
+    before { subject }
 
-      it { expect(Notification.count).to eq 6 }
-      it { expect(Notification.distinct.pluck(:nkey).count).to eq 4 }
-      it { expect(Notification.where(status: nil).count).to eq 4 }
-    end
-
-    context 'when all contacts is subscribed' do
-      before { subject }
-
-      it { expect(Notification.count).to eq 7 }
-      it { expect(Notification.distinct.pluck(:nkey).count).to eq 4 }
-      it do
-        expected = [contact_11.id, contact_22.id, contact_31.id, contact_41.id]
-        expect(Notification.distinct.pluck(:contact_id)).to match_array expected
-      end
+    it { expect(Notification.count).to eq 7 }
+    it { expect(Notification.distinct.pluck(:nkey).count).to eq 4 }
+    it do
+      expected = [contact_11.id, contact_22.id, contact_31.id, contact_41.id]
+      expect(Notification.distinct.pluck(:contact_id)).to match_array expected
     end
   end
 end

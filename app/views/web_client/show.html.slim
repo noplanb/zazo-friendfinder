@@ -1,1 +1,5 @@
+- if @notice
+  - content_for(:outside_of_container) { render partial: 'notification',
+                                                locals: { notice: @notice, web_client: @web_client } }
+
 == render 'contacts'

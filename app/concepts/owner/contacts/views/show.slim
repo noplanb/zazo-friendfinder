@@ -1,8 +1,25 @@
 h2.page-title
-  = "#{contacts_title} [#{contacts.count}]"
-  = recalculate_contacts_link 'btn btn-sm btn-default pull-right right-btn'
-  = update_contacts_link 'btn btn-sm btn-default pull-right right-btn'
-  = fake_notification_link 'btn btn-sm btn-default pull-right right-btn'
-  = switch_contacts_link 'btn btn-sm btn-primary pull-right right-btn'
+  = "Contacts #{subtitle} [#{contacts.count}]"
 
-== concept 'contact/cell/table', contacts, disable_owner_link: true
+  .dropdown class='pull-right right-btn' style='margin-top: -5px'
+    button class='btn btn-sm btn-default dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'
+      = 'Actions  '
+      span class='caret'
+    ul class='dropdown-menu'
+      li = link_to 'recalculate contacts', recalculate_admin_owner_path(owner.mkey), method: :post, data: { confirm: 'Are you sure?' }
+      li = link_to 'update contacts', update_contacts_admin_owner_path(owner.mkey), method: :post, data: { confirm: 'Are you sure?' }
+      li = link_to 'fake notification', fake_notification_admin_owner_path(owner.mkey), method: :post, data: { confirm: 'Are you sure?' }
+
+  .dropdown class='pull-right right-btn' style='margin-top: -5px'
+    button class='btn btn-sm btn-primary dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'
+      = 'Filter contacts '
+      span class='caret'
+    ul class='dropdown-menu'
+      li = link_to 'all', admin_owner_path(owner.mkey)
+      li = link_to 'added', admin_owner_path(owner.mkey, show: 'added')
+      li = link_to 'rejected', admin_owner_path(owner.mkey, show: 'rejected')
+      li = link_to 'friends', admin_owner_path(owner.mkey, show: 'friends')
+      li = link_to 'proposed', admin_owner_path(owner.mkey, show: 'proposed')
+      li = link_to 'suggestible', admin_owner_path(owner.mkey, show: 'suggestible')
+
+== concept 'contact/cell/table', contacts.decorate, disable_owner_link: true

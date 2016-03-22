@@ -38,21 +38,9 @@ RSpec.describe CronWorker::UserJoinedNotification do
       allow(described_class).to receive(:recently_joined_users).and_return recently_joined_users
     end
 
-    context 'when one contact is unsubscribed' do
-      before do
-        FactoryGirl.create :notification, status: 'unsubscribed', contact: contact_4
-        subject
-      end
+    before { subject }
 
-      it { expect(Notification.count).to eq 5 }
-      it { expect(Notification.distinct.pluck(:nkey).count).to eq 3 }
-    end
-
-    context 'when all contacts is subscribed' do
-      before { subject }
-
-      it { expect(Notification.count).to eq 6 }
-      it { expect(Notification.distinct.pluck(:nkey).count).to eq 3 }
-    end
+    it { expect(Notification.count).to eq 6 }
+    it { expect(Notification.distinct.pluck(:nkey).count).to eq 3 }
   end
 end
