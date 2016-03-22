@@ -7,6 +7,7 @@
 - :arrow_up: Updated web-client navbar
 - :arrow_up: Updated web-client notification messages
 - :arrow_up: Refactored whole web-client
+- :arrow_up: Created model for storing owner data (unsubscribed status)
 - :hammer: Fixed dockerfile assets precompile
 - :hammer: Fixed minor bugs
 
