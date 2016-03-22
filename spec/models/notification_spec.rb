@@ -20,9 +20,9 @@ RSpec.describe Notification, type: :model do
     end
 
     context 'status' do
+      it { expect(instance_errors(:status, 'no_feedback')).to be nil }
       it { expect(instance_errors(:status, 'added')).to be nil }
       it { expect(instance_errors(:status, 'ignored')).to be nil }
-      it { expect(instance_errors(:status, 'unsubscribed')).to be nil }
       it { expect(instance_errors(:status, 'unexpected')).to_not be nil }
       it { expect(instance_errors(:status, nil)).to be nil }
     end

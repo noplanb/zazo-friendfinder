@@ -44,6 +44,6 @@ class WebClientController < ApplicationController
   end
 
   def set_contact
-    @contact = Contact.find(params[:contact_id])
+    @contact = @web_client.owner.contacts.find(params[:contact_id])
   end
 end

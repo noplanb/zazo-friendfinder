@@ -9,6 +9,18 @@ class WebClient::ActionHandler
     @notifications = Notification.by_nkey(nkey)
   end
 
+  def owner
+    notification.contact.owner
+  end
+
+  def notification
+    notifications.first
+  end
+
+  #
+  # actions
+  #
+
   def add(contact = nil)
     add_or_ignore(WebClient::AddContact, contact, :added)
   rescue AASM::InvalidTransition
@@ -39,10 +51,6 @@ class WebClient::ActionHandler
   end
 
   private
-
-  def notification
-    notifications.first
-  end
 
   def update_status(status)
     notifications.each do |notification|

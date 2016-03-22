@@ -1,5 +1,3 @@
-shared_context 'response status' do
-  it 'has a 200 status code' do
-    expect(response).to have_http_status 200
-  end
+shared_context 'response redirect' do
+  it { expect(response).to redirect_to(web_client_path) }
 end
