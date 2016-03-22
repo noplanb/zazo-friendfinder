@@ -17,8 +17,12 @@ class ContactDecorator < Draper::Decorator
   end
 
   def status
-    notification = object.notifications.first
-    return '' unless notification
-    notification.status ? notification.status : 'notified'
+    return 'added' if added?
+    return 'rejected' if rejected?
+    ''
+  end
+
+  def notification_status
+    object.notifications.first.try(:status) || ''
   end
 end

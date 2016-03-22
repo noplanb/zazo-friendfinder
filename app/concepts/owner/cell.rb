@@ -8,6 +8,8 @@ class Owner::Cell < Cell::Concept
       friends: :friends,
       not_friends: :not_friends,
       rejected: :rejected,
+      added: :added,
+      not_added: :not_added,
       not_rejected: :not_rejected,
       proposed: :proposed,
       not_proposed: :not_proposed,

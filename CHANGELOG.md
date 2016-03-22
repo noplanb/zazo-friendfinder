@@ -6,6 +6,7 @@
 - :bulb: Implemented feature to ignore any contact on web-client
 - :arrow_up: Updated web-client navbar
 - :arrow_up: Updated web-client notification messages
+- :arrow_up: Refactored whole web-client
 - :hammer: Fixed dockerfile assets precompile
 - :hammer: Fixed minor bugs
 
