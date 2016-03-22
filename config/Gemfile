@@ -26,6 +26,7 @@ gem 'faraday-digestauth'
 gem 'global_phone'
 gem 'settingslogic'
 gem 'active_model_serializers'
+gem 'aasm'
 
 gem 'figaro', github: 'asux/figaro', branch: 'feature/eb-set-command'
 gem 'puma'

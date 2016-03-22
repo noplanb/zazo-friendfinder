@@ -40,6 +40,6 @@ class Owner
   end
 
   def unsubscribed?
-    !Notification.unsubscribed_by_contacts(contacts).empty?
+    false
   end
 end

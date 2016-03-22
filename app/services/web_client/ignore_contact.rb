@@ -6,7 +6,7 @@ class WebClient::IgnoreContact
   end
 
   def do
-    contact.update_attributes(additions: new_attributes)
+    contact.update_attributes(additions: new_attributes) unless contact.rejected? || contact.added?
   end
 
   private

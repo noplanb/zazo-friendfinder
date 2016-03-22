@@ -11,4 +11,12 @@ module Contact::AdditionsExtension
   def marked_as_favorite?
     additions_value('marked_as_favorite', false)
   end
+
+  def rejected?
+    additions_value('rejected_by_owner', false)
+  end
+
+  def added?
+    additions_value('added_by_owner', false)
+  end
 end
