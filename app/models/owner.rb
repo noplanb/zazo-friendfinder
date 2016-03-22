@@ -1,4 +1,6 @@
 class Owner
+  include SubscriptonExtension
+
   attr_reader :mkey, :full_name
 
   class << self
@@ -39,7 +41,8 @@ class Owner
     Notification.by_owner_mkey(mkey)
   end
 
-  def unsubscribed?
-    false
+  def additions(reload: false)
+    return @additions if @additions && !reload
+    @additions = Additions.by_mkey(mkey)
   end
 end

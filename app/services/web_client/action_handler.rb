@@ -41,23 +41,18 @@ class WebClient::ActionHandler
   end
 
   def unsubscribe
-    WebClient::Unsubscribe.new(notification.contact.owner).do
-    @notice = NoticeBuilder.new(:unsubscribed, :unsubscribed, :unsubscribed).as_json
+    subscribe_or_unsubscribe(:unsubscribe, :unsubscribed)
   end
 
   def subscribe
-    WebClient::Subscribe.new(notification.contact.owner).do
-    @notice = NoticeBuilder.new(:subscribed, :subscribed, :subscribed).as_json
+    subscribe_or_unsubscribe(:subscribe, :subscribed)
   end
 
   private
 
-  def update_status(status)
-    notifications.each do |notification|
-      notification.send("set_#{status}")
-      Notification::Save.new(notification).do
-    end
-  end
+  #
+  # action helpers
+  #
 
   def add_or_ignore(service, contact, new_status)
     contact_to_handle = contact || notification.contact
@@ -67,6 +62,26 @@ class WebClient::ActionHandler
     update_status(new_status) unless contact
     service.new(contact_to_handle).do
   end
+
+  def subscribe_or_unsubscribe(action_method, new_status)
+    if notification.contact.owner.send("#{new_status}?")
+      @notice = NoticeBuilder.new(new_status, new_status, "already_#{new_status}").as_json
+    else
+      notification.contact.owner.send(action_method)
+      @notice = NoticeBuilder.new(new_status, new_status, new_status).as_json
+    end
+  end
+
+  def update_status(status)
+    notifications.each do |notification|
+      notification.send("set_#{status}")
+      Notification::Save.new(notification).do
+    end
+  end
+
+  #
+  # validations
+  #
 
   def nkey_should_be_correct
     errors.add(:nkey, 'nkey is incorrect') if notifications.empty?
