@@ -4,6 +4,7 @@ RSpec.describe WebClientController, type: :controller, authenticate_with_http_ba
   let(:contact) { FactoryGirl.create(:contact) }
   let(:notification) { FactoryGirl.create(:notification, contact: contact) }
   let(:nkey) { notification.nkey }
+  let(:owner) { Owner.new(contact.owner_mkey) }
 
   render_views
 
@@ -38,7 +39,7 @@ RSpec.describe WebClientController, type: :controller, authenticate_with_http_ba
     before { get :unsubscribe, id: nkey }
 
     it_behaves_like 'response redirect'
-    # TODO: add addition specs
+    it { expect(owner.unsubscribed?).to be true }
   end
 
   describe 'GET #subscribe' do
@@ -46,6 +47,6 @@ RSpec.describe WebClientController, type: :controller, authenticate_with_http_ba
     before { get :subscribe, id: notification.nkey }
 
     it_behaves_like 'response redirect'
-    # TODO: add addition specs
+    it { expect(owner.subscribed?).to be true }
   end
 end

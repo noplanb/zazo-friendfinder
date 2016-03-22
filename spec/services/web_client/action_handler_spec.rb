@@ -4,40 +4,8 @@ RSpec.describe WebClient::ActionHandler do
   let(:contact) { FactoryGirl.create(:contact) }
   let(:notification) { FactoryGirl.create(:notification, contact: contact) }
   let(:nkey) { notification.nkey }
+  let(:owner) { contact.owner }
   let(:instance) { described_class.new(nkey) }
-
-=begin
-  describe '#do' do
-    let(:notification) { FactoryGirl.create :notification, contact: contact }
-    let(:nkey) { notification.nkey }
-
-    before do
-      instance.do action
-      notification.reload
-    end
-
-    context 'add' do
-      let(:action) { :added }
-      it { expect(notification.status).to eq 'added' }
-    end
-
-    context 'ignore' do
-      let(:action) { :ignored }
-      it { expect(notification.status).to eq 'ignored' }
-    end
-
-    context 'unsubscribe' do
-      let(:action) { :unsubscribed }
-      it { expect(notification.status).to eq 'unsubscribed' }
-    end
-
-    context 'nil' do
-      let(:action) { nil }
-      before { :unsubscribed }
-      it { expect(notification.status).to eq nil }
-    end
-  end
-=end
 
   describe '#add and #ignore' do
     before do
@@ -90,7 +58,7 @@ RSpec.describe WebClient::ActionHandler do
       notification.reload
     end
 
-    # TODO: add addition spec
+    it { expect(contact.owner.unsubscribed?).to be true }
     it { expect(notification.status).to eq 'no_feedback' }
   end
 
@@ -100,7 +68,7 @@ RSpec.describe WebClient::ActionHandler do
       notification.reload
     end
 
-    # TODO: add addition spec
+    it { expect(contact.owner.subscribed?).to be true }
     it { expect(notification.status).to eq 'no_feedback' }
   end
 
