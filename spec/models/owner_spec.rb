@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Owner, type: :model do
+  let!(:contact_1) { FactoryGirl.create(:contact, owner_mkey: mkey, total_score: 4) }
+  let!(:contact_2) { FactoryGirl.create(:contact, owner_mkey: mkey, total_score: 6) }
   let(:mkey) { 'xxxxxxxxxxxx' }
-  let!(:contact_1) { FactoryGirl.create :contact, owner_mkey: mkey, total_score: 4 }
-  let!(:contact_2) { FactoryGirl.create :contact, owner_mkey: mkey, total_score: 6 }
-  let(:instance) { described_class.new mkey }
+  let(:instance) { described_class.new(mkey) }
 
   describe '#full_name' do
     let(:mkey) { '7qdanSEmctZ2jPnYA0a1' }
