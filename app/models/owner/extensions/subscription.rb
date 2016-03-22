@@ -1,4 +1,4 @@
-module Owner::SubscriptonExtension
+module Owner::Extensions::Subscription
   def unsubscribe
     return if unsubscribed?
     if additions

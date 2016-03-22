@@ -1,5 +1,5 @@
 class Owner
-  include SubscriptonExtension
+  include Extensions::Subscription
 
   attr_reader :mkey, :full_name
 

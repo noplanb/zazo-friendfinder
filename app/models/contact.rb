@@ -1,7 +1,7 @@
 class Contact < ActiveRecord::Base
-  include OwnerExtension
-  include FilterExtension
-  include AdditionsExtension
+  include Extensions::Owner
+  include Extensions::Filter
+  include Extensions::Additions
 
   ALLOWED_ADDITIONS = [
     'marked_as_favorite', # attrs coming from client
@@ -12,7 +12,7 @@ class Contact < ActiveRecord::Base
 
   has_many :vectors, dependent: :destroy
   has_many :scores, dependent: :destroy
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
 
   validates :owner_mkey, presence: true
   validate :additions_must_be_allowed

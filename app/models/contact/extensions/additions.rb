@@ -1,4 +1,4 @@
-module Contact::AdditionsExtension
+module Contact::Extensions::Additions
   def additions_value(key, default = nil)
     value = additions.try(:[], key)
     value.nil? ? default : value
