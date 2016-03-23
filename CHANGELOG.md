@@ -1,5 +1,7 @@
 # Changelog
 
+### v0.5.2
+
 ### v0.5.1
 - :hammer: Fixed bug with `unsubscribed?` owner status
 
