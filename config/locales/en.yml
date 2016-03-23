@@ -1,6 +1,7 @@
 en:
   web_client:
     app_name: Friends Finder
+    subtitle: People you may know
     notifications:
       title:
         added: '%{contact_name}'
