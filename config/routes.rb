@@ -23,6 +23,9 @@ Rails.application.routes.draw do
       post :recalculate, :update_info, on: :member
     end
     resources :notifications, only: [:index, :show]
+    resources :danger_zone, only: [] do
+      post :drop_contacts, :drop_notifications, on: :member
+    end
     root to: 'dashboard#index'
   end
 
