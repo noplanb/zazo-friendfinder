@@ -2,6 +2,7 @@
 
 ### v0.5.2
 - :bulb: Added admin feature to drop all contacts or notifications (danger zone)
+- :arrow_up: Changed REMOVE to IGNORE button on web-client
 
 ### v0.5.1
 - :hammer: Fixed bug with `unsubscribed?` owner status
