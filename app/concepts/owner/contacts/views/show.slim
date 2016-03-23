@@ -2,6 +2,14 @@ h2.page-title
   = "Contacts #{subtitle} [#{contacts.count}]"
 
   .dropdown class='pull-right right-btn' style='margin-top: -5px'
+    button class='btn btn-sm btn-danger dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'
+      = 'Danger zone '
+      span class='caret'
+    ul class='dropdown-menu'
+      li = link_to 'drop contacts', drop_contacts_admin_danger_zone_path(owner.mkey), method: :post, data: { confirm: 'Are you sure?' }
+      li = link_to 'drop notifications', drop_notifications_admin_danger_zone_path(owner.mkey), method: :post, data: { confirm: 'Are you sure?' }
+
+  .dropdown class='pull-right right-btn' style='margin-top: -5px'
     button class='btn btn-sm btn-default dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'
       = 'Actions  '
       span class='caret'

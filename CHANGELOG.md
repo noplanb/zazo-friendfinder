@@ -1,6 +1,7 @@
 # Changelog
 
 ### v0.5.2
+- :bulb: Added admin feature to drop all contacts or notifications (danger zone)
 
 ### v0.5.1
 - :hammer: Fixed bug with `unsubscribed?` owner status
