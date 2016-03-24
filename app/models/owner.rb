@@ -1,7 +1,8 @@
 class Owner
   include Extensions::Subscription
+  include Extensions::ExternalData
 
-  attr_reader :mkey, :full_name
+  attr_reader :mkey
 
   class << self
     def all
@@ -25,12 +26,6 @@ class Owner
 
   def initialize(mkey)
     @mkey = mkey
-  end
-
-  def fetch_data
-    attributes = DataProviderApi.new(user: mkey, attrs: [:first_name, :last_name]).query(:attributes) rescue nil
-    @full_name = "#{attributes['first_name']} #{attributes['last_name']}" if attributes
-    self
   end
 
   def contacts
