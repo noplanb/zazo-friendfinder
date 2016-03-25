@@ -1,5 +1,7 @@
 # Changelog
 
+### v0.6.1
+
 ### v0.6.0
 - :arrow_up: Extended template view data model
 - :bulb: Added brand new emails template (new design)
