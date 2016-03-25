@@ -6,7 +6,7 @@ RSpec.describe Notification::EmailData, type: :model do
   use_vcr_cassette 'notification/fetch_emails_nonexistent_owner', api_base_urls
 
   let(:contact) { FactoryGirl.create(:contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS') }
-  let(:notification) { FactoryGirl.create(:notification, compiled_content: 'Hello from Russia!', contact: contact) }
+  let(:notification) { FactoryGirl.create(:notification, contact: contact) }
   let(:instance) { described_class.new(notification) }
 
   describe '#get' do
@@ -16,7 +16,7 @@ RSpec.describe Notification::EmailData, type: :model do
       is_expected.to eq to: 'vano468@gmail.com',
                         from: 'Zazo Notifications <support@zazoapp.com>',
                         subject: "#{contact.display_name} joined Zazo!",
-                        body: 'Hello from Russia!'
+                        body: notification.compiled_content
     end
   end
 
@@ -33,13 +33,6 @@ RSpec.describe Notification::EmailData, type: :model do
 
       it { is_expected.to be false }
       it { expect(instance.errors.messages[:email]).to eq ['can\'t be blank'] }
-    end
-
-    context 'when invalid: content is not persisted' do
-      let(:notification) { FactoryGirl.create(:notification, contact: contact) }
-
-      it { is_expected.to be false }
-      it { expect(instance.errors.messages[:content]).to eq ['can\'t be blank'] }
     end
 
     context 'when invalid: owner mkey is invalid' do

@@ -1,16 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Notification::Send do
-  let(:instance) { described_class.new notification }
-  let(:notification) do
-    FactoryGirl.create :notification, kind: kind, compiled_content: 'Hello from Russia!', contact: contact
-  end
+  let(:instance) { described_class.new(notification) }
+  let(:notification) { FactoryGirl.create(:notification, kind: kind, contact: contact) }
 
   describe '#do' do
-    def instance_do_without_exceptions
-      instance.do; rescue
-    end
-
     #
     # email notification
     #
@@ -27,21 +21,21 @@ RSpec.describe Notification::Send do
       context 'when contact owner is existing zazo user with persisted emails' do
         use_vcr_cassette 'notification/send_email_notification_success', api_base_urls
 
-        let(:contact) { FactoryGirl.create :contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS' }
+        let(:contact) { FactoryGirl.create(:contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS') }
         before { instance.do }
 
         it { is_expected.to eq 'sent' }
       end
 
       context 'when contact owner is existing zazo user without persisted emails' do
-        let(:contact) { FactoryGirl.create :contact, owner_mkey: 'XqUn9Fs5YHd75l1rin76' }
+        let(:contact) { FactoryGirl.create(:contact, owner_mkey: 'XqUn9Fs5YHd75l1rin76') }
         before { instance.do }
 
         it { is_expected.to eq 'canceled' }
       end
 
       context 'when contact owner is not exist' do
-        let(:contact) { FactoryGirl.create :contact, owner_mkey: 'xxxxxxxxxxxx' }
+        let(:contact) { FactoryGirl.create(:contact, owner_mkey: 'xxxxxxxxxxxx') }
         before { instance.do }
 
         it { is_expected.to eq 'canceled' }
@@ -50,8 +44,8 @@ RSpec.describe Notification::Send do
       context 'when email is not correct' do
         use_vcr_cassette 'notification/send_email_notification_failure', api_base_urls
 
-        let(:contact) { FactoryGirl.create :contact, owner_mkey: '1IsLHzYF4sM52M7jEgQe' }
-        before { instance_do_without_exceptions }
+        let(:contact) { FactoryGirl.create(:contact, owner_mkey: '1IsLHzYF4sM52M7jEgQe') }
+        before { instance.do rescue nil }
 
         it { is_expected.to eq 'error' }
       end
@@ -71,7 +65,7 @@ RSpec.describe Notification::Send do
       context 'when contact owner is existing zazo push_user' do
         use_vcr_cassette 'notification/send_mobile_notification_success', api_base_urls
 
-        let(:contact) { FactoryGirl.create :contact, owner_mkey: '7qdanSEmctZ2jPnYA0a1' }
+        let(:contact) { FactoryGirl.create(:contact, owner_mkey: '7qdanSEmctZ2jPnYA0a1') }
         before { instance.do }
 
         it { is_expected.to eq 'sent' }

@@ -1,5 +1,8 @@
 # Changelog
 
+### v0.6.2
+- :arrow_up: Disabled saving precompiled content of notification in database
+
 ### v0.6.1
 - :hammer: Fixed email template small version
 
