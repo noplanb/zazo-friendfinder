@@ -4,6 +4,7 @@
 - :arrow_up: Extended template view data model
 
 ### v0.5.2
+- :bulb: Added brand new emails template (new design)
 - :bulb: Added admin feature to drop all contacts or notifications (danger zone)
 - :bulb: Added *People you may know* subtitle to web-client
 - :arrow_up: Changed REMOVE to IGNORE button on web-client
