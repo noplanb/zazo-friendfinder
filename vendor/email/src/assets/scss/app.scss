@@ -1,0 +1,119 @@
+@import 'settings';
+@import 'foundation';
+
+$body-background: $white;
+
+.body {
+  padding-top: 100px !important;
+  padding-bottom: 135px !important;
+  border-collapse: separate;
+
+  @media only screen and (max-width: #{$global-breakpoint}) {
+    padding-top: 30px !important;
+    padding-bottom: 65px !important;
+  }
+}
+
+.row {
+  .columns {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.logo-block {
+  background: #f9f9f9;
+
+  .zazo {
+    margin-right: 20px;
+  }
+}
+
+.greeting-block {
+  .columns {
+    padding: 0 !important;
+  }
+
+  @media only screen and (max-width: #{$global-breakpoint}) {
+    padding: 0 !important;
+  }
+
+  .greeting {
+    padding: 14px 30px;
+    background: #0d47a1;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 0;
+
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+    border-collapse: separate !important;
+    border-radius: 3px 3px 0 0;
+  }
+}
+
+.message-block {
+  border: 1px solid #e0e0e0;
+  border-bottom: none;
+
+  .columns {
+    padding-top: 18px;
+    padding-bottom: 10px;
+  }
+
+  .icon {
+    margin-top: 4px;
+  }
+
+  .message-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 18px;
+    margin-left: -6px;
+  }
+
+  .message-description {
+    margin-left: -5px;
+    margin-bottom: 22px;
+  }
+}
+
+.actions-block {
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  border-collapse: separate !important;
+  border-radius: 0 0 5px 5px;
+
+  -webkit-box-shadow: 0 3px 6px -3px #a3a3a3;
+  -moz-box-shadow: 0 3px 6px -3px #a3a3a3;
+  box-shadow: 0 3px 6px -3px #a3a3a3;
+
+  .actions-group {
+    text-align: right;
+    margin-right: 16px;
+    margin-bottom: 12px;
+
+    @media only screen and (max-width: #{$global-breakpoint}) {
+      margin-top: 10px;
+    }
+
+    .action-button {
+      color: #bababa;
+      padding: 12px 20px;
+      font-size: 12px;
+    }
+
+    .add-button {
+      font-size: 14px;
+      color: white;
+      background: #1976d2;
+      padding: 12px 32px;
+      margin-left: 8px;
+      border-radius: 3px;
+      -webkit-box-shadow: 0px 5px 6px -3px #a3a3a3;
+      -moz-box-shadow: 0px 5px 6px -3px #a3a3a3;
+      box-shadow: 0px 5px 6px -3px #a3a3a3;
+    }
+  }
+}

@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Notification::Create do
-  let(:instance) { described_class.new category, contact }
+  let(:instance) { described_class.new(category, contact) }
 
   describe '#do' do
     let(:category) { 'user_joined' }
     let(:content) { '<%= contact.name %> joined Zazo!' }
-    let(:contact) { FactoryGirl.create :contact }
+    let(:contact) { FactoryGirl.create(:contact) }
     let(:contact_name) { "#{contact.first_name} #{contact.last_name}" }
 
     subject do
@@ -15,7 +15,7 @@ RSpec.describe Notification::Create do
 
     before do
       render_attrs = { inline: '<%= @data.contact.name %> joined Zazo!' }
-      allow_any_instance_of(Template::Render).to receive(:render_attrs).and_return render_attrs
+      allow_any_instance_of(Template::Render).to receive(:render_attrs).and_return(render_attrs)
     end
 
     it do

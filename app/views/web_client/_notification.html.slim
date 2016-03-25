@@ -1,10 +1,10 @@
 #notification.ff-notification-wrapper
   .ff-notification.alert.alert-info role='alert' data-notify='container'
     .icon class="#{notice[:status]}"
-      - if notice[:status] == 'unsubscribed'
-        = web_client.unsubscribed_placeholder_icon
+      - if %w(unsubscribed subscribed).include?(notice[:status])
+        = web_client.send("#{notice[:status]}_placeholder")
       - else
-        = web_client.placeholder_icon
+        = web_client.contact_placeholder
         .initials = web_client.contact.initials
     .text
       h3.contact-name = notice[:title]

@@ -1,5 +1,5 @@
 class Template::ViewData
-  attr_reader :contact
+  attr_reader :contact, :owner
 
   class ContactData
     attr_reader :name
@@ -10,8 +10,10 @@ class Template::ViewData
   end
 
   def initialize(notification, contact = nil)
+    contact ||= notification.contact
     @notification = notification
-    @contact = ContactData.new(contact || notification.contact)
+    @contact = ContactData.new(contact)
+    @owner = contact.owner.fetch_data
   end
 
   def add_link

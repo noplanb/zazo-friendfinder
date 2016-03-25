@@ -1,5 +1,10 @@
 # Changelog
 
+### v0.6.0
+- :arrow_up: Extended template view data model
+- :bulb: Added brand new emails template (new design)
+- :arrow_up: Fixed icon for subscribed state
+
 ### v0.5.2
 - :bulb: Added admin feature to drop all contacts or notifications (danger zone)
 - :bulb: Added *People you may know* subtitle to web-client
