@@ -1,5 +1,6 @@
 class Notification < ActiveRecord::Base
   include Extensions::Sending
+  include Extensions::Compiling
   include AASM
 
   ALLOWED_KINDS = %w(email mobile)
