@@ -2,6 +2,106 @@
 http_interactions:
 - request:
     method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&user=7qdanSEmctZ2jPnYA0a1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1OTI1ODA5MTpkOTFjMzFjN2QyNzM4NGFjMDYxODc4Yzc0YjE1MmRjYQ==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 78c3d18e-d473-4911-8cf4-9d9d7f2cf31d
+      X-Runtime:
+      - '2.910466'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Tue, 29 Mar 2016 13:28:11 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Tue, 29 Mar 2016 13:28:11 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&user=7qdanSEmctZ2jPnYA0a1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&user=7qdanSEmctZ2jPnYA0a1",
+        nonce="MTQ1OTI1ODA5MTpkOTFjMzFjN2QyNzM4NGFjMDYxODc4Yzc0YjE1MmRjYQ==", nc=00000000,
+        cnonce="2f94ae4807880432bc74053a4dcfca44", response="7c95348c41fd1daf3046e54beb8f6df6",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 80366d48-7b9e-466f-8b6e-f4c734acde4f
+      X-Runtime:
+      - '1.034433'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["k6ss0wpbbbno2ge62eht","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Tue, 29 Mar 2016 13:28:13 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"first_name":"Sani","last_name":"Elfishawy"}'
+    http_version: 
+  recorded_at: Tue, 29 Mar 2016 13:28:13 GMT
+- request:
+    method: get
     uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/push_user?user_mkey=7qdanSEmctZ2jPnYA0a1
     body:
       encoding: US-ASCII
@@ -25,28 +125,28 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1NjkxMDI1Njo1ZWZlMDRlMzYzOTdkMDViNjU5NzViZTU3OTZhY2IwZQ==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1OTI1ODA5MzowMjM1MDgzYjc2ODJjZWNkYmM2MWQyNzVhMjU0YjNlMg==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 94a0d9e9-aba7-49b3-ae6d-4c25faab152a
+      - 379ed4f0-feb3-4c91-a8af-c99b1445e699
       X-Runtime:
-      - '0.194798'
+      - '0.192116'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       Date:
-      - Wed, 02 Mar 2016 09:17:36 GMT
+      - Tue, 29 Mar 2016 13:28:13 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Wed, 02 Mar 2016 09:17:36 GMT
+  recorded_at: Tue, 29 Mar 2016 13:28:13 GMT
 - request:
     method: get
     uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/push_user?user_mkey=7qdanSEmctZ2jPnYA0a1
@@ -59,8 +159,8 @@ http_interactions:
       Authorization:
       - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
         qop=auth, uri="/api/v1/fetch/users/queries/push_user?user_mkey=7qdanSEmctZ2jPnYA0a1",
-        nonce="MTQ1NjkxMDI1Njo1ZWZlMDRlMzYzOTdkMDViNjU5NzViZTU3OTZhY2IwZQ==", nc=00000000,
-        cnonce="41d6d66fd3d3acf02939e3fdaa46d613", response="c29516b4343d75bc600939aca0207280",
+        nonce="MTQ1OTI1ODA5MzowMjM1MDgzYjc2ODJjZWNkYmM2MWQyNzVhMjU0YjNlMg==", nc=00000000,
+        cnonce="078ff8877c8a1cae53a0694b87a14ace", response="bd7fd1cda90bdd8f128a3a2f88958d4d",
         opaque="822778b6350cbc116426dfdce7488072"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -82,22 +182,122 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - 0bf5dd22-d047-4aee-a8ff-fe7117abdfc6
+      - e2e0e03d-3f14-4231-a389-da454aa95a29
       X-Runtime:
-      - '0.388281'
+      - '0.774414'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       X-Miniprofiler-Ids:
-      - '["on0591e8xipaswrzb6k1","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["t78yfxlgfej5ilrv14lr","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Wed, 02 Mar 2016 09:17:37 GMT
+      - Tue, 29 Mar 2016 13:28:14 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
-      string: '{"mkey":"7qdanSEmctZ2jPnYA0a1","push_token":"APA91bH8Xy20cWQaP0kbEnps63ziDqwKjEC9GNn-BUsQ7avs8OkMATHSskfZbvLJe02qf9N_qsmxsqgqEaPVdL5iPGOhAhhtLZqo_njxViZUBThdD2ISAiaYfvAJ14ow6_mcydaj_Ubr","device_platform":"ios","device_build":"prod"}'
+      string: '{"mkey":"7qdanSEmctZ2jPnYA0a1","push_token":"APA91bEt9ugdWHeAUfvSM4IPnUCIvDzkc17pSWV2EUBDdyuF-mePW89QHIBeT9jgzaifMREzWUIGXb33wMSEt439xFtSj1jXIt4y29KmokOw-rTZlHKYlNT5Z6QHe9T2B_JHJsARhnCN","device_platform":"android","device_build":"prod"}'
     http_version: 
-  recorded_at: Wed, 02 Mar 2016 09:17:37 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 29 Mar 2016 13:28:14 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&user=7qdanSEmctZ2jPnYA0a1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1OTI1ODA5NDoxOTVhMjgxZDljYWNiMjYzYzM1M2M0MzAyMWExNTM3OQ==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 5022b17e-8db6-42a8-a5bb-a409ee7959a1
+      X-Runtime:
+      - '0.190512'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Tue, 29 Mar 2016 13:28:14 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Tue, 29 Mar 2016 13:28:14 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&user=7qdanSEmctZ2jPnYA0a1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&user=7qdanSEmctZ2jPnYA0a1",
+        nonce="MTQ1OTI1ODA5NDoxOTVhMjgxZDljYWNiMjYzYzM1M2M0MzAyMWExNTM3OQ==", nc=00000000,
+        cnonce="04eac5de59d70ad8b61866e14e64f427", response="8100150a23e81ce829e94866ab5c03b0",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - dad24430-7497-42b3-ac08-5efa8d95de37
+      X-Runtime:
+      - '0.377815'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["5727c14f6ham3vax1xlb","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Tue, 29 Mar 2016 13:28:14 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"first_name":"Sani","last_name":"Elfishawy"}'
+    http_version: 
+  recorded_at: Tue, 29 Mar 2016 13:28:14 GMT
+recorded_with: VCR 3.0.1

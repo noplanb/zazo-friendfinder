@@ -1,6 +1,106 @@
 ---
 http_interactions:
 - request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1OTI1ODU4Mzo2NTYxNDU4MDUwYWZhNzgzMmIzOGVmYzllNWRiNzY0MA==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 5d37af06-0822-4c2a-8329-dee2a087bb58
+      X-Runtime:
+      - '0.191101'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Tue, 29 Mar 2016 13:36:23 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Tue, 29 Mar 2016 13:36:23 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS",
+        nonce="MTQ1OTI1ODU4Mzo2NTYxNDU4MDUwYWZhNzgzMmIzOGVmYzllNWRiNzY0MA==", nc=00000000,
+        cnonce="d657783b24e9845323c2be4cc942caf0", response="b6415a1db3706288dec027158e91a29b",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 68cbe8fb-a9b6-4d7a-b3f6-945a4c9ce4cb
+      X-Runtime:
+      - '0.387798'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["4y8l3cbx2sjmow7g10jg","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Tue, 29 Mar 2016 13:36:23 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"first_name":"Ivan","last_name":"Kornilov"}'
+    http_version: 
+  recorded_at: Tue, 29 Mar 2016 13:36:24 GMT
+- request:
     method: post
     uri: <%= notification_api_base_url %>/api/v1/notifications/email
     body:
@@ -22,43 +122,166 @@ http_interactions:
       code: 401
       message: Unauthorized
     headers:
-      Cache-Control:
-      - no-cache
-      Content-Type:
-      - text/html; charset=utf-8
-      Date:
-      - Mon, 23 Nov 2015 07:48:09 GMT
-      Server:
-      - nginx/1.6.2
-      Www-Authenticate:
-      - Digest realm="Zazo Notification", qop="auth", algorithm=MD5, nonce="MTQ0ODI2NDg4OTo4ZGRjOWY5N2M4ZmE3MzZhYzI2ZmI0YWY4NjYyM2ZhOA==",
-        opaque="a650a4f7dcaa5fc01903b2b94613230f"
-      X-Content-Type-Options:
-      - nosniff
       X-Frame-Options:
       - SAMEORIGIN
-      X-Request-Id:
-      - f9030291-8f02-47bc-85a2-1b5951bb0f85
-      X-Runtime:
-      - '0.002023'
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '25'
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo Notification", qop="auth", algorithm=MD5, nonce="MTQ1OTI1ODU4NDo4ZTAzYjEzN2VkZjNlNmZhYjhjYjdhYmY2ODVlYWFjMQ==",
+        opaque="1bada4e4faf11d9675b0e01e3ee23df0"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 2cb6a67e-23b4-4be2-b543-397584836181
+      X-Runtime:
+      - '0.003365'
+      Date:
+      - Tue, 29 Mar 2016 13:36:24 GMT
       Connection:
-      - keep-alive
+      - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Mon, 23 Nov 2015 07:48:10 GMT
+  recorded_at: Tue, 29 Mar 2016 13:36:24 GMT
 - request:
     method: post
     uri: <%= notification_api_base_url %>/api/v1/notifications/email
     body:
       encoding: UTF-8
-      string: '{"to":"vano468@gmail.com","subject":"Juliana Gutkowski joined Zazo!","body":"Hello
-        from Russia!"}'
+      string: '{"to":"vano468@gmail.com","subject":"Leanne Treutel joined Zazo!","body":"<!DOCTYPE
+        html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"><html
+        xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\" style=\"background:#f9f9f9;min-height:100%\"><head><meta
+        http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta name=\"viewport\"
+        content=\"width=device-width\"></head><body style=\"-moz-box-sizing:border-box;-ms-text-size-adjust:100%;-webkit-box-sizing:border-box;-webkit-text-size-adjust:100%;box-sizing:border-box;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;min-width:100%;padding:0;text-align:left;width:100%!important\"><style>@media
+        only screen and (max-width:596px){.hide-for-large{display:block}}@media only
+        screen and (max-width:596px){.show-for-large{display:none;width:0;mso-hide:all;overflow:hidden}}@media
+        only screen and (max-width:596px){table.body img{width:auto!important;height:auto!important}table.body
+        center{min-width:0!important}table.body .container{width:95%!important}table.body
+        .column,table.body .columns{height:auto!important;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;padding-left:16px!important;padding-right:16px!important}table.body
+        .collapse .column,table.body .collapse .columns{padding-left:0!important;padding-right:0!important}td.small-1,th.small-1{display:inline-block!important;width:6.25%!important}td.small-2,th.small-2{display:inline-block!important;width:12.5%!important}td.small-3,th.small-3{display:inline-block!important;width:18.75%!important}td.small-4,th.small-4{display:inline-block!important;width:25%!important}td.small-5,th.small-5{display:inline-block!important;width:31.25%!important}td.small-6,th.small-6{display:inline-block!important;width:37.5%!important}td.small-7,th.small-7{display:inline-block!important;width:43.75%!important}td.small-8,th.small-8{display:inline-block!important;width:50%!important}td.small-9,th.small-9{display:inline-block!important;width:56.25%!important}td.small-10,th.small-10{display:inline-block!important;width:62.5%!important}td.small-11,th.small-11{display:inline-block!important;width:68.75%!important}td.small-12,th.small-12{display:inline-block!important;width:75%!important}td.small-13,th.small-13{display:inline-block!important;width:81.25%!important}td.small-14,th.small-14{display:inline-block!important;width:87.5%!important}td.small-15,th.small-15{display:inline-block!important;width:93.75%!important}td.small-16,th.small-16{display:inline-block!important;width:100%!important}.column
+        td.small-16,.column th.small-16,.columns td.small-16,.columns th.small-16{display:block!important;width:100%!important}.body
+        .column td.small-1,.body .column th.small-1,.body .columns td.small-1,.body
+        .columns th.small-1,td.small-1 center,th.small-1 center{display:inline-block!important;width:6.25%!important}.body
+        .column td.small-2,.body .column th.small-2,.body .columns td.small-2,.body
+        .columns th.small-2,td.small-2 center,th.small-2 center{display:inline-block!important;width:12.5%!important}.body
+        .column td.small-3,.body .column th.small-3,.body .columns td.small-3,.body
+        .columns th.small-3,td.small-3 center,th.small-3 center{display:inline-block!important;width:18.75%!important}.body
+        .column td.small-4,.body .column th.small-4,.body .columns td.small-4,.body
+        .columns th.small-4,td.small-4 center,th.small-4 center{display:inline-block!important;width:25%!important}.body
+        .column td.small-5,.body .column th.small-5,.body .columns td.small-5,.body
+        .columns th.small-5,td.small-5 center,th.small-5 center{display:inline-block!important;width:31.25%!important}.body
+        .column td.small-6,.body .column th.small-6,.body .columns td.small-6,.body
+        .columns th.small-6,td.small-6 center,th.small-6 center{display:inline-block!important;width:37.5%!important}.body
+        .column td.small-7,.body .column th.small-7,.body .columns td.small-7,.body
+        .columns th.small-7,td.small-7 center,th.small-7 center{display:inline-block!important;width:43.75%!important}.body
+        .column td.small-8,.body .column th.small-8,.body .columns td.small-8,.body
+        .columns th.small-8,td.small-8 center,th.small-8 center{display:inline-block!important;width:50%!important}.body
+        .column td.small-9,.body .column th.small-9,.body .columns td.small-9,.body
+        .columns th.small-9,td.small-9 center,th.small-9 center{display:inline-block!important;width:56.25%!important}.body
+        .column td.small-10,.body .column th.small-10,.body .columns td.small-10,.body
+        .columns th.small-10,td.small-10 center,th.small-10 center{display:inline-block!important;width:62.5%!important}.body
+        .column td.small-11,.body .column th.small-11,.body .columns td.small-11,.body
+        .columns th.small-11,td.small-11 center,th.small-11 center{display:inline-block!important;width:68.75%!important}.body
+        .column td.small-12,.body .column th.small-12,.body .columns td.small-12,.body
+        .columns th.small-12,td.small-12 center,th.small-12 center{display:inline-block!important;width:75%!important}.body
+        .column td.small-13,.body .column th.small-13,.body .columns td.small-13,.body
+        .columns th.small-13,td.small-13 center,th.small-13 center{display:inline-block!important;width:81.25%!important}.body
+        .column td.small-14,.body .column th.small-14,.body .columns td.small-14,.body
+        .columns th.small-14,td.small-14 center,th.small-14 center{display:inline-block!important;width:87.5%!important}.body
+        .column td.small-15,.body .column th.small-15,.body .columns td.small-15,.body
+        .columns th.small-15,td.small-15 center,th.small-15 center{display:inline-block!important;width:93.75%!important}table.body
+        td.small-offset-1,table.body th.small-offset-1{margin-left:6.25%!important}table.body
+        td.small-offset-2,table.body th.small-offset-2{margin-left:12.5%!important}table.body
+        td.small-offset-3,table.body th.small-offset-3{margin-left:18.75%!important}table.body
+        td.small-offset-4,table.body th.small-offset-4{margin-left:25%!important}table.body
+        td.small-offset-5,table.body th.small-offset-5{margin-left:31.25%!important}table.body
+        td.small-offset-6,table.body th.small-offset-6{margin-left:37.5%!important}table.body
+        td.small-offset-7,table.body th.small-offset-7{margin-left:43.75%!important}table.body
+        td.small-offset-8,table.body th.small-offset-8{margin-left:50%!important}table.body
+        td.small-offset-9,table.body th.small-offset-9{margin-left:56.25%!important}table.body
+        td.small-offset-10,table.body th.small-offset-10{margin-left:62.5%!important}table.body
+        td.small-offset-11,table.body th.small-offset-11{margin-left:68.75%!important}table.body
+        td.small-offset-12,table.body th.small-offset-12{margin-left:75%!important}table.body
+        td.small-offset-13,table.body th.small-offset-13{margin-left:81.25%!important}table.body
+        td.small-offset-14,table.body th.small-offset-14{margin-left:87.5%!important}table.body
+        td.small-offset-15,table.body th.small-offset-15{margin-left:93.75%!important}table.body
+        table.columns td.expander,table.body table.columns th.expander{display:none!important}table.body
+        .right-text-pad,table.body .text-pad-right{padding-left:10px!important}table.body
+        .left-text-pad,table.body .text-pad-left{padding-right:10px!important}table.body
+        .hide-for-small,table.body .show-for-desktop{display:none!important}table.body
+        .hide-for-desktop,table.body .show-for-small{display:inherit!important}table.menu
+        td,table.menu th{width:auto!important;display:inline-block!important}table.menu.vertical
+        td,table.menu.vertical th{display:block!important}table.button.expand{width:100%!important}}@media
+        only screen and (max-width:596px){.body{padding-top:30px!important;padding-bottom:65px!important}}@media
+        only screen and (max-width:596px){.greeting-block{padding:0!important}}@media
+        only screen and (max-width:596px){.actions-block .actions-group{margin-top:10px}}</style><table
+        class=\"body\" style=\"background:#f9f9f9;border-collapse:separate;border-spacing:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;height:100%;line-height:19px;margin:0;padding:0;padding-bottom:135px!important;padding-top:100px!important;text-align:left;vertical-align:top;width:100%\"><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><td class=\"center\"
+        align=\"center\" valign=\"top\" style=\"-moz-hyphens:auto;-webkit-hyphens:auto;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;hyphens:auto;line-height:19px;margin:0;padding:0;text-align:left;vertical-align:top;word-break:break-word\"><center
+        data-parsed=\"\" style=\"min-width:580px;width:100%\"><table class=\"container
+        text-center\" style=\"background:#fefefe;border-collapse:collapse;border-spacing:0;margin:0
+        auto;padding:0;text-align:center;vertical-align:top;width:580px\"><tbody><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><td style=\"-moz-hyphens:auto;-webkit-hyphens:auto;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;hyphens:auto;line-height:19px;margin:0;padding:0;text-align:left;vertical-align:top;word-break:break-word\"><table
+        class=\"row logo-block\" style=\"background:#f9f9f9;border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%\"><tbody><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><th class=\"small-16
+        large-16 columns first last\" style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0
+        auto;padding:0;padding-bottom:16px;padding-left:0!important;padding-right:0!important;text-align:left;width:564px\"><table
+        style=\"border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%\"><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><th style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0;text-align:left\"><img
+        class=\"zazo float-right\" src=\"http://ff-staging.zazoapp.com/email/images/zazo.png\"
+        style=\"-ms-interpolation-mode:bicubic;clear:both;display:block;float:right;margin-right:20px;max-width:100%;outline:0;text-align:right;text-decoration:none;width:auto\"></th></tr></table></th></tr></tbody></table><table
+        class=\"row greeting-block\" style=\"border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%\"><tbody><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><th class=\"small-16
+        large-16 columns first last\" style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0
+        auto;padding:0!important;padding-bottom:16px;padding-left:0!important;padding-right:0!important;text-align:left;width:564px\"><table
+        style=\"border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%\"><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><th style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0;text-align:left\"><p
+        class=\"greeting\" style=\"Margin-bottom:10px;background:#0d47a1;border:1px
+        solid #e0e0e0;border-bottom:none;border-collapse:separate!important;border-radius:3px
+        3px 0 0;color:#fff;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:19px;margin:0;margin-bottom:0;padding:14px
+        30px;text-align:left\">Dear, Ivan</p></th></tr></table></th></tr></tbody></table><table
+        class=\"row message-block\" style=\"border:1px solid #e0e0e0;border-bottom:none;border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%\"><tbody><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><th class=\"small-5
+        large-4 columns first\" style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0
+        auto;padding:0;padding-bottom:10px;padding-left:0!important;padding-right:0!important;padding-top:18px;text-align:left;width:129px\"><table
+        style=\"border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%\"><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><th style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0;text-align:left\"><img
+        class=\"icon float-center\" src=\"http://ff-staging.zazoapp.com/email/images/icon.png\"
+        style=\"-ms-interpolation-mode:bicubic;clear:both;display:block;float:none;margin:0
+        auto;margin-top:4px;max-width:100%;outline:0;text-align:center;text-decoration:none;width:auto\"></th></tr></table></th><th
+        class=\"small-11 large-12 columns last\" style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0
+        auto;padding:0;padding-bottom:10px;padding-left:0!important;padding-right:0!important;padding-top:18px;text-align:left;width:419px\"><table
+        style=\"border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%\"><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><th style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0;text-align:left\"><p
+        class=\"message-title\" style=\"Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:18px;font-weight:700;line-height:19px;margin:0;margin-bottom:10px;margin-left:-6px;margin-top:18px;padding:0;text-align:left\">Leanne
+        Treutel</p><p class=\"message-description\" style=\"Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;margin-bottom:22px;margin-left:-5px;padding:0;text-align:left\">Leanne
+        Treutel joined Zazo</p></th><th class=\"expander\" style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0\"></th></tr></table></th></tr></tbody></table><table
+        class=\"row actions-block\" style=\"-moz-box-shadow:0 3px 6px -3px #a3a3a3;-webkit-box-shadow:0
+        3px 6px -3px #a3a3a3;border:1px solid #e0e0e0;border-collapse:separate!important;border-radius:0
+        0 5px 5px;border-spacing:0;border-top:none;box-shadow:0 3px 6px -3px #a3a3a3;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%\"><tbody><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><th class=\"small-16
+        large-16 columns first last\" style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0
+        auto;padding:0;padding-bottom:16px;padding-left:0!important;padding-right:0!important;text-align:left;width:564px\"><table
+        style=\"border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%\"><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><th style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0;text-align:left\"><p
+        class=\"actions-group\" style=\"Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;margin-bottom:12px;margin-right:16px;padding:0;text-align:right\"><a
+        class=\"action-button\" href=\"http://ff-staging.zazoapp.com/w/8b6c2ec8a4cd43b611a704b4dafb4b3f/unsubscribe\"
+        style=\"color:#bababa;font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;line-height:1.3;margin:0;padding:12px
+        20px;text-align:left;text-decoration:none\">UNSUBSCRIBE</a> <a class=\"action-button\"
+        href=\"http://ff-staging.zazoapp.com/w/8b6c2ec8a4cd43b611a704b4dafb4b3f/ignore\"
+        style=\"color:#bababa;font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;line-height:1.3;margin:0;padding:12px
+        20px;text-align:left;text-decoration:none\">IGNORE</a> <a class=\"action-button
+        add-button\" href=\"http://ff-staging.zazoapp.com/w/8b6c2ec8a4cd43b611a704b4dafb4b3f/add\"
+        style=\"-moz-box-shadow:0 5px 6px -3px #a3a3a3;-webkit-box-shadow:0 5px 6px
+        -3px #a3a3a3;background:#1976d2;border-radius:3px;box-shadow:0 5px 6px -3px
+        #a3a3a3;color:#fff;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-left:8px;padding:12px
+        32px;text-align:left;text-decoration:none\">ADD</a></p></th></tr></table></th></tr></tbody></table></td></tr></tbody></table></center></td></tr></table></body></html>\n","from":"Zazo
+        Notifications <support@zazoapp.com>"}'
     headers:
       User-Agent:
       - Faraday v0.9.1
@@ -68,9 +291,9 @@ http_interactions:
       - '0'
       Authorization:
       - Digest username="friendfinder", realm="Zazo Notification", algorithm=MD5,
-        qop=auth, uri="/api/v1/notifications/email", nonce="MTQ0ODI2NDg4OTo4ZGRjOWY5N2M4ZmE3MzZhYzI2ZmI0YWY4NjYyM2ZhOA==",
-        nc=00000000, cnonce="fb349737ed8d56e5c641075aa8c08ce3", response="d96681e6c7fd451b2b8a0845b48bff22",
-        opaque="a650a4f7dcaa5fc01903b2b94613230f"
+        qop=auth, uri="/api/v1/notifications/email", nonce="MTQ1OTI1ODU4NDo4ZTAzYjEzN2VkZjNlNmZhYjhjYjdhYmY2ODVlYWFjMQ==",
+        nc=00000000, cnonce="9e86c551f6d4e88a3f0d1d0d81e2cc7c", response="50343dd7df4ce3eed1e7cbfafab3e1d6",
+        opaque="1bada4e4faf11d9675b0e01e3ee23df0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -80,31 +303,29 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Content-Type:
-      - application/json; charset=utf-8
-      Date:
-      - Mon, 23 Nov 2015 07:48:11 GMT
-      Server:
-      - nginx/1.6.2
-      X-Content-Type-Options:
-      - nosniff
       X-Frame-Options:
       - SAMEORIGIN
-      X-Request-Id:
-      - 34536ed2-f58f-457a-9305-5cada53f88a0
-      X-Runtime:
-      - '1.479187'
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '65'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"aaf847dc04e2b68ae8dc820bd73647fc"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 28eca2a7-8ea4-4682-80f7-76b052e6ecdc
+      X-Runtime:
+      - '7.403523'
+      Date:
+      - Tue, 29 Mar 2016 13:36:31 GMT
       Connection:
-      - keep-alive
+      - close
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"status":"success","original_response":null}'
     http_version: 
-  recorded_at: Mon, 23 Nov 2015 07:48:12 GMT
-recorded_with: VCR 2.9.3
+  recorded_at: Tue, 29 Mar 2016 13:36:31 GMT
+recorded_with: VCR 3.0.1
