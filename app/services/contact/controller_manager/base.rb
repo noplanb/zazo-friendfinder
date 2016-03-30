@@ -1,27 +1,20 @@
-class Contact::ControllerManager::RejectSuggestion
+class Contact::ControllerManager::Base
   attr_reader :owner_mkey, :raw_params, :validation
+
+  class << self
+    def params_validation(params = nil)
+      @params_validation ||= params
+    end
+  end
 
   def initialize(owner_mkey, raw_params)
     @owner_mkey = owner_mkey
     @raw_params = raw_params
-    @validation = RawParamsValidation.new(raw_params)
+    @validation = RawParamsValidation.new(raw_params, self.class.params_validation)
   end
 
   def do
-    validation.valid? && wrap_transaction do
-      raw_params['rejected'].each do |id|
-        contact = Contact.find_by_id(id)
-        unless contact
-          add_error(:raw_params_id, "contact with id=#{id} is not exist")
-          fail(ActiveRecord::Rollback)
-        end
-        reject_contact(contact)
-      end
-    end
-  end
-
-  def errors
-    validation.errors.messages.merge(@errors || {})
+    validation.valid? && wrap_transaction { do_safe }
   end
 
   def log_messages(status)
@@ -32,6 +25,10 @@ class Contact::ControllerManager::RejectSuggestion
     end
   end
 
+  def errors
+    validation.errors.messages
+  end
+
   private
 
   def wrap_transaction
@@ -39,37 +36,26 @@ class Contact::ControllerManager::RejectSuggestion
     false
   end
 
-  def reject_contact(contact)
-    contact.additions ||= {}
-    contact.additions['rejected_by_owner'] = true
-    contact.save
-  end
-
-  #
-  # validations
-  #
-
-  def add_error(key, error)
-    @errors ||= {}
-    @errors[key] ||= []
-    @errors[key] << error
-  end
-
   class RawParamsValidation
     include ActiveModel::Validations
 
-    attr_reader :raw_params
+    attr_reader :raw_params, :params_validation
 
     validates :raw_params, presence: true
     validate  :raw_params_with_correct_structure
 
-    def initialize(raw_params)
+    def initialize(raw_params, params_validation)
       @raw_params = raw_params
+      @params_validation = params_validation
     end
 
     def raw_params_with_correct_structure
       if raw_params.kind_of?(Hash)
-        errors.add(:raw_params, 'raw_params[\'rejected\'] must be type of Array') unless raw_params['rejected'].kind_of?(Array)
+        params_validation && params_validation.each do |param, desc|
+          unless raw_params[param.to_s].kind_of?(desc[:type])
+            errors.add(:raw_params, "raw_params['#{param}'] must be type of #{desc[:type]}")
+          end
+        end
       else
         errors.add(:raw_params, 'raw_params must be type of Hash')
       end
