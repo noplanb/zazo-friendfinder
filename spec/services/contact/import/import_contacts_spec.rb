@@ -14,7 +14,7 @@ RSpec.describe Contact::Import::ImportContacts do
         ],
         'additions' => {
           'marked_as_favorite' => true,
-          'rejected_by_owner' => true }
+          'ignored_by_owner' => true }
       }
     ]
   end

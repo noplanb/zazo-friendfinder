@@ -13,8 +13,8 @@ RSpec.describe Contact::ControllerManager::IgnoreContacts do
     before { [contact_1, contact_2].each(&:reload) }
 
     it { is_expected.to eq true }
-    it { expect(contact_1.additions).to eq 'rejected_by_owner' => true }
-    it { expect(contact_2.additions).to eq 'rejected_by_owner' => true }
+    it { expect(contact_1.additions).to eq 'ignored_by_owner' => true }
+    it { expect(contact_2.additions).to eq 'ignored_by_owner' => true }
   end
 
   describe 'validations' do

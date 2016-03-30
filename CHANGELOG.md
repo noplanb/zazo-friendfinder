@@ -3,6 +3,7 @@
 ### v0.6.3
 - :arrow_up: Refactored code and structure regarding Contact and Score services
 - :arrow_up: Changed API for mobile client (see documentation)
+- :arrow_up: Renamed *reject(ed)* to *ignore(d)* everywhere
 - :hammer: Fixed specs after updating vcr gem
 - :hammer: Fixed `Contact::GetSuggestions` service to return only suggestible contacts
 

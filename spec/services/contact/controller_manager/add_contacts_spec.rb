@@ -5,7 +5,7 @@ RSpec.describe Contact::ControllerManager::AddContacts do
   let(:instance) { described_class.new(user.mkey, params) }
 
   let(:contact_1) { FactoryGirl.create(:contact, owner_mkey: user.mkey) }
-  let(:contact_2) { FactoryGirl.create(:contact, owner_mkey: user.mkey, additions: { rejected_by_owner: true }) }
+  let(:contact_2) { FactoryGirl.create(:contact, owner_mkey: user.mkey, additions: { ignored_by_owner: true }) }
   let(:contact_3) { FactoryGirl.create(:contact, owner_mkey: user.mkey, additions: { added_by_owner: true }) }
 
   describe '#do' do

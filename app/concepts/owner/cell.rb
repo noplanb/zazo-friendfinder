@@ -7,10 +7,10 @@ class Owner::Cell < Cell::Concept
     FILTER_MAP = {
       friends: :friends,
       not_friends: :not_friends,
-      rejected: :rejected,
+      ignored: :ignored,
       added: :added,
       not_added: :not_added,
-      not_rejected: :not_rejected,
+      not_ignored: :not_ignored,
       proposed: :proposed,
       not_proposed: :not_proposed,
       suggestible: :suggestible

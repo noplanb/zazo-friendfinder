@@ -6,12 +6,12 @@ class Contact::Ignore
   end
 
   def do
-    contact.update_attributes(additions: new_attributes) unless contact.rejected? || contact.added?
+    contact.update_attributes(additions: new_attributes) unless contact.ignored? || contact.added?
   end
 
   private
 
   def new_attributes
-    (contact.additions || {}).merge('rejected_by_owner' => true)
+    (contact.additions || {}).merge('ignored_by_owner' => true)
   end
 end

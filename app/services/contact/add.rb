@@ -11,6 +11,6 @@ class Contact::Add
   end
 
   def new_attributes
-    (contact.additions || {}).except('rejected_by_owner').merge('added_by_owner' => true)
+    (contact.additions || {}).except('ignored_by_owner').merge('added_by_owner' => true)
   end
 end

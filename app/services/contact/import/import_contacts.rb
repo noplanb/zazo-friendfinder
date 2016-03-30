@@ -24,7 +24,7 @@ class Contact::Import::ImportContacts
   #
 
   def drop_unmarked_contacts
-    owner.contacts.not_added.not_rejected.not_proposed.not_recommended.destroy_all
+    owner.contacts.not_added.not_ignored.not_proposed.not_recommended.destroy_all
   end
 
   def add_or_merge_contact(contact_data)
