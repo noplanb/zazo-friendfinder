@@ -19,6 +19,7 @@ RSpec.describe Notification::Send do
       subject { notification.reload.state }
 
       context 'when contact owner is existing zazo user with persisted emails' do
+        use_vcr_cassette 'owner/fetch_data/attributes_by_GBAHb0482YxlJ0kYwbIS', api_base_urls
         use_vcr_cassette 'notification/send_email_notification_success', api_base_urls
 
         let(:contact) { FactoryGirl.create(:contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS') }
@@ -63,6 +64,7 @@ RSpec.describe Notification::Send do
       subject { notification.reload.state }
 
       context 'when contact owner is existing zazo push_user' do
+        use_vcr_cassette 'owner/fetch_data/attributes_by_7qdanSEmctZ2jPnYA0a1', api_base_urls
         use_vcr_cassette 'notification/send_mobile_notification_success', api_base_urls
 
         let(:contact) { FactoryGirl.create(:contact, owner_mkey: '7qdanSEmctZ2jPnYA0a1') }

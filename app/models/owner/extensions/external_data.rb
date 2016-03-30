@@ -1,13 +1,15 @@
 module Owner::Extensions::ExternalData
   def self.included(base)
     base.class_eval do
-      attr_reader :first_name, :last_name
+      attr_reader :first_name, :last_name, :friends
     end
   end
 
   def fetch_data
-    attributes = DataProviderApi.new(user: mkey, attrs: [:first_name, :last_name]).query(:attributes) rescue nil
-    @first_name, @last_name = [attributes['first_name'], attributes['last_name']] if attributes
+    attrs = [:first_name, :last_name, :friends]
+    default_attributes = { 'friends' => [] }
+    attributes = DataProviderApi.new(user: mkey, attrs: attrs).query(:attributes) rescue default_attributes
+    attrs.each { |attr| instance_variable_set(:"@#{attr}", attributes[attr.to_s]) }
     self
   end
 
