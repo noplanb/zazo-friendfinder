@@ -1,24 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Owner::Extensions::ContactsActions, type: :model do
-  use_vcr_cassette 'owner/extensions/find_contact_and_update_zazo_info', api_base_urls
-
-  let(:mobile) { '+16502453537' }
-  let(:email) { 'admin@google.com' }
   let(:owner_mkey) { 'xxxxxxxxxxxx' }
+  let(:owner) { Owner.new(owner_mkey) }
   let(:instance) { Owner.new(owner_mkey).contacts_actions }
 
-  let!(:contact_1) do
-    FactoryGirl.create(:contact, owner_mkey: owner_mkey,
-                       vectors: [FactoryGirl.create(:vector_mobile, value: mobile)])
-  end
-  let!(:contact_2) do
-    FactoryGirl.create(:contact, owner_mkey: owner_mkey,
-                       vectors: [FactoryGirl.create(:vector_email, value: email)])
-  end
+  describe '#find_contact_and_update_info' do
+    use_vcr_cassette 'owner/extensions/find_contact_and_update_zazo_info', api_base_urls
 
-  describe '#find_contact_and_update_zazo_info' do
-    subject { instance.find_contact_and_update_zazo_info }
+    let(:mobile) { '+16502453537' }
+    let(:email) { 'admin@google.com' }
+
+    let!(:contact_1) do
+      FactoryGirl.create(:contact, owner_mkey: owner_mkey,
+                         vectors: [FactoryGirl.create(:vector_mobile, value: mobile)])
+    end
+    let!(:contact_2) do
+      FactoryGirl.create(:contact, owner_mkey: owner_mkey,
+                         vectors: [FactoryGirl.create(:vector_email, value: email)])
+    end
+
+    subject { instance.find_contact_and_update_info }
 
     before do
       subject
@@ -35,5 +37,32 @@ RSpec.describe Owner::Extensions::ContactsActions, type: :model do
       it { expect(contact_2.zazo_id).to be_nil }
       it { expect(contact_2.zazo_mkey).to be_nil }
     end
+  end
+
+  describe '#recalculate_scores' do
+    use_vcr_cassette 'contact/get_zazo_friends_for_nonexistent_user', api_base_urls
+
+    before do
+      # first owner's contact
+      vectors = [
+        FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 12 }),
+        FactoryGirl.create(:vector_email)
+      ]
+      FactoryGirl.create :contact, owner_mkey: owner_mkey, vectors: vectors, additions: { marked_as_favorite: true }
+
+      # second owner's contact
+      vectors = [FactoryGirl.create(:vector_mobile)]
+      FactoryGirl.create :contact, owner_mkey: owner_mkey, vectors: vectors, additions: { marked_as_favorite: true }
+
+      # non owner's contact
+      vectors = [FactoryGirl.create(:vector_mobile, value: vectors.last.value)]
+      FactoryGirl.create :contact, vectors: vectors
+    end
+
+    let!(:subject) { instance.recalculate_scores }
+
+    it { is_expected.to be true }
+    it { expect(owner.contacts.count).to eq 2 }
+    it { expect(owner.contacts.map(&:total_score)).to include(75, 53) }
   end
 end

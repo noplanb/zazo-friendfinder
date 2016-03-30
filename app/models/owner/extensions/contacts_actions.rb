@@ -6,11 +6,17 @@ module Owner::Extensions::ContactsActions
       @owner = owner
     end
 
-    def find_contact_and_update_zazo_info
+    def find_contact_and_update_info
       owner.contacts.map do |contact|
         Contact::Update::FindZazoContact.new(contact).do
         Contact::Update::UpdateZazoInfo.new(contact).do
       end
+    end
+
+    def recalculate_scores
+      owner.contacts.map do |contact|
+        Score::CalculationByContact.new(contact).do
+      end.find { |res| !res }.nil? ? true : false
     end
   end
 

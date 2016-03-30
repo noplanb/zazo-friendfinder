@@ -25,7 +25,7 @@ RSpec.describe Contact::GetSuggestions do
     subject { instance.do }
 
     before do
-      Score::CalculationByOwner.new(user.mkey).do
+      Owner.new(user.mkey).contacts_actions.recalculate_scores
       contact_1.reload
       contact_2.reload
       contact_3.reload
