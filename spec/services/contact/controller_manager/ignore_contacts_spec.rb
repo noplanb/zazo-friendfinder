@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Contact::ControllerManager::RejectContacts do
+RSpec.describe Contact::ControllerManager::IgnoreContacts do
   let(:user) { FactoryGirl.build(:user) }
   let(:instance) { described_class.new(user.mkey, params) }
 
@@ -8,7 +8,7 @@ RSpec.describe Contact::ControllerManager::RejectContacts do
   let(:contact_2) { FactoryGirl.create(:contact, owner_mkey: user.mkey) }
 
   describe '#do' do
-    let(:params) { { 'rejected' => [contact_1.id, contact_2.id] } }
+    let(:params) { { 'contacts_ids' => [contact_1.id, contact_2.id] } }
     let!(:subject) { instance.do }
     before { [contact_1, contact_2].each(&:reload) }
 
@@ -21,11 +21,11 @@ RSpec.describe Contact::ControllerManager::RejectContacts do
     context 'raw_params' do
       let!(:subject) { instance.do }
 
-      context 'raw_params[\'rejected\'] must be type of Array' do
-        let(:params) { { 'rejected' => 'some string' } }
+      context 'raw_params[\'contacts_ids\'] must be type of Array' do
+        let(:params) { { 'contacts_ids' => 'some string' } }
 
         it { is_expected.to eq false }
-        it { expect(instance.errors).to eq raw_params: ['raw_params[\'rejected\'] must be type of Array'] }
+        it { expect(instance.errors).to eq raw_params: ['raw_params[\'contacts_ids\'] must be type of Array'] }
       end
 
       context 'raw_params must be type of Hash' do
@@ -36,7 +36,7 @@ RSpec.describe Contact::ControllerManager::RejectContacts do
       end
 
       context 'raw_params must contain correct id\'s' do
-        let(:params) { { 'rejected' => [contact_1.id, 1982] } }
+        let(:params) { { 'contacts_ids' => [contact_1.id, 1982] } }
 
         it { is_expected.to eq false }
         it { expect(instance.errors).to eq raw_params_id: ['contact with id=1982 is not exist'] }

@@ -6,10 +6,10 @@ class Api::V1::ContactsController < ApiController
   end
 
   def add
-    handle_with_manager Contact::ControllerManager::AddContacts.new(current_user.mkey, { 'added' => params['added'] })
+    handle_with_manager Contact::ControllerManager::AddContacts.new(current_user.mkey, params)
   end
 
-  def reject
-    handle_with_manager Contact::ControllerManager::RejectContacts.new(current_user.mkey, { 'rejected' => params['rejected'] })
+  def ignore
+    handle_with_manager Contact::ControllerManager::IgnoreContacts.new(current_user.mkey, params)
   end
 end

@@ -1,8 +1,8 @@
-class Contact::ControllerManager::RejectContacts < Contact::ControllerManager::Base
-  params_validation rejected: { type: Array }
+class Contact::ControllerManager::IgnoreContacts < Contact::ControllerManager::Base
+  params_validation contacts_ids: { type: Array }
 
   def do_safe
-    raw_params['rejected'].each do |id|
+    raw_params['contacts_ids'].each do |id|
       contact = Contact.find_by_id(id)
       unless contact
         add_error(:raw_params_id, "contact with id=#{id} is not exist")
