@@ -30,6 +30,6 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
     end
 
     it { expect(response).to be_success }
-    it { expect(ResqueWorker::AddContacts).to have_queued(user_mkey, params['contacts']).in(:add_contacts) }
+    it { expect(ResqueWorker::ImportContacts).to have_queued(user_mkey, params['contacts']).in(:add_contacts) }
   end
 end

@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :contacts, only: [:create] do
-        post :add, :reject, :recommend, on: :collection
+        post :add, :reject, on: :collection
       end
-      resources :suggestions, only: [:index]
+      resources :suggestions, only: [:index] do
+        post :recommend, on: :collection
+      end
       resources :notifications, only: [] do
         post :add, :ignore, :unsubscribe, :subscribe, on: :member
       end

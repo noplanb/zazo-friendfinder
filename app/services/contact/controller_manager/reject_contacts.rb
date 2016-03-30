@@ -8,25 +8,7 @@ class Contact::ControllerManager::RejectContacts < Contact::ControllerManager::B
         add_error(:raw_params_id, "contact with id=#{id} is not exist")
         fail(ActiveRecord::Rollback)
       end
-      reject_contact(contact)
+      Contact::Ignore.new(contact).do
     end
-  end
-
-  def errors
-    validation.errors.messages.merge(@errors || {})
-  end
-
-  private
-
-  def reject_contact(contact)
-    contact.additions ||= {}
-    contact.additions['rejected_by_owner'] = true
-    contact.save
-  end
-
-  def add_error(key, error)
-    @errors ||= {}
-    @errors[key] ||= []
-    @errors[key] << error
   end
 end

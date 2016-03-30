@@ -1,4 +1,4 @@
-class Contact::MergeContacts
+class Contact::Import::MergeContacts
   attr_reader :owner, :contact_data, :last_coincidence
 
   def initialize(owner_mkey, contact_data)

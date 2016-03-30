@@ -1,6 +1,6 @@
 # TODO: write some specs
 
-class Contact::DropContacts
+class Contact::Import::DropContacts
   attr_reader :owner
 
   def initialize(owner_mkey)

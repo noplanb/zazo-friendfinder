@@ -22,7 +22,7 @@ class WebClient::ActionHandler
   #
 
   def add(contact = nil)
-    add_or_ignore(WebClient::AddContact, contact, :added)
+    add_or_ignore(Contact::Add, contact, :added)
   rescue AASM::InvalidTransition
     if notification.added?
       @notice = NoticeBuilder.new(:added, :added, :already_added,
@@ -31,7 +31,7 @@ class WebClient::ActionHandler
   end
 
   def ignore(contact = nil)
-    add_or_ignore(WebClient::IgnoreContact, contact, :ignored)
+    add_or_ignore(Contact::Ignore, contact, :ignored)
   rescue AASM::InvalidTransition
     status = notification.status
     if %w(added ignored).include?(status)

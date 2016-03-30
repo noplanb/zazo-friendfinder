@@ -1,7 +1,7 @@
 class Api::V1::ContactsController < ApiController
   def create
     handle_with_manager Contact::ControllerManager::ValidateRawParams.new(current_user.mkey, params) do
-      Resque.enqueue(ResqueWorker::AddContacts, current_user.mkey, params['contacts'])
+      Resque.enqueue(ResqueWorker::ImportContacts, current_user.mkey, params['contacts'])
     end
   end
 
@@ -11,9 +11,5 @@ class Api::V1::ContactsController < ApiController
 
   def reject
     handle_with_manager Contact::ControllerManager::RejectContacts.new(current_user.mkey, { 'rejected' => params['rejected'] })
-  end
-
-  def recommend
-    handle_with_manager Contact::ControllerManager::AddRecommendation.new(current_user.mkey, params['recommendations'])
   end
 end

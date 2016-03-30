@@ -26,7 +26,7 @@ class Contact::ControllerManager::Base
   end
 
   def errors
-    validation.errors.messages
+    validation.errors.messages.merge(@errors || {})
   end
 
   private
@@ -34,6 +34,12 @@ class Contact::ControllerManager::Base
   def wrap_transaction
     ActiveRecord::Base.transaction { yield; return true }
     false
+  end
+
+  def add_error(key, error)
+    @errors ||= {}
+    @errors[key] ||= []
+    @errors[key] << error
   end
 
   class RawParamsValidation

@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Contact::SetZazoInfoByContact do
+RSpec.describe Contact::Update::SetZazoInfoByContact do
   let(:contact) { FactoryGirl.create(:contact, vectors: vectors) }
   let(:instance) { described_class.new(contact) }
   let(:mobile) { '+16502453537' }
   let(:email)  { 'elfishawy.sani@gmail.com' }
 
   before do
-    allow_any_instance_of(Contact::UpdateZazoInfo).to receive(:do).and_return(contact)
+    allow_any_instance_of(Contact::Update::UpdateZazoInfo).to receive(:do).and_return(contact)
   end
 
   describe '#do' do

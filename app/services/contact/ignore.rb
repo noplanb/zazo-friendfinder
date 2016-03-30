@@ -1,4 +1,4 @@
-class WebClient::IgnoreContact
+class Contact::Ignore
   attr_reader :contact
 
   def initialize(contact)

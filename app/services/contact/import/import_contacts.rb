@@ -1,4 +1,4 @@
-class Contact::AddContacts
+class Contact::Import::ImportContacts
   attr_reader :owner_mkey, :raw_params, :errors
 
   def initialize(owner_mkey, raw_params)
@@ -8,7 +8,7 @@ class Contact::AddContacts
   end
 
   def do
-    Contact::DropContacts.new(owner_mkey).do
+    Contact::Import::DropContacts.new(owner_mkey).do
     raw_params.each { |contact_data| add_or_merge_contact(contact_data) }
     errors.empty?.tap do |status|
       WriteLog.info(self, "contacts added with errors for owner=#{owner_mkey}; errors: #{errors.inspect}") unless status
@@ -22,7 +22,7 @@ class Contact::AddContacts
   #
 
   def add_or_merge_contact(contact_data)
-    merge_contacts = Contact::MergeContacts.new(owner_mkey, contact_data)
+    merge_contacts = Contact::Import::MergeContacts.new(owner_mkey, contact_data)
     if merge_contacts.necessary_to?
       merge_contacts.do { |contact, vector_data| add_vector_to_contact(contact, vector_data) }
     else

@@ -1,3 +1,5 @@
+# TODO: remove this
+
 class Contact::GetZazoFriends
   attr_reader :owner_mkey
 

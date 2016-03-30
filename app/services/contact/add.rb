@@ -1,4 +1,4 @@
-class WebClient::AddContact
+class Contact::Add
   attr_reader :contact
 
   def initialize(contact)

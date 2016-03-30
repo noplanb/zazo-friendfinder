@@ -3,7 +3,7 @@
 # this process will run periodically
 #
 
-class Contact::UpdateZazoInfo
+class Contact::Update::UpdateZazoInfo
   attr_reader :contact
 
   def initialize(contact)
