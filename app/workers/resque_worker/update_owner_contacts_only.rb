@@ -3,6 +3,7 @@ class ResqueWorker::UpdateOwnerContactsOnly
 
   def self.perform(owner_mkey)
     WriteLog.info(self, "resque job was executed for owner_mkey=#{owner_mkey}")
-    Contact::SetZazoInfoByOwner.new(owner_mkey).do
+    owner = Owner.new(owner_mkey)
+    owner.contacts_actions.find_contact_and_update_zazo_info
   end
 end

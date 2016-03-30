@@ -1,8 +1,3 @@
-#
-# update zazo_id, first_name, last_name and additions['marked_as_friend']
-# this process will run periodically
-#
-
 class Contact::Update::UpdateZazoInfo
   attr_reader :contact
 

@@ -37,6 +37,9 @@ class Contact < ActiveRecord::Base
   scope :rejected, -> { where("contacts.additions->>'rejected_by_owner' = 'true'") }
   scope :not_rejected, -> { where("(contacts.additions->>'rejected_by_owner') IS NULL") }
 
+  scope :recommended, -> { where("(contacts.additions->>'recommended_by') IS NOT NULL") }
+  scope :not_recommended, -> { where("(contacts.additions->>'recommended_by') IS NULL") }
+
   scope :suggestible, -> { not_added.not_rejected.not_proposed.not_friends }
 
   before_save { self.expires_at = 5.days.from_now }

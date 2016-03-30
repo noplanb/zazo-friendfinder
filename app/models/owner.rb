@@ -1,6 +1,7 @@
 class Owner
   include Extensions::Subscription
   include Extensions::ExternalData
+  include Extensions::ContactsActions
 
   attr_reader :mkey
 

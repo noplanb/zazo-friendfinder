@@ -1,18 +1,20 @@
 class Contact::Import::ImportContacts
-  attr_reader :owner_mkey, :raw_params, :errors
+  attr_reader :owner, :raw_params, :errors
 
   def initialize(owner_mkey, raw_params)
-    @owner_mkey = owner_mkey
+    @owner = Owner.new(owner_mkey)
     @raw_params = raw_params
     @errors = {}
   end
 
   def do
-    Contact::Import::DropContacts.new(owner_mkey).do
-    raw_params.each { |contact_data| add_or_merge_contact(contact_data) }
-    errors.empty?.tap do |status|
-      WriteLog.info(self, "contacts added with errors for owner=#{owner_mkey}; errors: #{errors.inspect}") unless status
+    drop_unmarked_contacts
+    raw_params.each do |contact_data|
+      add_or_merge_contact(contact_data)
     end
+    status = errors.empty?
+    WriteLog.info(self, "contacts added with errors for owner=#{owner.mkey}; errors: #{errors.inspect}") unless status
+    status
   end
 
   private
@@ -21,8 +23,12 @@ class Contact::Import::ImportContacts
   # business logic
   #
 
+  def drop_unmarked_contacts
+    owner.contacts.not_added.not_rejected.not_proposed.not_recommended.destroy_all
+  end
+
   def add_or_merge_contact(contact_data)
-    merge_contacts = Contact::Import::MergeContacts.new(owner_mkey, contact_data)
+    merge_contacts = Contact::Import::MergeContacts.new(owner.mkey, contact_data)
     if merge_contacts.necessary_to?
       merge_contacts.do { |contact, vector_data| add_vector_to_contact(contact, vector_data) }
     else
@@ -46,7 +52,7 @@ class Contact::Import::ImportContacts
   #
 
   def new_contact_attrs(contact_data)
-    { owner_mkey: owner_mkey,
+    { owner_mkey: owner.mkey,
       display_name: contact_data['display_name'],
       additions: contact_data['additions'] }
   end
