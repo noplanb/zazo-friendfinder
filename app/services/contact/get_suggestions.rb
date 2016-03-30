@@ -15,7 +15,6 @@ class Contact::GetSuggestions
   private
 
   def contacts
-    # TODO: fix it
-    owner.contacts.not_friends.take(RETURN_CONTACTS_COUNT)
+    owner.contacts.suggestible.take(RETURN_CONTACTS_COUNT)
   end
 end

@@ -4,6 +4,7 @@
 - :arrow_up: Refactored code and structure regarding Contact and Score services
 - :arrow_up: Changed API for mobile client (see documentation)
 - :hammer: Fixed specs after updating vcr gem
+- :hammer: Fixed `Contact::GetSuggestions` service to return only suggestible contacts
 
 ### v0.6.2
 - :arrow_up: Disabled saving precompiled content of notification in database
