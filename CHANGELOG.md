@@ -5,7 +5,7 @@
 - :arrow_up: Changed API for mobile client (see documentation)
 - :arrow_up: Renamed *reject(ed)* to *ignore(d)* everywhere
 - :hammer: Fixed specs after updating vcr gem
-- :hammer: Fixed `Contact::GetSuggestions` service to return only suggestible contacts
+- :hammer: Fixed `Contact::GetSuggestions` service to return only appropriate contacts
 
 ### v0.6.2
 - :arrow_up: Disabled saving precompiled content of notification in database

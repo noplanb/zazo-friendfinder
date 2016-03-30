@@ -16,11 +16,14 @@ RSpec.describe Contact::GetSuggestions do
     end
     let(:vectors_3) { [FactoryGirl.create(:vector_mobile)] }
     let(:vectors_4) { [FactoryGirl.create(:vector_mobile)] }
+    let(:vectors_5) { [FactoryGirl.create(:vector_mobile)] }
 
     let!(:contact_1) { FactoryGirl.create(:contact, owner_mkey: user.mkey, vectors: vectors_1, additions: { marked_as_friend: false, marked_as_favorite: true }) }
     let!(:contact_2) { FactoryGirl.create(:contact, owner_mkey: user.mkey, vectors: vectors_2, additions: { marked_as_friend: false, marked_as_favorite: true }) }
     let!(:contact_3) { FactoryGirl.create(:contact, owner_mkey: user.mkey, vectors: vectors_3, additions: { marked_as_friend: true }) }
     let!(:contact_4) { FactoryGirl.create(:contact, owner_mkey: user.mkey, vectors: vectors_4, additions: { marked_as_friend: false }) }
+    let!(:contact_5) { FactoryGirl.create(:contact, owner_mkey: user.mkey, additions: { marked_as_friend: false, ignored_by_owner: true }) }
+    let!(:contact_6) { FactoryGirl.create(:contact, owner_mkey: user.mkey, additions: { marked_as_friend: false, added_by_owner: true }) }
 
     subject { instance.do }
 
@@ -30,6 +33,8 @@ RSpec.describe Contact::GetSuggestions do
       contact_2.reload
       contact_3.reload
       contact_4.reload
+      contact_5.reload
+      contact_6.reload
     end
 
     it do
