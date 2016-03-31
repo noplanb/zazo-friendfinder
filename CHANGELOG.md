@@ -5,6 +5,7 @@
 - :arrow_up: Changed API for mobile client (see documentation)
 - :arrow_up: Renamed *reject(ed)* to *ignore(d)* everywhere
 - :arrow_up: Moved functionality from `Contact::GetZazoFriends` service to owner `ExternalData` extension
+- :arrow_up: Refactored VCR cassettes and related specs
 - :hammer: Fixed specs after updating vcr gem
 - :hammer: Fixed `Contact::GetSuggestions` service to return only appropriate contacts
 

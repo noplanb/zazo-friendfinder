@@ -1,0 +1,197 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=xxxxxxxxxxxx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1OTQyOTUwMzoyOTE1NzMyNmEyYTFkOTI2YTI2YWE0ZGMyMjQ5NGZhZA==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 950add0e-62bd-480d-82ae-5fea79b1c442
+      X-Runtime:
+      - '0.202472'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Thu, 31 Mar 2016 13:05:03 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Thu, 31 Mar 2016 13:05:03 GMT
+- request:
+    method: get
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=xxxxxxxxxxxx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=xxxxxxxxxxxx",
+        nonce="MTQ1OTQyOTUwMzoyOTE1NzMyNmEyYTFkOTI2YTI2YWE0ZGMyMjQ5NGZhZA==", nc=00000000,
+        cnonce="f1864ac2181409568b136585f657a203", response="c7bb9319123dd8b4326bde5c3916ab16",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 0e835e58-0270-4fd5-8e71-be6653c3d47a
+      X-Runtime:
+      - '0.393311'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Thu, 31 Mar 2016 13:05:03 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"errors":{"user":["can''t be blank"]}}'
+    http_version: 
+  recorded_at: Thu, 31 Mar 2016 13:05:03 GMT
+- request:
+    method: get
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=xxxxxxxxxxxx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1OTQyOTUwNDo5NmFkMDAyODBhMGY0YmMxMzJkZDg3YTY1N2Y0NmI0YQ==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 555b0b75-d6e1-466b-bd31-cf5c12398409
+      X-Runtime:
+      - '0.201564'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Thu, 31 Mar 2016 13:05:04 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Thu, 31 Mar 2016 13:05:04 GMT
+- request:
+    method: get
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=xxxxxxxxxxxx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&attrs%5B%5D=friends&user=xxxxxxxxxxxx",
+        nonce="MTQ1OTQyOTUwNDo5NmFkMDAyODBhMGY0YmMxMzJkZDg3YTY1N2Y0NmI0YQ==", nc=00000000,
+        cnonce="d5c16fbddea445e4a84868c572644b2f", response="ed7f9ff6993e86aa4bf1863c7b345440",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 7de3ba1a-1cc5-4b13-a900-461a8c2cf51a
+      X-Runtime:
+      - '0.410470'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Thu, 31 Mar 2016 13:05:04 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"errors":{"user":["can''t be blank"]}}'
+    http_version: 
+  recorded_at: Thu, 31 Mar 2016 13:05:04 GMT
+recorded_with: VCR 3.0.1

@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Notification::MobileData, type: :model do
-  use_vcr_cassette 'notification/fetch_push_user_valid_mkey', api_base_urls
-  use_vcr_cassette 'notification/fetch_push_user_invalid_mkey', api_base_urls
-
   let(:contact) { FactoryGirl.create(:contact, owner_mkey: '7qdanSEmctZ2jPnYA0a1') }
   let(:push_token) { 'APA91bEt9ugdWHeAUfvSM4IPnUCIvDzkc17pSWV2EUBDdyuF-mePW89QHIBeT9jgzaifMREzWUIGXb33wMSEt439xFtSj1jXIt4y29KmokOw-rTZlHKYlNT5Z6QHe9T2B_JHJsARhnCN' }
   let(:notification) { FactoryGirl.create(:notification, contact: contact) }

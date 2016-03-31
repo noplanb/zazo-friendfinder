@@ -1,3 +1,5 @@
+# TODO: fix WriteLog messages
+
 class Notification::Send
   attr_reader :notification
 
@@ -13,11 +15,10 @@ class Notification::Send
       notification.update(state: 'canceled')
       WriteLog.info(self, "was canceled as '#{notification.kind}' because data is not valid, data errors: #{data.errors.messages}, #{notification.inspect}")
     end
-  rescue Exception => exception
+  rescue Exception => e
     notification.update(state: 'error')
-    inspected_exception = "(#{exception.class}: #{exception.message})"
-    WriteLog.info(self, "exception fired while sending as '#{notification.kind}': #{inspected_exception}, #{notification.inspect}")
-    raise exception
+    exception = "(#{e.class}: #{e.response})"
+    WriteLog.info(self, "exception fired while sending as '#{notification.kind}': #{exception}, #{notification.inspect}")
   end
 
   private

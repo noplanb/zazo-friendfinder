@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criteria::ContactOfFriends do
-  use_vcr_cassette 'owner/fetch_data/attributes_by_GBAHb0482YxlJ0kYwbIS', api_base_urls
-
   let(:owner_mkey) { 'GBAHb0482YxlJ0kYwbIS' }
   let(:friend_1) { '0DAQEVtmNKQiW6aoQrvo' }
   let(:friend_2) { '7qdanSEmctZ2jPnYA0a1' }

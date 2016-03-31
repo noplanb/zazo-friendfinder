@@ -6,8 +6,6 @@ RSpec.describe Owner::Extensions::ContactsActions, type: :model do
   let(:instance) { Owner.new(owner_mkey).contacts_actions }
 
   describe '#find_contact_and_update_info' do
-    use_vcr_cassette 'owner/extensions/find_contact_and_update_zazo_info', api_base_urls
-
     let(:mobile) { '+16502453537' }
     let(:email) { 'admin@google.com' }
 
@@ -40,8 +38,6 @@ RSpec.describe Owner::Extensions::ContactsActions, type: :model do
   end
 
   describe '#recalculate_scores' do
-    use_vcr_cassette 'contact/get_zazo_friends_for_nonexistent_user', api_base_urls
-
     before do
       # first owner's contact
       vectors = [

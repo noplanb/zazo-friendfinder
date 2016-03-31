@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Owner::Extensions::ExternalData, type: :model do
-  use_vcr_cassette 'owner/fetch_data/attributes_by_GBAHb0482YxlJ0kYwbIS', api_base_urls
-  use_vcr_cassette 'owner/fetch_data/attributes_by_nonexistent_user', api_base_urls
-
   let(:owner_mkey) { 'GBAHb0482YxlJ0kYwbIS' }
   let(:instance) { Owner.new(owner_mkey) }
 
