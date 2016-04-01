@@ -19,9 +19,9 @@ class Contact::ControllerManager::Base
 
   def log_messages(status)
     if status == :success
-      WriteLog.info(self, "success; owner_mkey: '#{owner_mkey}'; params: #{raw_params.inspect}")
+      WriteLog.info(self, "success; owner: '#{owner_mkey}'; params: #{raw_params.inspect}")
     else
-      WriteLog.info(self, "failure; owner_mkey: '#{owner_mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
+      WriteLog.info(self, "failure; owner: '#{owner_mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
     end
   end
 

@@ -9,7 +9,7 @@ class Notification::Save
     if notification.save
       true
     else
-      WriteLog.info(self, "notification was not saved with errors: #{notification.errors.messages}, inspected: #{notification.inspect}", rollbar: :error)
+      WriteLog.info(self, "error; errors: #{notification.errors.messages}; notification: #{notification.inspect}", rollbar: :error)
       false
     end
   end

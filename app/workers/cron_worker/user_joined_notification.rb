@@ -1,6 +1,6 @@
 class CronWorker::UserJoinedNotification
   def self.perform
-    WriteLog.info(self, 'cron job was executed')
+    WriteLog.info(self, 'started')
     recently_joined_users.each do |contact_data|
       Contact::FindOwnersByContactMatching.new(contact_data).do.each do |contact|
         unless contact.owner.unsubscribed? || contact.notified?
