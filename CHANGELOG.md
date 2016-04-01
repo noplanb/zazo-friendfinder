@@ -1,5 +1,7 @@
 # Changelog
 
+### v0.6.4
+
 ### v0.6.3
 - :arrow_up: Refactored code and structure regarding Contact and Score services
 - :arrow_up: Changed API for mobile client (see documentation)
