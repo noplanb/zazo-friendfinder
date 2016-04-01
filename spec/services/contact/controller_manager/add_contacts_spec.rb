@@ -41,7 +41,7 @@ RSpec.describe Contact::ControllerManager::AddContacts do
         let(:params) { { 'contacts_ids' => [contact_1.id, 1982] } }
 
         it { is_expected.to eq false }
-        it { expect(instance.errors).to eq raw_params_id: ['contact with id=1982 is not exist'] }
+        it { expect(instance.errors).to eq contact_id: ['not found by id=1982'] }
       end
     end
   end

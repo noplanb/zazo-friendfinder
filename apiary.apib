@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://friendfinder.zazoapp.com/
+HOST: http://ff.zazoapp.com
 
 # Zazo FriendFinder
 
@@ -9,7 +9,7 @@ The default mehtod is **HTTP Digest** with service's `username` and `password`.
 
 ## Contacts [/api/v1/contacts]
 
-### Add Contact List [POST]
+### Import Contacts [POST]
 
 Validate and save contacts list (via background job) into database.
 
@@ -100,12 +100,162 @@ Validate and save contacts list (via background job) into database.
         {
             "status": "unauthorized"
         }
+
+### Add Contacts [POST /api/v1/contacts/add]
+
+Add contacts as friends on Zazo by contact id (see `response["data"][i]["id"]` in **Get Suggestions List** response).
+
++ Parameters
+    + contacts_ids (array) - array of contacts ids to add as friends
+
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "contacts_ids": [1, 2, 3]
+            }
+
++ Response 200 (application/json)
+
+        {
+            "status": "success"
+        }
+
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "contacts_ids": 1
+            }
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "raw_params": ["raw_params['contacts_ids'] must be type of Array"]
+            }
+        }
         
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "contacts_ids": [1982]
+            }
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "contact_id": ["not found by id=1982"]
+            }
+        }
+        
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
+
+### Ignore Contacts [POST /api/v1/contacts/ignore]
+
+Ignore contacts by contact id (see `response["data"][i]["id"]` in **Get Suggestions List** response).
+
++ Parameters
+    + contacts_ids (array) - array of contacts ids to ignore suggestions
+
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "contacts_ids": [1, 2, 3]
+            }
+
++ Response 200 (application/json)
+
+        {
+            "status": "success"
+        }
+
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "contacts_ids": 1
+            }
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "raw_params": ["raw_params['contacts_ids'] must be type of Array"]
+            }
+        }
+        
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+            
+    + Body
+
+            {
+                "contacts_ids": [1982]
+            }
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "contact_id": ["not found by id=1982"]
+            }
+        }
+        
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
+
 ## Suggestions [/api/v1/suggestions]
 
 ### Get Suggestions List [GET /api/v1/suggestions]
 
-Return first 100 non-friend contacts in order by total score by all criteria.
+Return first 100 contacts (not added, not ignored, not friend) in order by total score by all criteria.
         
 + Request Success (application/json)
 
@@ -144,83 +294,8 @@ Return first 100 non-friend contacts in order by total score by all criteria.
 
         {
             "status": "unauthorized"
-        }
-        
-### Reject Contacts Suggestions [POST /api/v1/suggestions/reject]
+        }    
 
-Reject contacts by contact id (see `data->id` in **Get Suggestions List** response).
-
-+ Parameters
-    + rejected (array) - array of contacts ids to reject suggestions
-
-+ Request Success (application/json)
-
-    + Headers
-
-            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
-            
-    + Body
-
-            {
-                "rejected": [1, 2, 3]
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "status": "success"
-        }
-
-+ Request Failure (application/json)
-
-    + Headers
-
-            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
-            
-    + Body
-
-            {
-                "rejected": 1
-            }
-
-+ Response 422 (application/json)
-
-        {
-            "status": "failure",
-            "errors": {
-                "raw_params": ["raw_params['rejected'] must be type of Array"]
-            }
-        }
-        
-+ Request Failure (application/json)
-
-    + Headers
-
-            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
-            
-    + Body
-
-            {
-                "rejected": [1982]
-            }
-
-+ Response 422 (application/json)
-
-        {
-            "status": "failure",
-            "errors": {
-                "raw_params_id": ["contact with id=1982 is not exist"]
-            }
-        }
-        
-+ Request Unauthorized (application/json)
-
-+ Response 401 (application/json)
-
-        {
-            "status": "unauthorized"
-        }
-        
 ### Recommend Contact [POST /api/v1/suggestions/recommend]
 
 Recommend specific zazo-user (freshly invited) to others zazo-friends.
@@ -300,7 +375,7 @@ Recommend specific zazo-user (freshly invited) to others zazo-friends.
         {
             "status": "failure",
             "errors": {
-                "raw_params": ["raw_params['contact_mkey'] must be present"]
+                "raw_params": ["raw_params['contact_mkey'] must be type of String"]
             }
         }
         
