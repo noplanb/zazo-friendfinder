@@ -18,7 +18,7 @@ class ContactDecorator < Draper::Decorator
 
   def status
     return 'added' if added?
-    return 'rejected' if rejected?
+    return 'ignored' if ignored?
     ''
   end
 

@@ -19,6 +19,6 @@ class Score::Criteria::ContactOfFriends < Score::Criteria::Base
   end
 
   def friends
-    @friends ||= Contact::GetZazoFriends.new(contact.owner.mkey).do.to_set
+    @friends ||= contact.owner.fetch_data.friends.to_set
   end
 end

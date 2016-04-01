@@ -5,7 +5,7 @@ class Contact < ActiveRecord::Base
 
   ALLOWED_ADDITIONS = [
     'marked_as_favorite', # attrs coming from client
-    'added_by_owner', 'rejected_by_owner', 'recommended_by', # attrs for persist contact status data, cannot be reproduced
+    'added_by_owner', 'ignored_by_owner', 'recommended_by', # attrs for persist contact status data, cannot be reproduced
     'users_with_contact', 'friends_with_contact', 'friends_who_are_friends_with_contact', # attrs for caching criteria data
     'marked_as_friend' # additional caching
   ]
@@ -34,10 +34,13 @@ class Contact < ActiveRecord::Base
   scope :added, -> { where("contacts.additions->>'added_by_owner' = 'true'") }
   scope :not_added, -> { where("(contacts.additions->>'added_by_owner') IS NULL") }
 
-  scope :rejected, -> { where("contacts.additions->>'rejected_by_owner' = 'true'") }
-  scope :not_rejected, -> { where("(contacts.additions->>'rejected_by_owner') IS NULL") }
+  scope :ignored, -> { where("contacts.additions->>'ignored_by_owner' = 'true'") }
+  scope :not_ignored, -> { where("(contacts.additions->>'ignored_by_owner') IS NULL") }
 
-  scope :suggestible, -> { not_added.not_rejected.not_proposed.not_friends }
+  scope :recommended, -> { where("(contacts.additions->>'recommended_by') IS NOT NULL") }
+  scope :not_recommended, -> { where("(contacts.additions->>'recommended_by') IS NULL") }
+
+  scope :suggestible, -> { not_added.not_ignored.not_proposed.not_friends }
 
   before_save { self.expires_at = 5.days.from_now }
 

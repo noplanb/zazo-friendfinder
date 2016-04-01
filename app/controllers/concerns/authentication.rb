@@ -14,7 +14,7 @@ module Authentication
 
   def authenticate
     authenticate_or_request_with_http_digest(REALM) do |mkey|
-      WriteLog.info self, "Authenticating user: #{mkey}"
+      WriteLog.info self, "authenticating user: #{mkey}"
       self.current_user = User.find(mkey)
       current_user && current_user.auth
     end

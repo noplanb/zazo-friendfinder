@@ -8,13 +8,14 @@ class Contact::GetSuggestions
   end
 
   def do
-    WriteLog.info(self, "suggestions was sent to owner=#{owner.mkey}")
-    contacts.map { |contact| ContactSerializer.new(contact).serializable_hash }
+    contacts.map do |contact|
+      ContactSerializer.new(contact).serializable_hash
+    end
   end
 
   private
 
   def contacts
-    owner.contacts.not_friends.take(RETURN_CONTACTS_COUNT)
+    owner.contacts.not_added.not_ignored.not_friends.take(RETURN_CONTACTS_COUNT)
   end
 end

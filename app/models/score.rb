@@ -1,5 +1,5 @@
 class Score < ActiveRecord::Base
-  ALLOWED_METHODS = %w(is_favorite num_vectors num_sms_sent num_emails_sent contact_of_users contact_of_friends friend_of_friends recommended_by_friends zazo_activity rejected_by_owner)
+  ALLOWED_METHODS = %w(is_favorite num_vectors num_sms_sent num_emails_sent contact_of_users contact_of_friends friend_of_friends recommended_by_friends zazo_activity ignored_by_owner)
 
   belongs_to :contact
 

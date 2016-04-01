@@ -1,5 +1,15 @@
 # Changelog
 
+### v0.6.3
+- :arrow_up: Refactored code and structure regarding Contact and Score services
+- :arrow_up: Changed API for mobile client (see documentation)
+- :arrow_up: Renamed *reject(ed)* to *ignore(d)* everywhere
+- :arrow_up: Moved functionality from `Contact::GetZazoFriends` service to owner `ExternalData` extension
+- :arrow_up: Refactored VCR cassettes and related specs
+- :arrow_up: Updated logging messages
+- :hammer: Fixed specs after updating vcr gem
+- :hammer: Fixed `Contact::GetSuggestions` service to return only appropriate contacts
+
 ### v0.6.2
 - :arrow_up: Disabled saving precompiled content of notification in database
 

@@ -1,0 +1,203 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=GBAHb0482YxlJ0kYwbIS
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1OTQyOTUwMDpjYTkxYzAzZjkyOTg5MTdmZTI5Yjg2YjNiYzJiMTBhMA==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 78b19b15-4cf7-4b34-8ccd-4bf1488f40fb
+      X-Runtime:
+      - '0.191094'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Thu, 31 Mar 2016 13:05:00 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Thu, 31 Mar 2016 13:05:00 GMT
+- request:
+    method: get
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=GBAHb0482YxlJ0kYwbIS
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=GBAHb0482YxlJ0kYwbIS",
+        nonce="MTQ1OTQyOTUwMDpjYTkxYzAzZjkyOTg5MTdmZTI5Yjg2YjNiYzJiMTBhMA==", nc=00000000,
+        cnonce="376059a1ccd2e4a1f29d918ab4543811", response="4ec154d777df1f45d4342c9b36ee62be",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - d201e25f-a74b-4b2a-aaa5-69c4c65a9688
+      X-Runtime:
+      - '0.379326'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["uhe2lv4prin1w9n2d8q9","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Thu, 31 Mar 2016 13:05:00 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"emails":["vano468@gmail.com"]}'
+    http_version: 
+  recorded_at: Thu, 31 Mar 2016 13:05:00 GMT
+- request:
+    method: get
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1OTQyOTUwMDpjYTkxYzAzZjkyOTg5MTdmZTI5Yjg2YjNiYzJiMTBhMA==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - c041059e-f98e-440a-9a69-4d2865179179
+      X-Runtime:
+      - '0.192615'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      Date:
+      - Thu, 31 Mar 2016 13:05:00 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Thu, 31 Mar 2016 13:05:00 GMT
+- request:
+    method: get
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Authorization:
+      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&attrs%5B%5D=friends&user=GBAHb0482YxlJ0kYwbIS",
+        nonce="MTQ1OTQyOTUwMDpjYTkxYzAzZjkyOTg5MTdmZTI5Yjg2YjNiYzJiMTBhMA==", nc=00000000,
+        cnonce="00e8d7b69eed6f7cd529e7d96dc1c2f7", response="bdf4ba06d7928686050abb72a7b25f35",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 97099d6a-67c0-41c9-8b77-6accc5a8aaf3
+      X-Runtime:
+      - '0.956862'
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      - __profilin=p%3Dt; path=/
+      X-Miniprofiler-Ids:
+      - '["6rdupbg25pug4jp551n5","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Thu, 31 Mar 2016 13:05:01 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"first_name":"Ivan","last_name":"Kornilov","friends":["0DAQEVtmNKQiW6aoQrvo","e0kvxfgua1EQJvUOzVC1","yLK6i5VpMW9ZZy5BnXZZ","7qdanSEmctZ2jPnYA0a1","gpIES8adSGtrB5O5933c","LVXE6gyoxb6eHNvPd96f"]}'
+    http_version: 
+  recorded_at: Thu, 31 Mar 2016 13:05:01 GMT
+recorded_with: VCR 3.0.1
