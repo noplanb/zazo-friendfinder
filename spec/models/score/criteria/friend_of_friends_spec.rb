@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criteria::FriendOfFriends do
-  use_vcr_cassette 'score/criteria/friend_of_friends_by_GBAHb0482YxlJ0kYwbIS', api_base_urls
-
   let(:owner_mkey) { 'GBAHb0482YxlJ0kYwbIS' }
   let(:friend) { '7qdanSEmctZ2jPnYA0a1' }
   let(:mutual) { '0DAQEVtmNKQiW6aoQrvo' }
@@ -25,8 +23,6 @@ RSpec.describe Score::Criteria::FriendOfFriends do
     end
 
     context 'without incorrect zazo mkeys' do
-      use_vcr_cassette 'score/criteria/friend_of_friends_by_incorrect_mkeys', api_base_urls
-
       let(:incorrect) { 'xxxxxxxxxxxx' }
       let(:contact) { FactoryGirl.create(:contact, owner_mkey: incorrect, zazo_mkey: incorrect) }
       subject { instance.calculate_with_ratio }

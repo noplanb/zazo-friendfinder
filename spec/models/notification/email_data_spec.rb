@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Notification::EmailData, type: :model do
-  use_vcr_cassette 'notification/fetch_emails_persisted', api_base_urls
-  use_vcr_cassette 'notification/fetch_emails_not_persisted', api_base_urls
-  use_vcr_cassette 'notification/fetch_emails_nonexistent_owner', api_base_urls
-
   let(:contact) { FactoryGirl.create(:contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS') }
   let(:notification) { FactoryGirl.create(:notification, contact: contact) }
   let(:instance) { described_class.new(notification) }

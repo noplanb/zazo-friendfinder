@@ -12,8 +12,8 @@ module Contact::Extensions::Additions
     additions_value('marked_as_favorite', false)
   end
 
-  def rejected?
-    additions_value('rejected_by_owner', false)
+  def ignored?
+    additions_value('ignored_by_owner', false)
   end
 
   def added?

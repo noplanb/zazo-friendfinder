@@ -1,8 +1,19 @@
+RSpec.configure do |config|
+  config.around(:each) do |example|
+    options = example.metadata[:vcr] || {}
+    if options[:record] == :skip
+      VCR.turned_off(&example)
+    else
+      name = example.metadata[:full_description].split(/\s+/, 2).join('/').underscore.gsub(/\./,'/').gsub(/[^\w\/]+/, '_').gsub(/\/$/, '')
+      VCR.use_cassette(name, options, &example)
+    end
+  end
+end
+
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/vcr_cassettes'
   c.hook_into :webmock
   c.configure_rspec_metadata!
-  c.default_cassette_options = { record: :once }
 end
 
 def api_base_urls

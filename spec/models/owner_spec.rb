@@ -8,13 +8,9 @@ RSpec.describe Owner, type: :model do
 
   describe '#full_name' do
     let(:mkey) { '7qdanSEmctZ2jPnYA0a1' }
-    subject { instance.full_name }
+    subject { instance.fetch_data.full_name }
 
-    before do
-      VCR.use_cassette('owner/fetch_data/attributes_by_7qdanSEmctZ2jPnYA0a1', api_base_urls) { instance.fetch_data }
-    end
-
-    it { is_expected.to eq 'Sani ElFishawy' }
+    it { is_expected.to eq 'Sani Elfishawy' }
   end
 
   describe '#contacts' do

@@ -19,9 +19,9 @@ class Contact::ControllerManager::ValidateRawParams
 
   def log_messages(status)
     if status == :success
-      WriteLog.info(self, "success; owner_mkey: '#{owner_mkey}'")
+      WriteLog.info(self, "success; owner: '#{owner_mkey}'")
     else
-      WriteLog.info(self, "failure; owner_mkey: '#{owner_mkey}'; errors: #{errors.inspect}")
+      WriteLog.info(self, "failure; owner: '#{owner_mkey}'; errors: #{errors.inspect}")
     end
   end
 

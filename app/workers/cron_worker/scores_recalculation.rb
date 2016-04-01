@@ -1,6 +1,6 @@
 class CronWorker::ScoresRecalculation
   def self.perform
-    WriteLog.info(self, 'cron job was executed')
+    WriteLog.info(self, 'started')
     Contact.expired.each do |contact|
       contact.scores.destroy_all
       Score::CalculationByContact.new(contact).do

@@ -40,14 +40,14 @@ RSpec.describe WebClient::ActionHandler do
         let(:another_contact) { nil }
 
         it { expect(notification.status).to eq 'ignored' }
-        it { expect(contact.additions['rejected_by_owner']).to eq true }
+        it { expect(contact.additions['ignored_by_owner']).to eq true }
       end
 
       context 'another contact' do
         let(:another_contact) { FactoryGirl.create(:contact, owner_mkey: contact.owner_mkey) }
 
         it { expect(notification.status).to eq 'no_feedback' }
-        it { expect(another_contact.additions['rejected_by_owner']).to eq true }
+        it { expect(another_contact.additions['ignored_by_owner']).to eq true }
       end
     end
   end

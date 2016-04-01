@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Contact::ControllerManager::AddRecommendation do
-  let(:user) { FactoryGirl.build :user }
+  let(:user) { FactoryGirl.build(:user) }
   let(:instance) { described_class.new(user.mkey, params) }
 
-  let(:recommended_contact) { FactoryGirl.build :user }
+  let(:recommended_contact) { FactoryGirl.build(:user) }
   let(:recommended_to_1) { FactoryGirl.build(:user) }
   let(:recommended_to_2) { FactoryGirl.build(:user) }
 
-  let(:contact_1) { FactoryGirl.create :contact, owner_mkey: recommended_to_1.mkey }
-  let(:contact_2) { FactoryGirl.create :contact, owner_mkey: recommended_to_2.mkey }
+  let(:contact_1) { FactoryGirl.create(:contact, owner_mkey: recommended_to_1.mkey) }
+  let(:contact_2) { FactoryGirl.create(:contact, owner_mkey: recommended_to_2.mkey) }
 
   describe '#do' do
     context 'when contact exist' do
@@ -18,7 +18,7 @@ RSpec.describe Contact::ControllerManager::AddRecommendation do
         { 'contact_mkey' => recommended_contact.mkey,
           'to_mkeys'     => [recommended_to.mkey] }
       end
-      let!(:contact) { FactoryGirl.create :contact, owner_mkey: recommended_to.mkey, zazo_mkey: recommended_contact.mkey }
+      let!(:contact) { FactoryGirl.create(:contact, owner_mkey: recommended_to.mkey, zazo_mkey: recommended_contact.mkey) }
       let(:contacts) { Owner.new(recommended_to.mkey).contacts }
       let!(:subject) { instance.do }
 
@@ -53,21 +53,21 @@ RSpec.describe Contact::ControllerManager::AddRecommendation do
         let(:params) { { 'contact_mkey' => recommended_contact.mkey, 'to_mkeys' => 'some string' } }
 
         it { is_expected.to eq false }
-        it { expect(instance.errors).to eq({ raw_params: ['raw_params[\'to_mkeys\'] must be type of Array'] }) }
+        it { expect(instance.errors).to eq raw_params: ['raw_params[\'to_mkeys\'] must be type of Array'] }
       end
 
       context 'raw_params must be type of Hash' do
         let(:params) { 'some string' }
 
         it { is_expected.to eq false }
-        it { expect(instance.errors).to eq({ raw_params: ['raw_params must be type of Hash'] }) }
+        it { expect(instance.errors).to eq  raw_params: ['raw_params must be type of Hash'] }
       end
 
       context 'raw_params[\'contact_mkey\'] must be present' do
         let(:params) { { 'to_mkeys' => [] } }
 
         it { is_expected.to eq false }
-        it { expect(instance.errors).to eq({ raw_params: ['raw_params[\'contact_mkey\'] must be present'] }) }
+        it { expect(instance.errors).to eq raw_params: ['raw_params[\'contact_mkey\'] must be type of String'] }
       end
     end
   end
