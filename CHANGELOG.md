@@ -1,5 +1,8 @@
 # Changelog
 
+### v0.6.4
+- :hammer: Fixed Procfile configuration for Resque workers
+
 ### v0.6.3
 - :arrow_up: Refactored code and structure regarding Contact and Score services
 - :arrow_up: Changed API for mobile client (see documentation)
