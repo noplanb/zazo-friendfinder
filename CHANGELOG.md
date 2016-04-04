@@ -1,5 +1,7 @@
 # Changelog
 
+### v0.6.5
+
 ### v0.6.4
 - :hammer: Fixed Procfile configuration for Resque workers
 
