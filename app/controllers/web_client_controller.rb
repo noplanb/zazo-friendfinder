@@ -4,8 +4,7 @@ class WebClientController < ApplicationController
 
   def show
     @web_client = WebClientDecorator.decorate(@web_client)
-    #@notice = WebClient::ActionHandler::NoticeBuilder.deserialize(flash[:notice]) if flash[:notice]
-    @notice = WebClient::ActionHandler::NoticeBuilder.new(:added, :added, :added, contact_name: 'Ivan Kornilov')
+    @notice = WebClient::ActionHandler::NoticeBuilder.deserialize(flash[:notice]) if flash[:notice]
   end
 
   def add

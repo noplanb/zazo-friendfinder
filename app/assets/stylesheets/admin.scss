@@ -1,0 +1,10 @@
+@import 'bootstrap-sprockets';
+@import 'bootswatch/flatly/variables';
+@import 'bootstrap';
+@import 'bootswatch/flatly/bootswatch';
+@import 'font-awesome';
+
+@import 'admin/layout';
+@import 'admin/templates';
+@import 'admin/dashboard/status';
+@import 'admin/common/pagination';
