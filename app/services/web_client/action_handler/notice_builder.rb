@@ -3,9 +3,9 @@ class WebClient::ActionHandler::NoticeBuilder
 
   def self.deserialize(json)
     data = JSON.parse(json).symbolize_keys.slice(:status, :title, :description)
-    data.size == 3 ? new(nil, nil, nil).instance_variable_set(:'@object', data) : {}
-  rescue JSON::ParserError
-    {}
+    instance = new(nil, nil, nil)
+    instance.instance_variable_set(:'@object', data)
+    instance
   end
 
   def initialize(status, title_key, description_key, additions = {})
@@ -30,9 +30,5 @@ class WebClient::ActionHandler::NoticeBuilder
 
   def as_json
     object.to_json
-  end
-
-  def inspect
-    object.inspect
   end
 end

@@ -1,0 +1,166 @@
+/*
+ * SM screen size
+ */
+
+@media (max-width: $screen-sm-max) {
+  /*
+   * Notification
+   */
+
+  .ff-notification-wrapper .ff-notification {
+    width: 700px;
+
+    .action {
+      width: 25%;
+    }
+
+    .icon {
+      &:after {
+        bottom: -16px;
+        right: 3px;
+      }
+    }
+  }
+}
+
+/*
+ * XS screen size
+ */
+
+@media (max-width: $screen-xs-max) {
+  /*
+   * Body
+   */
+
+  body {
+    background: #f2f2f3;
+  }
+
+
+  /*
+   * Navbar
+   */
+
+  .ff-navbar-wrapper .ff-navbar {
+    .app-title {
+      display: none
+    }
+
+    .app-user {
+      display: none
+    }
+  }
+
+  /*
+   * Contacts
+   */
+
+  .ff-contacts {
+    padding-bottom: 50px;
+  }
+
+  .ff-contacts .contact-wrapper .contact {
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    text-align: left;
+
+    .info-block {
+      display: inline-block;
+      height: auto;
+      padding-top: 2px;
+      width: 73%;
+
+      .name {
+        display: inline-block;
+        font-size: 17px;
+        width: 60%;
+        vertical-align: middle;
+      }
+
+      .icon {
+        width: 60px;
+        display: inline-block;
+        margin-right: 12px;
+
+        img {
+          width: 60px;
+        }
+
+        .initials {
+          text-align: center;
+          font-size: 22px;
+          top: 15px;
+        }
+      }
+    }
+  }
+
+  .ff-contacts .contact-wrapper {
+    margin-bottom: 0;
+
+    .action-link {
+      border: none;
+      padding: auto;
+      font-size: 14px;
+      display: inline-block;
+      width: 10%;
+
+      &:hover, &:focus {
+        text-decoration: underline;
+      }
+    }
+
+    .add-link {
+      color: #408dda;
+    }
+
+    .remove-link {
+      color: #989898;
+    }
+
+    .add-link, .remove-link {
+      background: none;
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
+  /*
+   * Notification
+   */
+
+  .ff-notification-wrapper {
+
+  }
+
+  .ff-notification-wrapper .ff-notification {
+    width: auto;
+    padding: 10px 10px 20px 10px;
+
+    .icon {
+      width: 95px;
+
+      &:after {
+        bottom: -15px;
+        right: 10px;
+      }
+    }
+
+    .text {
+      width: 68%;
+    }
+
+    .action {
+      display: block;
+      text-align: center;
+      width: auto;
+      padding: 0;
+      margin-top: -12px;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.status-wrapper {
+  .panel-body {
+    padding-top: 8px;
+    padding-bottom: 12px;
+    text-align: center;
+  }
+
+  .status-item {
+    .text {
+      display: block;
+      font-size: 30px;
+      color: #18ab8e;
+
+      .unit {
+        font-size: 14px;
+        margin-left: 2px;
+      }
+    }
+
+    .desc {
+      font-size: 15px;
+      opacity: 0.9;
+      color: #2c3e50;
+    }
+  }
+}
