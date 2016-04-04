@@ -1,12 +1,12 @@
 #notification.ff-notification-wrapper
   .ff-notification.alert.alert-info role='alert' data-notify='container'
-    .icon class="#{notice[:status]}"
-      - if %w(unsubscribed subscribed).include?(notice[:status])
-        = web_client.send("#{notice[:status]}_placeholder")
+    .icon class="#{notice.status}"
+      - if %w(unsubscribed subscribed).include?(notice.status)
+        = web_client.send("#{notice.status}_placeholder")
       - else
         = web_client.contact_placeholder
         .initials = web_client.contact.initials
     .text
-      h3.contact-name = notice[:title]
-      p.description = notice[:description]
-    .action = web_client.action_link(notice[:status])
+      h3.contact-name = notice.title
+      p.description = notice.description
+    .action = web_client.action_link(notice.status)

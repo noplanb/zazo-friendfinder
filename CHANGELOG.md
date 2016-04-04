@@ -1,5 +1,9 @@
 # Changelog
 
+### v0.6.5
+- :bulb: Implemented mobile design for web client page
+- :arrow_up: Changed assets precompiler from SASS to SCSS
+
 ### v0.6.4
 - :hammer: Fixed Procfile configuration for Resque workers
 
