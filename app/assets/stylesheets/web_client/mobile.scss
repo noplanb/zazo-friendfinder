@@ -1,0 +1,99 @@
+@media (max-width: $screen-xs-max) {
+  /*
+   * Body
+   */
+
+  body {
+    background: #f2f2f3;
+  }
+
+
+  /*
+   * Navbar
+   */
+
+  .ff-navbar-wrapper .ff-navbar {
+    .app-title {
+      display: none
+    }
+
+    .app-user {
+      display: none
+    }
+  }
+
+  /*
+   * Contacts
+   */
+
+  .ff-contacts .contact-wrapper .contact {
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    text-align: left;
+
+    .info-block {
+      display: inline-block;
+      height: auto;
+      padding-top: 2px;
+      width: 73%;
+
+      .name {
+        display: inline-block;
+        font-size: 17px;
+        width: 60%;
+        vertical-align: middle;
+      }
+
+      .icon {
+        width: 60px;
+        display: inline-block;
+        margin-right: 12px;
+
+        img {
+          width: 60px;
+        }
+
+        .initials {
+          text-align: center;
+          font-size: 22px;
+          top: 15px;
+        }
+      }
+    }
+  }
+
+  .ff-contacts .contact-wrapper {
+    margin-bottom: 0;
+
+    .action-link {
+      border: none;
+      padding: auto;
+      font-size: 14px;
+      display: inline-block;
+      width: 10%;
+
+      &:hover, &:focus {
+        text-decoration: underline;
+      }
+    }
+
+    .add-link {
+      color: #408dda;
+    }
+
+    .remove-link {
+      color: #989898;
+    }
+
+    .add-link, .remove-link {
+      background: none;
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+}
