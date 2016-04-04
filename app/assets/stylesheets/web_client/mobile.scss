@@ -1,3 +1,32 @@
+/*
+ * SM screen size
+ */
+
+@media (max-width: $screen-sm-max) {
+  /*
+   * Notification
+   */
+
+  .ff-notification-wrapper .ff-notification {
+    width: 700px;
+
+    .action {
+      width: 25%;
+    }
+
+    .icon {
+      &:after {
+        bottom: -16px;
+        right: 3px;
+      }
+    }
+  }
+}
+
+/*
+ * XS screen size
+ */
+
 @media (max-width: $screen-xs-max) {
   /*
    * Body
@@ -25,6 +54,10 @@
   /*
    * Contacts
    */
+
+  .ff-contacts {
+    padding-bottom: 50px;
+  }
 
   .ff-contacts .contact-wrapper .contact {
     border: none;
@@ -94,6 +127,40 @@
       &:hover {
         background: none;
       }
+    }
+  }
+
+  /*
+   * Notification
+   */
+
+  .ff-notification-wrapper {
+
+  }
+
+  .ff-notification-wrapper .ff-notification {
+    width: auto;
+    padding: 10px 10px 20px 10px;
+
+    .icon {
+      width: 95px;
+
+      &:after {
+        bottom: -15px;
+        right: 10px;
+      }
+    }
+
+    .text {
+      width: 68%;
+    }
+
+    .action {
+      display: block;
+      text-align: center;
+      width: auto;
+      padding: 0;
+      margin-top: -12px;
     }
   }
 }
