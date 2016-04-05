@@ -13,6 +13,10 @@ class Admin::DangerZoneController < AdminController
     handle_admin_action(Admin::Owners::ClearContactsStatuses.new(@owner), admin_owner_path(@owner.mkey))
   end
 
+  def mark_as_friend_randomly
+    handle_admin_action(Admin::Owners::MarkAsFriendRandomly.new(@owner), admin_owner_path(@owner.mkey))
+  end
+
   private
 
   def set_owner
