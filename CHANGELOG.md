@@ -1,5 +1,9 @@
 # Changelog
 
+### next release
+- :bulb: Added list with all tracking events
+- :bulb: Added feature to track emails opening
+
 ### v0.6.6
 - :bulb: Added feature to clean all contacts statuses
 - :bulb: Added hidden feature to mark contacts and friends randomly
