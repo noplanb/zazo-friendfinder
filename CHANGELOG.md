@@ -2,6 +2,7 @@
 
 ### next release
 - :bulb: Added feature to clean all contacts statuses
+- :arrow_up: Refactored danger controller actions
 
 ### v0.6.5
 - :bulb: Implemented mobile design for web client page
