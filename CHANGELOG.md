@@ -1,5 +1,8 @@
 # Changelog
 
+### next release
+- :bulb: Added feature to clean all contacts statuses
+
 ### v0.6.5
 - :bulb: Implemented mobile design for web client page
 - :arrow_up: Changed assets precompiler from SASS to SCSS

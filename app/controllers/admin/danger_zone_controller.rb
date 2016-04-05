@@ -11,6 +11,10 @@ class Admin::DangerZoneController < AdminController
     redirect_to admin_owner_path(@owner.mkey), alert: 'All notifications was destroyed'
   end
 
+  def clear_statuses
+    handle_admin_action(Admin::Owners::ClearContactsStatuses.new(@owner), admin_owner_path(@owner.mkey))
+  end
+
   private
 
   def set_owner

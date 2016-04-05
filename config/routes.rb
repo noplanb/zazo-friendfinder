@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
     resources :notifications, only: [:index, :show]
     resources :danger_zone, only: [] do
-      post :drop_contacts, :drop_notifications, on: :member
+      post :drop_contacts, :drop_notifications, :clear_statuses, on: :member
     end
     root to: 'dashboard#index'
   end
