@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Contact::Import::ImportContacts do
-  let(:current_user) { FactoryGirl.build :user }
+  let(:current_user) { FactoryGirl.build(:user) }
   let(:instance) { described_class.new(current_user.mkey, params) }
 
   let(:correct_params) do
