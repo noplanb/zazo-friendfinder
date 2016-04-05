@@ -28,6 +28,10 @@ class Template::ViewData
     action_link(:unsubscribe)
   end
 
+  def track_email
+    action_link(:track_email)
+  end
+
   private
 
   def action_link(type)
