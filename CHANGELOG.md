@@ -1,6 +1,6 @@
 # Changelog
 
-### next release
+### v0.6.6
 - :bulb: Added feature to clean all contacts statuses
 - :bulb: Added hidden feature to mark contacts and friends randomly
 - :arrow_up: Refactored danger controller actions
