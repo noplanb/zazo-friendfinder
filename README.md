@@ -5,35 +5,30 @@ Zazo FriendFinder
 
 ## Tracking events
 
-- triggered_by (always **ff**)
-- initiator (see table below)
-- name (see table below)
-
-| initiator    | name                          |
-|:-------------|:------------------------------|
-| web_client   | { contact added }             |
-| web_client   | { contact ignored }           |
-|              |                               |
-| web_client   | { notification added }        |
-| web_client   | { notification ignored }      |
-| web_client   | { notification unsubscribed } |
-| web_client   | { notification subscribed }   |
-|              |                               |
-| api          | { contact added }             |
-| api          | { contact ignored }           |
-|              |                               |
-| api          | { notification added }        |
-| api          | { notification ignored }      |
-|              |                               |
-| api          | { setting unsubscribed }      |
-| api          | { setting subscribed }        |
-|              |                               |
-| notification | { email sent }                |
-| notification | { email canceled }            |
-| notification | { email error }               |
-| notification | { email opened }              |
-|              |                               |
-| notification | { mobile sent }               |
-| notification | { mobile canceled }           |
-| notification | { mobile error }              |
-|              |                               |
+| triggered_by    | name                        | initiator (id)      | target (id)         |
+|:----------------|:----------------------------|:--------------------|:--------------------|
+| ff:web_client   | {contact,added}             | owner (mkey)        | contact (id)        |
+| ff:web_client   | {contact,ignored}           | owner (mkey)        | contact (id)        |
+|-----------------|-----------------------------|---------------------|---------------------|
+| ff:web_client   | {notification,added}        | owner (mkey)        | notification (nkey) |
+| ff:web_client   | {notification,ignored}      | owner (mkey)        | notification (nkey) |
+| ff:web_client   | {notification,unsubscribed} | owner (mkey)        | notification (nkey) |
+| ff:web_client   | {notification,subscribed}   | owner (mkey)        | notification (nkey) |
+|-----------------|-----------------------------|---------------------|---------------------|
+| ff:api          | {contact,added}             | owner (mkey)        | contact (id)        |
+| ff:api          | {contact,ignored}           | owner (mkey)        | contact (id)        |
+|-----------------|-----------------------------|---------------------|---------------------|
+| ff:api          | {notification,added}        | owner (mkey)        | notification (nkey) |
+| ff:api          | {notification,ignored}      | owner (mkey)        | notification (nkey) |
+|-----------------|-----------------------------|---------------------|---------------------|
+| ff:api          | {setting,unsubscribed}      | owner (mkey)        |                     |
+| ff:api          | {setting,subscribed}        | owner (mkey)        |                     |
+|-----------------|-----------------------------|---------------------|---------------------|
+| ff:notification | {email,sent}                | notification (nkey) | owner (mkey)        |
+| ff:notification | {email,canceled}            | notification (nkey) | owner (mkey)        |
+| ff:notification | {email,error}               | notification (nkey) | owner (mkey)        |
+| ff:notification | {email,opened}              | notification (nkey) | owner (mkey)        |
+|-----------------|-----------------------------|---------------------|---------------------|
+| ff:notification | {mobile,sent}               | notification (nkey) | owner (mkey)        |
+| ff:notification | {mobile,canceled}           | notification (nkey) | owner (mkey)        |
+| ff:notification | {mobile,error}              | notification (nkey) | owner (mkey)        |
