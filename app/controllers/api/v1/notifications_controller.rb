@@ -9,14 +9,6 @@ class Api::V1::NotificationsController < ApiController
     handle_action(:ignore)
   end
 
-  def unsubscribe
-    handle_action(:unsubscribe)
-  end
-
-  def subscribe
-    handle_action(:subscribe)
-  end
-
   private
 
   def handle_action(action)

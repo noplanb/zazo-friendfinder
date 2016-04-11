@@ -35,17 +35,5 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
     it { expect(notification.status).to eq 'ignored' }
   end
 
-  describe 'POST #unsubscribe' do
-    let(:action) { :unsubscribe }
 
-    it { expect(response).to be_success }
-    it { expect(notification.status).to eq 'no_feedback' }
-  end
-
-  describe 'POST #subscribe' do
-    let(:action) { :subscribe }
-
-    it { expect(response).to be_success }
-    it { expect(notification.status).to eq 'no_feedback' }
-  end
 end

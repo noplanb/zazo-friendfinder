@@ -14,7 +14,11 @@ Rails.application.routes.draw do
       end
 
       resources :notifications, only: [] do
-        member { post :add, :ignore, :unsubscribe, :subscribe }
+        member { post :add, :ignore }
+      end
+
+      resources :subscriptions, only: [:index] do
+        collection { post :unsubscribe, :subscribe }
       end
     end
   end
