@@ -1,6 +1,8 @@
 # Changelog
 
 ### next release
+- :bulb: Added `Api::V1::SubscriptionsController` for subscribe/unsubscribe actions
+
 - :bulb: Added list with all tracking events
 - :bulb: Added feature to track emails opening
 - :bulb: Implemented events dispatching

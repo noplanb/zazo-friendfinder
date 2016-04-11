@@ -69,10 +69,10 @@ class WebClient::ActionHandler
   end
 
   def subscribe_or_unsubscribe(action_method, new_status)
-    if notification.contact.owner.send("#{new_status}?")
+    if owner.send("#{new_status}?")
       @notice = NoticeBuilder.new(new_status, new_status, "already_#{new_status}").as_json
     else
-      notification.contact.owner.send(action_method)
+      owner.send(action_method)
       @notice = NoticeBuilder.new(new_status, new_status, new_status).as_json
     end
   end
