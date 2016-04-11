@@ -28,7 +28,7 @@ RSpec.describe WebClient::ActionHandler do
         it { expect(notification.status).to eq 'added' }
         it { expect(contact.additions['added_by_owner']).to eq true }
         it 'should dispatch an event', :skip_before do
-          expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(notification added), Hash)
+          expect(Zazo::Tools::EventDispatcher).to receive(:emit).exactly(2).times
           subject
         end
       end
@@ -39,7 +39,7 @@ RSpec.describe WebClient::ActionHandler do
         it { expect(notification.status).to eq 'no_feedback' }
         it { expect(another_contact.additions['added_by_owner']).to eq true }
         it 'should not dispatch an event', :skip_before do
-          expect(Zazo::Tools::EventDispatcher).to_not receive(:emit)
+          expect(Zazo::Tools::EventDispatcher).to receive(:emit).exactly(1).times
           subject
         end
       end
@@ -54,7 +54,7 @@ RSpec.describe WebClient::ActionHandler do
         it { expect(notification.status).to eq 'ignored' }
         it { expect(contact.additions['ignored_by_owner']).to eq true }
         it 'should dispatch an event', :skip_before do
-          expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(notification ignored), Hash)
+          expect(Zazo::Tools::EventDispatcher).to receive(:emit).exactly(2).times
           subject
         end
       end
@@ -65,7 +65,7 @@ RSpec.describe WebClient::ActionHandler do
         it { expect(notification.status).to eq 'no_feedback' }
         it { expect(another_contact.additions['ignored_by_owner']).to eq true }
         it 'should not dispatch an event', :skip_before do
-          expect(Zazo::Tools::EventDispatcher).to_not receive(:emit)
+          expect(Zazo::Tools::EventDispatcher).to receive(:emit).exactly(1).times
           subject
         end
       end
@@ -73,9 +73,11 @@ RSpec.describe WebClient::ActionHandler do
   end
 
   context 'subscribe | unsubscribe' do
+    subject { instance.send(action) }
+
     before do |example|
       unless example.metadata[:skip_before]
-        instance.send(action)
+        subject
         notification.reload
       end
     end
@@ -86,8 +88,8 @@ RSpec.describe WebClient::ActionHandler do
       it { expect(contact.owner.unsubscribed?).to be true }
       it { expect(notification.status).to eq 'no_feedback' }
       it 'should dispatch an event', :skip_before do
-        expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(settings unsubscribed), Hash)
-        instance.unsubscribe
+        expect(Zazo::Tools::EventDispatcher).to receive(:emit).exactly(1).times
+        subject
       end
     end
 
@@ -97,8 +99,8 @@ RSpec.describe WebClient::ActionHandler do
       it { expect(contact.owner.subscribed?).to be true }
       it { expect(notification.status).to eq 'no_feedback' }
       it 'should dispatch an event', :skip_before do
-        expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(settings subscribed), Hash)
-        instance.subscribe
+        expect(Zazo::Tools::EventDispatcher).to receive(:emit).exactly(1).times
+        subject
       end
     end
   end

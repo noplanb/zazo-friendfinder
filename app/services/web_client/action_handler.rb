@@ -65,7 +65,7 @@ class WebClient::ActionHandler
                                 contact_name: contact_to_handle.display_name).as_json
 
     update_status(new_status) unless contact
-    service.new(contact_to_handle).do
+    service.new(contact_to_handle, caller: caller).do
   end
 
   def subscribe_or_unsubscribe(action_method, new_status)
@@ -103,7 +103,8 @@ class WebClient::ActionHandler
   def build_event
     { triggered_by: "ff:#{caller}",
       initiator: 'owner',
-      initiator_id: notification.contact.owner.mkey,
+      initiator_id: owner.mkey,
+      target: 'notification',
       target_id: notification.nkey }
   end
 end

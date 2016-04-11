@@ -1,4 +1,4 @@
-class Contact::ControllerManager::AddContacts < Contact::ControllerManager::Base
+class Contact::ControllerManager::AddContacts < Contact::ControllerManager::BaseHandler
   params_validation contacts_ids: { type: Array }
 
   def do_safe

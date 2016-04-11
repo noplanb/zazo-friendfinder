@@ -5,24 +5,40 @@ RSpec.describe Contact::Add do
   let(:instance) { described_class.new(contact) }
 
   describe '#do' do
-    before { instance.do }
+    subject { instance.do }
+
+    before do |example|
+      subject unless example.metadata[:skip_before]
+    end
 
     context 'when not added' do
       let(:additions) { {} }
 
       include_examples 'contact is added specs'
+      it 'should dispatch an event', :skip_before do
+        expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
+        subject
+      end
     end
 
     context 'when already added' do
       let(:additions) { { added_by_owner: true } }
 
       include_examples 'contact is added specs'
+      it 'should dispatch an event', :skip_before do
+        expect(Zazo::Tools::EventDispatcher).to_not receive(:emit)
+        subject
+      end
     end
 
     context 'when already ignored' do
       let(:additions) { { ignored_by_owner: true } }
 
       include_examples 'contact is added specs'
+      it 'should dispatch an event', :skip_before do
+        expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
+        subject
+      end
     end
   end
 end

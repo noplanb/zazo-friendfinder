@@ -1,13 +1,8 @@
-class Contact::Ignore
-  attr_reader :contact
-
-  def initialize(contact)
-    @contact = contact
-  end
-
+class Contact::Ignore < Contact::BaseHandler
   def do
     unless contact.ignored? || contact.added?
       contact.update_attributes(additions: new_attributes)
+      emit_event(%w(contact ignored))
     end
   end
 
