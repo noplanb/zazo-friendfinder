@@ -13,8 +13,10 @@ class Notification::Send
       notification.update(state: 'canceled')
       WriteLog.info(self, "canceled; kind: '#{notification.kind}'; errors: #{data.errors.messages}; notification: #{notification.inspect}")
     end
+    emit_event
   rescue Exception => e
     notification.update(state: 'error')
+    emit_event
     exception = "(#{e.class}: #{e.response})"
     WriteLog.info(self, "exception; kind: '#{notification.kind}'; exception: #{exception}; notification: #{notification.inspect}")
   end
@@ -31,5 +33,22 @@ class Notification::Send
       WriteLog.info(self, "error; kind: '#{notification.kind}'; errors: #{response['errors']}; notification: #{notification.inspect}", rollbar: :error)
       false
     end
+  end
+
+  #
+  # events dispatching
+  #
+
+  def emit_event
+    name = [notification.kind, notification.state]
+    Zazo::Tools::EventDispatcher.emit(name, build_event)
+  end
+
+  def build_event
+    { triggered_by: 'ff:notification',
+      initiator: 'notification',
+      initiator_id: notification.nkey,
+      target: 'owner',
+      target_id: notification.contact.owner.mkey }
   end
 end
