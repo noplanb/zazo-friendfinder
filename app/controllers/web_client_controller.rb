@@ -39,7 +39,7 @@ class WebClientController < ApplicationController
   end
 
   def set_web_client
-    @web_client = WebClient::ActionHandler.new(params[:id])
+    @web_client = WebClient::ActionHandler.new(params[:id], caller: :web_client)
     raise WebClient::NotFound unless @web_client.valid?
   end
 

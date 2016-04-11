@@ -6,7 +6,9 @@ class Contact::Ignore
   end
 
   def do
-    contact.update_attributes(additions: new_attributes) unless contact.ignored? || contact.added?
+    unless contact.ignored? || contact.added?
+      contact.update_attributes(additions: new_attributes)
+    end
   end
 
   private
