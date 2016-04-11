@@ -4,14 +4,15 @@ class WebClient::ActionHandler
   attr_reader :nkey, :caller, :notifications, :notice
   validate :nkey_should_be_correct
 
-  def initialize(nkey, caller: :web_client)
+  def initialize(nkey, owner: nil, caller: :web_client)
     @nkey = nkey
+    @owner = owner
     @caller = caller
     @notifications = Notification.by_nkey(nkey)
   end
 
   def owner
-    notification.contact.owner
+    @owner || notification.contact.owner
   end
 
   def notification
@@ -101,10 +102,13 @@ class WebClient::ActionHandler
   end
 
   def build_event
-    { triggered_by: "ff:#{caller}",
+    event = {
+      triggered_by: "ff:#{caller}",
       initiator: 'owner',
-      initiator_id: owner.mkey,
-      target: 'notification',
-      target_id: notification.nkey }
+      initiator_id: owner.mkey
+    }
+    event.merge(target: 'notification',
+                target_id: notification.nkey) if notification
+    event
   end
 end

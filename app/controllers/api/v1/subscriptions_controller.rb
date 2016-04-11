@@ -1,5 +1,6 @@
 class Api::V1::SubscriptionsController < ApiController
   before_action :set_owner
+  before_action :set_web_client, only: %i(unsubscribe subscribe)
 
   def index
     render json: { status: :success,
@@ -7,14 +8,12 @@ class Api::V1::SubscriptionsController < ApiController
   end
 
   def unsubscribe
-    @owner.unsubscribe
-    emit_event(%w(settings unsubscribed))
+    @web_client.unsubscribe
     render json: { status: :success }
   end
 
   def subscribe
-    @owner.subscribe
-    emit_event(%w(settings subscribed))
+    @web_client.subscribe
     render json: { status: :success }
   end
 
@@ -24,12 +23,7 @@ class Api::V1::SubscriptionsController < ApiController
     @owner = Owner.new(current_user.mkey)
   end
 
-  # TODO: it is bad to use code like this in controller, I need to refactor this in future
-
-  def emit_event(name)
-    Zazo::Tools::EventDispatcher.emit(name,
-      triggered_by: 'ff:api',
-      initiator: 'owner',
-      initiator_id: @owner.mkey)
+  def set_web_client
+    @web_client = WebClient::ActionHandler.new(nil, owner: @owner, caller: :api)
   end
 end
