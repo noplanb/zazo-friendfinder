@@ -6,18 +6,17 @@ end
 
 #
 # code below is just for testing
+# tail -f log/development.log | grep EventDispatcher
 #
 
-=begin
 module FooModule
-  def self.included base
+  def self.included(base)
     base.instance_eval do
       def emit(name, params = {})
-        Rails.logger.info ['EventDispatcher', name, params]
+        Rails.logger.info(['EventDispatcher', name, params])
       end
     end
   end
 end
 
 Zazo::Tools::EventDispatcher.send(:include, FooModule)
-=end

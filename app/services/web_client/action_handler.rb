@@ -107,8 +107,9 @@ class WebClient::ActionHandler
       initiator: 'owner',
       initiator_id: owner.mkey
     }
-    event.merge(target: 'notification',
-                target_id: notification.nkey) if notification
+    event.merge!(
+      target: 'notification',
+      target_id: notification.nkey) if notification
     event
   end
 end
