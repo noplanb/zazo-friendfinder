@@ -23,7 +23,8 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
 
       it { expect(response).to be_unprocessable }
       it { expect(notification.status).to eq 'no_feedback' }
-      it { expect(response.body).to eq "{\"status\":\"failure\",\"errors\":{\"nkey\":[\"nkey is incorrect\"]}}" }
+      it { expect(json_response).to eq 'status' => 'failure',
+                                       'errors' => { 'nkey' => ['nkey is incorrect'] } }
       it { expect(response.header['Content-Type']).to include 'application/json'  }
     end
   end
@@ -34,6 +35,4 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
     it { expect(response).to be_success }
     it { expect(notification.status).to eq 'ignored' }
   end
-
-
 end

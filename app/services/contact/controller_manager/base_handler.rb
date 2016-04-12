@@ -17,6 +17,10 @@ class Contact::ControllerManager::BaseHandler
     validation.valid? && wrap_transaction { do_safe }
   end
 
+  def data
+    @data ? { data: @data } : {}
+  end
+
   def log_messages(status)
     if status == :success
       WriteLog.info(self, "success; owner: '#{owner_mkey}'; params: #{raw_params.inspect}")

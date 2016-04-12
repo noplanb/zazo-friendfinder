@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :contacts, only: [:create] do
+      resources :contacts, only: [:show, :create] do
         collection { post :add, :ignore }
       end
 
