@@ -4,6 +4,7 @@
 - :bulb: Added `Api::V1::SubscriptionsController` for subscribe/unsubscribe actions
 - :bulb: Add show information action for `Api::V1::ContactsController`
 - :bulb: Add show information action for `Api::V1::NotificationsController`
+- :arrow_up: Updated API documentation
 
 - :bulb: Added list with all tracking events
 - :bulb: Added feature to track emails opening
