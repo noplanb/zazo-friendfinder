@@ -8,12 +8,19 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
   let(:incorrect_nkey) { 'xxxxxxxxxxxx' }
 
   before do
-    authenticate_with_http_digest(user_mkey, user_auth) { post action, id: nkey }
+    authenticate_with_http_digest(user_mkey, user_auth) { send(*(action + [{ id: nkey }])) }
     notification.reload
   end
 
+  describe 'GET #show' do
+    let(:action) { [:get, :show] }
+
+    it { expect(response).to be_success }
+    it { expect(json_response['data']['contact']).to be_kind_of Hash }
+  end
+
   describe 'POST #add' do
-    let(:action) { :add }
+    let(:action) { [:post, :add] }
 
     it { expect(response).to be_success }
     it { expect(notification.status).to eq 'added' }
@@ -30,7 +37,7 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
   end
 
   describe 'POST #ignore' do
-    let(:action) { :ignore }
+    let(:action) { [:post, :ignore] }
 
     it { expect(response).to be_success }
     it { expect(notification.status).to eq 'ignored' }
