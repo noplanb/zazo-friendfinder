@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         collection { post :recommend }
       end
 
-      resources :notifications, only: [] do
+      resources :notifications, only: [:show] do
         member { post :add, :ignore }
       end
 

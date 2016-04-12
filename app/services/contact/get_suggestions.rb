@@ -9,7 +9,7 @@ class Contact::GetSuggestions
 
   def do
     contacts.map do |contact|
-      ContactSerializer.new(contact).serializable_hash
+      ContactSerializer.new(contact, except: :vectors).serializable_hash
     end
   end
 
