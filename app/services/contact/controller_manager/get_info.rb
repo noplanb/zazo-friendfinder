@@ -6,6 +6,9 @@ class Contact::ControllerManager::GetInfo < Contact::ControllerManager::BaseHand
     @data = ContactSerializer.new(contact).serializable_hash
   end
 
+  def log_messages(*)
+  end
+
   private
 
   def validate_contact_presence(contact)
