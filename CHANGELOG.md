@@ -3,6 +3,7 @@
 ### next release
 - :arrow_up: Fixed events pushing to keep related data
 - :arrow_up: Refactored code for events pushing
+- :hammer: Fixed contact initials on web client page
 
 ### v0.7.0
 - :bulb: Added `Api::V1::SubscriptionsController` for subscribe/unsubscribe actions
