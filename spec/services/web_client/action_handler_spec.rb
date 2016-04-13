@@ -118,21 +118,4 @@ RSpec.describe WebClient::ActionHandler do
       it { is_expected.to be false }
     end
   end
-
-  describe 'dispatching event structure' do
-    let(:instance) { described_class.new(nkey, caller: caller) }
-    let(:event) { instance.send(:build_event) }
-
-    context 'web_client' do
-      let(:caller) { :web_client }
-
-      it { expect(event[:triggered_by]).to eq 'ff:web_client' }
-    end
-
-    context 'api' do
-      let(:caller) { :api }
-
-      it { expect(event[:triggered_by]).to eq 'ff:api' }
-    end
-  end
 end

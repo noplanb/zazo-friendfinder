@@ -9,14 +9,6 @@ class Contact::BaseHandler
   protected
 
   def emit_event(name)
-    Zazo::Tools::EventDispatcher.emit(name, build_event)
-  end
-
-  def build_event
-    { triggered_by: "ff:#{caller}",
-      initiator: 'owner',
-      initiator_id: contact.owner.mkey,
-      target: 'contact',
-      target_id: contact.id }
+    DispatchEvent.new(caller, name, [contact.owner, contact]).do
   end
 end
