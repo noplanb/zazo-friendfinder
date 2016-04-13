@@ -9,7 +9,8 @@ end
 # tail -f log/development.log | grep EventDispatcher
 #
 
-module FooModule
+=begin
+module EventDispatcherWrapper
   def self.included(base)
     base.instance_eval do
       def emit(name, params = {})
@@ -19,4 +20,5 @@ module FooModule
   end
 end
 
-Zazo::Tools::EventDispatcher.send(:include, FooModule)
+Zazo::Tools::EventDispatcher.send(:include, EventDispatcherWrapper)
+=end
