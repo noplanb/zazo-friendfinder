@@ -1,4 +1,4 @@
-class Contact::ControllerManager::Base
+class Contact::ControllerManager::BaseHandler
   attr_reader :owner_mkey, :raw_params, :validation
 
   class << self

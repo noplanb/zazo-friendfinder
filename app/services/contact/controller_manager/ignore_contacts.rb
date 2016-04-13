@@ -1,4 +1,4 @@
-class Contact::ControllerManager::IgnoreContacts < Contact::ControllerManager::Base
+class Contact::ControllerManager::IgnoreContacts < Contact::ControllerManager::BaseHandler
   params_validation contacts_ids: { type: Array }
 
   def do_safe

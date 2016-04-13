@@ -25,7 +25,7 @@ class Api::V1::NotificationsController < ApiController
   end
 
   def set_web_client
-    @web_client = WebClient::ActionHandler.new(params[:id])
+    @web_client = WebClient::ActionHandler.new(params[:id], caller: :api)
     render status: :unprocessable_entity, json: { status: :failure, errors: @web_client.errors } unless @web_client.valid?
   end
 end

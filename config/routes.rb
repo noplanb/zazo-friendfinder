@@ -6,28 +6,34 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :contacts, only: [:create] do
-        post :add, :ignore, on: :collection
+        collection { post :add, :ignore }
       end
+
       resources :suggestions, only: [:index] do
-        post :recommend, on: :collection
+        collection { post :recommend }
       end
+
       resources :notifications, only: [] do
-        post :add, :ignore, :unsubscribe, :subscribe, on: :member
+        member { post :add, :ignore, :unsubscribe, :subscribe }
       end
     end
   end
 
   namespace :admin do
     resources :owners, only: [:index, :show] do
-      post :recalculate, :update_contacts, :fake_notification, on: :member
+      member { post :recalculate, :update_contacts, :fake_notification }
     end
+
     resources :contacts, only: [:index, :show] do
-      post :recalculate, :update_info, on: :member
+      member { post :recalculate, :update_info }
     end
+
     resources :notifications, only: [:index, :show]
+
     resources :danger_zone, only: [] do
       member { post :drop_contacts, :drop_notifications, :clear_statuses, :mark_as_friend_randomly }
     end
+
     root to: 'dashboard#index'
   end
 
@@ -35,8 +41,10 @@ Rails.application.routes.draw do
     member do
       get :add, :ignore, :unsubscribe, :subscribe
       post :add_another, :ignore_another
+      get :track_email, to: 'web_client/track_emails#index'
     end
   end
+
   resources :documentation, only: [:show]
 
   root to: 'documentation#show', id: 'api'

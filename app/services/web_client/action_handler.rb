@@ -1,11 +1,12 @@
 class WebClient::ActionHandler
   include ActiveModel::Validations
 
-  attr_reader :nkey, :notifications, :notice
+  attr_reader :nkey, :caller, :notifications, :notice
   validate :nkey_should_be_correct
 
-  def initialize(nkey)
+  def initialize(nkey, caller: :web_client)
     @nkey = nkey
+    @caller = caller
     @notifications = Notification.by_nkey(nkey)
   end
 
@@ -22,6 +23,7 @@ class WebClient::ActionHandler
   #
 
   def add(contact = nil)
+    emit_event(%w(notification added)) unless contact
     add_or_ignore(Contact::Add, contact, :added)
   rescue AASM::InvalidTransition
     if notification.added?
@@ -31,6 +33,7 @@ class WebClient::ActionHandler
   end
 
   def ignore(contact = nil)
+    emit_event(%w(notification ignored)) unless contact
     add_or_ignore(Contact::Ignore, contact, :ignored)
   rescue AASM::InvalidTransition
     status = notification.status
@@ -41,10 +44,12 @@ class WebClient::ActionHandler
   end
 
   def unsubscribe
+    emit_event(%w(settings unsubscribed))
     subscribe_or_unsubscribe(:unsubscribe, :unsubscribed)
   end
 
   def subscribe
+    emit_event(%w(settings subscribed))
     subscribe_or_unsubscribe(:subscribe, :subscribed)
   end
 
@@ -60,7 +65,7 @@ class WebClient::ActionHandler
                                 contact_name: contact_to_handle.display_name).as_json
 
     update_status(new_status) unless contact
-    service.new(contact_to_handle).do
+    service.new(contact_to_handle, caller: caller).do
   end
 
   def subscribe_or_unsubscribe(action_method, new_status)
@@ -85,5 +90,21 @@ class WebClient::ActionHandler
 
   def nkey_should_be_correct
     errors.add(:nkey, 'nkey is incorrect') if notifications.empty?
+  end
+
+  #
+  # events dispatching
+  #
+
+  def emit_event(name)
+    Zazo::Tools::EventDispatcher.emit(name, build_event)
+  end
+
+  def build_event
+    { triggered_by: "ff:#{caller}",
+      initiator: 'owner',
+      initiator_id: owner.mkey,
+      target: 'notification',
+      target_id: notification.nkey }
   end
 end
