@@ -1,6 +1,6 @@
 # Changelog
 
-### next release
+### v0.7.1
 - :bulb: Added description area for email notification template
 - :arrow_up: Fixed events pushing to keep related data
 - :arrow_up: Refactored code for events pushing
