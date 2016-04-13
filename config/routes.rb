@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :contacts, only: [:create] do
+      resources :contacts, only: [:show, :create] do
         collection { post :add, :ignore }
       end
 
@@ -13,8 +13,12 @@ Rails.application.routes.draw do
         collection { post :recommend }
       end
 
-      resources :notifications, only: [] do
-        member { post :add, :ignore, :unsubscribe, :subscribe }
+      resources :notifications, only: [:show] do
+        member { post :add, :ignore }
+      end
+
+      resources :subscriptions, only: [:index] do
+        collection { post :unsubscribe, :subscribe }
       end
     end
   end

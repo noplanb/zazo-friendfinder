@@ -9,6 +9,79 @@ The default mehtod is **HTTP Digest** with service's `username` and `password`.
 
 ## Contacts [/api/v1/contacts]
 
+### Get Info [GET /api/v1/contacts/{id}]
+
+Get all information about contact by `id`.
+
++ Parameters
+    + id (integer) - id of contact
+
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 200 (application/json)
+
+        {
+            "status": "success",
+            "data": {
+                "id": 1149,
+                "first_name": null,
+                "last_name": null,
+                "display_name": "Ralph",
+                "zazo_mkey": null,
+                "zazo_id": null,
+                "total_score": null,
+                "vectors": [
+                    {
+                        "name": "mobile",
+                        "value": "+12345678910",
+                        "additions": {}
+                    }
+                ]
+            }
+        }
+
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "contact_id": ["not found by id=114"]
+            }
+        }
+
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "contact_id": ["not belongs to owner"]
+            }
+        }
+        
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
+
 ### Import Contacts [POST]
 
 Validate and save contacts list (via background job) into database.
@@ -379,6 +452,235 @@ Recommend specific zazo-user (freshly invited) to others zazo-friends.
             }
         }
         
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
+
+## Notifications [/api/v1/notifications]
+
+### Get Info [GET /api/v1/notifications/{id}]
+
+Get all information about notification by `nkey`.
+
++ Parameters
+    + id (integer) - nkey of notification
+
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 200 (application/json)
+
+        {
+            "status": "success",
+            "data": {
+                "id": 79,
+                "kind": "email",
+                "state": "sent",
+                "status": "added",
+                "category": "fake_user_joined",
+                "nkey": "d889270cec42808290ce2c9e6aed1713dd455769cfb68b7c7c80733e55a2070f",
+                "contact": {
+                    "id": 1149,
+                    "first_name": null,
+                    "last_name": null,
+                    "display_name": "Ralph",
+                    "zazo_mkey": null,
+                    "zazo_id": null,
+                    "total_score": null,
+                    "vectors": [
+                        {
+                            "name": "mobile",
+                            "value": "+12345678910",
+                            "additions": {}
+                        }
+                    ]
+                }
+            }
+        }
+
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "nkey": ["nkey is incorrect"]
+            }
+        }
+        
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
+
+### Add Contact [POST /api/v1/notifications/{id}/add]
+
+Add contact of notification as friend on Zazo.
+
++ Parameters
+    + id (integer) - nkey of notification
+
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 200 (application/json)
+
+        {
+            "status": "success"
+        }
+
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "nkey": ["nkey is incorrect"]
+            }
+        }
+        
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
+
+### Ignore Contact [POST /api/v1/notifications/{id}/ignore]
+
+Ignore contact of notification.
+
++ Parameters
+    + id (integer) - nkey of notification
+
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 200 (application/json)
+
+        {
+            "status": "success"
+        }
+
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "nkey": ["nkey is incorrect"]
+            }
+        }
+        
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
+
+## Subscriptions [/api/v1/subscriptions]
+
+### Get Status [GET /api/v1/subscriptions]
+
+Get current status of subscription.
+
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 200 (application/json)
+
+        {
+            "status": "success",
+            "data": {
+                "status": "unsubscribed"
+            }
+        }
+
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
+
+### Unsubscribe [POST /api/v1/subscriptions/unsubscribe]
+
+Unsubscribe from any future notifications (mobile and email).
+
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 200 (application/json)
+
+        {
+            "status": "success"
+        }
+
++ Request Unauthorized (application/json)
+
++ Response 401 (application/json)
+
+        {
+            "status": "unauthorized"
+        }
+
+### Subscribe [POST /api/v1/subscriptions/subscribe]
+
+Subscribe to get friends suggestions via notifications.
+
++ Request Success (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
++ Response 200 (application/json)
+
+        {
+            "status": "success"
+        }
+
 + Request Unauthorized (application/json)
 
 + Response 401 (application/json)

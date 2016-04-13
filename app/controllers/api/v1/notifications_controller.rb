@@ -1,20 +1,17 @@
 class Api::V1::NotificationsController < ApiController
   before_action :set_web_client
 
+  def show
+    render json: { status: :success,
+                   data: NotificationSerializer.new(@web_client.notification).serializable_hash }
+  end
+
   def add
     handle_action(:add)
   end
 
   def ignore
     handle_action(:ignore)
-  end
-
-  def unsubscribe
-    handle_action(:unsubscribe)
-  end
-
-  def subscribe
-    handle_action(:subscribe)
   end
 
   private
