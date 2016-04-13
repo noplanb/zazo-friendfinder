@@ -98,18 +98,6 @@ class WebClient::ActionHandler
   #
 
   def emit_event(name)
-    Zazo::Tools::EventDispatcher.emit(name, build_event)
-  end
-
-  def build_event
-    event = {
-      triggered_by: "ff:#{caller}",
-      initiator: 'owner',
-      initiator_id: owner.mkey
-    }
-    event.merge!(
-      target: 'notification',
-      target_id: notification.nkey) if notification
-    event
+    DispatchEvent.new(caller, name, [owner, notification]).do
   end
 end

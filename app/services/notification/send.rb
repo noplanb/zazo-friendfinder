@@ -35,20 +35,9 @@ class Notification::Send
     end
   end
 
-  #
-  # events dispatching
-  #
-
   def emit_event
-    name = [notification.kind, notification.state]
-    Zazo::Tools::EventDispatcher.emit(name, build_event)
-  end
-
-  def build_event
-    { triggered_by: 'ff:notification',
-      initiator: 'notification',
-      initiator_id: notification.nkey,
-      target: 'owner',
-      target_id: notification.contact.owner.mkey }
+    DispatchEvent.new(:notification,
+      [notification.kind, notification.state],
+      [notification, notification.contact.owner]).do
   end
 end

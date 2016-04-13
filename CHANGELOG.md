@@ -1,5 +1,12 @@
 # Changelog
 
+### v0.7.1
+- :bulb: Added description area for email notification template
+- :arrow_up: Fixed events pushing to keep related data
+- :arrow_up: Refactored code for events pushing
+- :arrow_up: Changed email notification -from title
+- :hammer: Fixed contact initials on web client page
+
 ### v0.7.0
 - :bulb: Added `Api::V1::SubscriptionsController` for subscribe/unsubscribe actions
 - :bulb: Add show information action for `Api::V1::ContactsController`
