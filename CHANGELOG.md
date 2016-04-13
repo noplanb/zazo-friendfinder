@@ -1,9 +1,10 @@
 # Changelog
 
 ### next release
+- :bulb: Added description area for email notification template
 - :arrow_up: Fixed events pushing to keep related data
 - :arrow_up: Refactored code for events pushing
-- :arrow_up: Changed email notification from title 
+- :arrow_up: Changed email notification -from title
 - :hammer: Fixed contact initials on web client page
 
 ### v0.7.0
