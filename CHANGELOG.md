@@ -3,6 +3,7 @@
 ### next release
 - :arrow_up: Fixed events pushing to keep related data
 - :arrow_up: Refactored code for events pushing
+- :arrow_up: Changed email notification from title 
 - :hammer: Fixed contact initials on web client page
 
 ### v0.7.0
