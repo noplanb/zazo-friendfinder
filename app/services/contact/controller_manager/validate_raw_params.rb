@@ -17,6 +17,10 @@ class Contact::ControllerManager::ValidateRawParams
     return false
   end
 
+  def data
+    {}
+  end
+
   def log_messages(status)
     if status == :success
       WriteLog.info(self, "success; owner: '#{owner_mkey}'")

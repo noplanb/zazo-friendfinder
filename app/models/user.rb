@@ -1,3 +1,5 @@
+# TODO: Replace User with Owner
+
 class User
   class NotFound < Exception; end
 

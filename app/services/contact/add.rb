@@ -1,14 +1,13 @@
-class Contact::Add
-  attr_reader :contact
-
-  def initialize(contact)
-    @contact = contact
-  end
-
+class Contact::Add < Contact::BaseHandler
   def do
     # TODO: add contact via sending api request to zazo-prod worker
-    contact.update_attributes(additions: new_attributes) unless contact.added?
+    unless contact.added?
+      contact.update_attributes(additions: new_attributes)
+      emit_event(%w(contact added))
+    end
   end
+
+  private
 
   def new_attributes
     (contact.additions || {}).except('ignored_by_owner').merge('added_by_owner' => true)

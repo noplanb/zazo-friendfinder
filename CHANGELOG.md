@@ -1,5 +1,14 @@
 # Changelog
 
+### v0.7.0
+- :bulb: Added `Api::V1::SubscriptionsController` for subscribe/unsubscribe actions
+- :bulb: Add show information action for `Api::V1::ContactsController`
+- :bulb: Add show information action for `Api::V1::NotificationsController`
+- :bulb: Added list with all tracking events
+- :bulb: Added feature to track emails opening
+- :bulb: Implemented events dispatching
+- :arrow_up: Updated API documentation
+
 ### v0.6.6
 - :bulb: Added feature to clean all contacts statuses
 - :bulb: Added hidden feature to mark contacts and friends randomly

@@ -1,4 +1,4 @@
-class Contact::ControllerManager::Base
+class Contact::ControllerManager::BaseHandler
   attr_reader :owner_mkey, :raw_params, :validation
 
   class << self
@@ -15,6 +15,10 @@ class Contact::ControllerManager::Base
 
   def do
     validation.valid? && wrap_transaction { do_safe }
+  end
+
+  def data
+    @data ? { data: @data } : {}
   end
 
   def log_messages(status)
