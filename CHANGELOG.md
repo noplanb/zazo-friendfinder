@@ -2,6 +2,7 @@
 
 ### v0.7.2
 - :hammer: Fixed contact initials on web client page finally
+- :hammer: Fixed broken specs
 
 ### v0.7.1
 - :bulb: Added description area for email notification template
