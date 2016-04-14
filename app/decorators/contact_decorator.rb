@@ -6,7 +6,7 @@ class ContactDecorator < Draper::Decorator
   end
 
   def initials
-    display_name.gsub(/[^\w\s]+/, '').split(' ').map { |w| w[0] }.join[0..1]
+    display_name.gsub(/[(){}!@#$%^&*]+/, ' ').split(' ').map { |w| w[0] }.join[0..1]
   end
 
   def vector_value
