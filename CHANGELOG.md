@@ -1,5 +1,8 @@
 # Changelog
 
+### v0.7.3
+- :bulb: Added owner name to owners admin page
+
 ### v0.7.2
 - :hammer: Fixed contact initials on web client page finally
 - :hammer: Fixed broken specs
