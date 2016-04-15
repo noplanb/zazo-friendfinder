@@ -1,5 +1,7 @@
 # Changelog
 
+### v0.7.3
+
 ### v0.7.2
 - :hammer: Fixed contact initials on web client page finally
 - :hammer: Fixed broken specs
