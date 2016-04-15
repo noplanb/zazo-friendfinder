@@ -75,6 +75,10 @@ class Owner::Cell < Cell::Concept
     respond_to?(attr, true) ? send(attr) : model.send(attr)
   end
 
+  def full_name
+    model.fetch_data.full_name
+  end
+
   def contacts
     model.contacts.count
   end
