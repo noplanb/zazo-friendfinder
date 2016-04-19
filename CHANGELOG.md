@@ -1,5 +1,8 @@
 # Changelog
 
+### next release
+- :bulb: Added `Zazo::Tools::Logger` for centralized logging
+
 ### v0.7.3
 - :bulb: Added owner name to owners admin page
 
