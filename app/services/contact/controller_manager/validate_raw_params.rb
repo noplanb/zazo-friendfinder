@@ -23,9 +23,9 @@ class Contact::ControllerManager::ValidateRawParams
 
   def log_messages(status)
     if status == :success
-      WriteLog.info(self, "success; owner: '#{owner_mkey}'")
+      Zazo::Tools::Logger.info(self, "success; owner: '#{owner_mkey}'")
     else
-      WriteLog.info(self, "failure; owner: '#{owner_mkey}'; errors: #{errors.inspect}")
+      Zazo::Tools::Logger.info(self, "failure; owner: '#{owner_mkey}'; errors: #{errors.inspect}")
     end
   end
 

@@ -23,9 +23,9 @@ class Contact::ControllerManager::BaseHandler
 
   def log_messages(status)
     if status == :success
-      WriteLog.info(self, "success; owner: '#{owner_mkey}'; params: #{raw_params.inspect}")
+      Zazo::Tools::Logger.info(self, "success; owner: '#{owner_mkey}'; params: #{raw_params.inspect}")
     else
-      WriteLog.info(self, "failure; owner: '#{owner_mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
+      Zazo::Tools::Logger.info(self, "failure; owner: '#{owner_mkey}'; errors: #{errors.inspect}; params: #{raw_params.inspect}")
     end
   end
 
