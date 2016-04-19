@@ -8,9 +8,9 @@ GIT
 
 GIT
   remote: git://github.com/noplanb/zazo-tools.git
-  revision: 93c4347d63ea187ccf95e39ee04475b1a2e1c2a0
+  revision: 33ba3da0fbd7e1ac86bf5385912a9da9703f123d
   specs:
-    zazo-tools (0.2.0)
+    zazo-tools (0.2.1)
       aws-sdk
       logstash-logger
 
@@ -55,12 +55,12 @@ GEM
       execjs
       json
     awesome_print (1.6.1)
-    aws-sdk (2.2.34)
-      aws-sdk-resources (= 2.2.34)
-    aws-sdk-core (2.2.34)
+    aws-sdk (2.2.35)
+      aws-sdk-resources (= 2.2.35)
+    aws-sdk-core (2.2.35)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.2.34)
-      aws-sdk-core (= 2.2.34)
+    aws-sdk-resources (2.2.35)
+      aws-sdk-core (= 2.2.35)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -433,7 +433,7 @@ DEPENDENCIES
   vcr
   webmock
   whenever
-  zazo-tools (~> 0.2.0)!
+  zazo-tools (~> 0.2.1)!
 
 BUNDLED WITH
    1.10.6

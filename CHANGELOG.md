@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.8.1
+- :hammer: Updated `zazo-tools` gem (0.2.1)
+
 ### 0.8.0
 - :bulb: Added `Zazo::Tools::Logger` for centralized logging
 
