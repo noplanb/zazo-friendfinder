@@ -28,7 +28,7 @@ gem 'settingslogic'
 gem 'active_model_serializers'
 gem 'aasm'
 
-gem 'zazo-tools', '~> 0.2.0',  github: 'noplanb/zazo-tools'
+gem 'zazo-tools', '~> 0.2.1',  github: 'noplanb/zazo-tools'
 gem 'figaro', github: 'asux/figaro', branch: 'feature/eb-set-command'
 gem 'puma'
 gem 'rollbar'
