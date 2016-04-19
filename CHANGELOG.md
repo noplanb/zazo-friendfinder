@@ -1,6 +1,6 @@
 # Changelog
 
-### next release
+### 0.8.0
 - :bulb: Added `Zazo::Tools::Logger` for centralized logging
 
 ### v0.7.3
