@@ -1,5 +1,7 @@
 # Changelog
 
+### new release
+
 ### 0.8.1
 - :hammer: Updated `zazo-tools` gem (0.2.1)
 

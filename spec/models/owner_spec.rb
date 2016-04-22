@@ -10,7 +10,7 @@ RSpec.describe Owner, type: :model do
     let(:mkey) { '7qdanSEmctZ2jPnYA0a1' }
     subject { instance.fetch_data.full_name }
 
-    it { is_expected.to eq 'Sani Elfishawy' }
+    it { is_expected.to eq 'Sani ElFishawy' }
   end
 
   describe '#contacts' do

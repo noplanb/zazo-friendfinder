@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Notification::MobileData, type: :model do
   let(:contact) { FactoryGirl.create(:contact, owner_mkey: '7qdanSEmctZ2jPnYA0a1') }
-  let(:push_token) { 'APA91bEt9ugdWHeAUfvSM4IPnUCIvDzkc17pSWV2EUBDdyuF-mePW89QHIBeT9jgzaifMREzWUIGXb33wMSEt439xFtSj1jXIt4y29KmokOw-rTZlHKYlNT5Z6QHe9T2B_JHJsARhnCN' }
-  let(:notification) { FactoryGirl.create(:notification, contact: contact) }
+  let(:push_token) { '3754373c614e788141e40a68a82a28fe48bcc35e3e29294d73cae7c1399e796a' }
+  let(:notification) { FactoryGirl.create(:notification_mobile, contact: contact) }
   let(:instance) { described_class.new(notification) }
 
   describe '#get' do
@@ -13,7 +13,7 @@ RSpec.describe Notification::MobileData, type: :model do
       expected = {
         subject: "#{contact.display_name} joined Zazo!",
         device_build: 'prod',
-        device_platform: 'android',
+        device_platform: 'ios',
         device_token: push_token,
         payload: {
           type: 'friend_joined',
