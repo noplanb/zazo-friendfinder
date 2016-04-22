@@ -3,7 +3,7 @@ class Contact::Add < Contact::BaseHandler
     unless contact.added?
       contact.update_attributes(additions: new_attributes)
       emit_event(%w(contact added))
-      # invite contact
+      Resque.enqueue(ResqueWorker::InviteContact, contact.id, caller) unless Rails.env.production?
     end
   end
 

@@ -1,16 +1,14 @@
-class Contact::Invite
-  attr_reader :contact
+# TODO: write some specs
 
-  def initialize(contact)
-    @contact = contact
-  end
-
+class Contact::Invite < Contact::BaseHandler
   def do
     contact.owner.fetch_data
     api = MainServerApi.new(attributes)
     api.digest_auth(contact.owner.mkey, contact.owner.auth)
-    update_contact(api.invite)
-    Zazo::Tools::Logger.info(self, "success; contact: #{contact.to_json}")
+    response = api.invite
+    update_contact(response)
+    emit_event(%w(contact invited))
+    Zazo::Tools::Logger.info(self, "success; response: #{response.to_json}; contact: #{contact.to_json}")
   rescue Faraday::ClientError => e
     Zazo::Tools::Logger.info(self, "failure; error: #{e.message}; response: #{e.response[:body]}; contact: #{contact.to_json}")
   end

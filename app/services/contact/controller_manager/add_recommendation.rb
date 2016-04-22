@@ -3,9 +3,7 @@ class Contact::ControllerManager::AddRecommendation < Contact::ControllerManager
                     contact_mkey: { type: String }
 
   def do_safe
-    raw_params['to_mkeys'].each do |mkey|
-      add_recommendation_to_owner(mkey)
-    end
+    raw_params['to_mkeys'].each { |mkey| add_recommendation_to_owner(mkey) }
   end
 
   private
