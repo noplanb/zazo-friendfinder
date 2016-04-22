@@ -21,6 +21,11 @@ class Contact::Invite < Contact::BaseHandler
       zazo_mkey:  data['mkey'],
       first_name: data['first_name'],
       last_name:  data['last_name'])
+    contact.update_attributes(additions: new_additions)
+  end
+
+  def new_additions
+    (contact.additions || {}).merge('marked_as_friend' => true)
   end
 
   #
