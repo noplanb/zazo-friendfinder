@@ -8,9 +8,11 @@ Zazo FriendFinder
 | triggered_by    | name                        | initiator (id)      | target (id)         |
 |:----------------|:----------------------------|:--------------------|:--------------------|
 | ff:web_client   | {contact,added}             | owner (mkey)        | contact (id)        |
+| ff:web_client   | {contact,invited}           | owner (mkey)        | contact (id)        |
 | ff:web_client   | {contact,ignored}           | owner (mkey)        | contact (id)        |
 |-----------------|-----------------------------|---------------------|---------------------|
 | ff:api          | {contact,added}             | owner (mkey)        | contact (id)        |
+| ff:api          | {contact,invited}           | owner (mkey)        | contact (id)        |
 | ff:api          | {contact,ignored}           | owner (mkey)        | contact (id)        |
 |-----------------|-----------------------------|---------------------|---------------------|
 | ff:web_client   | {notification,added}        | owner (mkey)        | notification (nkey) |

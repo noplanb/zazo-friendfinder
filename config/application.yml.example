@@ -6,9 +6,9 @@ db_port: '5432'
 
 dataprovider_api_base_url:
 dataprovider_api_token:
-
 notification_api_base_url:
 notification_api_token:
+mainserver_api_base_url:
 
 admin_base_url:
 renotification_base_url:

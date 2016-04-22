@@ -1,7 +1,7 @@
 class Notification::MobileData < Notification::BaseData
   attr_reader :push_token, :device_platform, :subject, :content, :payload, :device_build, :response
-  validates   :push_token, :device_platform, :subject, :content, :payload, presence: true
-  validate    :validate_response
+  validates :push_token, :device_platform, :subject, :payload, presence: true
+  validate :validate_response
 
   def get
     { subject: subject,

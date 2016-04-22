@@ -33,18 +33,18 @@ class BaseApi
     end
   end
 
-  attr_reader :connection, :options
+  attr_reader :connection, :options,
+              :api_auth_name, :api_auth_token
 
   def initialize(options = {})
     @options = options
-    @connection = Faraday.new(self.class.api_base_uri) do |c|
-      c.request  :json
-      c.response :json, content_type: /\bjson$/
-      c.response(:raise_error) if raise_errors?
-      c.request(:digest, auth_credentials(:name), auth_credentials(:token)) if auth_credentials(:token)
-      c.adapter Faraday.default_adapter
-      c.use Faraday::Response::Logger, Logger.new('log/faraday.log')
-    end
+    set_connection
+  end
+
+  def digest_auth(name, token)
+    @api_auth_name = name
+    @api_auth_token = token
+    set_connection
   end
 
   def method_missing(method, *args)
@@ -57,16 +57,27 @@ class BaseApi
 
   protected
 
+  def set_connection
+    @connection = Faraday.new(self.class.api_base_uri) do |c|
+      c.request(:json)
+      c.response(:json, content_type: /\bjson$/)
+      c.response(:raise_error) if raise_errors?
+      c.request(:digest, auth_credentials(:name), auth_credentials(:token)) if auth_credentials(:token)
+      c.adapter(Faraday.default_adapter)
+      c.use(Faraday::Response::Logger, Logger.new('log/faraday.log'))
+    end
+  end
+
   def map
     self.class.api_map
   end
 
   def auth_credentials(key)
     if key == :token
-      token = self.class.api_auth_token
+      token = self.class.api_auth_token || api_auth_token
       token ? URI::encode(token) : nil
     else
-      self.class.api_auth_name
+      self.class.api_auth_name || api_auth_name
     end
   end
 
@@ -80,7 +91,7 @@ class BaseApi
   end
 
   def namespace
-    "api/v#{self.class.api_version}"
+    self.class.api_version ? "api/v#{self.class.api_version}" : ""
   end
 
   def path(prefix, name)

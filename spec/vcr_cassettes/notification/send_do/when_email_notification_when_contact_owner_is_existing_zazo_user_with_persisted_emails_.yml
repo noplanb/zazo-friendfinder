@@ -25,28 +25,28 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1OTQzMTgxMzo5ZmFhZDZjMzk4ZmJiYjlmZWE1NzkzMDgzZjM5NDk0Yg==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2MTMxNzA2NDo5NzdjMTIxYzY0NGU3ZDQ5MjI5M2Y3NGQxYzhmOTNkNg==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 903a0222-7d3e-4568-8390-4f934c32ba50
+      - 667f3279-91d0-43c2-94ed-f8e8a89b0c75
       X-Runtime:
-      - '0.196030'
+      - '2.667512'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       Date:
-      - Thu, 31 Mar 2016 13:43:33 GMT
+      - Fri, 22 Apr 2016 09:24:24 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Thu, 31 Mar 2016 13:43:33 GMT
+  recorded_at: Fri, 22 Apr 2016 09:24:24 GMT
 - request:
     method: get
     uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=GBAHb0482YxlJ0kYwbIS
@@ -59,8 +59,8 @@ http_interactions:
       Authorization:
       - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
         qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=GBAHb0482YxlJ0kYwbIS",
-        nonce="MTQ1OTQzMTgxMzo5ZmFhZDZjMzk4ZmJiYjlmZWE1NzkzMDgzZjM5NDk0Yg==", nc=00000000,
-        cnonce="0178193fb6374d0eef0252b3852ffcf9", response="cc94d537453e794839928cbeb2750d0d",
+        nonce="MTQ2MTMxNzA2NDo5NzdjMTIxYzY0NGU3ZDQ5MjI5M2Y3NGQxYzhmOTNkNg==", nc=00000000,
+        cnonce="dc7f21053f730459045826a94ce169d5", response="4837e2441c668563df4abaa7178685ba",
         opaque="822778b6350cbc116426dfdce7488072"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -82,27 +82,27 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - c7bcd51b-4e31-474d-bbfe-898eef68a8e4
+      - 1c8288f0-682c-4e51-b744-2f9aca1e5795
       X-Runtime:
-      - '0.385504'
+      - '1.023181'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       X-Miniprofiler-Ids:
-      - '["2y7244t0m05y7w68oo87","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["e8uf0iphj8q4y2kzziqz","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Thu, 31 Mar 2016 13:43:33 GMT
+      - Fri, 22 Apr 2016 09:24:25 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"emails":["vano468@gmail.com"]}'
     http_version: 
-  recorded_at: Thu, 31 Mar 2016 13:43:33 GMT
+  recorded_at: Fri, 22 Apr 2016 09:24:25 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -125,31 +125,31 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ1OTQzMTgxMzo5ZmFhZDZjMzk4ZmJiYjlmZWE1NzkzMDgzZjM5NDk0Yg==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2MTMxNzA2Njo5YTdiMTkyYWM3M2ZhNTk1NTI3MTEwOWJlZjg4ZDk5Mw==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - c4c56e54-c314-4f37-bdc0-d357827441a8
+      - 7b570a25-42e1-44c0-8b5a-5ea5381a1f67
       X-Runtime:
-      - '0.192945'
+      - '0.189529'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       Date:
-      - Thu, 31 Mar 2016 13:43:33 GMT
+      - Fri, 22 Apr 2016 09:24:26 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Thu, 31 Mar 2016 13:43:33 GMT
+  recorded_at: Fri, 22 Apr 2016 09:24:26 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -158,9 +158,9 @@ http_interactions:
       - Faraday v0.9.1
       Authorization:
       - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
-        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=last_name&attrs%5B%5D=friends&user=GBAHb0482YxlJ0kYwbIS",
-        nonce="MTQ1OTQzMTgxMzo5ZmFhZDZjMzk4ZmJiYjlmZWE1NzkzMDgzZjM5NDk0Yg==", nc=00000000,
-        cnonce="048cda2c30dd2bba4f91a14c10735fbb", response="2fc5fee4554829563eaf694d62ba34a8",
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=last_name&attrs%5B%5D=friends&user=GBAHb0482YxlJ0kYwbIS",
+        nonce="MTQ2MTMxNzA2Njo5YTdiMTkyYWM3M2ZhNTk1NTI3MTEwOWJlZjg4ZDk5Mw==", nc=00000000,
+        cnonce="53ae0f3f1d58cf8319c39dcae892475a", response="21e154e71eebd735edfef4b930fce648",
         opaque="822778b6350cbc116426dfdce7488072"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -182,24 +182,24 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - 4d77ffec-b908-4215-998c-dc26963e9931
+      - 64b10a6f-5a61-4d52-8088-f06ddd031a66
       X-Runtime:
-      - '0.957013'
+      - '1.365776'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       X-Miniprofiler-Ids:
-      - '["o4jstgz2pypzfszpw4kp","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["k5ur26eibks6r6q4a730","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Thu, 31 Mar 2016 13:43:34 GMT
+      - Fri, 22 Apr 2016 09:24:27 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
-      string: '{"first_name":"Ivan","last_name":"Kornilov","friends":["0DAQEVtmNKQiW6aoQrvo","e0kvxfgua1EQJvUOzVC1","yLK6i5VpMW9ZZy5BnXZZ","7qdanSEmctZ2jPnYA0a1","gpIES8adSGtrB5O5933c","LVXE6gyoxb6eHNvPd96f"]}'
+      string: '{"auth":"O4VXCozKuyQNjnWPh400","first_name":"Ivan","last_name":"Kornilov","friends":["0DAQEVtmNKQiW6aoQrvo","e0kvxfgua1EQJvUOzVC1","yLK6i5VpMW9ZZy5BnXZZ","7qdanSEmctZ2jPnYA0a1","gpIES8adSGtrB5O5933c","LVXE6gyoxb6eHNvPd96f"]}'
     http_version: 
-  recorded_at: Thu, 31 Mar 2016 13:43:34 GMT
+  recorded_at: Fri, 22 Apr 2016 09:24:27 GMT
 - request:
     method: post
     uri: http://zazo-notification.dev/api/v1/notifications/email
@@ -229,31 +229,31 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo Notification", qop="auth", algorithm=MD5, nonce="MTQ1OTQzMTgxODpiY2E5M2FjNjU4OWE5ODQ2NDI1NjUxYjk1Mjg2NGE4Nw==",
+      - Digest realm="Zazo Notification", qop="auth", algorithm=MD5, nonce="MTQ2MTMxNzA3MTo5NjM4MmU0YjU2MzZiNWFkN2FiZDhkNGRmNzdlOWExYg==",
         opaque="1bada4e4faf11d9675b0e01e3ee23df0"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - d77a1596-e78a-41cc-9287-ff9011d7f603
+      - 3de32489-7064-4f76-83ea-c743865e7c7b
       X-Runtime:
-      - '0.009456'
+      - '0.010325'
       Date:
-      - Thu, 31 Mar 2016 13:43:38 GMT
+      - Fri, 22 Apr 2016 09:24:31 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Thu, 31 Mar 2016 13:43:38 GMT
+  recorded_at: Fri, 22 Apr 2016 09:24:31 GMT
 - request:
     method: post
     uri: http://zazo-notification.dev/api/v1/notifications/email
     body:
       encoding: UTF-8
-      string: '{"to":"vano468@gmail.com","subject":"Kathleen Gulgowski joined Zazo!","body":"<!DOCTYPE
+      string: '{"to":"vano468@gmail.com","subject":"Breanne Pouros joined Zazo!","body":"<!DOCTYPE
         html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"><html
         xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\" style=\"background:#f9f9f9;min-height:100%\"><head><meta
         http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta name=\"viewport\"
@@ -317,14 +317,14 @@ http_interactions:
         .hide-for-desktop,table.body .show-for-small{display:inherit!important}table.menu
         td,table.menu th{width:auto!important;display:inline-block!important}table.menu.vertical
         td,table.menu.vertical th{display:block!important}table.button.expand{width:100%!important}}@media
-        only screen and (max-width:596px){.body{padding-top:30px!important;padding-bottom:65px!important}}@media
+        only screen and (max-width:596px){.body{padding-top:30px!important;padding-bottom:20px!important}}@media
         only screen and (max-width:596px){.greeting-block{padding:0!important}}@media
         only screen and (max-width:596px){.actions-block .actions-group{margin-top:10px}}</style><table
-        class=\"body\" style=\"background:#f9f9f9;border-collapse:separate;border-spacing:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;height:100%;line-height:19px;margin:0;padding:0;padding-bottom:135px!important;padding-top:100px!important;text-align:left;vertical-align:top;width:100%\"><tr
+        class=\"body\" style=\"background:#f9f9f9;border-collapse:separate;border-spacing:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;height:100%;line-height:19px;margin:0;padding:0;padding-bottom:80px!important;padding-top:100px!important;text-align:left;vertical-align:top;width:100%\"><tr
         style=\"padding:0;text-align:left;vertical-align:top\"><td class=\"center\"
         align=\"center\" valign=\"top\" style=\"-moz-hyphens:auto;-webkit-hyphens:auto;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;hyphens:auto;line-height:19px;margin:0;padding:0;text-align:left;vertical-align:top;word-break:break-word\"><center
         data-parsed=\"\" style=\"min-width:580px;width:100%\"><table class=\"container
-        text-center\" style=\"background:#fefefe;border-collapse:collapse;border-spacing:0;margin:0
+        text-center\" style=\"background:#f9f9f9;border-collapse:collapse;border-spacing:0;margin:0
         auto;padding:0;text-align:center;vertical-align:top;width:580px\"><tbody><tr
         style=\"padding:0;text-align:left;vertical-align:top\"><td style=\"-moz-hyphens:auto;-webkit-hyphens:auto;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;hyphens:auto;line-height:19px;margin:0;padding:0;text-align:left;vertical-align:top;word-break:break-word\"><table
         class=\"row logo-block\" style=\"background:#f9f9f9;border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%\"><tbody><tr
@@ -333,7 +333,9 @@ http_interactions:
         auto;padding:0;padding-bottom:16px;padding-left:0!important;padding-right:0!important;text-align:left;width:564px\"><table
         style=\"border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%\"><tr
         style=\"padding:0;text-align:left;vertical-align:top\"><th style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0;text-align:left\"><img
-        class=\"zazo float-right\" src=\"http://ff-staging.zazoapp.com/email/images/zazo.png\"
+        src=\"http://zazo-friendfinder.dev/w/e6a3ea7524a19c980437d412c99520db/track_email\"
+        style=\"-ms-interpolation-mode:bicubic;clear:both;display:block;float:left;max-width:100%;outline:0;text-decoration:none;width:auto\">
+        <img class=\"zazo float-right\" src=\"http://zazo-friendfinder.dev/email/images/zazo.png\"
         style=\"-ms-interpolation-mode:bicubic;clear:both;display:block;float:right;margin-right:20px;max-width:100%;outline:0;text-align:right;text-decoration:none;width:auto\"></th></tr></table></th></tr></tbody></table><table
         class=\"row greeting-block\" style=\"border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%\"><tbody><tr
         style=\"padding:0;text-align:left;vertical-align:top\"><th class=\"small-16
@@ -351,16 +353,16 @@ http_interactions:
         auto;padding:0;padding-bottom:10px;padding-left:0!important;padding-right:0!important;padding-top:18px;text-align:left;width:129px\"><table
         style=\"border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%\"><tr
         style=\"padding:0;text-align:left;vertical-align:top\"><th style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0;text-align:left\"><img
-        class=\"icon float-center\" src=\"http://ff-staging.zazoapp.com/email/images/icon.png\"
+        class=\"icon float-center\" src=\"http://zazo-friendfinder.dev/email/images/icon.png\"
         style=\"-ms-interpolation-mode:bicubic;clear:both;display:block;float:none;margin:0
         auto;margin-top:4px;max-width:100%;outline:0;text-align:center;text-decoration:none;width:auto\"></th></tr></table></th><th
         class=\"small-11 large-12 columns last\" style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0
         auto;padding:0;padding-bottom:10px;padding-left:0!important;padding-right:0!important;padding-top:18px;text-align:left;width:419px\"><table
         style=\"border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%\"><tr
         style=\"padding:0;text-align:left;vertical-align:top\"><th style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0;text-align:left\"><p
-        class=\"message-title\" style=\"Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:18px;font-weight:700;line-height:19px;margin:0;margin-bottom:10px;margin-left:-6px;margin-top:18px;padding:0;text-align:left\">Kathleen
-        Gulgowski</p><p class=\"message-description\" style=\"Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;margin-bottom:22px;margin-left:-5px;padding:0;text-align:left\">Kathleen
-        Gulgowski joined Zazo</p></th><th class=\"expander\" style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0\"></th></tr></table></th></tr></tbody></table><table
+        class=\"message-title\" style=\"Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:18px;font-weight:700;line-height:19px;margin:0;margin-bottom:10px;margin-left:-6px;margin-top:18px;padding:0;text-align:left\">Breanne
+        Pouros</p><p class=\"message-description\" style=\"Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;margin-bottom:22px;margin-left:-5px;padding:0;text-align:left\">Breanne
+        Pouros joined Zazo</p></th><th class=\"expander\" style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0\"></th></tr></table></th></tr></tbody></table><table
         class=\"row actions-block\" style=\"-moz-box-shadow:0 3px 6px -3px #a3a3a3;-webkit-box-shadow:0
         3px 6px -3px #a3a3a3;border:1px solid #e0e0e0;border-collapse:separate!important;border-radius:0
         0 5px 5px;border-spacing:0;border-top:none;box-shadow:0 3px 6px -3px #a3a3a3;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%\"><tbody><tr
@@ -370,18 +372,29 @@ http_interactions:
         style=\"border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%\"><tr
         style=\"padding:0;text-align:left;vertical-align:top\"><th style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0;text-align:left\"><p
         class=\"actions-group\" style=\"Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;margin-bottom:12px;margin-right:16px;padding:0;text-align:right\"><a
-        class=\"action-button\" href=\"http://ff-staging.zazoapp.com/w/55bba022f3b428d4e39346d110d9af98/unsubscribe\"
+        class=\"action-button\" href=\"http://zazo-friendfinder.dev/w/e6a3ea7524a19c980437d412c99520db/unsubscribe\"
         style=\"color:#bababa;font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;line-height:1.3;margin:0;padding:12px
         20px;text-align:left;text-decoration:none\">UNSUBSCRIBE</a> <a class=\"action-button\"
-        href=\"http://ff-staging.zazoapp.com/w/55bba022f3b428d4e39346d110d9af98/ignore\"
+        href=\"http://zazo-friendfinder.dev/w/e6a3ea7524a19c980437d412c99520db/ignore\"
         style=\"color:#bababa;font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;line-height:1.3;margin:0;padding:12px
         20px;text-align:left;text-decoration:none\">IGNORE</a> <a class=\"action-button
-        add-button\" href=\"http://ff-staging.zazoapp.com/w/55bba022f3b428d4e39346d110d9af98/add\"
+        add-button\" href=\"http://zazo-friendfinder.dev/w/e6a3ea7524a19c980437d412c99520db/add\"
         style=\"-moz-box-shadow:0 5px 6px -3px #a3a3a3;-webkit-box-shadow:0 5px 6px
         -3px #a3a3a3;background:#1976d2;border-radius:3px;box-shadow:0 5px 6px -3px
         #a3a3a3;color:#fff;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;margin-left:8px;padding:12px
-        32px;text-align:left;text-decoration:none\">ADD</a></p></th></tr></table></th></tr></tbody></table></td></tr></tbody></table></center></td></tr></table></body></html>\n","from":"Zazo
-        Notifications <support@zazoapp.com>"}'
+        32px;text-align:left;text-decoration:none\">ADD</a></p></th></tr></table></th></tr></tbody></table><table
+        class=\"row info-block\" style=\"border-collapse:collapse;border-spacing:0;display:table;margin-top:46px;padding:0;position:relative;text-align:left;vertical-align:top;width:100%\"><tbody><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><th class=\"small-16
+        large-16 columns first last\" style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0
+        auto;padding:0;padding-bottom:16px;padding-left:0!important;padding-right:0!important;text-align:left;width:564px\"><table
+        style=\"border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%\"><tr
+        style=\"padding:0;text-align:left;vertical-align:top\"><th style=\"color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:19px;margin:0;padding:0;text-align:left\"><p
+        class=\"text\" style=\"Margin-bottom:10px;color:#C4C4C4;font-family:Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;line-height:20px;margin:0;margin-left:auto;margin-right:auto;padding:0;text-align:center;width:80%\">You
+        are receiving this message because you are a Zazo user.<br>To stop receiving
+        these messages please <a class=\"action-button\" href=\"http://zazo-friendfinder.dev/w/e6a3ea7524a19c980437d412c99520db/unsubscribe\"
+        style=\"color:#C4C4C4;font-family:Helvetica,Arial,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:underline\">unsubscribe</a>.<br><span
+        class=\"company\" style=\"line-height:30px\">Zazo Inc. Woodside CA 94062</span></p></th></tr></table></th></tr></tbody></table></td></tr></tbody></table></center></td></tr></table></body></html>\n","from":"Zazo
+        <support@zazoapp.com>"}'
     headers:
       User-Agent:
       - Faraday v0.9.1
@@ -391,8 +404,8 @@ http_interactions:
       - '0'
       Authorization:
       - Digest username="friendfinder", realm="Zazo Notification", algorithm=MD5,
-        qop=auth, uri="/api/v1/notifications/email", nonce="MTQ1OTQzMTgxODpiY2E5M2FjNjU4OWE5ODQ2NDI1NjUxYjk1Mjg2NGE4Nw==",
-        nc=00000000, cnonce="dc3cc05ed389d03c857685e62e8aeea1", response="f4037bba0375f04f642bb92731bb53fe",
+        qop=auth, uri="/api/v1/notifications/email", nonce="MTQ2MTMxNzA3MTo5NjM4MmU0YjU2MzZiNWFkN2FiZDhkNGRmNzdlOWExYg==",
+        nc=00000000, cnonce="a92519cbf4516793df80bd99a99071e2", response="462f3a0c0749e8a1b9cb259b6a89f32f",
         opaque="1bada4e4faf11d9675b0e01e3ee23df0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -416,16 +429,16 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b290912d-efff-464a-8ed2-c39f5b39eb28
+      - 5b027b87-0726-4127-97b2-4eafa3726edc
       X-Runtime:
-      - '5.110061'
+      - '3.599260'
       Date:
-      - Thu, 31 Mar 2016 13:43:43 GMT
+      - Fri, 22 Apr 2016 09:24:34 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"success","original_response":null}'
     http_version: 
-  recorded_at: Thu, 31 Mar 2016 13:43:43 GMT
+  recorded_at: Fri, 22 Apr 2016 09:24:34 GMT
 recorded_with: VCR 3.0.1
