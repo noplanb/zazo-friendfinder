@@ -1,5 +1,7 @@
 # Changelog
 
+### 0.9.1
+
 ### 0.9.0
 - :bulb: Implemented real friends addition (`Contact::Invite` service)
 
