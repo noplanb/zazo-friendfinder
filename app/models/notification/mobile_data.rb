@@ -28,13 +28,21 @@ class Notification::MobileData < Notification::BaseData
       additions: {
         friend_name: object.contact.display_name
       }
-    }
+    }.merge(payload_host)
+  end
+
+  def payload_host
+    case Rails.env
+      when 'production' then { host: 'prod.zazoapp.com' }
+      when 'staging' then { host: 'staging.zazoapp.com' }
+      else {}
+    end
   end
 
   def fetch_push_user
     @response = DataProviderApi.new(user_mkey: object.contact.owner_mkey).query(:push_user)
   rescue Faraday::ClientError => e
-    @response = JSON.parse e.response[:body]
+    @response = JSON.parse(e.response[:body])
   end
 
   def validate_response
