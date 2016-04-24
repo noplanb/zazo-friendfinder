@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.2
+- :hammer: Fixed `Notification::MobileData` (added host attribute for production/staging)
+
 ### 0.9.1
 - :arrow_up: Updated Dockerfile to use updated base image
 
