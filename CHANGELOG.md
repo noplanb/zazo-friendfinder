@@ -1,6 +1,7 @@
 # Changelog
 
 ### 0.9.1
+- :arrow_up: Updated Dockerfile to use updated base image
 
 ### 0.9.0
 - :bulb: Implemented real friends addition (`Contact::Invite` service)
