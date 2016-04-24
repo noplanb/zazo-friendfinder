@@ -1,5 +1,7 @@
 # Changelog
 
+### 0.9.2
+
 ### 0.9.1
 - :arrow_up: Updated Dockerfile to use updated base image
 
