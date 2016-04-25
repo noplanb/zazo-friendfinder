@@ -6,13 +6,10 @@ RSpec.describe Contact::GetSuggestions do
 
   describe '#do' do
     let(:vectors_1) do
-      [FactoryGirl.create(:vector_mobile_sms_messages_sent),
-       FactoryGirl.create(:vector_email),
-       FactoryGirl.create(:vector_email)]
+      [FactoryGirl.create(:vector_mobile_sms_messages_sent), FactoryGirl.create(:vector_email), FactoryGirl.create(:vector_email)]
     end
     let(:vectors_2) do
-      [FactoryGirl.create(:vector_email),
-       FactoryGirl.create(:vector_facebook)]
+      [FactoryGirl.create(:vector_email), FactoryGirl.create(:vector_facebook)]
     end
     let(:vectors_3) { [FactoryGirl.create(:vector_mobile)] }
     let(:vectors_4) { [FactoryGirl.create(:vector_mobile)] }
@@ -46,7 +43,8 @@ RSpec.describe Contact::GetSuggestions do
           display_name: "#{contact_1.first_name} #{contact_1.last_name}",
           zazo_mkey: nil,
           zazo_id: nil,
-          total_score: contact_1.total_score
+          total_score: contact_1.total_score,
+          phone_numbers: [vectors_1.first.value]
         }, {
           id: contact_2.id,
           first_name: contact_2.first_name,
@@ -54,7 +52,8 @@ RSpec.describe Contact::GetSuggestions do
           display_name: "#{contact_2.first_name} #{contact_2.last_name}",
           zazo_mkey: nil,
           zazo_id: nil,
-          total_score: contact_2.total_score
+          total_score: contact_2.total_score,
+          phone_numbers: []
         }, {
           id: contact_4.id,
           first_name: contact_4.first_name,
@@ -62,7 +61,8 @@ RSpec.describe Contact::GetSuggestions do
           display_name: "#{contact_4.first_name} #{contact_4.last_name}",
           zazo_mkey: nil,
           zazo_id: nil,
-          total_score: contact_4.total_score
+          total_score: contact_4.total_score,
+          phone_numbers: [vectors_4.first.value]
         }
       ]
       is_expected.to eq suggestions

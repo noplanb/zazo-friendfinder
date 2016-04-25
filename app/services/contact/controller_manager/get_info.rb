@@ -3,7 +3,7 @@ class Contact::ControllerManager::GetInfo < Contact::ControllerManager::BaseHand
     contact = Contact.find_by_id(raw_params['id'])
     validate_contact_presence(contact)
     validate_contact_ownership(contact)
-    @data = ContactSerializer.new(contact).serializable_hash
+    @data = ContactSerializer.new(contact, except: :phone_numbers).serializable_hash
   end
 
   def log_messages(*)

@@ -1,5 +1,5 @@
 class Contact::GetSuggestions
-  RETURN_CONTACTS_COUNT = 100
+  RETURN_CONTACTS_COUNT = 10
 
   attr_reader :owner
 
