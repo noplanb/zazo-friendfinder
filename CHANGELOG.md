@@ -1,7 +1,7 @@
 # Changelog
 
 ### next release
-- :bulb: Added mobile numbers list for contacts suggestions
+- :bulb: Added mobile numbers list for contacts suggestions / mobile notification
 - :arrow_up: Reduced contacts suggestions count from 100 to 10
 
 ### 0.9.2
