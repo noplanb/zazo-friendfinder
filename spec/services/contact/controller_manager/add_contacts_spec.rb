@@ -22,10 +22,18 @@ RSpec.describe Contact::ControllerManager::AddContacts do
       [contact_1, contact_2, contact_3].each(&:reload)
     end
 
-    it { is_expected.to eq true }
+    it { is_expected.to eq(true) }
     it { expect(contact_1.additions).to eq('added_by_owner' => true) }
     it { expect(contact_2.additions).to eq('added_by_owner' => true) }
     it { expect(contact_3.additions).to eq('added_by_owner' => true) }
+    it do
+      expected = {
+        contact_1.id => { status: :added },
+        contact_2.id => { status: :added },
+        contact_3.id => { status: :already_added }
+      }
+      expect(instance.data).to eq(data: expected)
+    end
   end
 
   describe 'validations' do
