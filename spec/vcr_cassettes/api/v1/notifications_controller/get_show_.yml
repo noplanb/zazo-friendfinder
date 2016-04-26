@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=mkey&user=7qdanSEmctZ2jPnYA0a1
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=mkey&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -25,31 +25,31 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2MDQ3NjUzNjpjMzRmN2Y1MzgyOGYxZDA4NTAwMjBhMTg4MWU5NGI5Mw==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2MTY2ODQ2ODplMDhkZWQyZWZmNWRiZDA3NmU2NGJiNjVhMDIzNWIzNA==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - d5b0dea4-86b2-41cf-b4b7-5c22169b5b3b
+      - 1e2ad69c-6f1f-4f7d-8515-ff1ca0c46385
       X-Runtime:
-      - '0.190967'
+      - '0.189800'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       Date:
-      - Tue, 12 Apr 2016 15:55:36 GMT
+      - Tue, 26 Apr 2016 11:01:08 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Tue, 12 Apr 2016 15:55:36 GMT
+  recorded_at: Tue, 26 Apr 2016 11:01:08 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=mkey&user=7qdanSEmctZ2jPnYA0a1
+    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=mkey&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -58,9 +58,9 @@ http_interactions:
       - Faraday v0.9.1
       Authorization:
       - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
-        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=mkey&attrs%5B%5D=auth&user=7qdanSEmctZ2jPnYA0a1",
-        nonce="MTQ2MDQ3NjUzNjpjMzRmN2Y1MzgyOGYxZDA4NTAwMjBhMTg4MWU5NGI5Mw==", nc=00000000,
-        cnonce="7cb59cb7f9003b00096ac79cc113aec2", response="afdf8a105cfccfe165a10131f610ab89",
+        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=mkey&attrs%5B%5D=auth&user=GBAHb0482YxlJ0kYwbIS",
+        nonce="MTQ2MTY2ODQ2ODplMDhkZWQyZWZmNWRiZDA3NmU2NGJiNjVhMDIzNWIzNA==", nc=00000000,
+        cnonce="3067cbc0a362f55354b5596ae37371e9", response="4f47f5bc9ce19aff5c54b5720935af3c",
         opaque="822778b6350cbc116426dfdce7488072"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -82,22 +82,22 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - 4a3e9ccb-7246-4890-a9cf-8a34f31a2f25
+      - 1d4cdbc9-d967-45bb-821e-424a6ad8492c
       X-Runtime:
-      - '0.388921'
+      - '0.378298'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       X-Miniprofiler-Ids:
-      - '["by3oo21at209yky3jgb2","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["lh51ewm7pqqmwr35v5m8","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Tue, 12 Apr 2016 15:55:37 GMT
+      - Tue, 26 Apr 2016 11:01:08 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
-      string: '{"mkey":"7qdanSEmctZ2jPnYA0a1","auth":"yLPv2hZ4DPRq1wGlQvqm"}'
+      string: '{"mkey":"GBAHb0482YxlJ0kYwbIS","auth":"O4VXCozKuyQNjnWPh400"}'
     http_version: 
-  recorded_at: Tue, 12 Apr 2016 15:55:37 GMT
+  recorded_at: Tue, 26 Apr 2016 11:01:08 GMT
 recorded_with: VCR 3.0.1

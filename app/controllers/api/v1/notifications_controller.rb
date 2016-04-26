@@ -1,4 +1,4 @@
-# TODO: refactor this to no use WebClient::ActionHandler, but ControllerManager
+# TODO: refactor this to no use WebClient::ActionHandler, but controller manager service
 
 class Api::V1::NotificationsController < ApiController
   before_action :set_web_client
