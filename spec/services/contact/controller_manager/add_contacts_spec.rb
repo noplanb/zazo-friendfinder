@@ -14,9 +14,9 @@ RSpec.describe Contact::ControllerManager::AddContacts do
     before { [contact_1, contact_2, contact_3].each(&:reload) }
 
     it { is_expected.to eq true }
-    it { expect(contact_1.additions).to eq 'added_by_owner' => true }
-    it { expect(contact_2.additions).to eq 'added_by_owner' => true }
-    it { expect(contact_3.additions).to eq 'added_by_owner' => true }
+    it { expect(contact_1.additions).to eq('added_by_owner' => true) }
+    it { expect(contact_2.additions).to eq('added_by_owner' => true) }
+    it { expect(contact_3.additions).to eq('added_by_owner' => true) }
   end
 
   describe 'validations' do
@@ -27,21 +27,21 @@ RSpec.describe Contact::ControllerManager::AddContacts do
         let(:params) { { 'contacts_ids' => 'some string' } }
 
         it { is_expected.to eq false }
-        it { expect(instance.errors).to eq raw_params: ['raw_params[\'contacts_ids\'] must be type of Array'] }
+        it { expect(instance.errors).to eq(raw_params: ['raw_params[\'contacts_ids\'] must be type of Array']) }
       end
 
       context 'raw_params must be type of Hash' do
         let(:params) { 'some string' }
 
         it { is_expected.to eq false }
-        it { expect(instance.errors).to eq raw_params: ['raw_params must be type of Hash'] }
+        it { expect(instance.errors).to eq(raw_params: ['raw_params must be type of Hash']) }
       end
 
       context 'raw_params must contain correct id\'s' do
         let(:params) { { 'contacts_ids' => [contact_1.id, 1982] } }
 
         it { is_expected.to eq false }
-        it { expect(instance.errors).to eq contact_id: ['not found by id=1982'] }
+        it { expect(instance.errors).to eq(contact_id: ['not found by id=1982']) }
       end
     end
   end

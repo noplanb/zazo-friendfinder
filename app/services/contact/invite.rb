@@ -5,15 +5,25 @@ class Contact::Invite < Contact::BaseHandler
     contact.owner.fetch_data
     api = MainServerApi.new(attributes)
     api.digest_auth(contact.owner.mkey, contact.owner.auth)
-    response = api.invite
-    update_contact(response)
-    emit_event(%w(contact invited))
-    Zazo::Tools::Logger.info(self, "success; response: #{response.to_json}; contact: #{contact.to_json}")
+    handle_response(api.invite)
   rescue Faraday::ClientError => e
     Zazo::Tools::Logger.info(self, "failure; error: #{e.message}; response: #{e.response[:body]}; contact: #{contact.to_json}")
+    nil
   end
 
   private
+
+  def handle_response(response)
+    if response['status'] == 'failure'
+      Zazo::Tools::Logger.info(self, "failure; response: #{response.to_json}; contact: #{contact.to_json}")
+      nil
+    else
+      update_contact(response)
+      emit_event(%w(contact invited))
+      Zazo::Tools::Logger.info(self, "success; response: #{response.to_json}; contact: #{contact.to_json}")
+      response
+    end
+  end
 
   def update_contact(data)
     contact.update_attributes(

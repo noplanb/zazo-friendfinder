@@ -1,8 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Contact::Add do
-  let(:contact) { FactoryGirl.create(:contact, additions: additions) }
-  let(:instance) { described_class.new(contact) }
+  let(:vector) { FactoryGirl.create(:vector_mobile, value: '+16502453537') }
+  let(:contact) do
+    FactoryGirl.create(:contact,
+      first_name: 'David',
+      last_name: 'Miller',
+      owner_mkey: 'GBAHb0482YxlJ0kYwbIS',
+      additions: additions,
+      vectors: [vector])
+  end
+  let(:instance) { described_class.new(contact, caller: caller) }
+  let(:caller) { :web_client }
 
   describe '#do' do
     subject { instance.do }
@@ -19,6 +28,17 @@ RSpec.describe Contact::Add do
         expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
         subject
       end
+      it 'specific status', :skip_before do
+        is_expected.to eq(status: :queued)
+      end
+
+      context 'when called is api' do
+        let(:caller) { :api }
+
+        it 'specific status', :skip_before do
+          expect(subject[:status]).to eq(:added)
+        end
+      end
     end
 
     context 'when already added' do
@@ -29,6 +49,17 @@ RSpec.describe Contact::Add do
         expect(Zazo::Tools::EventDispatcher).to_not receive(:emit)
         subject
       end
+      it 'should have specific status', :skip_before do
+        is_expected.to eq(status: :already_added)
+      end
+
+      context 'when called is api' do
+        let(:caller) { :api }
+
+        it 'specific status', :skip_before do
+          expect(subject[:status]).to eq(:already_added)
+        end
+      end
     end
 
     context 'when already ignored' do
@@ -38,6 +69,17 @@ RSpec.describe Contact::Add do
       it 'should dispatch an event', :skip_before do
         expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
         subject
+      end
+      it 'specific status', :skip_before do
+        is_expected.to eq(status: :queued)
+      end
+
+      context 'when called is api' do
+        let(:caller) { :api }
+
+        it 'specific status', :skip_before do
+          expect(subject[:status]).to eq(:added)
+        end
       end
     end
   end

@@ -8,7 +8,7 @@ class Contact::ControllerManager::IgnoreContacts < Contact::ControllerManager::B
         add_error(:contact_id, "not found by id=#{id}")
         fail(ActiveRecord::Rollback)
       end
-      Contact::Ignore.new(contact).do
+      Contact::Ignore.new(contact, caller: :api).do
     end
   end
 end
