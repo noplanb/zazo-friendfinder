@@ -70,7 +70,7 @@ group :test do
   gem 'resque_spec'
   gem 'faker'
   gem 'timecop'
-  gem 'webmock'
+  gem 'webmock', '< 2.0.0'
   gem 'vcr'
   gem 'shoulda-matchers', '= 2.8.0'
   gem 'simplecov', require: false

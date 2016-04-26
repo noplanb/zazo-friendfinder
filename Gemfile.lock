@@ -431,7 +431,7 @@ DEPENDENCIES
   timecop
   uglifier
   vcr
-  webmock
+  webmock (< 2.0.0)
   whenever
   zazo-tools (~> 0.2.1)!
 
