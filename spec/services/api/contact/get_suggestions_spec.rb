@@ -1,15 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe Contact::GetSuggestions do
+RSpec.describe Api::Contact::GetSuggestions do
   let(:user) { FactoryGirl.build(:user) }
-  let(:instance) { described_class.new(user.mkey) }
+  let(:instance) { described_class.new(user.mkey, {}) }
 
   describe '#do' do
     let(:vectors_1) do
-      [FactoryGirl.create(:vector_mobile_sms_messages_sent), FactoryGirl.create(:vector_email), FactoryGirl.create(:vector_email)]
+      [FactoryGirl.create(:vector_mobile_sms_messages_sent),
+       FactoryGirl.create(:vector_email),
+       FactoryGirl.create(:vector_email)]
     end
     let(:vectors_2) do
-      [FactoryGirl.create(:vector_email), FactoryGirl.create(:vector_facebook)]
+      [FactoryGirl.create(:vector_email),
+       FactoryGirl.create(:vector_facebook)]
     end
     let(:vectors_3) { [FactoryGirl.create(:vector_mobile)] }
     let(:vectors_4) { [FactoryGirl.create(:vector_mobile)] }
@@ -26,6 +29,7 @@ RSpec.describe Contact::GetSuggestions do
 
     before do
       Owner.new(user.mkey).contacts_actions.recalculate_scores
+      subject
       contact_1.reload
       contact_2.reload
       contact_3.reload
@@ -34,8 +38,9 @@ RSpec.describe Contact::GetSuggestions do
       contact_6.reload
     end
 
+    it { is_expected.to be_truthy }
     it do
-      suggestions = [
+      expected = [
         {
           id: contact_1.id,
           first_name: contact_1.first_name,
@@ -65,7 +70,7 @@ RSpec.describe Contact::GetSuggestions do
           phone_numbers: [vectors_4.first.value]
         }
       ]
-      is_expected.to eq suggestions
+      expect(instance.data).to eq(data: expected)
     end
   end
 end

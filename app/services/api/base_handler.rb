@@ -50,8 +50,6 @@ class Api::BaseHandler
     include ActiveModel::Validations
 
     attr_reader :raw_params, :params_validation
-
-    validates :raw_params, presence: true
     validate  :raw_params_with_correct_structure
 
     def initialize(raw_params, params_validation)
