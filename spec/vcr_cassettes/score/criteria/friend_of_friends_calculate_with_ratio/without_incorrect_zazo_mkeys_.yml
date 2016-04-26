@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/mutual_friends?contact_mkey=xxxxxxxxxxxx&user_mkey=xxxxxxxxxxxx
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/mutual_friends?contact_mkey=xxxxxxxxxxxx&user_mkey=xxxxxxxxxxxx
     body:
       encoding: US-ASCII
       string: ''
@@ -49,7 +49,7 @@ http_interactions:
   recorded_at: Thu, 31 Mar 2016 13:39:38 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/mutual_friends?contact_mkey=xxxxxxxxxxxx&user_mkey=xxxxxxxxxxxx
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/mutual_friends?contact_mkey=xxxxxxxxxxxx&user_mkey=xxxxxxxxxxxx
     body:
       encoding: US-ASCII
       string: ''

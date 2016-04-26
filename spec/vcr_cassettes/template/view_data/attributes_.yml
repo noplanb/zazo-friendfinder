@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=f1d54aa80cf341faf6d7260554f95e21
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=f1d54aa80cf341faf6d7260554f95e21
     body:
       encoding: US-ASCII
       string: ''
@@ -49,7 +49,7 @@ http_interactions:
   recorded_at: Thu, 31 Mar 2016 13:50:24 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=f1d54aa80cf341faf6d7260554f95e21
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=f1d54aa80cf341faf6d7260554f95e21
     body:
       encoding: US-ASCII
       string: ''

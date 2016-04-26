@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=XqUn9Fs5YHd75l1rin76
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=XqUn9Fs5YHd75l1rin76
     body:
       encoding: US-ASCII
       string: ''
@@ -49,7 +49,7 @@ http_interactions:
   recorded_at: Thu, 31 Mar 2016 13:05:01 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=XqUn9Fs5YHd75l1rin76
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=XqUn9Fs5YHd75l1rin76
     body:
       encoding: US-ASCII
       string: ''
@@ -99,7 +99,7 @@ http_interactions:
   recorded_at: Thu, 31 Mar 2016 13:05:02 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=XqUn9Fs5YHd75l1rin76
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=XqUn9Fs5YHd75l1rin76
     body:
       encoding: US-ASCII
       string: ''
@@ -146,7 +146,7 @@ http_interactions:
   recorded_at: Thu, 31 Mar 2016 13:05:02 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=XqUn9Fs5YHd75l1rin76
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=XqUn9Fs5YHd75l1rin76
     body:
       encoding: US-ASCII
       string: ''

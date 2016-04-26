@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -49,7 +49,7 @@ http_interactions:
   recorded_at: Mon, 25 Apr 2016 17:51:41 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -102,7 +102,7 @@ http_interactions:
   recorded_at: Mon, 25 Apr 2016 17:51:43 GMT
 - request:
     method: get
-    uri: http://tbm-server.dev/invitation/invite?first_name=David&last_name=Miller&mobile_number=%2B16502453537
+    uri: <%= mainserver_api_base_url %>/invitation/invite?first_name=David&last_name=Miller&mobile_number=%2B16502453537
     body:
       encoding: US-ASCII
       string: ''
@@ -147,7 +147,7 @@ http_interactions:
   recorded_at: Mon, 25 Apr 2016 17:51:43 GMT
 - request:
     method: get
-    uri: http://tbm-server.dev/invitation/invite?first_name=David&last_name=Miller&mobile_number=%2B16502453537
+    uri: <%= mainserver_api_base_url %>/invitation/invite?first_name=David&last_name=Miller&mobile_number=%2B16502453537
     body:
       encoding: US-ASCII
       string: ''

@@ -5,7 +5,7 @@ RSpec.configure do |config|
       VCR.turned_off(&example)
     else
       name = example.metadata[:full_description].split(/\s+/, 2).join('/').underscore.gsub(/\./,'/').gsub(/[^\w\/]+/, '_').gsub(/\/$/, '')
-      VCR.use_cassette(name, options, &example)
+      VCR.use_cassette(name, options.merge(erb: api_base_urls), &example)
     end
   end
 end
@@ -17,6 +17,7 @@ VCR.configure do |c|
 end
 
 def api_base_urls
-  { erb: { dataprovider_api_base_url: Figaro.env.dataprovider_api_base_url,
-           notification_api_base_url: Figaro.env.notification_api_base_url } }
+  { dataprovider_api_base_url: Figaro.env.dataprovider_api_base_url,
+    notification_api_base_url: Figaro.env.notification_api_base_url,
+    mainserver_api_base_url:   Figaro.env.mainserver_api_base_url }
 end
