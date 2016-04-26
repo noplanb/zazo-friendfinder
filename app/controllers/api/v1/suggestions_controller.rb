@@ -1,9 +1,9 @@
 class Api::V1::SuggestionsController < ApiController
   def index
-    render json: { status: :success, data: Contact::GetSuggestions.new(current_user.mkey).do }
+    handle_with_manager(Api::Contact::GetSuggestions.new(current_user.mkey, {}))
   end
 
   def recommend
-    handle_with_manager Contact::ControllerManager::AddRecommendation.new(current_user.mkey, params['recommendations'])
+    handle_with_manager(Api::Contact::Recommend.new(current_user.mkey, params['recommendations']))
   end
 end

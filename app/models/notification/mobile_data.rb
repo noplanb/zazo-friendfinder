@@ -26,7 +26,8 @@ class Notification::MobileData < Notification::BaseData
       subject: subject,
       nkey: object.nkey,
       additions: {
-        friend_name: object.contact.display_name
+        friend_name: object.contact.display_name,
+        phone_numbers: object.contact.phone_numbers
       }
     }.merge(payload_host)
   end

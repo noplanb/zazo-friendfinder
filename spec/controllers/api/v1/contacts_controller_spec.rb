@@ -38,7 +38,7 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
     let(:params) { { contacts_ids: [contact_1.id, contact_2.id] } }
 
     before do
-      authenticate_with_http_digest(user_mkey, user_auth) { post :ignore, params.merge({format: :json}) }
+      authenticate_with_http_digest(user_mkey, user_auth) { post :ignore, params.merge(format: :json) }
     end
 
     it { expect(response).to be_success }

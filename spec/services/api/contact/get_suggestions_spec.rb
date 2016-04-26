@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Contact::GetSuggestions do
+RSpec.describe Api::Contact::GetSuggestions do
   let(:user) { FactoryGirl.build(:user) }
-  let(:instance) { described_class.new(user.mkey) }
+  let(:instance) { described_class.new(user.mkey, {}) }
 
   describe '#do' do
     let(:vectors_1) do
@@ -29,6 +29,7 @@ RSpec.describe Contact::GetSuggestions do
 
     before do
       Owner.new(user.mkey).contacts_actions.recalculate_scores
+      subject
       contact_1.reload
       contact_2.reload
       contact_3.reload
@@ -37,8 +38,9 @@ RSpec.describe Contact::GetSuggestions do
       contact_6.reload
     end
 
+    it { is_expected.to be_truthy }
     it do
-      suggestions = [
+      expected = [
         {
           id: contact_1.id,
           first_name: contact_1.first_name,
@@ -46,7 +48,8 @@ RSpec.describe Contact::GetSuggestions do
           display_name: "#{contact_1.first_name} #{contact_1.last_name}",
           zazo_mkey: nil,
           zazo_id: nil,
-          total_score: contact_1.total_score
+          total_score: contact_1.total_score,
+          phone_numbers: [vectors_1.first.value]
         }, {
           id: contact_2.id,
           first_name: contact_2.first_name,
@@ -54,7 +57,8 @@ RSpec.describe Contact::GetSuggestions do
           display_name: "#{contact_2.first_name} #{contact_2.last_name}",
           zazo_mkey: nil,
           zazo_id: nil,
-          total_score: contact_2.total_score
+          total_score: contact_2.total_score,
+          phone_numbers: []
         }, {
           id: contact_4.id,
           first_name: contact_4.first_name,
@@ -62,10 +66,11 @@ RSpec.describe Contact::GetSuggestions do
           display_name: "#{contact_4.first_name} #{contact_4.last_name}",
           zazo_mkey: nil,
           zazo_id: nil,
-          total_score: contact_4.total_score
+          total_score: contact_4.total_score,
+          phone_numbers: [vectors_4.first.value]
         }
       ]
-      is_expected.to eq suggestions
+      expect(instance.data).to eq(data: expected)
     end
   end
 end

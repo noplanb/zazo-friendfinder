@@ -2,106 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=mkey&user=GBAHb0482YxlJ0kYwbIS
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 401
-      message: Unauthorized
-    headers:
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2MTY2ODUzNzpjMDZlOGIwZmI1OTNmMDhmYmJiMzkzM2U0ZDg0YmU5ZA==",
-        opaque="822778b6350cbc116426dfdce7488072"
-      Content-Type:
-      - text/html; charset=utf-8
-      Cache-Control:
-      - no-cache
-      X-Request-Id:
-      - c9f1a588-359b-4879-b163-e6deb432c858
-      X-Runtime:
-      - '0.187961'
-      Set-Cookie:
-      - __profilin=p%3Dt; path=/
-      - __profilin=p%3Dt; path=/
-      Date:
-      - Tue, 26 Apr 2016 11:02:17 GMT
-      Connection:
-      - close
-    body:
-      encoding: UTF-8
-      string: '{"status":"unauthorized"}'
-    http_version: 
-  recorded_at: Tue, 26 Apr 2016 11:02:17 GMT
-- request:
-    method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=mkey&user=GBAHb0482YxlJ0kYwbIS
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.1
-      Authorization:
-      - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
-        qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=mkey&attrs%5B%5D=auth&user=GBAHb0482YxlJ0kYwbIS",
-        nonce="MTQ2MTY2ODUzNzpjMDZlOGIwZmI1OTNmMDhmYmJiMzkzM2U0ZDg0YmU5ZA==", nc=00000000,
-        cnonce="e93d472bb35950f4e530ed04ab8f71f2", response="50e08261a7cb2336e78d6efeb94da815",
-        opaque="822778b6350cbc116426dfdce7488072"
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      Content-Type:
-      - application/json; charset=utf-8
-      Cache-Control:
-      - no-store, must-revalidate, private, max-age=0
-      X-Request-Id:
-      - 60f016a8-d81c-45f9-96d0-a8980a47885f
-      X-Runtime:
-      - '0.372221'
-      Set-Cookie:
-      - __profilin=p%3Dt; path=/
-      - __profilin=p%3Dt; path=/
-      - __profilin=p%3Dt; path=/
-      X-Miniprofiler-Ids:
-      - '["akj4qaq451ebop0tj1mz","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
-      Date:
-      - Tue, 26 Apr 2016 11:02:17 GMT
-      Connection:
-      - close
-    body:
-      encoding: UTF-8
-      string: '{"mkey":"GBAHb0482YxlJ0kYwbIS","auth":"O4VXCozKuyQNjnWPh400"}'
-    http_version: 
-  recorded_at: Tue, 26 Apr 2016 11:02:17 GMT
-- request:
-    method: get
     uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
@@ -125,28 +25,28 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2MTY2ODUzNzpjMDZlOGIwZmI1OTNmMDhmYmJiMzkzM2U0ZDg0YmU5ZA==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2MTYwNjE5NzpjNGIxMTVjYTMwNDAyYTBlOWE5NDYxMzllM2ViMDc5ZA==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 99dd00b6-ada7-4bc2-8452-46ed558f7c36
+      - 0308331b-5902-4aab-b568-3fa8133a2ab5
       X-Runtime:
-      - '0.188950'
+      - '0.245694'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       Date:
-      - Tue, 26 Apr 2016 11:02:17 GMT
+      - Mon, 25 Apr 2016 17:43:17 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Tue, 26 Apr 2016 11:02:17 GMT
+  recorded_at: Mon, 25 Apr 2016 17:43:17 GMT
 - request:
     method: get
     uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
@@ -159,8 +59,8 @@ http_interactions:
       Authorization:
       - Digest username="friendfinder", realm="Zazo DataProvider", algorithm=MD5,
         qop=auth, uri="/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=last_name&attrs%5B%5D=friends&user=GBAHb0482YxlJ0kYwbIS",
-        nonce="MTQ2MTY2ODUzNzpjMDZlOGIwZmI1OTNmMDhmYmJiMzkzM2U0ZDg0YmU5ZA==", nc=00000000,
-        cnonce="7760529e7dac092d1f0d61b36dcfaf1d", response="6b17fb1b95a7f4a027ba7605635b089f",
+        nonce="MTQ2MTYwNjE5NzpjNGIxMTVjYTMwNDAyYTBlOWE5NDYxMzllM2ViMDc5ZA==", nc=00000000,
+        cnonce="3c077c8a36b6660446731a18abaad515", response="83feb38036d82a291ccc193f2c96051e",
         opaque="822778b6350cbc116426dfdce7488072"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -182,24 +82,24 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - 55d984b2-fffa-4f8d-a8ac-ae51eb6b01fe
+      - 30dbc88c-dfa8-4fc9-ba31-3b21fbd8d649
       X-Runtime:
-      - '0.935802'
+      - '0.935211'
       Set-Cookie:
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       - __profilin=p%3Dt; path=/
       X-Miniprofiler-Ids:
-      - '["diqs3rcexib2o85evdfw","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["aspwqmo3eqrc8g3hnyxg","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Tue, 26 Apr 2016 11:02:18 GMT
+      - Mon, 25 Apr 2016 17:43:18 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"auth":"O4VXCozKuyQNjnWPh400","first_name":"Ivan","last_name":"Kornilov","friends":["0DAQEVtmNKQiW6aoQrvo","e0kvxfgua1EQJvUOzVC1","yLK6i5VpMW9ZZy5BnXZZ","7qdanSEmctZ2jPnYA0a1","gpIES8adSGtrB5O5933c","LVXE6gyoxb6eHNvPd96f"]}'
     http_version: 
-  recorded_at: Tue, 26 Apr 2016 11:02:18 GMT
+  recorded_at: Mon, 25 Apr 2016 17:43:18 GMT
 - request:
     method: get
     uri: <%= mainserver_api_base_url %>/invitation/invite?first_name=David&last_name=Miller&mobile_number=%2B16502453537
@@ -225,18 +125,18 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="zazo.com", qop="auth", algorithm=MD5, nonce="MTQ2MTY2ODU0MzpkZmZlZTZjNzBhMTI2N2Q2NzZlYzczNWJmMGQyMWY0NA==",
+      - Digest realm="zazo.com", qop="auth", algorithm=MD5, nonce="MTQ2MTYwNjE5ODoyNDliNWZkZDk3ZGUwODU2MzNkNzFlNGRjYzJhZTQ2ZQ==",
         opaque="8fd97d4fee54b9b56345b2bcf8d4a3ed"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - d3dce8fc-c4f3-456a-a9d3-9178bc61f964
+      - aafb4656-b4de-495e-bb26-2a2e3cc70c31
       X-Runtime:
-      - '0.080410'
+      - '0.010897'
       Date:
-      - Tue, 26 Apr 2016 11:02:23 GMT
+      - Mon, 25 Apr 2016 17:43:18 GMT
       Connection:
       - close
     body:
@@ -244,7 +144,7 @@ http_interactions:
       string: |
         HTTP Digest: Access denied.
     http_version: 
-  recorded_at: Tue, 26 Apr 2016 11:02:23 GMT
+  recorded_at: Mon, 25 Apr 2016 17:43:18 GMT
 - request:
     method: get
     uri: <%= mainserver_api_base_url %>/invitation/invite?first_name=David&last_name=Miller&mobile_number=%2B16502453537
@@ -257,8 +157,8 @@ http_interactions:
       Authorization:
       - Digest username="GBAHb0482YxlJ0kYwbIS", realm="zazo.com", algorithm=MD5, qop=auth,
         uri="/invitation/invite?&first_name=David&last_name=Miller&mobile_number=%2B16502453537",
-        nonce="MTQ2MTY2ODU0MzpkZmZlZTZjNzBhMTI2N2Q2NzZlYzczNWJmMGQyMWY0NA==", nc=00000000,
-        cnonce="6f8148a7dea3fb383c6c2790b4b04912", response="a6444eaf67b4c001e58d6fe0d4219c30",
+        nonce="MTQ2MTYwNjE5ODoyNDliNWZkZDk3ZGUwODU2MzNkNzFlNGRjYzJhZTQ2ZQ==", nc=00000000,
+        cnonce="b8bd5c490c2aeaa4ac599993ba5eefdd", response="5af426588e487a7f7b136d92ef54c224",
         opaque="8fd97d4fee54b9b56345b2bcf8d4a3ed"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -282,16 +182,16 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 5bc619e6-cccd-4502-b65c-4b2188def694
+      - b3559a47-8af8-4c12-a145-3a65f08c6256
       X-Runtime:
-      - '0.202644'
+      - '0.025764'
       Date:
-      - Tue, 26 Apr 2016 11:02:23 GMT
+      - Mon, 25 Apr 2016 17:43:18 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"id":"20","mkey":"SvFhibPZhIFUJsB2iYl8","first_name":"Charley","last_name":"Bashirian","mobile_number":"+16502453537","device_platform":null,"emails":[],"has_app":"false","ckey":"2_20_0mkxC2UShfdX2RuA5ly4","cid":"19","connection_created_on":"2016-04-25T17:36:13Z","connection_creator_mkey":"GBAHb0482YxlJ0kYwbIS","connection_status":"established"}'
     http_version: 
-  recorded_at: Tue, 26 Apr 2016 11:02:23 GMT
+  recorded_at: Mon, 25 Apr 2016 17:43:18 GMT
 recorded_with: VCR 3.0.1

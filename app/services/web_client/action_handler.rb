@@ -19,13 +19,17 @@ class WebClient::ActionHandler
     notifications.first
   end
 
+  def response
+    @response ? { data: @response } : {}
+  end
+
   #
   # actions
   #
 
   def add(contact = nil)
     emit_event(%w(notification added)) unless contact
-    add_or_ignore(Contact::Add, contact, :added)
+    @response = add_or_ignore(Contact::Add, contact, :added)
   rescue AASM::InvalidTransition
     if notification.added?
       @notice = NoticeBuilder.new(:added, :added, :already_added,
