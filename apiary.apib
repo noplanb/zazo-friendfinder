@@ -178,6 +178,9 @@ Validate and save contacts list (via background job) into database.
 
 Add contacts as friends on Zazo by contact id (see `response["data"][i]["id"]` in **Get Suggestions List** response).
 
+Status of contact addition (see `response["data"][contact_id]["status"]` in current **Response** `200`)
+may have different values: "added", "already_added", "not_added", "queued", "error".
+
 + Parameters
     + contacts_ids (array) - array of contacts ids to add as friends
 
@@ -190,13 +193,47 @@ Add contacts as friends on Zazo by contact id (see `response["data"][i]["id"]` i
     + Body
 
             {
-                "contacts_ids": [1, 2, 3]
+                "contacts_ids": [1, 2]
             }
 
 + Response 200 (application/json)
 
         {
-            "status": "success"
+            "status": "success",
+            "data": {
+                "1": {
+                    "id": "22",
+                    "mkey": "2BRYlvycJOkDcnnelFUz",
+                    "first_name": "David",
+                    "last_name": "Bowie",
+                    "mobile_number": "+12345057023",
+                    "device_platform": null,
+                    "emails": [],
+                    "has_app": "false",
+                    "ckey": "2_22_Cregi20UjeMSnpS5bXa0",
+                    "cid": "21",
+                    "connection_created_on": "2016-04-26T14:35:39Z",
+                    "connection_creator_mkey": "7qdanSEmctZ2jPnYA0a1",
+                    "connection_status": "established",
+                    "status": "added"
+                },
+                "2": {
+                    "id": "23",
+                    "mkey": "TQ3a8VPzg6WF2DtVde0T",
+                    "first_name": "Paul",
+                    "last_name": "Gilbert",
+                    "mobile_number": "+12345964164",
+                    "device_platform": null,
+                    "emails": [],
+                    "has_app": "false",
+                    "ckey": "2_23_SEI0maUNBmBOVigzgzRD",
+                    "cid": "22",
+                    "connection_created_on": "2016-04-26T14:35:41Z",
+                    "connection_creator_mkey": "7qdanSEmctZ2jPnYA0a1",
+                    "connection_status": "established",
+                    "status": "added"
+                }
+            }
         }
 
 + Request Failure (application/json)
@@ -534,6 +571,9 @@ Get all information about notification by `nkey`.
 
 Add contact of notification as friend on Zazo.
 
+Status of contact addition (see `response["data"]["status"]` in current **Response** `200`)
+may have different values: "added", "already_added", "not_added", "queued", "error".
+
 + Parameters
     + id (integer) - nkey of notification
 
@@ -546,7 +586,23 @@ Add contact of notification as friend on Zazo.
 + Response 200 (application/json)
 
         {
-            "status": "success"
+            "status": "success",
+            "data": {
+                "id": "21",
+                "mkey": "s0DW0LwZnY7p1x546A9n",
+                "first_name": "Alan",
+                "last_name": "Turing",
+                "mobile_number": "+11234335501",
+                "device_platform": null,
+                "emails": ["admin@google.com"],
+                "has_app": "false",
+                "ckey": "2_21_oMGKLzfmJjFHHDbShhBg",
+                "cid": "20",
+                "connection_created_on": "2016-04-26T14:13:33Z",
+                "connection_creator_mkey": "7qdanSEmctZ2jPnYA0a1",
+                "connection_status": "established",
+                "status": "added"
+            }
         }
 
 + Request Failure (application/json)
