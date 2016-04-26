@@ -42,7 +42,7 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
           'first_name' => 'Charley',
           'last_name' => 'Bashirian',
           'mobile_number' => '+16502453537',
-          'device_platform'=>nil,
+          'device_platform' => nil,
           'emails'=>[],
           'has_app' => 'false',
           'ckey' => '2_20_0mkxC2UShfdX2RuA5ly4',
