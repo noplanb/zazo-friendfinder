@@ -1,6 +1,6 @@
 # Changelog
 
-### next release
+### 0.9.3
 - :bulb: Added mobile numbers list for contacts suggestions / mobile notification
 - :arrow_up: Reduced contacts suggestions count from 100 to 10
 - :arrow_up: Refactored code regarding api
