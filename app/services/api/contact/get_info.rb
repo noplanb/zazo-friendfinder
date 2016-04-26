@@ -1,4 +1,4 @@
-class Contact::ControllerManager::GetInfo < Contact::ControllerManager::BaseHandler
+class Api::Contact::GetInfo < Api::BaseHandler
   def do_safe
     contact = Contact.find_by_id(raw_params['id'])
     validate_contact_presence(contact)

@@ -1,4 +1,4 @@
-class Contact::ControllerManager::AddRecommendation < Contact::ControllerManager::BaseHandler
+class Api::Contact::Recommend < Api::BaseHandler
   params_validation to_mkeys: { type: Array },
                     contact_mkey: { type: String }
 

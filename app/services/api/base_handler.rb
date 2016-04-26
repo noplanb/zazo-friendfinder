@@ -1,4 +1,4 @@
-class Contact::ControllerManager::BaseHandler
+class Api::BaseHandler
   attr_reader :owner_mkey, :raw_params, :validation
 
   class << self

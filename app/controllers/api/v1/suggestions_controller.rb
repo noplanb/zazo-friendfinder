@@ -4,6 +4,6 @@ class Api::V1::SuggestionsController < ApiController
   end
 
   def recommend
-    handle_with_manager Contact::ControllerManager::AddRecommendation.new(current_user.mkey, params['recommendations'])
+    handle_with_manager(Api::Contact::Recommend.new(current_user.mkey, params['recommendations']))
   end
 end
