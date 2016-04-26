@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Contact::ControllerManager::IgnoreContacts do
+RSpec.describe Api::Contact::Ignore do
   let(:user) { FactoryGirl.build(:user) }
   let(:instance) { described_class.new(user.mkey, params) }
 

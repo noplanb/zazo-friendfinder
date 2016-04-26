@@ -1,3 +1,5 @@
+# TODO: refactor this to no use WebClient::ActionHandler, but controller manager service
+
 class Api::V1::NotificationsController < ApiController
   before_action :set_web_client
 
@@ -18,7 +20,7 @@ class Api::V1::NotificationsController < ApiController
 
   def handle_action(action)
     @web_client.send(action)
-    render json: { status: :success }
+    render json: { status: :success }.merge(@web_client.response)
   end
 
   def set_web_client

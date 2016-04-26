@@ -1,6 +1,6 @@
 # TODO: write some specs
 
-class Contact::ControllerManager::ValidateRawParams
+class Api::Contact::ValidateRawParams
   attr_reader :owner_mkey, :raw_params, :errors
 
   def initialize(owner_mkey, raw_params)

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=mkey&user=7qdanSEmctZ2jPnYA0a1
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=mkey&user=7qdanSEmctZ2jPnYA0a1
     body:
       encoding: US-ASCII
       string: ''
@@ -49,7 +49,7 @@ http_interactions:
   recorded_at: Thu, 31 Mar 2016 13:30:38 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=mkey&user=7qdanSEmctZ2jPnYA0a1
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=mkey&user=7qdanSEmctZ2jPnYA0a1
     body:
       encoding: US-ASCII
       string: ''

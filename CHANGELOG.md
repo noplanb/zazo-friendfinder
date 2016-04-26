@@ -1,5 +1,11 @@
 # Changelog
 
+### next release
+- :bulb: Added mobile numbers list for contacts suggestions / mobile notification
+- :arrow_up: Reduced contacts suggestions count from 100 to 10
+- :arrow_up: Refactored code regarding api
+- :hammer: Fixed bug with VCR (use old version of webmock)
+
 ### 0.9.2
 - :hammer: Fixed `Notification::MobileData` (added host attribute for production/staging)
 

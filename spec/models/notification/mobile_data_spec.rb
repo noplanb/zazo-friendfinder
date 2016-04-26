@@ -21,7 +21,8 @@ RSpec.describe Notification::MobileData, type: :model do
           subject: "#{contact.display_name} joined Zazo!",
           nkey: notification.nkey,
           additions: {
-            friend_name: contact.display_name
+            friend_name: contact.display_name,
+            phone_numbers: []
           }
         }
       }

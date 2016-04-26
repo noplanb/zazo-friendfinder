@@ -1,5 +1,6 @@
 class Contact < ActiveRecord::Base
   include Extensions::Owners
+  include Extensions::Vectors
   include Extensions::Filters
   include Extensions::Additions
 

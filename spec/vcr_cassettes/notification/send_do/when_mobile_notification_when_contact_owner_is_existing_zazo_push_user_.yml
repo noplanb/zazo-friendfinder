@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/push_user?user_mkey=GBAHb0482YxlJ0kYwbIS
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/push_user?user_mkey=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -49,7 +49,7 @@ http_interactions:
   recorded_at: Fri, 22 Apr 2016 09:24:37 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/push_user?user_mkey=GBAHb0482YxlJ0kYwbIS
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/push_user?user_mkey=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -102,7 +102,7 @@ http_interactions:
   recorded_at: Fri, 22 Apr 2016 09:24:38 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -149,7 +149,7 @@ http_interactions:
   recorded_at: Fri, 22 Apr 2016 09:24:38 GMT
 - request:
     method: get
-    uri: http://zazo-dataprovider.dev/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=GBAHb0482YxlJ0kYwbIS
     body:
       encoding: US-ASCII
       string: ''
@@ -202,7 +202,7 @@ http_interactions:
   recorded_at: Fri, 22 Apr 2016 09:24:39 GMT
 - request:
     method: post
-    uri: http://zazo-notification.dev/api/v1/notifications/mobile
+    uri: <%= notification_api_base_url %>/api/v1/notifications/mobile
     body:
       encoding: UTF-8
       string: ''
@@ -250,7 +250,7 @@ http_interactions:
   recorded_at: Fri, 22 Apr 2016 09:24:39 GMT
 - request:
     method: post
-    uri: http://zazo-notification.dev/api/v1/notifications/mobile
+    uri: <%= notification_api_base_url %>/api/v1/notifications/mobile
     body:
       encoding: UTF-8
       string: '{"subject":"Susan Blanda joined Zazo!","device_platform":"android","device_build":null,"device_token":"APA91bECYQ9KxMZgzcU5b5uofeGz125TxFrul-igyrEcz3pAecKJAfqXIvuSPgAUth4nqldSMehUuElTKfI30oA80Nf0iAkSGIL5-SP0u5iSI3C1Utkzkly12V077O-aRAvCRYO4kQGy","payload":{"type":"friend_joined","content":"","subject":"Susan

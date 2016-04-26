@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Contact::ControllerManager::GetInfo do
+RSpec.describe Api::Contact::GetInfo do
   let(:user) { FactoryGirl.build(:user) }
   let(:instance) { described_class.new(user.mkey, params) }
 

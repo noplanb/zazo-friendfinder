@@ -1,4 +1,4 @@
-class Contact::ControllerManager::AddContacts < Contact::ControllerManager::BaseHandler
+class Api::Contact::Ignore < Api::BaseHandler
   params_validation contacts_ids: { type: Array }
 
   def do_safe
@@ -8,7 +8,7 @@ class Contact::ControllerManager::AddContacts < Contact::ControllerManager::Base
         add_error(:contact_id, "not found by id=#{id}")
         fail(ActiveRecord::Rollback)
       end
-      Contact::Add.new(contact).do
+      Contact::Ignore.new(contact, caller: :api).do
     end
   end
 end
