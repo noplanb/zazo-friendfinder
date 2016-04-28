@@ -271,24 +271,15 @@ may have different values: "added", "already_added", "not_added", "queued", "err
             "status": "unauthorized"
         }
 
-### Ignore Contacts [POST /api/v1/contacts/ignore]
+### Ignore Contact [POST /api/v1/contacts/{id}/ignore]
 
-Ignore contacts by contact id (see `response["data"][i]["id"]` in **Get Suggestions List** response).
-
-+ Parameters
-    + contacts_ids (array) - array of contacts ids to ignore suggestions
+Ignore contact by contact id (see `response["data"][i]["id"]` in **Get Suggestions List** response).
 
 + Request Success (application/json)
 
     + Headers
 
             Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
-            
-    + Body
-
-            {
-                "contacts_ids": [1, 2, 3]
-            }
 
 + Response 200 (application/json)
 
@@ -302,18 +293,12 @@ Ignore contacts by contact id (see `response["data"][i]["id"]` in **Get Suggesti
 
             Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
             
-    + Body
-
-            {
-                "contacts_ids": 1
-            }
-
 + Response 422 (application/json)
 
         {
             "status": "failure",
             "errors": {
-                "raw_params": ["raw_params['contacts_ids'] must be type of Array"]
+                "contact_id": ["not found by id=123"]
             }
         }
         
@@ -322,19 +307,13 @@ Ignore contacts by contact id (see `response["data"][i]["id"]` in **Get Suggesti
     + Headers
 
             Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
-            
-    + Body
-
-            {
-                "contacts_ids": [1982]
-            }
 
 + Response 422 (application/json)
 
         {
             "status": "failure",
             "errors": {
-                "contact_id": ["not found by id=1982"]
+                "contact_id": ["you are not owner of contact id=123"]
             }
         }
         
