@@ -1,7 +1,8 @@
 # Changelog
 
 ### next release
-- :arrow_up: Changed API for adding contact
+- :arrow_up: Changed API for adding and ignoring contact
+- :arrow_up: Added optional phone_number attribute for contact addition via API
 
 ### 0.9.3
 - :bulb: Added mobile numbers list for contacts suggestions / mobile notification
