@@ -1,6 +1,6 @@
 # Changelog
 
-### next release
+### 0.9.4
 - :arrow_up: Changed API for adding and ignoring contact
 - :arrow_up: Added optional phone_number attribute for contact addition via API
 
