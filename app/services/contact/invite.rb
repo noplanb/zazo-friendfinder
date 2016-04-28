@@ -1,6 +1,8 @@
 # TODO: write some specs
 
 class Contact::Invite < Contact::BaseHandler
+  attr_accessor :phone_number
+
   def do
     contact.owner.fetch_data
     api = MainServerApi.new(attributes)
@@ -43,20 +45,21 @@ class Contact::Invite < Contact::BaseHandler
   #
 
   def attributes
-    first_name, last_name = first_last_name
-    { first_name: first_name, last_name: last_name, mobile_number: mobile_number, emails: emails }
+    first_name, last_name = contact_first_last_name
+    { first_name: first_name, last_name: last_name, mobile_number: contact_phone_number, emails: contact_emails }
   end
 
-  def first_last_name
+  def contact_first_last_name
     full_name = contact.display_name.gsub(/[(){}!@#$%^&*]+/, ' ').split(' ')
     return contact.first_name || full_name[0], contact.last_name || full_name[1..-1].join(' ')
   end
 
-  def mobile_number
-    contact.vectors.mobile.pluck(:value).first
+  def contact_phone_number
+    phone_numbers = contact.vectors.mobile.pluck(:value)
+    phone_numbers.include?(phone_number) ? phone_number : phone_numbers.first
   end
 
-  def emails
+  def contact_emails
     contact.vectors.email.pluck(:value)
   end
 end

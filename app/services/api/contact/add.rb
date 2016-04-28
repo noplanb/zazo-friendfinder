@@ -6,7 +6,9 @@ class Api::Contact::Add < Api::BaseHandler
     contact = ::Contact.find_by_id(id)
     validate_contact_presence(contact, "not found by id=#{id}")
     validate_contact_ownership(contact, "you are not owner of contact id=#{id}")
-    @data = ::Contact::Add.new(contact, caller: :api).do
+    instance = ::Contact::Add.new(contact, caller: :api)
+    instance.phone_number = raw_params['phone_number']
+    @data = instance.do
   end
 
   private

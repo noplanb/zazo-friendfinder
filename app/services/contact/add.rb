@@ -1,4 +1,6 @@
 class Contact::Add < Contact::BaseHandler
+  attr_accessor :phone_number
+
   def do
     if contact.added?
       { status: :already_added }
@@ -17,7 +19,9 @@ class Contact::Add < Contact::BaseHandler
         Resque.enqueue(ResqueWorker::InviteContact, contact.id, caller)
         { status: :queued }
       when :api
-        user_data = Contact::Invite.new(contact, caller: caller).do
+        instance = Contact::Invite.new(contact, caller: caller)
+        instance.phone_number = phone_number
+        user_data = instance.do
         user_data ? user_data.merge(status: :added) : { status: :error }
     end
   end
