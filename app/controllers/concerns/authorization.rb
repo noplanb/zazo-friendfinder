@@ -9,7 +9,7 @@ module Authorization
       'api/v1/notifications' => %w(add ignore),
       'api/v1/suggestions' => %w(index)
     },
-    api: :all
+    mobile_client: :all
   }
 
   included do
@@ -40,7 +40,7 @@ module Authorization
   def authenticate_with_digest
     authenticate_or_request_with_http_digest(REALM) do |mkey|
       Zazo::Tools::Logger.info(self, "authenticating user: #{mkey}")
-      self.current_client = :api
+      self.current_client = :mobile_client
       self.current_user = User.find(mkey)
       current_user && current_user.auth
     end
