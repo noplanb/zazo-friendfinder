@@ -33,6 +33,12 @@ class Api::BaseHandler
     validation.errors.messages.merge(@errors || {})
   end
 
+  def add_error(key, error)
+    @errors ||= {}
+    @errors[key] ||= []
+    @errors[key] << error
+  end
+
   private
 
   def wrap_transaction
@@ -40,17 +46,11 @@ class Api::BaseHandler
     false
   end
 
-  def add_error(key, error)
-    @errors ||= {}
-    @errors[key] ||= []
-    @errors[key] << error
-  end
-
   class RawParamsValidation
     include ActiveModel::Validations
 
     attr_reader :raw_params, :params_validation
-    validate  :raw_params_with_correct_structure
+    validate :raw_params_with_correct_structure
 
     def initialize(raw_params, params_validation)
       @raw_params = raw_params
@@ -66,6 +66,28 @@ class Api::BaseHandler
         end
       else
         errors.add(:raw_params, 'raw_params must be type of Hash')
+      end
+    end
+  end
+
+  class CommonValidations
+    attr_reader :context
+
+    def initialize(context)
+      @context = context
+    end
+
+    def validate_contact_presence(contact, message)
+      unless contact
+        context.add_error(:contact_id, message)
+        fail(ActiveRecord::Rollback)
+      end
+    end
+
+    def validate_contact_ownership(contact, message)
+      unless contact.owner_mkey == context.owner_mkey
+        context.add_error(:contact_id, message)
+        fail(ActiveRecord::Rollback)
       end
     end
   end

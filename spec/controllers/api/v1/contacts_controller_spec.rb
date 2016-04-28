@@ -33,9 +33,8 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
   end
 
   describe 'POST #ignore' do
-    let(:contact_1) { FactoryGirl.create(:contact, owner_mkey: user_mkey) }
-    let(:contact_2) { FactoryGirl.create(:contact, owner_mkey: user_mkey) }
-    let(:params) { { contacts_ids: [contact_1.id, contact_2.id] } }
+    let(:contact) { FactoryGirl.create(:contact, owner_mkey: user_mkey) }
+    let(:params) { { id: contact.id.to_s } }
 
     before do
       authenticate_with_http_digest(user_mkey, user_auth) { post :ignore, params.merge(format: :json) }
