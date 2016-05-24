@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.5
+- :arrow_up: Added force ssl to production environment
+
 ### 0.9.4
 - :arrow_up: Changed API for adding and ignoring contact
 - :arrow_up: Added optional phone_number attribute for contact addition via API
