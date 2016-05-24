@@ -1,7 +1,7 @@
 defaults: &defaults
   app_name: Zazo FriendFinder
   app_name_key: friendfinder
-  version: 0.9.5
+  version: 0.9.6
   email_notification_from: 'Zazo <support@zazoapp.com>'
 
 development:
