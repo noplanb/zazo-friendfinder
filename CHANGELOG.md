@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.6
+- :hammer: Fixed redirect bug with https on production and staging
+
 ### 0.9.5
 - :arrow_up: Added force ssl to production environment
 
