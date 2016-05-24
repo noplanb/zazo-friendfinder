@@ -35,7 +35,7 @@ class WebClientController < ApplicationController
 
   def handle_action(*args)
     @web_client.send(*args)
-    redirect_to web_client_path, notice: @web_client.notice
+    secure_redirect_to(web_client_path, notice: @web_client.notice)
   end
 
   def set_web_client
