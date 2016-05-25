@@ -1,30 +1,26 @@
-# TODO: refactor this to no use WebClient::ActionHandler, but controller manager service
-
 class Api::V1::NotificationsController < ApiController
-  before_action :set_web_client
+  before_action :set_notifications
+  before_action :handle_action, only: %i(add ignore)
 
   def show
     render json: { status: :success,
-                   data: NotificationSerializer.new(@web_client.notification).serializable_hash }
+                   data: NotificationSerializer.new(@notifications.first).serializable_hash }
   end
 
   def add
-    handle_action(:add)
   end
 
   def ignore
-    handle_action(:ignore)
   end
 
   private
 
-  def handle_action(action)
-    @web_client.send(action)
-    render json: { status: :success }.merge(@web_client.response)
+  def handle_action
+    run_interactor(:process, Notifications::HandleAction,
+      notifications: @notifications, action: params[:action], caller: :api)
   end
 
-  def set_web_client
-    @web_client = WebClient::ActionHandler.new(params[:id], caller: :api)
-    render status: :unprocessable_entity, json: { status: :failure, errors: @web_client.errors } unless @web_client.valid?
+  def set_notifications
+    @notifications = run_interactor(:data, Notifications::FindNotifications, nkey: params[:id])
   end
 end

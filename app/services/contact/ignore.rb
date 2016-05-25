@@ -1,8 +1,13 @@
 class Contact::Ignore < Contact::BaseHandler
   def do
-    unless contact.ignored? || contact.added?
+    if contact.ignored?
+      :already_ignored
+    elsif contact.added?
+      :already_added
+    else
       contact.update_attributes(additions: new_additions)
       emit_event(%w(contact ignored))
+      :ignored
     end
   end
 

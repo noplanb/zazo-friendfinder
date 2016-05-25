@@ -11,6 +11,8 @@ class Api::Contact::GetInfo < Api::BaseHandler
 
   private
 
+  # TODO: refactor this to use built-it validations in CommonValidations
+
   def validate_contact_presence(contact)
     unless contact
       add_error(:contact_id, "not found by id=#{raw_params['id']}")

@@ -19,6 +19,7 @@ gem 'cells'
 gem 'cells-slim'
 gem 'kaminari'
 gem 'hashie'
+gem 'active_interaction', '~> 3.0'
 
 gem 'faraday_middleware'
 gem 'faraday-digestauth'
