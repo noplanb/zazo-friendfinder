@@ -9,8 +9,8 @@ class Notifications::HandleAction < ActiveInteraction::Base
                                   message: '%{value} is not a allowed action' }
 
   def execute
-    { notification: { status: update_notifications },
-      contact: handle_related_contact }
+    update_notifications
+    handle_related_contact
   end
 
   private
@@ -20,15 +20,30 @@ class Notifications::HandleAction < ActiveInteraction::Base
       notification.send("set_#{new_status}")
       notification.save
     end
+    emit_event
     new_status
   rescue AASM::InvalidTransition
-    new_status == :added ? :already_added : :"already_#{notifications.first.status}"
+    new_status == :added ? :already_added : :"already_#{notification.status}"
   end
 
   def handle_related_contact
     contact = notifications.first.contact
     service = action == 'add' ? Contact::Add : Contact::Ignore
     service.new(contact, caller: caller).do
+  end
+
+  def emit_event
+    DispatchEvent.new(caller,
+      ['notification', new_status.to_s],
+      [notification.contact.owner, notification]).do
+  end
+
+  #
+  # helpers
+  #
+
+  def notification
+    notifications.first
   end
 
   def new_status
