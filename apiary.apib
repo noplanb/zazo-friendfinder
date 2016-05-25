@@ -540,12 +540,19 @@ may have different values: "added", "already_added", "not_added", "queued", "err
 
 + Parameters
     + id (integer) - nkey of notification
+    + phone_number (optional, string) - specific phone number to add contact of notification
 
 + Request Success (application/json)
 
     + Headers
 
             Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
+    + Body
+
+            {
+                "phone_number": "+11234335501"
+            }
 
 + Response 200 (application/json)
 
