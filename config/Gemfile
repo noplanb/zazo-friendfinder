@@ -26,7 +26,7 @@ gem 'faraday-digestauth'
 
 gem 'global_phone'
 gem 'settingslogic'
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.9'
 gem 'aasm'
 
 gem 'zazo-tools', '~> 0.2.1',  github: 'noplanb/zazo-tools'

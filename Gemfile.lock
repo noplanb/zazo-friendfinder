@@ -377,7 +377,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   active_interaction (~> 3.0)
-  active_model_serializers
+  active_model_serializers (~> 0.9)
   awesome_print
   better_errors
   binding_of_caller
