@@ -12,8 +12,7 @@ class ApiController < ApplicationController
     end
   end
 
-  def run_interactor(type, interactor, options = {})
-    outcome = interactor.run(options)
+  def handle_interactor(type, outcome)
     if outcome.valid?
       case type
         when :process then render json: { status: :success, data: outcome.result }

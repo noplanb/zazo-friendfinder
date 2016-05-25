@@ -4,6 +4,7 @@ class Notifications::HandleAction < ActiveInteraction::Base
   array :notifications do
     object class: Notification
   end
+  string :phone_number, default: ''
 
   validates :action, inclusion: { in: %w(add ignore),
                                   message: '%{value} is not a allowed action' }
@@ -28,8 +29,13 @@ class Notifications::HandleAction < ActiveInteraction::Base
 
   def handle_related_contact
     contact = notifications.first.contact
-    service = action == 'add' ? Contact::Add : Contact::Ignore
-    service.new(contact, caller: caller).do
+    if action == 'add'
+      service = Contact::Add.new(contact, caller: caller)
+      service.phone_number = phone_number
+      service.do
+    else
+      Contact::Ignore.new(contact, caller: caller).do
+    end
   end
 
   def emit_event
