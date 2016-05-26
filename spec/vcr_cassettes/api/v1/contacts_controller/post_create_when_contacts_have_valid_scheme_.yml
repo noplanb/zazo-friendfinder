@@ -25,25 +25,25 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NDI2ODkxMTphM2ZhYjQ1N2Y4NDdjNjNmMTliNmU3N2Q1MzU3OGQ4Mg==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NDI2MzY3MjowYTk2YTJhYzBmN2I3OWFiYjRiMzhiNjBmZmQyZTAzMg==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - c7b3fefa-8ea9-4ba5-8576-7fc0c4cab981
+      - 2ec0c4f6-f03f-40ad-b445-395d2c1477b3
       X-Runtime:
-      - '0.191719'
+      - '1.595119'
       Date:
-      - Thu, 26 May 2016 13:21:51 GMT
+      - Thu, 26 May 2016 11:54:32 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Thu, 26 May 2016 13:21:51 GMT
+  recorded_at: Thu, 26 May 2016 11:54:32 GMT
 - request:
     method: get
     uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=mkey&user=7qdanSEmctZ2jPnYA0a1
@@ -73,18 +73,18 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - 86da97b9-41d5-4c33-a5ef-1300058fde06
+      - 2e7578e6-8007-49f4-b256-fbc34373146f
       X-Runtime:
-      - '0.380569'
+      - '1.023562'
       X-Miniprofiler-Ids:
-      - '["zj5xxq8xdebg43us1dp","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["h1r937khdo4xj3r7jy5p","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Thu, 26 May 2016 13:21:51 GMT
+      - Thu, 26 May 2016 11:54:33 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"mkey":"7qdanSEmctZ2jPnYA0a1","auth":"yLPv2hZ4DPRq1wGlQvqm"}'
     http_version: 
-  recorded_at: Thu, 26 May 2016 13:21:51 GMT
+  recorded_at: Thu, 26 May 2016 11:54:33 GMT
 recorded_with: VCR 3.0.1
