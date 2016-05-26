@@ -3,7 +3,7 @@ class Api::V1::NotificationsController < ApiController
   before_action :handle_action, only: %i(add ignore)
 
   def show
-    handle_interactor(:process,
+    handle_interactor(:render,
       Notifications::GetSerializedData.run(notification: @notifications.first))
   end
 
@@ -16,13 +16,13 @@ class Api::V1::NotificationsController < ApiController
   private
 
   def handle_action
-    handle_interactor(:process,
+    handle_interactor(:render,
       Notifications::HandleAction.run(notifications: @notifications, action: params[:action],
                                       phone_number: params[:phone_number], caller: :api))
   end
 
   def set_notifications
-    @notifications = handle_interactor(:data,
+    @notifications = handle_interactor(:result,
       Notifications::FindNotifications.run(nkey: params[:id]))
   end
 end
