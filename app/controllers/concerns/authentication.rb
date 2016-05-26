@@ -15,7 +15,8 @@ module Authentication
   def authenticate
     authenticate_or_request_with_http_digest(REALM) do |mkey|
       Zazo::Tools::Logger.info(self, "authenticating user: #{mkey}")
-      self.current_user = User.find(mkey)
+      self.current_user = Owner.new(mkey)
+      current_user = User.find(mkey)
       current_user && current_user.auth
     end
   end
