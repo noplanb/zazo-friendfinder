@@ -1,5 +1,5 @@
 class Api::V1::ContactsController < ApiController
-  before_action :set_contact, only: %i(show add ignore)
+  before_action :set_contact, except: :create
   before_action :handle_action, only: %i(add ignore)
 
   def show
@@ -8,9 +8,9 @@ class Api::V1::ContactsController < ApiController
   end
 
   def create
-    # TODO: refactor with interactor
-    handle_with_manager(Api::Contact::ValidateRawParams.new(current_user.mkey, params)) do
-      Resque.enqueue(ResqueWorker::ImportContacts, current_user.mkey, params['contacts'])
+    handle_interactor(:callback,
+      Contacts::ValidateRawParams.run(contacts: params[:contacts])) do
+      Resque.enqueue(ResqueWorker::ImportContacts, current_user.mkey, params[:contacts])
     end
   end
 

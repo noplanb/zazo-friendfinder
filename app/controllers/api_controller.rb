@@ -15,7 +15,11 @@ class ApiController < ApplicationController
   def handle_interactor(type, outcome)
     if outcome.valid?
       case type
-        when :process then render json: { status: :success, data: outcome.result }
+        when :process
+          render json: { status: :success, data: outcome.result }
+        when :callback
+          yield if block_given?
+          render json: { status: :success }
         else outcome.result
       end
     else
