@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Contacts::GetSerializedData do
+RSpec.describe Contacts::GetContactData do
   let(:contact) { FactoryGirl.create(:contact) }
 
   describe '.run' do

@@ -7,6 +7,7 @@ RSpec.describe Api::V1::SuggestionsController, type: :controller do
   describe 'GET #index' do
     let!(:contact_1) { FactoryGirl.create :contact, owner_mkey: user_mkey }
     let!(:contact_2) { FactoryGirl.create :contact, owner_mkey: user_mkey }
+
     before do
       authenticate_with_http_digest(user_mkey, user_auth) { get :index, format: :json }
     end

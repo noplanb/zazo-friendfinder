@@ -4,7 +4,7 @@ class Api::V1::ContactsController < ApiController
 
   def show
     handle_interactor(:process,
-      Contacts::GetSerializedData.run(contact: @contact))
+      Contacts::GetContactData.run(contact: @contact))
   end
 
   def create

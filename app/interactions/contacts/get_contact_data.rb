@@ -1,4 +1,4 @@
-class Contacts::GetSerializedData < ActiveInteraction::Base
+class Contacts::GetContactData < ActiveInteraction::Base
   object :contact
 
   def execute
