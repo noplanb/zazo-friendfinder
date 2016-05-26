@@ -11,7 +11,8 @@ class Notifications::HandleAction < ActiveInteraction::Base
 
   def execute
     update_notifications
-    handle_related_contact
+    compose(Contacts::HandleAction,
+      inputs.except(:notifications).merge(contact: notification.contact))
   end
 
   private
@@ -25,17 +26,6 @@ class Notifications::HandleAction < ActiveInteraction::Base
     new_status
   rescue AASM::InvalidTransition
     new_status == :added ? :already_added : :"already_#{notification.status}"
-  end
-
-  def handle_related_contact
-    contact = notifications.first.contact
-    if action == 'add'
-      service = Contact::Add.new(contact, caller: caller)
-      service.phone_number = phone_number
-      service.do
-    else
-      Contact::Ignore.new(contact, caller: caller).do
-    end
   end
 
   def emit_event

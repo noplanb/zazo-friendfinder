@@ -8,6 +8,7 @@ class Api::V1::ContactsController < ApiController
   end
 
   def create
+    # TODO: refactor with interactor
     handle_with_manager(Api::Contact::ValidateRawParams.new(current_user.mkey, params)) do
       Resque.enqueue(ResqueWorker::ImportContacts, current_user.mkey, params['contacts'])
     end
