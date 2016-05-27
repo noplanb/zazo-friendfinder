@@ -4,7 +4,7 @@ class Api::V1::NotificationsController < ApiController
 
   def show
     handle_interactor(:render,
-      Notifications::GetSerializedData.run(notification: @notifications.first))
+      Notifications::GetNotificationData.run(notification: @notifications.first))
   end
 
   def add

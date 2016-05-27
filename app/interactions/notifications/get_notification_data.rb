@@ -1,4 +1,4 @@
-class Notifications::GetSerializedData < ActiveInteraction::Base
+class Notifications::GetNotificationData < ActiveInteraction::Base
   object :notification
 
   def execute

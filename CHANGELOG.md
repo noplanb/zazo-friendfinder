@@ -2,7 +2,7 @@
 
 ### next release
 - :bulb: Implemented contact addition via notification with specific phone number
-- :arrow_up: Refactored code using interactors
+- :arrow_up: Refactored a lot of code using interactors
 - :hammer: Fixed CI specs status by decreasing active_model_serializers gem version
 
 ### 0.9.6
