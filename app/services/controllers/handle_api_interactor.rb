@@ -49,16 +49,14 @@ class Controllers::HandleApiInteractor
   end
 
   def log_data_by_case(status)
-    _current_user = "current_user: #{context.current_user};"
+    _status       = "#{status};"
+    _interactor   = "[#{interactor.class}]"
+    _current_user = "current_user: #{context.current_user.mkey};"
     _response     = "response: #{response.to_json};"
     _inputs       = "inputs: #{interactor.inputs.to_json};"
-    _errors       = "errors: #{interactor.errors.messages.to_json};"
 
-    if status == :success
-      Zazo::Tools::Logger.info(context, "#{status}; #{_current_user} #{_inputs} #{_response}")
-    else
-      Zazo::Tools::Logger.info(context, "#{status}; #{_current_user} #{_inputs} #{_response} #{_errors}")
-    end
+    Zazo::Tools::Logger.info(context,
+      "#{_interactor} #{_status} #{_current_user} #{_inputs} #{_response}")
   end
 
   def default_settings(type)
