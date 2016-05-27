@@ -45,27 +45,25 @@ RSpec.describe Contacts::RecommendContact do
   describe 'validations' do
     subject { described_class.run({ owner: owner }.merge(recommendations: params)) }
 
-    context 'raw_params' do
-      context 'to_mkeys' do
-        let(:params) { { contact_mkey: contact_to_recommend.mkey, to_mkeys: 'some string' } }
+    context 'to_mkeys' do
+      let(:params) { { contact_mkey: contact_to_recommend.mkey, to_mkeys: 'some string' } }
 
-        it { expect(!!subject.valid?).to be(false) }
-        it { expect(subject.errors.messages).to eq(recommendations: ['has an invalid nested value ("to_mkeys" => "some string")']) }
-      end
+      it { expect(!!subject.valid?).to be(false) }
+      it { expect(subject.errors.messages).to eq(recommendations: ['has an invalid nested value ("to_mkeys" => "some string")']) }
+    end
 
-      context 'contact_mkey' do
-        let(:params) { { to_mkeys: [] } }
+    context 'contact_mkey' do
+      let(:params) { { to_mkeys: [] } }
 
-        it { expect(!!subject.valid?).to be(false) }
-        it { expect(subject.errors.messages).to eq(recommendations: ['has an invalid nested value ("contact_mkey" => nil)']) }
-      end
+      it { expect(!!subject.valid?).to be(false) }
+      it { expect(subject.errors.messages).to eq(recommendations: ['has an invalid nested value ("contact_mkey" => nil)']) }
+    end
 
-      context 'recommendations' do
-        let(:params) { 'some string' }
+    context 'recommendations' do
+      let(:params) { 'some string' }
 
-        it { expect(!!subject.valid?).to be(false) }
-        it { expect(subject.errors.messages).to eq(recommendations: ['is not a valid hash']) }
-      end
+      it { expect(!!subject.valid?).to be(false) }
+      it { expect(subject.errors.messages).to eq(recommendations: ['is not a valid hash']) }
     end
   end
 end
