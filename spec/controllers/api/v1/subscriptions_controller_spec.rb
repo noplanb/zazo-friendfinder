@@ -22,7 +22,7 @@ RSpec.describe Api::V1::SubscriptionsController, type: :controller do
           'status' => 'success',
           'data' => { 'status' => 'subscribed' }
         }
-        expect(json_response).to eq expected
+        expect(json_response).to eq(expected)
       end
     end
 
@@ -35,7 +35,7 @@ RSpec.describe Api::V1::SubscriptionsController, type: :controller do
           'status' => 'success',
           'data' => { 'status' => 'unsubscribed' }
         }
-        expect(json_response).to eq expected
+        expect(json_response).to eq(expected)
       end
     end
   end
@@ -44,13 +44,13 @@ RSpec.describe Api::V1::SubscriptionsController, type: :controller do
     let(:action) { [:post, :unsubscribe] }
 
     it { expect(response).to be_success }
-    it { expect(owner.unsubscribed?).to be true }
+    it { expect(owner.unsubscribed?).to be(true) }
   end
 
   describe 'POST #subscribe' do
     let(:action) { [:post, :subscribe] }
 
     it { expect(response).to be_success }
-    it { expect(owner.unsubscribed?).to be false }
+    it { expect(owner.unsubscribed?).to be(false) }
   end
 end

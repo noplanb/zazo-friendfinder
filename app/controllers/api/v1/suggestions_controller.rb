@@ -1,9 +1,11 @@
 class Api::V1::SuggestionsController < ApiController
   def index
-    handle_with_manager(Api::Contact::GetSuggestions.new(current_user.mkey, {}))
+    handle_interactor(:render,
+      Contacts::GetSuggestions.run(owner: current_user))
   end
 
   def recommend
-    handle_with_manager(Api::Contact::Recommend.new(current_user.mkey, params['recommendations']))
+    handle_interactor([:render, result: false],
+      Contacts::RecommendContact.run(owner: current_user, recommendations: params[:recommendations]))
   end
 end

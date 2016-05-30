@@ -5,21 +5,6 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
   let(:user_auth) { 'yLPv2hZ4DPRq1wGlQvqm' }
 
   describe 'POST #create' do
-    let(:contacts) do
-      [
-        {
-          'display_name' => 'Sani Elfishawy',
-          'vectors'      => [
-            { 'name'  => 'email',
-              'value' => 'elfishawy.sani@gmail.com' },
-            { 'name'  => 'mobile',
-              'value' => '+16502453537',
-              'additions' => { 'sms_messages_sent' => 15 } }
-          ],
-          'additions'    => { 'marked_as_favorite' => true }
-        }
-      ]
-    end
     let(:params) { { 'contacts' => contacts }.merge(format: :json) }
     let(:subject) { Owner.new(user_mkey).contacts }
 
@@ -28,8 +13,49 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
       authenticate_with_http_digest(user_mkey, user_auth) { post :create, params }
     end
 
-    it { expect(response).to be_success }
-    it { expect(ResqueWorker::ImportContacts).to have_queued(user_mkey, params['contacts']).in(:add_contacts) }
+    context 'when contacts have valid scheme' do
+      let(:contacts) do
+        [
+          {
+            'display_name' => 'Sani Elfishawy',
+            'vectors'      => [
+              { 'name'  => 'email',
+                'value' => 'elfishawy.sani@gmail.com' },
+              { 'name'  => 'mobile',
+                'value' => '+16502453537',
+                'additions' => { 'sms_messages_sent' => 15 } }
+            ],
+            'additions'    => { 'marked_as_favorite' => true }
+          }
+        ]
+      end
+
+      it { expect(response).to be_success }
+      it { expect(ResqueWorker::ImportContacts).to have_queued(user_mkey, params['contacts']).in(:add_contacts) }
+    end
+
+    context 'when contacts have invalid scheme' do
+      let(:contacts) do
+        [
+          {
+            'display_name' => 'Ivan Kornilov',
+          }, {
+            'display_name' => 'Sani Elfishawy',
+            'vectors'      => [
+              { 'name'  => 'email',
+                'value' => 'elfishawy.sani@gmail.com' }
+            ]
+          }
+        ]
+      end
+
+      it { expect(response).to be_unprocessable }
+      it { expect(ResqueWorker::ImportContacts).to_not have_queued(user_mkey, params['contacts']).in(:add_contacts) }
+      it do
+        expect(json_response).to eq 'status' => 'failure',
+                                    'errors' => { 'invalid_contacts' => [contacts.first] }
+      end
+    end
   end
 
   describe 'POST #ignore' do

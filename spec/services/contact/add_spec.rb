@@ -28,14 +28,14 @@ RSpec.describe Contact::Add do
         expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
         subject
       end
-      it 'specific status', :skip_before do
+      it 'has specific status', :skip_before do
         is_expected.to eq(status: :queued)
       end
 
       context 'when called is api' do
         let(:caller) { :api }
 
-        it 'specific status', :skip_before do
+        it 'has specific status', :skip_before do
           expect(subject[:status]).to eq(:added)
         end
       end
@@ -56,7 +56,7 @@ RSpec.describe Contact::Add do
       context 'when called is api' do
         let(:caller) { :api }
 
-        it 'specific status', :skip_before do
+        it 'has specific status', :skip_before do
           expect(subject[:status]).to eq(:already_added)
         end
       end
@@ -70,14 +70,14 @@ RSpec.describe Contact::Add do
         expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
         subject
       end
-      it 'specific status', :skip_before do
+      it 'has specific status', :skip_before do
         is_expected.to eq(status: :queued)
       end
 
       context 'when called is api' do
         let(:caller) { :api }
 
-        it 'specific status', :skip_before do
+        it 'has specific status', :skip_before do
           expect(subject[:status]).to eq(:added)
         end
       end

@@ -19,6 +19,9 @@ RSpec.describe Contact::Ignore do
         expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(contact ignored), Hash)
         subject
       end
+      it 'has specific status', :skip_before do
+        is_expected.to eq(status: :ignored)
+      end
     end
 
     context 'when already ignored' do
@@ -29,6 +32,9 @@ RSpec.describe Contact::Ignore do
         expect(Zazo::Tools::EventDispatcher).to_not receive(:emit)
         subject
       end
+      it 'has specific status', :skip_before do
+        is_expected.to eq(status: :already_ignored)
+      end
     end
 
     context 'when already added' do
@@ -38,6 +44,9 @@ RSpec.describe Contact::Ignore do
       it 'should dispatch an event', :skip_before do
         expect(Zazo::Tools::EventDispatcher).to_not receive(:emit)
         subject
+      end
+      it 'has specific status', :skip_before do
+        is_expected.to eq(status: :already_added)
       end
     end
   end

@@ -55,7 +55,7 @@ Get all information about contact by `id`.
         {
             "status": "failure",
             "errors": {
-                "contact_id": ["not found by id=114"]
+                "id": ["contact not found by id=114"]
             }
         }
 
@@ -70,7 +70,7 @@ Get all information about contact by `id`.
         {
             "status": "failure",
             "errors": {
-                "contact_id": ["not belongs to owner"]
+                "id": ["current user is not owner of contact with id=114"]
             }
         }
         
@@ -244,10 +244,10 @@ may have different values: "added", "already_added", "not_added", "queued", "err
         {
             "status": "failure",
             "errors": {
-                "contact_id": ["not found by id=123"]
+                "id": ["contact not found by id=114"]
             }
         }
-        
+
 + Request Failure (application/json)
 
     + Headers
@@ -259,7 +259,7 @@ may have different values: "added", "already_added", "not_added", "queued", "err
         {
             "status": "failure",
             "errors": {
-                "contact_id": ["you are not owner of contact id=123"]
+                "id": ["current user is not owner of contact with id=114"]
             }
         }
         
@@ -292,16 +292,16 @@ Ignore contact by contact id (see `response["data"][i]["id"]` in **Get Suggestio
     + Headers
 
             Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
-            
+
 + Response 422 (application/json)
 
         {
             "status": "failure",
             "errors": {
-                "contact_id": ["not found by id=123"]
+                "id": ["contact not found by id=114"]
             }
         }
-        
+
 + Request Failure (application/json)
 
     + Headers
@@ -313,7 +313,7 @@ Ignore contact by contact id (see `response["data"][i]["id"]` in **Get Suggestio
         {
             "status": "failure",
             "errors": {
-                "contact_id": ["you are not owner of contact id=123"]
+                "id": ["current user is not owner of contact with id=114"]
             }
         }
         
@@ -377,7 +377,7 @@ Return first 100 contacts (not added, not ignored, not friend) in order by total
 Recommend specific zazo-user (freshly invited) to others zazo-friends.
 
 + Parameters
-    + recommendations
+    + recommendations (hash)
         + contact_mkey (string) - contact mkey to recommend
         + to_mkeys (array) - array of string of contacts (mkeys), which an another contact (**contact_mkey**) will be recommended to
 
@@ -425,7 +425,7 @@ Recommend specific zazo-user (freshly invited) to others zazo-friends.
         {
             "status": "failure",
             "errors": {
-                "raw_params": ["raw_params['to_mkeys'] must be type of Array"]
+                "recommendations": ["has an invalid nested value (\"to_mkeys\" => "7qdanSEmctZ2jPnYA0a1")"]
             }
         }
         
@@ -451,10 +451,31 @@ Recommend specific zazo-user (freshly invited) to others zazo-friends.
         {
             "status": "failure",
             "errors": {
-                "raw_params": ["raw_params['contact_mkey'] must be type of String"]
+                "recommendations": ["has an invalid nested value (\"contact_mkey\" => nil)"]
             }
         }
-        
+
++ Request Failure (application/json)
+
+    + Headers
+
+            Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
+    + Body
+
+            {
+                "recommendations": "7qdanSEmctZ2jPnYA0a1"
+            }
+
++ Response 422 (application/json)
+
+        {
+            "status": "failure",
+            "errors": {
+                "recommendations": ["is not a valid hash"]
+            }
+        }
+
 + Request Unauthorized (application/json)
 
 + Response 401 (application/json)
@@ -540,12 +561,19 @@ may have different values: "added", "already_added", "not_added", "queued", "err
 
 + Parameters
     + id (integer) - nkey of notification
+    + phone_number (optional, string) - specific phone number to add contact of notification
 
 + Request Success (application/json)
 
     + Headers
 
             Authorization: Basic R0JBSGIwNDgyWXhsSjBrWXdiSVM6TzRWWENvekt1eVFOam5XUGg0MDA=
+
+    + Body
+
+            {
+                "phone_number": "+11234335501"
+            }
 
 + Response 200 (application/json)
 
@@ -596,6 +624,9 @@ may have different values: "added", "already_added", "not_added", "queued", "err
 
 Ignore contact of notification.
 
+Status of contact ignoring (see `response["data"]["status"]` in current **Response** `200`)
+may have different values: "ignored", "already_added", "already_ignored".
+
 + Parameters
     + id (integer) - nkey of notification
 
@@ -608,7 +639,10 @@ Ignore contact of notification.
 + Response 200 (application/json)
 
         {
-            "status": "success"
+            "status": "success",
+            "data": {
+                "status": "ignored"
+            }
         }
 
 + Request Failure (application/json)
@@ -667,6 +701,9 @@ Get current status of subscription.
 
 Unsubscribe from any future notifications (mobile and email).
 
+Status of unsubscribing (see `response["data"]["status"]` in current **Response** `200`)
+may have different values: "unsubscribed", "already_unsubscribed".
+
 + Request Success (application/json)
 
     + Headers
@@ -676,7 +713,10 @@ Unsubscribe from any future notifications (mobile and email).
 + Response 200 (application/json)
 
         {
-            "status": "success"
+            "status": "success",
+            "data": {
+                "status": "unsubscribed"
+            }
         }
 
 + Request Unauthorized (application/json)
@@ -691,6 +731,9 @@ Unsubscribe from any future notifications (mobile and email).
 
 Subscribe to get friends suggestions via notifications.
 
+Status of subscribing (see `response["data"]["status"]` in current **Response** `200`)
+may have different values: "subscribed", "already_subscribed".
+
 + Request Success (application/json)
 
     + Headers
@@ -700,7 +743,10 @@ Subscribe to get friends suggestions via notifications.
 + Response 200 (application/json)
 
         {
-            "status": "success"
+            "status": "success",
+            "data": {
+                "status": "subscribed"
+            }
         }
 
 + Request Unauthorized (application/json)
