@@ -85,9 +85,9 @@ GEM
     byebug (2.7.0)
       columnize (~> 0.3)
       debugger-linecache (~> 1.2)
-    cells (4.1.1)
+    cells (4.0.5)
       tilt (>= 1.4, < 3)
-      uber (>= 0.0.9)
+      uber (~> 0.0.9)
     cells-slim (0.0.5)
       cells (>= 4.0.1, < 6.0.0)
       slim (~> 3.0)
@@ -420,7 +420,7 @@ DEPENDENCIES
   bootstrap-growl-rails
   bootstrap-sass
   bootswatch-rails
-  cells
+  cells (~> 4.0.3)
   cells-slim
   coffee-rails
   database_cleaner

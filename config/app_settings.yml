@@ -1,0 +1,16 @@
+# config/app.yml for rails-settings-cached
+defaults: &defaults
+  fake_notifications_enabled: false
+  notify_specific_owners:
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
