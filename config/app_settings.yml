@@ -3,7 +3,6 @@ defaults: &defaults
   notify_specific_owners_only: false
   specific_owners: []
 
-
 development:
   <<: *defaults
 

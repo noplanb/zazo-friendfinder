@@ -3,7 +3,9 @@ class CronWorker::FakeUserJoinedNotification
     def perform
       if Settings.fake_notifications_enabled
         Zazo::Tools::Logger.info(self, 'started')
-        send_fake_notifications
+        owners = get_owners
+        owners.each { |owner| send_fake_notifications(owner) }
+        Zazo::Tools::Logger.info(self, "completed; owners: #{owners.map(&:mkey).to_json}")
       else
         Zazo::Tools::Logger.info(self, 'disabled')
       end
@@ -11,16 +13,14 @@ class CronWorker::FakeUserJoinedNotification
 
     private
 
-    def send_fake_notifications
-      owners.each do |owner|
-        contact = owner.contacts.suggestible.first
-        Notification::Create.new(:fake_user_joined, contact).do.each do|n|
-          n.send_notification
-        end if contact
-      end
+    def send_fake_notifications(owner)
+      contact = owner.contacts.suggestible.first
+      Notification::Create.new(:fake_user_joined, contact).do.each do|n|
+        n.send_notification
+      end if contact
     end
 
-    def owners
+    def get_owners
       return Owner.subscribed unless Settings.notify_specific_owners_only
       (Settings.specific_owners || []).map { |mkey| Owner.new(mkey) }
     end

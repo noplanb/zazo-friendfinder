@@ -11,4 +11,4 @@ set :environment, ENV['RAILS_ENV'] || 'production'
  :redis_host, :redis_port].each { |key| env(key, ENV[key.to_s]) }
 
 #every(3.hours) { runner 'CronWorker::ScoresRecalculation.perform' }
-every(1.minute) { runner "CronWorker::FakeUserJoinedNotification.perform" }
+every(10.minutes) { runner 'CronWorker::FakeUserJoinedNotification.perform' }
