@@ -1,6 +1,8 @@
 # Changelog
 
 ### next release
+- :bulb: Implemented application settings with UI
+- :bulb: Updated `FakeUserJoinedNotification` cron worker to use application settings
 - :bulb: Implemented contact addition via notification with specific phone number
 - :arrow_up: Refactored a lot of code using interactors
 - :hammer: Fixed CI specs status by decreasing active_model_serializers gem version

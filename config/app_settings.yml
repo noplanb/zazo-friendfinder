@@ -9,6 +9,7 @@ development:
 
 test:
   <<: *defaults
+  fake_notifications_enabled: true
 
 staging:
   <<: *defaults
