@@ -6,7 +6,7 @@ set :environment, ENV['RAILS_ENV'] || 'production'
  :db_name, :db_host, :db_port, :db_username, :db_password,
  :dataprovider_api_base_url, :dataprovider_api_token,
  :notification_api_base_url, :notification_api_token,
- :sqs_queue_url, :logstash_url,
+ :friendfinder_base_url, :sqs_queue_url, :logstash_url,
  :rollbar_access_token, :newrelic_license_key,
  :redis_host, :redis_port].each { |key| env(key, ENV[key.to_s]) }
 
