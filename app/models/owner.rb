@@ -34,7 +34,7 @@ class Owner
   end
 
   def notifications
-    Notification.by_owner_mkey(mkey)
+    Notification.by_owner_mkey(mkey).order(:id)
   end
 
   def additions(reload: false)
