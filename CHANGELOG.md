@@ -1,6 +1,6 @@
 # Changelog
 
-### next release
+### 0.10.0
 - :bulb: Implemented application settings with UI
 - :bulb: Updated `FakeUserJoinedNotification` cron worker to use application settings
 - :bulb: Implemented contact addition via notification with specific phone number
