@@ -9,13 +9,18 @@ ENV_VARIABLES = [
   :redis_host, :redis_port
 ]
 
-if ENV['RAILS_ENV'] == 'development'
-  set :output, 'log/cron.log'
-  set :environment, 'development'
-  every(1.minute) { runner 'CronWorker::FakeUserJoinedNotification.perform' }
-else
-  set :output, '/usr/src/app/log/cron.log'
-  set :environment, ENV['RAILS_ENV'] || 'production'
-  ENV_VARIABLES.each { |key| env(key, ENV[key.to_s]) }
-  every(10.minutes) { runner 'CronWorker::FakeUserJoinedNotification.perform' }
+settings = case ENV['RAILS_ENV']
+  when 'development'
+    { output: 'log/cron.log', environment: 'development', env: false, period: 1.minute }
+  when 'staging'
+    { output: '/usr/src/app/log/cron.log', environment: 'staging', env: true, period: 10.minutes }
+  else
+    { output: '/usr/src/app/log/cron.log', environment: 'production', env: true, period: 24.hours }
 end
+
+set :output, settings[:output]
+set :environment, settings[:environment]
+
+ENV_VARIABLES.each { |key| env(key, ENV[key.to_s]) } if settings[:env]
+
+every(settings[:period]) { runner 'CronWorker::FakeUserJoinedNotification.perform' }
