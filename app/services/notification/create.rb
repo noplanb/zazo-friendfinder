@@ -1,19 +1,26 @@
 class Notification::Create
-  attr_reader :category, :contact
+  DEFAULT_OPTIONS = { email: true, mobile: true }
 
-  def initialize(category, contact)
+  attr_reader :category, :contact, :options
+
+  def initialize(category, contact, options = {})
     @category = category.to_s
-    @contact  = contact
+    @contact = contact
+    @options = DEFAULT_OPTIONS.merge(options)
   end
 
   def do
-    Notification::ALLOWED_KINDS.map do |kind|
+    allowed_kinds.map do |kind|
       @last_notification = Notification.new(params(kind))
       save ? @last_notification : nil
     end.compact
   end
 
   private
+
+  def allowed_kinds
+    Notification::ALLOWED_KINDS.select { |kind| options[kind.to_sym] }
+  end
 
   def params(kind)
     { kind: kind, category: category, contact: contact, nkey: nkey }

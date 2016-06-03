@@ -1,13 +1,26 @@
-set :output, '/usr/src/app/log/cron.log'
-
-[
-  :PATH, :GEM_HOME, :RACK_ENV, :RAILS_ENV, :secret_key_base,
+ENV_VARIABLES = [
+  :PATH, :GEM_HOME, :RACK_ENV, :RAILS_ENV, :SECRET_KEY_BASE,
+  :AWS_ACCESS_KEY_ID, :AWS_REGION, :AWS_SECRET_ACCESS_KEY,
   :db_name, :db_host, :db_port, :db_username, :db_password,
   :dataprovider_api_base_url, :dataprovider_api_token,
+  :notification_api_base_url, :notification_api_token,
+  :friendfinder_base_url, :sqs_queue_url, :logstash_url,
   :rollbar_access_token, :newrelic_license_key,
-  :redis_host, :redis_port,
-].each { |key| env key, ENV[key.to_s] }
+  :redis_host, :redis_port
+]
 
-every(3.hours) { runner 'ScoresRecalculationWorker.perform' }
-#every(1.day)   { runner 'Notification::UserJoinedWorker.perform' }
-#every(2.days)  { runner 'Notification::FakeUserJoinedWorker.perform' }
+settings = case ENV['RAILS_ENV']
+  when 'development'
+    { output: 'log/cron.log', environment: 'development', env: false, period: 1.minute }
+  when 'staging'
+    { output: '/usr/src/app/log/cron.log', environment: 'staging', env: true, period: 10.minutes }
+  else
+    { output: '/usr/src/app/log/cron.log', environment: 'production', env: true, period: 24.hours }
+end
+
+set :output, settings[:output]
+set :environment, settings[:environment]
+
+ENV_VARIABLES.each { |key| env(key, ENV[key.to_s]) } if settings[:env]
+
+every(settings[:period]) { runner 'CronWorker::FakeUserJoinedNotification.perform' }

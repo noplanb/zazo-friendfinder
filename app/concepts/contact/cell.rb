@@ -42,11 +42,11 @@ class Contact::Cell < Cell::Concept
   end
 
   def zazo_first_name
-    model.first_name
+    model.model.first_name
   end
 
   def zazo_last_name
-    model.last_name
+    model.model.last_name
   end
 
   def owner_mkey

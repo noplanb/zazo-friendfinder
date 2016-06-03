@@ -10,3 +10,5 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w(admin.css admin.js)
 Rails.application.config.assets.precompile += %w(web_client.css web_client.js)
 
+# https://github.com/resque/resque-web/issues/106
+Rails.application.config.assets.precompile += %w(resque_web/*.png)

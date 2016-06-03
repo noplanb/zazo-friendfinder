@@ -38,6 +38,10 @@ Rails.application.routes.draw do
       member { post :drop_contacts, :drop_notifications, :clear_statuses, :mark_as_friend_randomly }
     end
 
+    resources :settings, only: [:index, :create] do
+      collection { delete :index }
+    end
+
     root to: 'dashboard#index'
   end
 

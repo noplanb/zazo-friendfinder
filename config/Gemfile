@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '~> 4.2.0'
 gem 'rake', '< 11'
 gem 'pg'
 
@@ -15,7 +15,7 @@ gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'draper'
-gem 'cells'
+gem 'cells', '~> 4.0.3'
 gem 'cells-slim'
 gem 'kaminari'
 gem 'hashie'
@@ -26,6 +26,7 @@ gem 'faraday-digestauth'
 
 gem 'global_phone'
 gem 'settingslogic'
+gem 'rails-settings-cached', '~> 0.6'
 gem 'active_model_serializers', '~> 0.9.0'
 gem 'aasm'
 
@@ -37,9 +38,10 @@ gem 'newrelic_rpm'
 gem 'remote_syslog_logger'
 gem 'foreman'
 gem 'pry-rails'
+gem 'listen', '~> 3.0.3'
 
 gem 'resque'
-gem 'resque-web', require: 'resque_web'
+gem 'resque-web', '>= 0.0.8', require: 'resque_web'
 gem 'whenever', require: false
 
 group :development do

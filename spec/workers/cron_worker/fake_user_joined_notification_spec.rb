@@ -18,7 +18,7 @@ RSpec.describe CronWorker::FakeUserJoinedNotification do
   let!(:contact_71) { create_contact('xxxxxxxxx_4', 4, '+380951035167', 'marked_as_friend' => true) }
 
   before do
-    allow_any_instance_of(Notification::Send).to receive(:do).and_return true
+    allow_any_instance_of(Notification::Send).to receive(:do).and_return(true)
   end
 
   describe '.perform' do
@@ -30,11 +30,11 @@ RSpec.describe CronWorker::FakeUserJoinedNotification do
 
     before { subject }
 
-    it { expect(Notification.count).to eq 7 }
-    it { expect(Notification.distinct.pluck(:nkey).count).to eq 4 }
+    it { expect(Notification.count).to eq(7) }
+    it { expect(Notification.distinct.pluck(:nkey).count).to eq(4) }
     it do
       expected = [contact_11.id, contact_22.id, contact_31.id, contact_41.id]
-      expect(Notification.distinct.pluck(:contact_id)).to match_array expected
+      expect(Notification.distinct.pluck(:contact_id)).to match_array(expected)
     end
   end
 end
