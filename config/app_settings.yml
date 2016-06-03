@@ -1,5 +1,7 @@
 defaults: &defaults
   fake_notifications_enabled: false
+  mobile_notifications_enabled: true
+  email_notifications_enabled: true
   notify_specific_owners_only: false
   specific_owners: []
 

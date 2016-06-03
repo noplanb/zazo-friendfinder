@@ -9,9 +9,8 @@ class Contact::Import::ImportContacts
 
   def do
     drop_unmarked_contacts
-    raw_params.each do |contact_data|
-      add_or_merge_contact(contact_data)
-    end
+    raw_params.each { |contact_data| add_or_merge_contact(contact_data) }
+
     status = errors.empty?
     Zazo::Tools::Logger.info(self, "errors (added); owner: #{owner.mkey}; errors: #{errors.inspect}") unless status
     status
@@ -39,7 +38,9 @@ class Contact::Import::ImportContacts
   end
 
   def add_vectors_to_contact(contact, vectors_data)
-    vectors_data && vectors_data.each { |vector_data| add_vector_to_contact(contact, vector_data) }
+    vectors_data.each do |vector_data|
+      add_vector_to_contact(contact, vector_data)
+    end if vectors_data
   end
 
   def add_vector_to_contact(contact, vector_data)
