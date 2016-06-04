@@ -7,7 +7,7 @@ class Contact::Add < Contact::BaseHandler
     else
       contact.update_attributes(additions: new_additions)
       emit_event(%w(contact added))
-      Rails.env.production? ? { status: :not_added } : invite_contact
+      invite_contact
     end
   end
 
