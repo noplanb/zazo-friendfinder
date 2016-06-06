@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.10.1
+- :hammer: Enabled contacts invitations on production
+- :hammer: Disabled logstash logging
+
 ### 0.10.0
 - :bulb: Implemented application settings with UI
 - :bulb: Updated `FakeUserJoinedNotification` cron worker to use application settings
