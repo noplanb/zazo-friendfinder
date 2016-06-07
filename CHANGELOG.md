@@ -1,8 +1,11 @@
 # Changelog
 
+### 0.10.2
+- :hammer: Enabled logstash http logging
+
 ### 0.10.1
 - :hammer: Enabled contacts invitations on production
-- :hammer: Disabled logstash logging
+- :hammer: Disabled logstash udp logging
 
 ### 0.10.0
 - :bulb: Implemented application settings with UI

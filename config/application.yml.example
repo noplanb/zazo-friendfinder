@@ -14,7 +14,9 @@ admin_base_url:
 renotification_base_url:
 friendfinder_base_url:
 
-logstash_url:
+logstash_url: 0.0.0.0:9901
+logstash_username:
+logstash_password:
 sqs_queue_url:
 
 rollbar_access_token:
