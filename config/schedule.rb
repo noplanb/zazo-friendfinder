@@ -4,7 +4,8 @@ ENV_VARIABLES = [
   :db_name, :db_host, :db_port, :db_username, :db_password,
   :dataprovider_api_base_url, :dataprovider_api_token,
   :notification_api_base_url, :notification_api_token,
-  :friendfinder_base_url, :sqs_queue_url, :logstash_url,
+  :friendfinder_base_url, :sqs_queue_url,
+  :logstash_url, :logstash_username, :logstash_password,
   :rollbar_access_token, :newrelic_license_key,
   :redis_host, :redis_port
 ]
