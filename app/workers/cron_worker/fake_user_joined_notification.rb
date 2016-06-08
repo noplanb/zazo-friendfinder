@@ -1,13 +1,21 @@
-class CronWorker::FakeUserJoinedNotification
+class CronWorker::FakeUserJoinedNotification < CronWorker
+  worker_settings case Rails.env
+    when 'development' then { running_period: 2.minutes }
+    when 'staging' then { running_period: 8.minutes }
+    else { running_period: 24.hours }
+  end
+
   class << self
     def perform
-      if Settings.fake_notifications_enabled
-        Zazo::Tools::Logger.info(self, 'started')
-        owners = get_owners
-        owners.each { |owner| send_fake_notifications(owner) }
-        Zazo::Tools::Logger.info(self, "completed; owners: #{owners.map(&:mkey).to_json}")
-      else
-        Zazo::Tools::Logger.info(self, 'disabled')
+      super do
+        if Settings.fake_notifications_enabled
+          Zazo::Tools::Logger.info(self, 'started')
+          owners = get_owners
+          owners.each { |owner| send_fake_notifications(owner) }
+          Zazo::Tools::Logger.info(self, "completed for #{owner.size} owner(s); owners: #{owners.map(&:mkey).to_json}")
+        else
+          Zazo::Tools::Logger.info(self, 'disabled')
+        end
       end
     end
 
