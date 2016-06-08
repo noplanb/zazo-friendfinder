@@ -1,10 +1,10 @@
 class CronWorker
-  class << self
-    DEFAULT_SETTINGS = {
-      running_period: 10.years,
-      default_last_running_date: Time.new('2010')
-    }
+  DEFAULT_SETTINGS = {
+    running_period: 10.years,
+    default_last_running_date: Time.new('2010')
+  }
 
+  class << self
     def worker_settings(settings)
       @settings = DEFAULT_SETTINGS.merge(settings)
     end

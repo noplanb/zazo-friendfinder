@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.10.4
+- :hammer: Fixed bug with cron workers wrapper
+
 ### 0.10.3
 - :bulb: Implemented wrapper for cron workers
 
