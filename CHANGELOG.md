@@ -1,6 +1,6 @@
 # Changelog
 
-### next release
+### 0.10.3
 - :bulb: Implemented wrapper for cron workers
 
 ### 0.10.2
