@@ -14,9 +14,9 @@ settings = case ENV['RAILS_ENV']
   when 'development'
     { output: 'log/cron.log', environment: 'development', env: false, period: 1.minute }
   when 'staging'
-    { output: '/usr/src/app/log/cron.log', environment: 'staging', env: true, period: 10.minutes }
+    { output: '/usr/src/app/log/cron.log', environment: 'staging', env: true, period: 5.minutes }
   else
-    { output: '/usr/src/app/log/cron.log', environment: 'production', env: true, period: 24.hours }
+    { output: '/usr/src/app/log/cron.log', environment: 'production', env: true, period: 30.minutes }
 end
 
 set :output, settings[:output]

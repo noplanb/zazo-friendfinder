@@ -1,5 +1,8 @@
 # Changelog
 
+### next release
+- :bulb: Implemented wrapper for cron workers
+
 ### 0.10.2
 - :hammer: Enabled logstash http logging
 
