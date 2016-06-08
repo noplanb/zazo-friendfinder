@@ -22,13 +22,10 @@ RSpec.describe CronWorker::FakeUserJoinedNotification do
   end
 
   describe '.perform' do
-    subject { described_class.perform }
-
     before do
       FactoryGirl.create(:notification, status: 'added', contact: contact_41)
+      described_class.perform(force: true)
     end
-
-    before { subject }
 
     it { expect(Notification.count).to eq(7) }
     it { expect(Notification.distinct.pluck(:nkey).count).to eq(4) }
@@ -38,3 +35,5 @@ RSpec.describe CronWorker::FakeUserJoinedNotification do
     end
   end
 end
+
+

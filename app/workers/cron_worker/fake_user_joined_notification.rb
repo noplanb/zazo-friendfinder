@@ -6,17 +6,18 @@ class CronWorker::FakeUserJoinedNotification < CronWorker
   end
 
   class << self
-    def perform
-      super do
+    def perform(force: false)
+      block = -> {
         if Settings.fake_notifications_enabled
           Zazo::Tools::Logger.info(self, 'started')
           owners = get_owners
           owners.each { |owner| send_fake_notifications(owner) }
-          Zazo::Tools::Logger.info(self, "completed for #{owner.size} owner(s); owners: #{owners.map(&:mkey).to_json}")
+          Zazo::Tools::Logger.info(self, "completed for #{owners.size} owner(s); owners: #{owners.map(&:mkey).to_json}")
         else
           Zazo::Tools::Logger.info(self, 'disabled')
         end
-      end
+      }
+      force ? block.call : super(&block)
     end
 
     private
