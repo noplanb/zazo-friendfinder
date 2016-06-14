@@ -1,6 +1,7 @@
 # Changelog
 
 ### 0.10.5
+- :arrow_up: Changed fake notifications period from 24 hours to 4 days
 
 ### 0.10.4
 - :hammer: Fixed bug with cron workers wrapper

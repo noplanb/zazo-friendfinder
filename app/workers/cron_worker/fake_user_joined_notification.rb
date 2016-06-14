@@ -2,7 +2,7 @@ class CronWorker::FakeUserJoinedNotification < CronWorker
   worker_settings case Rails.env
     when 'development' then { running_period: 2.minutes }
     when 'staging' then { running_period: 8.minutes }
-    else { running_period: 24.hours }
+    else { running_period: 4.days }
   end
 
   class << self
