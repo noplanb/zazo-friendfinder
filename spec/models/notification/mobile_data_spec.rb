@@ -22,7 +22,8 @@ RSpec.describe Notification::MobileData, type: :model do
           nkey: notification.nkey,
           additions: {
             friend_name: contact.display_name,
-            phone_numbers: []
+            phone_numbers: [],
+            owner_mkey: '7qdanSEmctZ2jPnYA0a1'
           }
         }
       }
