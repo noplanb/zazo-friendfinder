@@ -1,5 +1,8 @@
 # Changelog
 
+### next release
+- :arrow_up: Implemented contacts sync before sending notifications
+
 ### 0.10.5
 - :arrow_up: Changed fake notifications period from 24 hours to 4 days
 - :arrow_up: Added owner mkey to mobile notification payload
