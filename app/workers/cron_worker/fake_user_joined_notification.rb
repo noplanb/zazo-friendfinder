@@ -23,7 +23,7 @@ class CronWorker::FakeUserJoinedNotification < CronWorker
     private
 
     def send_fake_notifications(owner)
-      contact = owner.contacts.suggestible.first
+      contact = get_suggestible_contact(owner)
       Notification::Create.new(:fake_user_joined,
         contact, notification_options).do.each do |n|
         n.send_notification
@@ -33,6 +33,10 @@ class CronWorker::FakeUserJoinedNotification < CronWorker
     def get_owners
       return Owner.subscribed unless Settings.notify_specific_owners_only
       (Settings.specific_owners || []).map { |mkey| Owner.new(mkey) }
+    end
+
+    def get_suggestible_contact(owner)
+      Owner::GetSuggestibleContact.new(owner).call
     end
 
     def notification_options
