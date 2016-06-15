@@ -13,7 +13,6 @@ class Owner::GetSuggestibleContact
   def call
     get_suggestible_contact
   rescue NoContactToSuggest, ReachedSyncingLimit
-    nil
   end
 
   private

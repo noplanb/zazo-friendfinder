@@ -6,13 +6,13 @@ class Contact::Update::SyncData
   end
 
   def call
-    Contact::Update::FindZazoContact.new(contact).do unless contact_is_zazo_user?
-    Contact::Update::UpdateZazoInfo.new(contact).do if contact_is_zazo_user?
+    Contact::Update::FindZazoContact.new(contact).do unless zazo_user?
+    Contact::Update::UpdateZazoInfo.new(contact).do if zazo_user?
   end
 
   private
 
-  def contact_is_zazo_user?
-    contact.marked_as_friend?
+  def zazo_user?
+    !!contact.zazo_mkey
   end
 end

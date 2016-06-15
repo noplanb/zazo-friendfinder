@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035163
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380987777777
     body:
       encoding: US-ASCII
       string: ''
@@ -25,28 +25,28 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwNDM3MDo1NTQ3MWU2OWE5YTk4ODVlOTE4MTI0ZjVkYzNhOTZkZg==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwMzMzMDoyYWJmMzQ2NDE0MGFkYjE0ZDBmNzIzMDAzYmRkYjk4Mg==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 5c375e64-ac66-4c21-8493-728c5ea2cdda
+      - 3ec8245d-1b53-451c-84d8-d5c49a6201ee
       X-Runtime:
-      - '1.448286'
+      - '0.200555'
       Date:
-      - Wed, 15 Jun 2016 15:26:10 GMT
+      - Wed, 15 Jun 2016 15:08:50 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Wed, 15 Jun 2016 15:26:10 GMT
+  recorded_at: Wed, 15 Jun 2016 15:08:50 GMT
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035163
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380987777777
     body:
       encoding: US-ASCII
       string: ''
@@ -73,23 +73,23 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - c79722cd-2106-4ee8-a9d7-b975a4d64fda
+      - 1c6df538-a68e-44b6-9c4e-dbc29dc556df
       X-Runtime:
-      - '1.053038'
+      - '0.383086'
       X-Miniprofiler-Ids:
-      - '["njp9fypylnakleol9hs1","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["vezwgne83j1b7box9ah3","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Wed, 15 Jun 2016 15:26:11 GMT
+      - Wed, 15 Jun 2016 15:08:51 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
-      string: '{"id":null,"mkey":null}'
+      string: '{"id":2956,"mkey":"YRn7ZUDIZI3WzdKT8WxA"}'
     http_version: 
-  recorded_at: Wed, 15 Jun 2016 15:26:11 GMT
+  recorded_at: Wed, 15 Jun 2016 15:08:51 GMT
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035162
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=YRn7ZUDIZI3WzdKT8WxA
     body:
       encoding: US-ASCII
       string: ''
@@ -112,28 +112,28 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwNDM3MTo4OWQ3NWVmNWUwM2FlZTQ2NmNiZjcyY2FlMGY1YTBhYQ==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwMzMzMTo3NmVkODZkNzMxM2E1ODI2YzUyNzM1YWVmYmQxYTZlYw==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 56b0fa94-d0b7-451d-bb4c-af24e5e53565
+      - 26703a21-26d2-4746-93f6-507fce22cdf6
       X-Runtime:
-      - '0.194375'
+      - '0.193196'
       Date:
-      - Wed, 15 Jun 2016 15:26:11 GMT
+      - Wed, 15 Jun 2016 15:08:51 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Wed, 15 Jun 2016 15:26:11 GMT
+  recorded_at: Wed, 15 Jun 2016 15:08:51 GMT
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035162
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=YRn7ZUDIZI3WzdKT8WxA
     body:
       encoding: US-ASCII
       string: ''
@@ -160,23 +160,23 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - fd8693fa-cbce-4a8f-8c11-a15cb929b3fc
+      - 96ed4021-9305-4625-8ff0-99ceebfe00c4
       X-Runtime:
-      - '0.388032'
+      - '1.395181'
       X-Miniprofiler-Ids:
-      - '["jiruc4skrmvelo0duncs","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["jkgot2mvcqo3cuaxnjgg","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Wed, 15 Jun 2016 15:26:12 GMT
+      - Wed, 15 Jun 2016 15:08:53 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
-      string: '{"id":null,"mkey":null}'
+      string: '{"id":2956,"first_name":"Nexus","last_name":"NexusInna","friends":["emw7coRpjFHjlRm9lnCc","r7ygnuVrWz51JHRn2tAk","quLw5xZTWegtkoqPq8T3","qsYCPjQwDckShQiJprZi","tIjtGAKdVfhdQLHaoT61","fYbsViwlH8JsVNPJnPx3","8uRHzF9Fb16tYtxH8Ue9","YPStb3UUCtiI5HODkNjZ","pInNcBaUIl66SC6BMOfV","FhPEDt2GUfZkQxYavgtM","upqryKcdvuZp5mlecmn8","FaGUU1xx60N2cOufnV1v","BsHCNf0SYI8CJv91x48W","offmAM4QV5djegwFLqtl","dCeqXNEefoGA8Otu1iCd","LsNUXNH9nBcpHkJGUgU7","5yUd5BIAdoCzNGb2aEZG","j49wNVTmRXCT5Yuf9uAw","d0yE3NErwqcJl1lMC8bW","RMte5GDviJ4DLoH5jstN","HzHsEoCqnu95eisFDQeD","ghc6tcVEhebZZvYeixCz"]}'
     http_version: 
-  recorded_at: Wed, 15 Jun 2016 15:26:12 GMT
+  recorded_at: Wed, 15 Jun 2016 15:08:53 GMT
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035160
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B16507800181
     body:
       encoding: US-ASCII
       string: ''
@@ -199,28 +199,28 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwNDM3Mjo3OTI5NTk0MzUxZGE0OGU0OTRhMDQ2YmVhMzE2YTNlZg==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwMzMzMzo0M2E2YTE4ODQxMjI3NjdhMjM1NjAwOGNhMjgwNWNiMA==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 67187e17-6c9f-4954-95d7-459405c8a034
+      - faf91aef-e7e4-46d5-9571-45ff3d6a1c54
       X-Runtime:
-      - '0.202752'
+      - '0.193428'
       Date:
-      - Wed, 15 Jun 2016 15:26:12 GMT
+      - Wed, 15 Jun 2016 15:08:53 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Wed, 15 Jun 2016 15:26:12 GMT
+  recorded_at: Wed, 15 Jun 2016 15:08:53 GMT
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035160
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B16507800181
     body:
       encoding: US-ASCII
       string: ''
@@ -247,23 +247,23 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - 6687e2ef-b662-43ea-93f8-b38c0f63aff0
+      - 07fd5647-3827-43b6-8c45-1ae4a77940f8
       X-Runtime:
-      - '0.406016'
+      - '0.381962'
       X-Miniprofiler-Ids:
-      - '["u5cl3np0hunrhla5gd6h","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["majodiav09gm5isi774i","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Wed, 15 Jun 2016 15:26:12 GMT
+      - Wed, 15 Jun 2016 15:08:53 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
-      string: '{"id":86,"mkey":"oPo9d5I17BZ9zTLcJQ96"}'
+      string: '{"id":1,"mkey":"yKCS3YZwl1bWbuIFNLE0"}'
     http_version: 
-  recorded_at: Wed, 15 Jun 2016 15:26:12 GMT
+  recorded_at: Wed, 15 Jun 2016 15:08:53 GMT
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=oPo9d5I17BZ9zTLcJQ96
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=yKCS3YZwl1bWbuIFNLE0
     body:
       encoding: US-ASCII
       string: ''
@@ -286,28 +286,28 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Www-Authenticate:
-      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwNDM3MzozZWFkM2JlMGM5ZTlkNGE1ZDVjYThjNGZlNDA1OTFmZQ==",
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwMzMzMzo0M2E2YTE4ODQxMjI3NjdhMjM1NjAwOGNhMjgwNWNiMA==",
         opaque="822778b6350cbc116426dfdce7488072"
       Content-Type:
       - text/html; charset=utf-8
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - b7230c22-2d0b-41d7-9f33-b6daf78aea8e
+      - ae9f14ec-cd63-4ba1-a9ab-a605767c288b
       X-Runtime:
-      - '0.195336'
+      - '0.193727'
       Date:
-      - Wed, 15 Jun 2016 15:26:13 GMT
+      - Wed, 15 Jun 2016 15:08:54 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
       string: '{"status":"unauthorized"}'
     http_version: 
-  recorded_at: Wed, 15 Jun 2016 15:26:13 GMT
+  recorded_at: Wed, 15 Jun 2016 15:08:54 GMT
 - request:
     method: get
-    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=oPo9d5I17BZ9zTLcJQ96
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=yKCS3YZwl1bWbuIFNLE0
     body:
       encoding: US-ASCII
       string: ''
@@ -334,18 +334,18 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - 0a4dec79-360e-4126-be7d-b1e70fd05127
+      - 0e89dd6e-0c3f-409e-bb32-537c324d15ea
       X-Runtime:
-      - '1.441982'
+      - '0.955720'
       X-Miniprofiler-Ids:
-      - '["knlcgs6idb1crsw275yi","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      - '["6vyfa0ra6n57k0tib05z","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
       Date:
-      - Wed, 15 Jun 2016 15:26:14 GMT
+      - Wed, 15 Jun 2016 15:08:55 GMT
       Connection:
       - close
     body:
       encoding: UTF-8
-      string: '{"id":86,"first_name":"Serhii","last_name":"B","friends":["9SGj0xpzyVk9U45r7zeS","bAD3zfoBm45rDMGHvmn5","wzJZsaoVBNSXkkm5hQKP","tqWivMddsWZx9Bc8oVnL","1KxkuKmSGE0V9pXYPs4W","NAh5dNAjKhKnLR3lxdHT"]}'
+      string: '{"id":1,"first_name":"iPad","last_name":"Rinat","friends":["cvXvBtGRMqsafH6WdeHr","WBDnxHS1MWXyDqS5VisR","J3BjsUuQNOGrtnI5D0hV","rCjSwpr9R9KaCnL7gRdf"]}'
     http_version: 
-  recorded_at: Wed, 15 Jun 2016 15:26:14 GMT
+  recorded_at: Wed, 15 Jun 2016 15:08:55 GMT
 recorded_with: VCR 3.0.3
