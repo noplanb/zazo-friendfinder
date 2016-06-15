@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe CronWorker::FakeUserJoinedNotification do
-  def create_contact(owner_mkey, total_score, client_mobile, additions = {})
-    contact = FactoryGirl.create(:contact, owner_mkey: owner_mkey, total_score: total_score, additions: additions)
-    FactoryGirl.create(:vector_mobile, contact: contact, value: client_mobile)
-    contact
-  end
-
   let!(:contact_11) { create_contact('xxxxxxxxx_1', 5, '+380951035160', 'marked_as_friend' => false) }
   let!(:contact_12) { create_contact('xxxxxxxxx_1', 4, '+380951035161', 'marked_as_friend' => false) }
   let!(:contact_21) { create_contact('xxxxxxxxx_2', 5, '+380508891332', 'marked_as_friend' => false) }

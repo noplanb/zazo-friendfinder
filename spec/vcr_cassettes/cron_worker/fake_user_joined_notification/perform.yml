@@ -1,0 +1,351 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035163
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwNDM3MDo1NTQ3MWU2OWE5YTk4ODVlOTE4MTI0ZjVkYzNhOTZkZg==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 5c375e64-ac66-4c21-8493-728c5ea2cdda
+      X-Runtime:
+      - '1.448286'
+      Date:
+      - Wed, 15 Jun 2016 15:26:10 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Wed, 15 Jun 2016 15:26:10 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035163
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - c79722cd-2106-4ee8-a9d7-b975a4d64fda
+      X-Runtime:
+      - '1.053038'
+      X-Miniprofiler-Ids:
+      - '["njp9fypylnakleol9hs1","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Wed, 15 Jun 2016 15:26:11 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"id":null,"mkey":null}'
+    http_version: 
+  recorded_at: Wed, 15 Jun 2016 15:26:11 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035162
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwNDM3MTo4OWQ3NWVmNWUwM2FlZTQ2NmNiZjcyY2FlMGY1YTBhYQ==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 56b0fa94-d0b7-451d-bb4c-af24e5e53565
+      X-Runtime:
+      - '0.194375'
+      Date:
+      - Wed, 15 Jun 2016 15:26:11 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Wed, 15 Jun 2016 15:26:11 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035162
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - fd8693fa-cbce-4a8f-8c11-a15cb929b3fc
+      X-Runtime:
+      - '0.388032'
+      X-Miniprofiler-Ids:
+      - '["jiruc4skrmvelo0duncs","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Wed, 15 Jun 2016 15:26:12 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"id":null,"mkey":null}'
+    http_version: 
+  recorded_at: Wed, 15 Jun 2016 15:26:12 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035160
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwNDM3Mjo3OTI5NTk0MzUxZGE0OGU0OTRhMDQ2YmVhMzE2YTNlZg==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 67187e17-6c9f-4954-95d7-459405c8a034
+      X-Runtime:
+      - '0.202752'
+      Date:
+      - Wed, 15 Jun 2016 15:26:12 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Wed, 15 Jun 2016 15:26:12 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile_or_email?mobile=%2B380951035160
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 6687e2ef-b662-43ea-93f8-b38c0f63aff0
+      X-Runtime:
+      - '0.406016'
+      X-Miniprofiler-Ids:
+      - '["u5cl3np0hunrhla5gd6h","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Wed, 15 Jun 2016 15:26:12 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"id":86,"mkey":"oPo9d5I17BZ9zTLcJQ96"}'
+    http_version: 
+  recorded_at: Wed, 15 Jun 2016 15:26:12 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=oPo9d5I17BZ9zTLcJQ96
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ2NjAwNDM3MzozZWFkM2JlMGM5ZTlkNGE1ZDVjYThjNGZlNDA1OTFmZQ==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - b7230c22-2d0b-41d7-9f33-b6daf78aea8e
+      X-Runtime:
+      - '0.195336'
+      Date:
+      - Wed, 15 Jun 2016 15:26:13 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Wed, 15 Jun 2016 15:26:13 GMT
+- request:
+    method: get
+    uri: <%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=oPo9d5I17BZ9zTLcJQ96
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 0a4dec79-360e-4126-be7d-b1e70fd05127
+      X-Runtime:
+      - '1.441982'
+      X-Miniprofiler-Ids:
+      - '["knlcgs6idb1crsw275yi","uxvsln0trb4yaffhvb8d","bb70an5jbfflmfk0m05k","sx40rqr0wj8ad1xghum8","bgrox7u56a6q8qyf9y01","7ggzu9qsfv7n1m25bw7j","rxanujfb24l88lv1ovq","crjjw7yb4a9jn5oblvzp","a3vwha4kzzbsxsvgm4nm","v72b8g5zbgrm2d3h62zw"]'
+      Date:
+      - Wed, 15 Jun 2016 15:26:14 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"id":86,"first_name":"Serhii","last_name":"B","friends":["9SGj0xpzyVk9U45r7zeS","bAD3zfoBm45rDMGHvmn5","wzJZsaoVBNSXkkm5hQKP","tqWivMddsWZx9Bc8oVnL","1KxkuKmSGE0V9pXYPs4W","NAh5dNAjKhKnLR3lxdHT"]}'
+    http_version: 
+  recorded_at: Wed, 15 Jun 2016 15:26:14 GMT
+recorded_with: VCR 3.0.3
