@@ -1,6 +1,6 @@
 # Changelog
 
-### next release
+### 0.10.6
 - :arrow_up: Implemented contacts sync before sending notifications
 
 ### 0.10.5
