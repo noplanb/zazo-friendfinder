@@ -9,7 +9,7 @@ class Notification::Save
     if notification.save
       true
     else
-      Zazo::Tools::Logger.info(self, "error; errors: #{notification.errors.messages}; notification: #{notification.inspect}", rollbar: :error)
+      Zazo::Tool::Logger.info(self, "error; errors: #{notification.errors.messages}; notification: #{notification.inspect}", rollbar: :error)
       false
     end
   end

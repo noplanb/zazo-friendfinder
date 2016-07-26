@@ -8,6 +8,6 @@ class WebClient::TrackEmail
   def do
     return unless notification
     DispatchEvent.new(:notification, %w(email opened), [notification, notification.contact.owner]).do
-    Zazo::Tools::Logger.info(self, "tracked; owner: #{notification.contact.owner.mkey}")
+    Zazo::Tool::Logger.info(self, "tracked; owner: #{notification.contact.owner.mkey}")
   end
 end

@@ -8,10 +8,15 @@ GIT
 
 GIT
   remote: git://github.com/noplanb/zazo-tools.git
-  revision: 48aa4c9d588c225210b74624ad3a483ff95bedf0
+  revision: 56c982de1947288d4fcd7de37f52bc363f98dd52
+  tag: 0.3.0-wip.6
   specs:
     zazo-tools (0.3.0)
+      active_interaction
       aws-sdk
+      faraday-digestauth
+      faraday_middleware
+      rails
 
 GEM
   remote: https://rubygems.org/
@@ -62,12 +67,12 @@ GEM
     autoprefixer-rails (6.3.6.1)
       execjs
     awesome_print (1.6.1)
-    aws-sdk (2.3.11)
-      aws-sdk-resources (= 2.3.11)
-    aws-sdk-core (2.3.11)
+    aws-sdk (2.4.2)
+      aws-sdk-resources (= 2.4.2)
+    aws-sdk-core (2.4.2)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.3.11)
-      aws-sdk-core (= 2.3.11)
+    aws-sdk-resources (2.4.2)
+      aws-sdk-core (= 2.4.2)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -174,14 +179,12 @@ GEM
     hashie (3.4.4)
     i18n (0.7.0)
     interception (0.5)
-    jmespath (1.2.4)
-      json_pure (>= 1.8.1)
+    jmespath (1.3.1)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
-    json_pure (1.8.3)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -468,7 +471,7 @@ DEPENDENCIES
   vcr
   webmock (< 2.0.0)
   whenever
-  zazo-tools (~> 0.3.0)!
+  zazo-tools!
 
 BUNDLED WITH
    1.10.6
