@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.10.6-wip.1
+- :arrow_up: Bumped and updated usage of zazo-tools gem
+
 ### 0.10.6
 - :arrow_up: Implemented contacts sync before sending notifications
 
