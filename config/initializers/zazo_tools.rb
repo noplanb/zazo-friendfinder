@@ -1,4 +1,4 @@
-Zazo::Tools::Logger.configure do |config|
+Zazo::Tool::Logger.configure do |config|
   logstash_url = Figaro.env.logstash_url
   if logstash_url && !(Rails.env.test? || Rails.env.development?)
     config.logstash_enabled = true
@@ -10,7 +10,7 @@ Zazo::Tools::Logger.configure do |config|
   config.project_name = AppConfig.app_name_key
 end
 
-Zazo::Tools::EventDispatcher.configure do |config|
+Zazo::Tool::EventDispatcher.configure do |config|
   config.send_message_enabled = false if Rails.env.test? || Rails.env.development?
   config.queue_url = Figaro.env.sqs_queue_url
   config.logger = Rails.logger
@@ -32,5 +32,5 @@ module EventDispatcherWrapper
   end
 end
 
-Zazo::Tools::EventDispatcher.send(:include, EventDispatcherWrapper)
+Zazo::Tool::EventDispatcher.send(:include, EventDispatcherWrapper)
 =end

@@ -1,6 +1,6 @@
 class CronWorker::UserJoinedNotification
   def self.perform
-    Zazo::Tools::Logger.info(self, 'started')
+    Zazo::Tool::Logger.info(self, 'started')
     recently_joined_users.each do |contact_data|
       Contact::FindOwnersByContactMatching.new(contact_data).do.each do |contact|
         unless contact.owner.unsubscribed? || contact.notified?

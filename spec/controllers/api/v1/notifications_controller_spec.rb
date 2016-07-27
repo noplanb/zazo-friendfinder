@@ -64,8 +64,7 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
       it do
         expected = {
           'status' => 'failure',
-          'errors' => { 'nkey' => ['nkey is incorrect'] }
-        }
+          'errors' => ['Nkey nkey is incorrect'] }
         expect(json_response).to eq(expected)
       end
     end

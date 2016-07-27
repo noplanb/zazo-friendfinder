@@ -25,7 +25,7 @@ RSpec.describe Contact::Add do
 
       include_examples 'contact is added specs'
       it 'should dispatch an event', :skip_before do
-        expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
+        expect(Zazo::Tool::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
         subject
       end
       it 'has specific status', :skip_before do
@@ -46,7 +46,7 @@ RSpec.describe Contact::Add do
 
       include_examples 'contact is added specs'
       it 'should dispatch an event', :skip_before do
-        expect(Zazo::Tools::EventDispatcher).to_not receive(:emit)
+        expect(Zazo::Tool::EventDispatcher).to_not receive(:emit)
         subject
       end
       it 'should have specific status', :skip_before do
@@ -67,7 +67,7 @@ RSpec.describe Contact::Add do
 
       include_examples 'contact is added specs'
       it 'should dispatch an event', :skip_before do
-        expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
+        expect(Zazo::Tool::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
         subject
       end
       it 'has specific status', :skip_before do

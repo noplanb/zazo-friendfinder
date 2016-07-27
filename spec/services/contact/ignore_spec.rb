@@ -16,7 +16,7 @@ RSpec.describe Contact::Ignore do
 
       include_examples 'contact is ignored specs'
       it 'should dispatch an event', :skip_before do
-        expect(Zazo::Tools::EventDispatcher).to receive(:emit).with(%w(contact ignored), Hash)
+        expect(Zazo::Tool::EventDispatcher).to receive(:emit).with(%w(contact ignored), Hash)
         subject
       end
       it 'has specific status', :skip_before do
@@ -29,7 +29,7 @@ RSpec.describe Contact::Ignore do
 
       include_examples 'contact is ignored specs'
       it 'should dispatch an event', :skip_before do
-        expect(Zazo::Tools::EventDispatcher).to_not receive(:emit)
+        expect(Zazo::Tool::EventDispatcher).to_not receive(:emit)
         subject
       end
       it 'has specific status', :skip_before do
@@ -42,7 +42,7 @@ RSpec.describe Contact::Ignore do
 
       include_examples 'contact is added specs'
       it 'should dispatch an event', :skip_before do
-        expect(Zazo::Tools::EventDispatcher).to_not receive(:emit)
+        expect(Zazo::Tool::EventDispatcher).to_not receive(:emit)
         subject
       end
       it 'has specific status', :skip_before do

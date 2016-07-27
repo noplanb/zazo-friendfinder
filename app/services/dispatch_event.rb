@@ -8,7 +8,7 @@ class DispatchEvent
   end
 
   def do
-    Zazo::Tools::EventDispatcher.emit(name, build_event)
+    Zazo::Tool::EventDispatcher.emit(name, build_event)
   end
 
   private

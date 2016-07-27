@@ -11,11 +11,11 @@ class CronWorker
 
     def perform
       if last_running_date_expired?
-        Zazo::Tools::Logger.info(self, 'expired')
+        Zazo::Tool::Logger.info(self, 'expired')
         set_last_running_date(Time.now)
         yield if block_given?
       else
-        Zazo::Tools::Logger.info(self, "not expired, will expire at #{get_expiration_date}")
+        Zazo::Tool::Logger.info(self, "not expired, will expire at #{get_expiration_date}")
       end
     end
 
