@@ -1,6 +1,6 @@
 # Changelog
 
-### 0.10.6-wip.1
+### 0.11.0
 - :bulb: Added wercker deploy configuration
 - :arrow_up: Bumped and updated usage of zazo-tools gem
 
