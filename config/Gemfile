@@ -26,7 +26,7 @@ gem 'rails-settings-cached', '~> 0.6'
 gem 'active_model_serializers', '~> 0.9.0'
 gem 'aasm'
 
-gem 'zazo-tools', github: 'noplanb/zazo-tools', tag: '0.3.0-wip.7', require: 'zazo'
+gem 'zazo-tools', github: 'noplanb/zazo-tools', tag: '1.0.0', require: 'zazo'
 
 gem 'figaro', github: 'asux/figaro', branch: 'feature/eb-set-command'
 gem 'puma'
