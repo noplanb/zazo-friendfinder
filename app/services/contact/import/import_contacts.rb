@@ -12,7 +12,7 @@ class Contact::Import::ImportContacts
     raw_params.each { |contact_data| add_or_merge_contact(contact_data) }
 
     status = errors.empty?
-    Zazo::Tools::Logger.info(self, "errors (added); owner: #{owner.mkey}; errors: #{errors.inspect}") unless status
+    Zazo::Tool::Logger.info(self, "errors (added); owner: #{owner.mkey}; errors: #{errors.inspect}") unless status
     status
   end
 

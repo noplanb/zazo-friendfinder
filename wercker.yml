@@ -7,9 +7,8 @@ build:
         POSTGRES_PASSWORD: secret888zazo
         POSTGRES_USER: postgres
   steps:
-    - asux/bundle-install@1.1.8:
+    - bundle-install:
         gemfile: config/Gemfile
-        path: /usr/local/bundle
         without: development production
     - script:
         name: db setup
@@ -22,5 +21,29 @@ build:
         code: rspec
   after-steps:
     - asux/pretty-slack-notify:
-        webhook_url: $slack_url
+        webhook_url: $SLACK_URL
         channel: devops
+
+deploy:
+  box: zazo/awseb-wercker-deploy
+  steps:
+    - script:
+        name: set up ssh key
+        code: /opt/setup/github_ssh_key.sh
+    - script:
+        name: clone project
+        code: /opt/action/clone_repo.sh
+    - script:
+        name: setup aws and eb config
+        code: /opt/setup/aws_eb_conf.sh
+    - script:
+        name: check eb status
+        code: /opt/action/eb_status.sh
+    - script:
+        name: deploy to eb
+        code: /opt/action/eb_deploy.sh
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_URL
+        channel: devops
+        username: Wercker

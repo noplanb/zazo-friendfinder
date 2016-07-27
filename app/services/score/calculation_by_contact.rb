@@ -26,6 +26,8 @@ class Score::CalculationByContact
   end
 
   def criteria
-    Score::ALLOWED_METHODS.map { |name| Classifier.new([:score, :criteria, name]).klass.new(contact) }
+    Score::ALLOWED_METHODS.map do |name|
+      Zazo::Tool::Classifier.new([:score, :criteria, name]).klass.new(contact)
+    end
   end
 end

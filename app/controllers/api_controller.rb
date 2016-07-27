@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   include Authentication
+  include Zazo::Controller::Interactions
 
   def handle_with_manager(manager)
     if manager.do
@@ -9,14 +10,6 @@ class ApiController < ApplicationController
     else
       manager.log_messages(:failure)
       render status: :unprocessable_entity, json: { status: :failure, errors: manager.errors }
-    end
-  end
-
-  def handle_interactor(type_settings, interactor, &callback)
-    Controllers::HandleApiInteractor.new(
-      context: self, interactor: interactor,
-      type_settings: type_settings, callback: callback).call do |handler|
-      handler.render? ? render(handler.response) : handler.result
     end
   end
 end

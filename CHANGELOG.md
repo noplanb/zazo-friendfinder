@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.11.0
+- :bulb: Added wercker deploy configuration
+- :arrow_up: Bumped and updated usage of zazo-tools gem
+
 ### 0.10.6
 - :arrow_up: Implemented contacts sync before sending notifications
 

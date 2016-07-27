@@ -19,10 +19,6 @@ gem 'cells', '~> 4.0.3'
 gem 'cells-slim'
 gem 'kaminari'
 gem 'hashie'
-gem 'active_interaction', '~> 3.0'
-
-gem 'faraday_middleware'
-gem 'faraday-digestauth'
 
 gem 'global_phone'
 gem 'settingslogic'
@@ -30,7 +26,7 @@ gem 'rails-settings-cached', '~> 0.6'
 gem 'active_model_serializers', '~> 0.9.0'
 gem 'aasm'
 
-gem 'zazo-tools', '~> 0.3.0',  github: 'noplanb/zazo-tools'
+gem 'zazo-tools', github: 'noplanb/zazo-tools', tag: '1.0.0', require: 'zazo'
 
 gem 'figaro', github: 'asux/figaro', branch: 'feature/eb-set-command'
 gem 'puma'
