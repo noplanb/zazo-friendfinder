@@ -1,4 +1,4 @@
-class DataProviderApi < BaseApi
+class DataProviderApi < Zazo::Tool::ServiceApiWrapper
   version  1
   base_uri Figaro.env.dataprovider_api_base_url
   digest_auth AppConfig.app_name_key, Figaro.env.dataprovider_api_token

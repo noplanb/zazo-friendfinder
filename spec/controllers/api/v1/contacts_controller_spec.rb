@@ -52,8 +52,10 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
       it { expect(response).to be_unprocessable }
       it { expect(ResqueWorker::ImportContacts).to_not have_queued(user_mkey, params['contacts']).in(:add_contacts) }
       it do
-        expect(json_response).to eq 'status' => 'failure',
-                                    'errors' => { 'invalid_contacts' => [contacts.first] }
+        expected = {
+          'status' => 'failure',
+          'errors' => ['Invalid contacts {"display_name"=>"Ivan Kornilov"}'] }
+        expect(json_response).to eq(expected)
       end
     end
   end
