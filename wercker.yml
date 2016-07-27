@@ -23,3 +23,27 @@ build:
     - asux/pretty-slack-notify:
         webhook_url: $SLACK_URL
         channel: devops
+
+deploy:
+  box: zazo/awseb-wercker-deploy
+  steps:
+    - script:
+        name: set up ssh key
+        code: /opt/setup/github_ssh_key.sh
+    - script:
+        name: clone project
+        code: /opt/action/clone_repo.sh
+    - script:
+        name: setup aws and eb config
+        code: /opt/setup/aws_eb_conf.sh
+    - script:
+        name: check eb status
+        code: /opt/action/eb_status.sh
+    - script:
+        name: deploy to eb
+        code: /opt/action/eb_deploy.sh
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_URL
+        channel: devops
+        username: Wercker
