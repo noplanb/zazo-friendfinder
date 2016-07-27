@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.11.1
+- :hammer: Fixed Gemfile.lock for zazo-tools gem
+
 ### 0.11.0
 - :bulb: Added wercker deploy configuration
 - :arrow_up: Bumped and updated usage of zazo-tools gem

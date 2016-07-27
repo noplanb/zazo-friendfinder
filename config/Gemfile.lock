@@ -8,10 +8,10 @@ GIT
 
 GIT
   remote: git://github.com/noplanb/zazo-tools.git
-  revision: 0cdccf3617b01b579818fdbf4b284ffa8281a342
-  tag: 0.3.0-wip.7
+  revision: 0d8061016105647f4c17571b068514c99d8f549b
+  tag: 1.0.0
   specs:
-    zazo-tools (0.3.0)
+    zazo-tools (1.0.0)
       active_interaction
       aws-sdk
       faraday-digestauth
