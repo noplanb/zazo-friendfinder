@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.11.1-wip.1
+- :arrow_up: Fixed case when contact represented by multiple zazo users
+- :arrow_up: Fixed VCR configuration
+
 ### 0.11.1
 - :hammer: Fixed Gemfile.lock for zazo-tools gem
 

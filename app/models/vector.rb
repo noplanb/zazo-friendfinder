@@ -19,9 +19,9 @@ class Vector < ActiveRecord::Base
   validates :name, inclusion: { in: ALLOWED_ADDITIONS.keys, message: '%{value} is not a allowed vector name' }
   validate :additions_must_be_allowed, :value_has_correct_format, unless: 'name.nil?'
 
-  scope :mobile,   -> { where name: 'mobile' }
-  scope :email,    -> { where name: 'email' }
-  scope :facebook, -> { where name: 'facebook' }
+  scope :mobile,   -> { where(name: 'mobile') }
+  scope :email,    -> { where(name: 'email') }
+  scope :facebook, -> { where(name: 'facebook') }
 
   def additions_value(key, default = nil)
     (additions.try :[], key) || default
