@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ApiController, type: :controller do
-  let(:user_mkey) { '7qdanSEmctZ2jPnYA0a1' }
-  let(:user_auth) { 'yLPv2hZ4DPRq1wGlQvqm' }
+  include_context 'user authentication'
+
+  let(:user) do
+    build(:user,
+      mkey: '7qdanSEmctZ2jPnYA0a1',
+      auth: 'yLPv2hZ4DPRq1wGlQvqm')
+  end
 
   controller do
     def index
@@ -10,17 +15,20 @@ RSpec.describe ApiController, type: :controller do
     end
   end
 
-  describe 'GET #index with digest auth' do
-    before do
-      authenticate_with_http_digest(user_mkey, user_auth) { get :index }
+  describe 'GET #index' do
+    context 'with authentication',
+      vcr: { strip_classname: true, cassette: 'api/authentication' } do
+      it do
+        authenticate_user { get :index }
+        expect(response).to be_success
+      end
     end
 
-    it { expect(response).to be_success }
-  end
-
-  describe 'GET #index without auth' do
-    before { get :index }
-
-    it { expect(response).to have_http_status(:unauthorized) }
+    context 'without authentication' do
+      it do
+        get :index
+        expect(response).to be_unauthorized
+      end
+    end
   end
 end

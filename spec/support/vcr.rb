@@ -27,9 +27,13 @@ RSpec.configure do |config|
     elsif options[:record] == :skip
       VCR.turned_off(&example)
     else
-      klass = example.metadata[:described_class]
-      name = "#{klass.to_s.underscore}/#{options[:cassette]}"
-      example.metadata[:vcr] = { cassette_name: name, erb: api_base_urls }
+      cassette = if options[:strip_classname]
+        options[:cassette]
+      else
+        klass = example.metadata[:described_class]
+        "#{klass.to_s.underscore}/#{options[:cassette]}"
+      end
+      example.metadata[:vcr] = { cassette_name: cassette, erb: api_base_urls }
       example.call
     end
   end
