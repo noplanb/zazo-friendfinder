@@ -1,8 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::NotificationsController, type: :controller do
-  let(:user_mkey) { 'GBAHb0482YxlJ0kYwbIS' }
-  let(:user_auth) { 'O4VXCozKuyQNjnWPh400' }
+RSpec.describe Api::V1::NotificationsController, type: :controller,
+  vcr: { strip_classname: true, cassette: 'api/authentication' } do
+  include_context 'user authentication'
+
+  let(:user) do
+    build(:user,
+      mkey: '7qdanSEmctZ2jPnYA0a1',
+      auth: 'yLPv2hZ4DPRq1wGlQvqm')
+  end
 
   let(:vector) { FactoryGirl.create(:vector_mobile, value: '+16502453537') }
   let(:contact) do
@@ -17,7 +23,7 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
   let(:incorrect_nkey) { 'xxxxxxxxxxxx' }
 
   before do
-    authenticate_with_http_digest(user_mkey, user_auth) { send(*(action + [{ id: nkey }])) }
+    authenticate_user { send(*(action + [{ id: nkey }])) }
     notification.reload
   end
 
@@ -28,7 +34,7 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
     it { expect(json_response['data']['contact']).to be_kind_of(Hash) }
   end
 
-  describe 'POST #add' do
+  describe 'POST #add', vcr: { cassette: 'add' } do
     let(:action) { [:post, :add] }
 
     it { expect(response).to be_success }
@@ -37,22 +43,20 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
       expected = {
         'status' => 'success',
         'data' => {
-          'id' => '20',
-          'mkey' => 'SvFhibPZhIFUJsB2iYl8',
-          'first_name' => 'Charley',
-          'last_name' => 'Bashirian',
+          'id' => '32',
+          'mkey' => 'tq1Bk0hUprbrTHfIKhAE',
+          'first_name' => 'David',
+          'last_name' => 'Miller',
           'mobile_number' => '+16502453537',
           'device_platform' => nil,
-          'emails'=>[],
+          'emails' => [],
           'has_app' => 'false',
-          'ckey' => '2_20_0mkxC2UShfdX2RuA5ly4',
-          'cid' => '19',
-          'connection_created_on' => '2016-04-25T17:36:13Z',
+          'ckey' => '2_32_xrE5jKBoeGE2FGrSpbDV',
+          'cid' => '2',
+          'connection_created_on' => '2016-08-09T10:42:38Z',
           'connection_creator_mkey' => 'GBAHb0482YxlJ0kYwbIS',
           'connection_status' => 'established',
-          'status' => 'added'
-        }
-      }
+          'status' => 'added' } }
       expect(json_response).to eq(expected)
     end
 
@@ -60,7 +64,7 @@ RSpec.describe Api::V1::NotificationsController, type: :controller do
       let(:nkey) { incorrect_nkey }
 
       it { expect(response).to be_unprocessable }
-      it { expect(notification.status).to eq 'no_feedback' }
+      it { expect(notification.status).to eq('no_feedback') }
       it do
         expected = {
           'status' => 'failure',
