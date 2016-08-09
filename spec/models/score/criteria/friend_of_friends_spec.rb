@@ -5,7 +5,7 @@ RSpec.describe Score::Criteria::FriendOfFriends do
   let(:friend) { '7qdanSEmctZ2jPnYA0a1' }
   let(:mutual) { '0DAQEVtmNKQiW6aoQrvo' }
 
-  let(:contact) { FactoryGirl.create(:contact, owner_mkey: owner_mkey, zazo_mkey: friend) }
+  let(:contact) { create(:contact, owner_mkey: owner_mkey, zazo_mkey: friend) }
   let(:instance) { described_class.new(contact) }
 
   describe '#calculate_with_ratio' do
@@ -16,7 +16,7 @@ RSpec.describe Score::Criteria::FriendOfFriends do
     end
 
     context 'without defined zazo_mkey' do
-      let(:contact) { FactoryGirl.create(:contact) }
+      let(:contact) { create(:contact) }
       subject { instance.calculate_with_ratio }
 
       it { is_expected.to eq 0 }
@@ -24,7 +24,7 @@ RSpec.describe Score::Criteria::FriendOfFriends do
 
     context 'without incorrect zazo mkeys' do
       let(:incorrect) { 'xxxxxxxxxxxx' }
-      let(:contact) { FactoryGirl.create(:contact, owner_mkey: incorrect, zazo_mkey: incorrect) }
+      let(:contact) { create(:contact, owner_mkey: incorrect, zazo_mkey: incorrect) }
       subject { instance.calculate_with_ratio }
 
       it { is_expected.to eq 0 }

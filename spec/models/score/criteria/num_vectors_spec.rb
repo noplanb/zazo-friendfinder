@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criteria::NumVectors do
-  let(:contact) { FactoryGirl.create :contact, vectors: vectors }
+  let(:contact) { create :contact, vectors: vectors }
   let(:instance) { described_class.new contact }
 
   describe '#calculate_with_ratio' do
@@ -9,9 +9,9 @@ RSpec.describe Score::Criteria::NumVectors do
 
     context 'contact with 3 vectors' do
       let(:vectors) do
-        [ FactoryGirl.create(:vector_mobile),
-          FactoryGirl.create(:vector_email),
-          FactoryGirl.create(:vector_facebook) ]
+        [ create(:vector_mobile),
+          create(:vector_email),
+          create(:vector_facebook) ]
       end
 
       it { is_expected.to eq 3 }
@@ -19,15 +19,15 @@ RSpec.describe Score::Criteria::NumVectors do
 
     context 'contact with 2 vectors' do
       let(:vectors) do
-        [ FactoryGirl.create(:vector_mobile),
-          FactoryGirl.create(:vector_email) ]
+        [ create(:vector_mobile),
+          create(:vector_email) ]
       end
 
       it { is_expected.to eq 2 }
     end
 
     context 'contact with 1 vector' do
-      let(:vectors) { [FactoryGirl.create(:vector_mobile)] }
+      let(:vectors) { [create(:vector_mobile)] }
 
       it { is_expected.to eq 1 }
     end
@@ -40,8 +40,8 @@ RSpec.describe Score::Criteria::NumVectors do
   end
 
   describe '#save' do
-    let(:vectors) { [FactoryGirl.create(:vector_mobile)] }
-    let(:contact) { FactoryGirl.create :contact, vectors: vectors, additions: { marked_as_favorite: true } }
+    let(:vectors) { [create(:vector_mobile)] }
+    let(:contact) { create :contact, vectors: vectors, additions: { marked_as_favorite: true } }
     subject { instance.save }
 
     it { is_expected.to be_valid }

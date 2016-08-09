@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Template::ViewData, type: :model do
-  let(:notification) { FactoryGirl.build :notification }
+  let(:notification) { build :notification }
   let(:instance) { described_class.new notification }
 
   describe 'attributes' do

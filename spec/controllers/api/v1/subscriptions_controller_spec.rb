@@ -15,7 +15,7 @@ RSpec.describe Api::V1::SubscriptionsController, type: :controller,
 
   before do
     additions &&
-      FactoryGirl.create(:owner_additions, { mkey: user.mkey }.merge(additions))
+      create(:owner_additions, { mkey: user.mkey }.merge(additions))
     authenticate_user { send(*action) }
   end
 

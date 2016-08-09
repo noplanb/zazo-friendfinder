@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Contacts::RecommendContact do
-  let(:owner) { Owner.new(FactoryGirl.build(:user).mkey) }
+  let(:owner) { Owner.new(build(:user).mkey) }
 
-  let(:contact_to_recommend) { FactoryGirl.build(:user) }
-  let(:recommended_to_1) { FactoryGirl.build(:user) }
-  let(:recommended_to_2) { FactoryGirl.build(:user) }
+  let(:contact_to_recommend) { build(:user) }
+  let(:recommended_to_1) { build(:user) }
+  let(:recommended_to_2) { build(:user) }
 
   describe '.run' do
     subject do
@@ -18,7 +18,7 @@ RSpec.describe Contacts::RecommendContact do
       let(:contact) { Owner.new(recommended_to_1.mkey).contacts.first }
 
       before do
-        FactoryGirl.create(:contact,
+        create(:contact,
           owner_mkey: recommended_to_1.mkey, zazo_mkey: contact_to_recommend.mkey)
       end
 

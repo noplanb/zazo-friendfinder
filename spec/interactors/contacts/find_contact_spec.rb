@@ -9,7 +9,7 @@ RSpec.describe Contacts::FindContact do
     end
 
     context 'when contact is exist' do
-      let(:id) { FactoryGirl.create(:contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS').id }
+      let(:id) { create(:contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS').id }
 
       it { expect(subject.valid?).to be(true) }
       it { expect(subject.errors.messages).to eq({}) }
@@ -24,7 +24,7 @@ RSpec.describe Contacts::FindContact do
     end
 
     context 'when user is not owner of contact' do
-      let(:id) { FactoryGirl.create(:contact, owner_mkey: 'xxxxxxxxxxxx').id }
+      let(:id) { create(:contact, owner_mkey: 'xxxxxxxxxxxx').id }
 
       it { expect(subject.valid?).to be(false) }
       it { expect(subject.errors.messages).to eq(id: ["current user is not owner of contact with id=#{id}"]) }

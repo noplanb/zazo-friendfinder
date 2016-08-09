@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criteria::ZazoActivity do
-  let(:connection) { FactoryGirl.create(:contact, zazo_mkey: mkey) }
+  let(:connection) { create(:contact, zazo_mkey: mkey) }
   let(:instance) { described_class.new(connection) }
 
   describe '#calculate_with_ratio' do
@@ -26,7 +26,7 @@ RSpec.describe Score::Criteria::ZazoActivity do
     end
 
     context 'when user in not registered on zazo' do
-      let(:connection) { FactoryGirl.create(:contact) }
+      let(:connection) { create(:contact) }
 
       it { is_expected.to eq 0 }
     end

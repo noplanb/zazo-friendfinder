@@ -17,7 +17,7 @@ RSpec.describe CronWorker::FakeUserJoinedNotification do
 
   describe '.perform', vcr: { cassette: 'perform' } do
     before do
-      FactoryGirl.create(:notification, status: 'added', contact: contact_41)
+      create(:notification, status: 'added', contact: contact_41)
       described_class.perform(force: true)
     end
 

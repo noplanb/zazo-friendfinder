@@ -5,14 +5,14 @@ RSpec.describe Score::Criteria::ContactOfFriends do
   let(:friend_1) { '0DAQEVtmNKQiW6aoQrvo' }
   let(:friend_2) { '7qdanSEmctZ2jPnYA0a1' }
 
-  let(:contact) { FactoryGirl.create(:contact, owner_mkey: owner_mkey, vectors: vectors) }
+  let(:contact) { create(:contact, owner_mkey: owner_mkey, vectors: vectors) }
   let(:instance) { described_class.new contact }
 
   let(:email) { 'elfishawy.sani@gmail.com' }
   let(:mobile) { '+16502453537' }
   let(:vectors) do
-    [ FactoryGirl.create(:vector_email, value: email),
-      FactoryGirl.create(:vector_mobile, value: mobile) ]
+    [ create(:vector_email, value: email),
+      create(:vector_mobile, value: mobile) ]
   end
 
   describe '#calculate_with_ratio' do
@@ -20,9 +20,9 @@ RSpec.describe Score::Criteria::ContactOfFriends do
 
     context 'by two friends overlap' do
       before do
-        FactoryGirl.create(:contact, owner_mkey: friend_1, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)])
-        FactoryGirl.create(:contact, owner_mkey: friend_2, vectors: [FactoryGirl.create(:vector_email, value: email)])
-        FactoryGirl.create(:contact, vectors: [FactoryGirl.create(:vector_email, value: email)])
+        create(:contact, owner_mkey: friend_1, vectors: [create(:vector_mobile, value: mobile)])
+        create(:contact, owner_mkey: friend_2, vectors: [create(:vector_email, value: email)])
+        create(:contact, vectors: [create(:vector_email, value: email)])
       end
 
       it { is_expected.to eq 16 }
@@ -30,8 +30,8 @@ RSpec.describe Score::Criteria::ContactOfFriends do
 
     context 'by one friend overlap' do
       before do
-        FactoryGirl.create(:contact, owner_mkey: friend_1, vectors: [FactoryGirl.create(:vector_mobile, value: mobile), FactoryGirl.create(:vector_email, value: email)])
-        FactoryGirl.create(:contact, vectors: [FactoryGirl.create(:vector_email, value: email)])
+        create(:contact, owner_mkey: friend_1, vectors: [create(:vector_mobile, value: mobile), create(:vector_email, value: email)])
+        create(:contact, vectors: [create(:vector_email, value: email)])
       end
 
       it { is_expected.to eq 8 }
@@ -39,8 +39,8 @@ RSpec.describe Score::Criteria::ContactOfFriends do
 
     context 'without friends overlap' do
       before do
-        FactoryGirl.create(:contact, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)])
-        FactoryGirl.create(:contact, vectors: [FactoryGirl.create(:vector_email, value: email)])
+        create(:contact, vectors: [create(:vector_mobile, value: mobile)])
+        create(:contact, vectors: [create(:vector_email, value: email)])
       end
 
       it { is_expected.to eq 0 }
@@ -48,8 +48,8 @@ RSpec.describe Score::Criteria::ContactOfFriends do
   end
 
   describe '#save' do
-    let!(:contact_1) { FactoryGirl.create(:contact, owner_mkey: friend_1, vectors: [FactoryGirl.create(:vector_mobile, value: mobile), FactoryGirl.create(:vector_email, value: email)]) }
-    let!(:contact_2) { FactoryGirl.create(:contact, owner_mkey: friend_2, vectors: [FactoryGirl.create(:vector_email, value: email)]) }
+    let!(:contact_1) { create(:contact, owner_mkey: friend_1, vectors: [create(:vector_mobile, value: mobile), create(:vector_email, value: email)]) }
+    let!(:contact_2) { create(:contact, owner_mkey: friend_2, vectors: [create(:vector_email, value: email)]) }
     let!(:subject) { instance.save }
     before { contact.reload }
 

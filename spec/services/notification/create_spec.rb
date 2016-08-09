@@ -5,7 +5,7 @@ RSpec.describe Notification::Create do
 
   describe '#do' do
     let(:category) { 'user_joined' }
-    let(:contact) { FactoryGirl.create(:contact) }
+    let(:contact) { create(:contact) }
     let(:contact_name) { "#{contact.first_name} #{contact.last_name}" }
 
     subject do

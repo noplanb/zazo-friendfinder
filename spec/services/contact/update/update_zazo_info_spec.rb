@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Contact::Update::UpdateZazoInfo do
-  let(:contact) { FactoryGirl.create(:contact, owner_mkey: owner_mkey, zazo_mkey: zazo_mkey) }
+  let(:contact) { create(:contact, owner_mkey: owner_mkey, zazo_mkey: zazo_mkey) }
   let(:instance) { described_class.new(contact) }
   let(:owner_mkey) { 'xxxxxxxxxxxx' }
   let(:zazo_mkey) { 'GBAHb0482YxlJ0kYwbIS' }

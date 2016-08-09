@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criteria::ContactOfUsers do
-  let(:contact) { FactoryGirl.create :contact, vectors: vectors }
+  let(:contact) { create :contact, vectors: vectors }
   let(:instance) { described_class.new contact }
   let(:email) { 'elfishawy.sani@gmail.com' }
   let(:mobile) { '+16502453537' }
   let(:vectors) do
-    [ FactoryGirl.create(:vector_email, value: email),
-      FactoryGirl.create(:vector_mobile, value: mobile),
-      FactoryGirl.create(:vector_facebook, value: email) ]
+    [ create(:vector_email, value: email),
+      create(:vector_mobile, value: mobile),
+      create(:vector_facebook, value: email) ]
   end
 
   describe '#calculate_with_ratio' do
@@ -17,9 +17,9 @@ RSpec.describe Score::Criteria::ContactOfUsers do
     context 'several others have this contact' do
       context 'by one vector overlap' do
         before do
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email)]
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email)]
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email), FactoryGirl.create(:vector_facebook, value: email)]
+          create :contact, vectors: [create(:vector_email, value: email)]
+          create :contact, vectors: [create(:vector_facebook, value: email)]
+          create :contact, vectors: [create(:vector_email, value: email), create(:vector_facebook, value: email)]
         end
 
         it { is_expected.to eq 12 }
@@ -27,10 +27,10 @@ RSpec.describe Score::Criteria::ContactOfUsers do
 
       context 'by two vectors overlap' do
         before do
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email)]
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)]
+          create :contact, vectors: [create(:vector_email, value: email), create(:vector_mobile, value: mobile)]
+          create :contact, vectors: [create(:vector_facebook, value: email), create(:vector_mobile, value: mobile)]
+          create :contact, vectors: [create(:vector_facebook, value: email)]
+          create :contact, vectors: [create(:vector_mobile, value: mobile)]
         end
 
         it { is_expected.to eq 16 }
@@ -40,7 +40,7 @@ RSpec.describe Score::Criteria::ContactOfUsers do
     context 'one other has this contact' do
       context 'by one vector overlap' do
         before do
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email)]
+          create :contact, vectors: [create(:vector_facebook, value: email)]
         end
 
         it { is_expected.to eq 4 }
@@ -48,7 +48,7 @@ RSpec.describe Score::Criteria::ContactOfUsers do
 
       context 'by two vectors overlap' do
         before do
-          FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_facebook, value: email), FactoryGirl.create(:vector_mobile, value: mobile)]
+          create :contact, vectors: [create(:vector_facebook, value: email), create(:vector_mobile, value: mobile)]
         end
 
         it { is_expected.to eq 4 }
@@ -61,8 +61,8 @@ RSpec.describe Score::Criteria::ContactOfUsers do
   end
 
   describe '#save' do
-    let!(:contact_1) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_email, value: email), FactoryGirl.create(:vector_mobile, value: mobile)] }
-    let!(:contact_2) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: mobile)] }
+    let!(:contact_1) { create :contact, vectors: [create(:vector_email, value: email), create(:vector_mobile, value: mobile)] }
+    let!(:contact_2) { create :contact, vectors: [create(:vector_mobile, value: mobile)] }
     let!(:subject) { instance.save }
     before { contact.reload }
 

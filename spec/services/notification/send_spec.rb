@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Notification::Send do
   let(:instance) { described_class.new(notification) }
-  let(:notification) { FactoryGirl.create(:notification, kind: kind, contact: contact) }
+  let(:notification) { create(:notification, kind: kind, contact: contact) }
 
   describe '#do' do
     #
@@ -16,26 +16,26 @@ RSpec.describe Notification::Send do
       subject { notification.reload.state }
 
       context 'when contact owner is existing zazo user with persisted emails' do
-        let(:contact) { FactoryGirl.create(:contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS') }
+        let(:contact) { create(:contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS') }
 
         it { is_expected.to eq 'sent' }
       end
 
       context 'when contact owner is existing zazo user without persisted emails' do
-        let(:contact) { FactoryGirl.create(:contact, owner_mkey: 'XqUn9Fs5YHd75l1rin76') }
+        let(:contact) { create(:contact, owner_mkey: 'XqUn9Fs5YHd75l1rin76') }
 
         it { is_expected.to eq 'canceled' }
       end
 
       context 'when contact owner is not exist' do
-        let(:contact) { FactoryGirl.create(:contact, owner_mkey: 'xxxxxxxxxxxx') }
+        let(:contact) { create(:contact, owner_mkey: 'xxxxxxxxxxxx') }
 
         it { is_expected.to eq 'canceled' }
       end
 
 =begin
       context 'when email is not correct' do
-        let(:contact) { FactoryGirl.create(:contact, owner_mkey: 'dz4X0EvprPJO6fGysT8X') }
+        let(:contact) { create(:contact, owner_mkey: 'dz4X0EvprPJO6fGysT8X') }
 
         it { is_expected.to eq 'error' }
       end
@@ -51,7 +51,7 @@ RSpec.describe Notification::Send do
       subject { notification.reload.state }
 
       context 'when contact owner is existing zazo push_user' do
-        let(:contact) { FactoryGirl.create(:contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS') }
+        let(:contact) { create(:contact, owner_mkey: 'GBAHb0482YxlJ0kYwbIS') }
 
         it { is_expected.to eq 'sent' }
       end

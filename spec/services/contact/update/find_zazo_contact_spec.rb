@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Contact::Update::FindZazoContact do
   let(:owner_mkey) { 'xxxxxxxxxxxxxx' }
-  let(:contact) { FactoryGirl.create(:contact, owner_mkey: owner_mkey, vectors: vectors) }
+  let(:contact) { create(:contact, owner_mkey: owner_mkey, vectors: vectors) }
   let(:instance) { described_class.new(contact) }
   let(:mobile_by_friend) { '+16502453537' }
   let(:mobile_by_not_friend) { '+16502453559' }

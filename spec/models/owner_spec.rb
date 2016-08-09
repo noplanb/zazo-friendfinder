@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Owner, type: :model do
-  let!(:contact_1) { FactoryGirl.create(:contact, owner_mkey: mkey, total_score: 4) }
-  let!(:contact_2) { FactoryGirl.create(:contact, owner_mkey: mkey, total_score: 6) }
+  let!(:contact_1) { create(:contact, owner_mkey: mkey, total_score: 4) }
+  let!(:contact_2) { create(:contact, owner_mkey: mkey, total_score: 6) }
   let(:mkey) { 'xxxxxxxxxxxx' }
   let(:instance) { described_class.new(mkey) }
 
@@ -21,7 +21,7 @@ RSpec.describe Owner, type: :model do
   describe '#not_proposed_contacts' do
     subject { instance.contacts.not_proposed }
     before do
-      FactoryGirl.create(:notification, contact: contact_2)
+      create(:notification, contact: contact_2)
     end
 
     it { is_expected.to eq [contact_1] }

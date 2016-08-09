@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Contact::Add do
-  let(:vector) { FactoryGirl.create(:vector_mobile, value: '+16502453537') }
+  let(:vector) { create(:vector_mobile, value: '+16502453537') }
   let(:contact) do
-    FactoryGirl.create(:contact,
+    create(:contact,
       first_name: 'David',
       last_name: 'Miller',
       owner_mkey: 'GBAHb0482YxlJ0kYwbIS',

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Template, type: :model do
-  let(:notification) { FactoryGirl.create :notification_mobile }
+  let(:notification) { create :notification_mobile }
   let(:instance) { described_class.new notification }
 
   describe '#notification' do

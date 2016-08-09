@@ -11,8 +11,8 @@ RSpec.describe Api::V1::SuggestionsController, type: :controller,
   end
 
   describe 'GET #index' do
-    let!(:contact_1) { FactoryGirl.create(:contact, owner_mkey: user.mkey) }
-    let!(:contact_2) { FactoryGirl.create(:contact, owner_mkey: user.mkey) }
+    let!(:contact_1) { create(:contact, owner_mkey: user.mkey) }
+    let!(:contact_2) { create(:contact, owner_mkey: user.mkey) }
 
     before do
       authenticate_user { get :index, format: :json }
@@ -22,10 +22,10 @@ RSpec.describe Api::V1::SuggestionsController, type: :controller,
   end
 
   describe 'POST #recommend' do
-    let(:contact) { FactoryGirl.create(:contact, owner_mkey: build(:user).mkey) }
+    let(:contact) { create(:contact, owner_mkey: build(:user).mkey) }
     let(:params) do
       { recommendations: {
-          contact_mkey: FactoryGirl.build(:user).mkey, to_mkeys: [contact.owner.mkey] } }
+          contact_mkey: build(:user).mkey, to_mkeys: [contact.owner.mkey] } }
     end
 
     before do

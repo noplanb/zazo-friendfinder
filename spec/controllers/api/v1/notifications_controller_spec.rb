@@ -10,15 +10,15 @@ RSpec.describe Api::V1::NotificationsController, type: :controller,
       auth: 'yLPv2hZ4DPRq1wGlQvqm')
   end
 
-  let(:vector) { FactoryGirl.create(:vector_mobile, value: '+16502453537') }
+  let(:vector) { create(:vector_mobile, value: '+16502453537') }
   let(:contact) do
-    FactoryGirl.create(:contact,
+    create(:contact,
       first_name: 'David',
       last_name: 'Miller',
       owner_mkey: 'GBAHb0482YxlJ0kYwbIS',
       vectors: [vector])
   end
-  let(:notification) { FactoryGirl.create(:notification, contact: contact) }
+  let(:notification) { create(:notification, contact: contact) }
   let(:nkey) { notification.nkey }
   let(:incorrect_nkey) { 'xxxxxxxxxxxx' }
 
