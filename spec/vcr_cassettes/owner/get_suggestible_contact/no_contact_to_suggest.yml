@@ -1,0 +1,177 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile?friend=FaGUU1xx60N2cOufnV1v&phones%5B%5D=%2B380987777777"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ3MDgxODA0MTpiMDQ4YTA5MWJmOGNkZDY5M2NkMTRlNTAwNGRiYzZjMA==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - f8626b0f-bbef-409a-a5b1-9184930b218f
+      X-Runtime:
+      - '0.223861'
+      Date:
+      - Wed, 10 Aug 2016 08:34:01 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 08:34:01 GMT
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/find_by_mobile?friend=FaGUU1xx60N2cOufnV1v&phones%5B%5D=%2B380987777777"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - cd9f806e-aafa-4db5-b07c-793b0d1dcf6c
+      X-Runtime:
+      - '1.114945'
+      X-Miniprofiler-Ids:
+      - '["va2et18bz27n28zqkhjy","62n1eq6wvlp2wyt02wfj","vrm6xgfikgeth0x5f2qw","756wbdn4de8r8k9gfk7e","cs4zdx39wqshi5vuc9y5","g0xs5blfp5u7rvmqu50p","ubgu43dkwywpqc690io5","pzho6r2go1rtd16r713v","gsf5es2klxmysfzk1xcm","dviaj7f583ewzv361dbv"]'
+      Date:
+      - Wed, 10 Aug 2016 08:34:02 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"id":2956,"mkey":"YRn7ZUDIZI3WzdKT8WxA"}'
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 08:34:02 GMT
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=YRn7ZUDIZI3WzdKT8WxA"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ3MDgxODA0MjpiZjgyZDk5ZWM3ZjNlZjg3MWZmOGI2MjJjMzBjZmRjNQ==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - e28fbd71-de0f-43e8-943a-f58c527cd838
+      X-Runtime:
+      - '0.223150'
+      Date:
+      - Wed, 10 Aug 2016 08:34:02 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 08:34:02 GMT
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=id&attrs%5B%5D=last_name&user=YRn7ZUDIZI3WzdKT8WxA"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 553f385a-6066-43d9-9554-0255bea9fb82
+      X-Runtime:
+      - '1.112513'
+      X-Miniprofiler-Ids:
+      - '["4w7qyjhs7zcko63wabz2","62n1eq6wvlp2wyt02wfj","vrm6xgfikgeth0x5f2qw","756wbdn4de8r8k9gfk7e","cs4zdx39wqshi5vuc9y5","g0xs5blfp5u7rvmqu50p","ubgu43dkwywpqc690io5","pzho6r2go1rtd16r713v","gsf5es2klxmysfzk1xcm","dviaj7f583ewzv361dbv"]'
+      Date:
+      - Wed, 10 Aug 2016 08:34:03 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"id":2956,"first_name":"Nexus","last_name":"NexusInna","friends":["emw7coRpjFHjlRm9lnCc","r7ygnuVrWz51JHRn2tAk","quLw5xZTWegtkoqPq8T3","qsYCPjQwDckShQiJprZi","tIjtGAKdVfhdQLHaoT61","fYbsViwlH8JsVNPJnPx3","8uRHzF9Fb16tYtxH8Ue9","YPStb3UUCtiI5HODkNjZ","pInNcBaUIl66SC6BMOfV","FhPEDt2GUfZkQxYavgtM","upqryKcdvuZp5mlecmn8","FaGUU1xx60N2cOufnV1v","BsHCNf0SYI8CJv91x48W","offmAM4QV5djegwFLqtl","dCeqXNEefoGA8Otu1iCd","LsNUXNH9nBcpHkJGUgU7","5yUd5BIAdoCzNGb2aEZG","j49wNVTmRXCT5Yuf9uAw","d0yE3NErwqcJl1lMC8bW","RMte5GDviJ4DLoH5jstN","HzHsEoCqnu95eisFDQeD","ghc6tcVEhebZZvYeixCz"]}'
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 08:34:03 GMT
+recorded_with: VCR 3.0.3
