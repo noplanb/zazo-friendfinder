@@ -1,0 +1,173 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=xxxxxxxxxxxx"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ3MDc2MjUzODo3NDgwNTQyYjM1ZTk5NjZhMzcwNzAzZGI4N2JjYTc4Yg==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - e60e5897-c468-4669-ac06-6753c748a38a
+      X-Runtime:
+      - '0.206740'
+      Date:
+      - Tue, 09 Aug 2016 17:08:58 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Tue, 09 Aug 2016 17:08:58 GMT
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=emails&user=xxxxxxxxxxxx"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 8cfb5b83-5999-475a-b518-4b0ee68d160a
+      X-Runtime:
+      - '0.404221'
+      Date:
+      - Tue, 09 Aug 2016 17:08:58 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"errors":{"user":["can''t be blank"]}}'
+    http_version: 
+  recorded_at: Tue, 09 Aug 2016 17:08:58 GMT
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=xxxxxxxxxxxx"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ3MDc2MjUzODo3NDgwNTQyYjM1ZTk5NjZhMzcwNzAzZGI4N2JjYTc4Yg==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 58fdbbc3-7da5-4dea-84b1-0778fbd98f80
+      X-Runtime:
+      - '0.204846'
+      Date:
+      - Tue, 09 Aug 2016 17:08:58 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Tue, 09 Aug 2016 17:08:58 GMT
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=xxxxxxxxxxxx"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 2671eb76-9fe5-4e29-a736-246ddc285641
+      X-Runtime:
+      - '0.406452'
+      Date:
+      - Tue, 09 Aug 2016 17:08:59 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"errors":{"user":["can''t be blank"]}}'
+    http_version: 
+  recorded_at: Tue, 09 Aug 2016 17:08:59 GMT
+recorded_with: VCR 3.0.3

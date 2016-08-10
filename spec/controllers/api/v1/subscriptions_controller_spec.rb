@@ -1,15 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::SubscriptionsController, type: :controller do
-  let(:user_mkey) { '7qdanSEmctZ2jPnYA0a1' }
-  let(:user_auth) { 'yLPv2hZ4DPRq1wGlQvqm' }
+RSpec.describe Api::V1::SubscriptionsController, type: :controller,
+  vcr: { strip_classname: true, cassette: 'api/authentication' } do
+  include_context 'user authentication'
+
+  let(:user) do
+    build(:user,
+      mkey: '7qdanSEmctZ2jPnYA0a1',
+      auth: 'yLPv2hZ4DPRq1wGlQvqm')
+  end
+
   let(:additions) { nil }
-  let(:owner) { Owner.new(user_mkey) }
+  let(:owner) { Owner.new(user.mkey) }
 
   before do
     additions &&
-      FactoryGirl.create(:owner_additions, { mkey: user_mkey }.merge(additions))
-    authenticate_with_http_digest(user_mkey, user_auth) { send(*action) }
+      create(:owner_additions, { mkey: user.mkey }.merge(additions))
+    authenticate_user { send(*action) }
   end
 
   describe 'GET #index' do

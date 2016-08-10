@@ -1,7 +1,7 @@
 module ContactsBuilders
   def create_contact(owner_mkey, total_score, client_mobile, additions = {})
-    contact = FactoryGirl.create(:contact, owner_mkey: owner_mkey, total_score: total_score, additions: additions)
-    FactoryGirl.create(:vector_mobile, contact: contact, value: client_mobile)
+    contact = create(:contact, owner_mkey: owner_mkey, total_score: total_score, additions: additions)
+    create(:vector_mobile, contact: contact, value: client_mobile)
     contact
   end
 end

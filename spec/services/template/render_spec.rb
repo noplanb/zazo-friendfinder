@@ -8,12 +8,12 @@ RSpec.describe Template::Render do
     subject { instance.content.class }
 
     context 'when mobile notification' do
-      let(:notification) { FactoryGirl.build(:notification_mobile) }
+      let(:notification) { build(:notification_mobile) }
       it { expect { subject }.to_not raise_exception }
     end
 
     context 'when email notification' do
-      let(:notification) { FactoryGirl.build(:notification_email) }
+      let(:notification) { build(:notification_email) }
       it { expect { subject }.to_not raise_exception }
     end
   end

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Contact::Add do
-  let(:vector) { FactoryGirl.create(:vector_mobile, value: '+16502453537') }
+  let(:vector) { create(:vector_mobile, value: '+16502453537') }
   let(:contact) do
-    FactoryGirl.create(:contact,
+    create(:contact,
       first_name: 'David',
       last_name: 'Miller',
       owner_mkey: 'GBAHb0482YxlJ0kYwbIS',
@@ -20,14 +20,16 @@ RSpec.describe Contact::Add do
       subject unless example.metadata[:skip_before]
     end
 
-    context 'when not added' do
+    context 'when not added', vcr: { cassette: 'when_not_added' } do
       let(:additions) { {} }
 
       include_examples 'contact is added specs'
+
       it 'should dispatch an event', :skip_before do
         expect(Zazo::Tool::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
         subject
       end
+
       it 'has specific status', :skip_before do
         is_expected.to eq(status: :queued)
       end
@@ -45,10 +47,12 @@ RSpec.describe Contact::Add do
       let(:additions) { { added_by_owner: true } }
 
       include_examples 'contact is added specs'
+
       it 'should dispatch an event', :skip_before do
         expect(Zazo::Tool::EventDispatcher).to_not receive(:emit)
         subject
       end
+
       it 'should have specific status', :skip_before do
         is_expected.to eq(status: :already_added)
       end
@@ -62,14 +66,16 @@ RSpec.describe Contact::Add do
       end
     end
 
-    context 'when already ignored' do
+    context 'when already ignored', vcr: { cassette: 'when_already_ignored' } do
       let(:additions) { { ignored_by_owner: true } }
 
       include_examples 'contact is added specs'
+
       it 'should dispatch an event', :skip_before do
         expect(Zazo::Tool::EventDispatcher).to receive(:emit).with(%w(contact added), Hash)
         subject
       end
+
       it 'has specific status', :skip_before do
         is_expected.to eq(status: :queued)
       end

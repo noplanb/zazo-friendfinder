@@ -1,8 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::ContactsController, type: :controller do
-  let(:user_mkey) { '7qdanSEmctZ2jPnYA0a1' }
-  let(:user_auth) { 'yLPv2hZ4DPRq1wGlQvqm' }
+RSpec.describe Api::V1::ContactsController, type: :controller,
+  vcr: { strip_classname: true, cassette: 'api/authentication' } do
+  include_context 'user authentication'
+
+  let(:user) do
+    build(:user,
+      mkey: '7qdanSEmctZ2jPnYA0a1',
+      auth: 'yLPv2hZ4DPRq1wGlQvqm')
+  end
 
   describe 'POST #create' do
     let(:params) { { 'contacts' => contacts }.merge(format: :json) }
@@ -10,7 +16,7 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
 
     before do
       ResqueSpec.reset!
-      authenticate_with_http_digest(user_mkey, user_auth) { post :create, params }
+      authenticate_user { post :create, params }
     end
 
     context 'when contacts have valid scheme' do
@@ -31,7 +37,7 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
       end
 
       it { expect(response).to be_success }
-      it { expect(ResqueWorker::ImportContacts).to have_queued(user_mkey, params['contacts']).in(:add_contacts) }
+      it { expect(ResqueWorker::ImportContacts).to have_queued(user.mkey, params['contacts']).in(:add_contacts) }
     end
 
     context 'when contacts have invalid scheme' do
@@ -50,7 +56,7 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
       end
 
       it { expect(response).to be_unprocessable }
-      it { expect(ResqueWorker::ImportContacts).to_not have_queued(user_mkey, params['contacts']).in(:add_contacts) }
+      it { expect(ResqueWorker::ImportContacts).to_not have_queued(user.mkey, params['contacts']).in(:add_contacts) }
       it do
         expected = {
           'status' => 'failure',
@@ -61,12 +67,10 @@ RSpec.describe Api::V1::ContactsController, type: :controller do
   end
 
   describe 'POST #ignore' do
-    let(:contact) { FactoryGirl.create(:contact, owner_mkey: user_mkey) }
+    let(:contact) { create(:contact, owner_mkey: user.mkey) }
     let(:params) { { id: contact.id.to_s } }
 
-    before do
-      authenticate_with_http_digest(user_mkey, user_auth) { post :ignore, params.merge(format: :json) }
-    end
+    before { authenticate_user { post :ignore, params.merge(format: :json) } }
 
     it { expect(response).to be_success }
   end

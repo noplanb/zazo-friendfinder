@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Contact::Ignore do
-  let(:contact) { FactoryGirl.create(:contact, additions: additions) }
+  let(:contact) { create(:contact, additions: additions) }
   let(:instance) { described_class.new(contact) }
 
   describe '#do' do

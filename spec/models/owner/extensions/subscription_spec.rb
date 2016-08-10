@@ -8,14 +8,14 @@ RSpec.describe Owner::Extensions::Subscription, type: :model do
     subject { instance.unsubscribe }
 
     shared_context 'unsubscribed shared context' do
-      it { expect(instance.unsubscribed?).to be true }
-      it { expect(Owner::Additions.count).to eq 1 }
-      it { expect(Owner::Additions.first.unsubscribed).to eq true }
+      it { expect(instance.unsubscribed?).to be(true) }
+      it { expect(Owner::Additions.count).to eq(1) }
+      it { expect(Owner::Additions.first.unsubscribed).to eq(true) }
     end
 
     context 'when already unsubscribed' do
       before do
-        FactoryGirl.create(:owner_additions, mkey: mkey, unsubscribed: true)
+        create(:owner_additions, mkey: mkey, unsubscribed: true)
         subject
       end
 
@@ -24,7 +24,7 @@ RSpec.describe Owner::Extensions::Subscription, type: :model do
 
     context 'when subscribed by additions' do
       before do
-        FactoryGirl.create(:owner_additions, mkey: mkey, unsubscribed: false)
+        create(:owner_additions, mkey: mkey, unsubscribed: false)
         subject
       end
 
@@ -43,31 +43,31 @@ RSpec.describe Owner::Extensions::Subscription, type: :model do
 
     context 'when unsubscribed' do
       before do
-        FactoryGirl.create(:owner_additions, mkey: mkey, unsubscribed: true)
+        create(:owner_additions, mkey: mkey, unsubscribed: true)
         subject
       end
 
-      it { expect(instance.subscribed?).to be true }
-      it { expect(Owner::Additions.count).to eq 1 }
-      it { expect(Owner::Additions.first.unsubscribed).to eq false }
+      it { expect(instance.subscribed?).to be(true) }
+      it { expect(Owner::Additions.count).to eq(1) }
+      it { expect(Owner::Additions.first.unsubscribed).to eq(false) }
     end
 
     context 'when already subscribed by additions' do
       before do
-        FactoryGirl.create(:owner_additions, mkey: mkey, unsubscribed: false)
+        create(:owner_additions, mkey: mkey, unsubscribed: false)
         subject
       end
 
-      it { expect(instance.subscribed?).to be true }
-      it { expect(Owner::Additions.count).to eq 1 }
-      it { expect(Owner::Additions.first.unsubscribed).to eq false }
+      it { expect(instance.subscribed?).to be(true) }
+      it { expect(Owner::Additions.count).to eq(1) }
+      it { expect(Owner::Additions.first.unsubscribed).to eq(false) }
     end
 
     context 'when already subscribed without additions' do
       before { subject }
 
-      it { expect(instance.subscribed?).to be true }
-      it { expect(Owner::Additions.count).to eq 0 }
+      it { expect(instance.subscribed?).to be(true) }
+      it { expect(Owner::Additions.count).to eq(0) }
     end
   end
 end

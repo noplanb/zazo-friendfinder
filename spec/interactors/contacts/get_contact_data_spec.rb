@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Contacts::GetContactData do
-  let(:contact) { FactoryGirl.create(:contact) }
+  let(:contact) { create(:contact) }
 
   describe '.run' do
     subject { described_class.run(contact: contact) }

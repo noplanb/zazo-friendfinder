@@ -1,50 +1,50 @@
 require 'rails_helper'
 
 RSpec.describe Score::Criteria::NumSmsSent do
-  let(:contact) { FactoryGirl.create :contact, vectors: vectors }
+  let(:contact) { create :contact, vectors: vectors }
   let(:instance) { described_class.new contact }
 
   describe '#calculate_with_ratio' do
-    let(:connection) { FactoryGirl.create :contact, vectors: vectors }
+    let(:connection) { create :contact, vectors: vectors }
     subject { instance.calculate_with_ratio }
 
     context 'with multiple vectors messages_sent' do
       let(:vectors) {[
-        FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 32 }),
-        FactoryGirl.create(:vector_email, additions: { email_messages_sent: 56 }),
+        create(:vector_mobile, additions: { sms_messages_sent: 32 }),
+        create(:vector_email, additions: { email_messages_sent: 56 }),
       ]}
       it { is_expected.to eq 41 }
     end
 
     context 'with mobile vector sms_messages_sent' do
       let(:vectors) {[
-        FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 21 }),
-        FactoryGirl.create(:vector_email)
+        create(:vector_mobile, additions: { sms_messages_sent: 21 }),
+        create(:vector_email)
       ]}
       it { is_expected.to eq 32 }
     end
 
     context 'with email vector email_messages_sent' do
       let(:vectors) {[
-        FactoryGirl.create(:vector_mobile),
-        FactoryGirl.create(:vector_email, additions: { email_messages_sent: 23 })
+        create(:vector_mobile),
+        create(:vector_email, additions: { email_messages_sent: 23 })
       ]}
       it { is_expected.to eq 0 }
     end
 
     context 'with not defined sms_messages_sent' do
-      let(:vectors) { [FactoryGirl.create(:vector_mobile)] }
+      let(:vectors) { [create(:vector_mobile)] }
       it { is_expected.to eq 0 }
     end
 
     context 'without phone vector' do
-      let(:vectors) { [FactoryGirl.create(:vector_email)] }
+      let(:vectors) { [create(:vector_email)] }
       it { is_expected.to eq 0 }
     end
   end
 
   describe '#save' do
-    let(:vectors) { [FactoryGirl.create(:vector_mobile, additions: { sms_messages_sent: 21 })] }
+    let(:vectors) { [create(:vector_mobile, additions: { sms_messages_sent: 21 })] }
     subject { instance.save }
 
     it { is_expected.to be_valid }

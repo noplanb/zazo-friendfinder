@@ -14,19 +14,17 @@ class Contact::Update::FindZazoContact
   private
 
   def update_contact(data)
-    contact.zazo_id   = data['id'].to_i
+    contact.zazo_id = data['id'].to_i
     contact.zazo_mkey = data['mkey']
     contact.save
   end
 
   def user_data
-    (contact.vectors.mobile + contact.vectors.email).each do |vector|
-      data = data_by_vector(vector)
-      return data if data['id'] && data['mkey']
-    end && nil
-  end
-
-  def data_by_vector(vector)
-    DataProviderApi.new(vector.name => vector.value).query(:find_by_mobile_or_email)
+    phones = contact.vectors.mobile.map(&:value)
+    data = DataProviderApi.new(
+      phones: phones, friend: contact.owner.mkey).query(:find_by_mobile)
+    data['id'] && data['mkey'] ? data : nil
+  rescue Faraday::ClientError
+    nil
   end
 end

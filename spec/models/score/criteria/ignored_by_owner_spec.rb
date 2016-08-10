@@ -7,20 +7,20 @@ RSpec.describe Score::Criteria::IgnoredByOwner do
     subject { instance.calculate_with_ratio }
 
     context 'when contact is ignored' do
-      let(:contact) { FactoryGirl.create :contact, additions: { ignored_by_owner: true } }
+      let(:contact) { create :contact, additions: { ignored_by_owner: true } }
 
       it { is_expected.to eq -100000 }
     end
 
     context 'when contact is not ignored' do
-      let(:contact) { FactoryGirl.create :contact }
+      let(:contact) { create :contact }
 
       it { is_expected.to eq 0 }
     end
   end
 
   describe '#save' do
-    let(:contact) { FactoryGirl.create :contact, additions: { ignored_by_owner: true } }
+    let(:contact) { create :contact, additions: { ignored_by_owner: true } }
     subject { instance.save }
 
     it { is_expected.to be_valid }

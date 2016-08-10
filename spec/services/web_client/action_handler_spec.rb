@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe WebClient::ActionHandler do
-  let(:contact) { FactoryGirl.create(:contact) }
-  let(:notification) { FactoryGirl.create(:notification, contact: contact) }
+  let(:contact) { create(:contact) }
+  let(:notification) { create(:notification, contact: contact) }
   let(:nkey) { notification.nkey }
   let(:owner) { contact.owner }
   let(:instance) { described_class.new(nkey) }
@@ -34,7 +34,7 @@ RSpec.describe WebClient::ActionHandler do
       end
 
       context 'another contact' do
-        let(:another_contact) { FactoryGirl.create(:contact, owner_mkey: contact.owner_mkey) }
+        let(:another_contact) { create(:contact, owner_mkey: contact.owner_mkey) }
 
         it { expect(notification.status).to eq 'no_feedback' }
         it { expect(another_contact.additions['added_by_owner']).to eq true }
@@ -60,7 +60,7 @@ RSpec.describe WebClient::ActionHandler do
       end
 
       context 'another contact' do
-        let(:another_contact) { FactoryGirl.create(:contact, owner_mkey: contact.owner_mkey) }
+        let(:another_contact) { create(:contact, owner_mkey: contact.owner_mkey) }
 
         it { expect(notification.status).to eq 'no_feedback' }
         it { expect(another_contact.additions['ignored_by_owner']).to eq true }
@@ -109,7 +109,7 @@ RSpec.describe WebClient::ActionHandler do
     subject { instance.valid? }
 
     context 'when valid' do
-      let(:nkey) { FactoryGirl.create(:notification, contact: contact).nkey }
+      let(:nkey) { create(:notification, contact: contact).nkey }
       it { is_expected.to be true }
     end
 

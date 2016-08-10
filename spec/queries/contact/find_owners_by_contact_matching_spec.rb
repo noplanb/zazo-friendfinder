@@ -5,10 +5,10 @@ RSpec.describe Contact::FindOwnersByContactMatching do
 
   describe '#do' do
     subject { instance.do }
-    let!(:contact_1) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: '+380930127802')] }
-    let!(:contact_2) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: '+380951035160')] }
-    let!(:contact_3) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: '+380508891332')] }
-    let!(:contact_4) { FactoryGirl.create :contact, vectors: [FactoryGirl.create(:vector_mobile, value: '+380951035160')] }
+    let!(:contact_1) { create :contact, vectors: [create(:vector_mobile, value: '+380930127802')] }
+    let!(:contact_2) { create :contact, vectors: [create(:vector_mobile, value: '+380951035160')] }
+    let!(:contact_3) { create :contact, vectors: [create(:vector_mobile, value: '+380508891332')] }
+    let!(:contact_4) { create :contact, vectors: [create(:vector_mobile, value: '+380951035160')] }
     let(:contact_data) do
       { id: 1,
         mkey: 'xxxxxxxxxxxx',

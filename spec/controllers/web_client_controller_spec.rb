@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe WebClientController, type: :controller, authenticate_with_http_basic: true do
-  let(:contact) { FactoryGirl.create(:contact) }
-  let(:notification) { FactoryGirl.create(:notification, contact: contact) }
+  let(:contact) { create(:contact) }
+  let(:notification) { create(:notification, contact: contact) }
   let(:nkey) { notification.nkey }
   let(:owner) { Owner.new(contact.owner_mkey) }
 
@@ -43,7 +43,7 @@ RSpec.describe WebClientController, type: :controller, authenticate_with_http_ba
   end
 
   describe 'GET #subscribe' do
-    let!(:notification) { FactoryGirl.create(:notification, contact: contact) }
+    let!(:notification) { create(:notification, contact: contact) }
     before { get :subscribe, id: notification.nkey }
 
     it_behaves_like 'response redirect'

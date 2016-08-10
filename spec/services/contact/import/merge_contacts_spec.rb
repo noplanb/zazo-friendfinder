@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Contact::Import::MergeContacts do
-  let(:owner_mkey) { FactoryGirl.build(:user).mkey }
+  let(:owner_mkey) { build(:user).mkey }
   let(:instance) { described_class.new(owner_mkey, contact_data) }
   let(:contact_data) do
     { 'display_name' => 'Sani Elfishawy', 'vectors' => vectors }
   end
   let!(:existing_contact) do
-    FactoryGirl.create :contact, owner_mkey: owner_mkey, vectors: [
-      FactoryGirl.build(:vector, name: 'mobile', value: '+16502453537'),
-      FactoryGirl.build(:vector, name: 'email',  value: 'elfishawy.sani@gmail.com'),
-      FactoryGirl.build(:vector, name: 'gplus',  value: 'elfishawy.sani@gmail.com')
+    create :contact, owner_mkey: owner_mkey, vectors: [
+      build(:vector, name: 'mobile', value: '+16502453537'),
+      build(:vector, name: 'email',  value: 'elfishawy.sani@gmail.com'),
+      build(:vector, name: 'gplus',  value: 'elfishawy.sani@gmail.com')
     ]
   end
 

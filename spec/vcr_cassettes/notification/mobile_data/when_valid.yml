@@ -1,0 +1,177 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=7qdanSEmctZ2jPnYA0a1"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ3MDc1ODQ0ODpkOWVkODlmNGU2M2I2MjMxNzU4MWM1ZGE4ODkxYjY0Mg==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 4e1500a7-564e-4c03-9a00-6a0fffc91fc8
+      X-Runtime:
+      - '0.290279'
+      Date:
+      - Tue, 09 Aug 2016 16:00:48 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Tue, 09 Aug 2016 16:00:48 GMT
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/attributes?attrs%5B%5D=auth&attrs%5B%5D=first_name&attrs%5B%5D=friends&attrs%5B%5D=last_name&user=7qdanSEmctZ2jPnYA0a1"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - c1219564-83d3-4650-a427-9da2a447c71b
+      X-Runtime:
+      - '2.077612'
+      X-Miniprofiler-Ids:
+      - '["fqxh8676wezctocox8r0","62n1eq6wvlp2wyt02wfj","vrm6xgfikgeth0x5f2qw","756wbdn4de8r8k9gfk7e","cs4zdx39wqshi5vuc9y5","g0xs5blfp5u7rvmqu50p","ubgu43dkwywpqc690io5","pzho6r2go1rtd16r713v","gsf5es2klxmysfzk1xcm","dviaj7f583ewzv361dbv"]'
+      Date:
+      - Tue, 09 Aug 2016 16:00:50 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"auth":"yLPv2hZ4DPRq1wGlQvqm","first_name":"Sani","last_name":"Elfishawy","friends":["oRXc4Q9pIkTZXYDtQka6","kYR7vjzbOV3tNjN5Ly5M","dz4X0EvprPJO6fGysT8X","QPqshnnSiLL46a2hBoWE","01age9m4DpZFWVU8JOnW","tWLIGfcwDQlm5sTX4wwO","91HCroW9mNk7whhTAD8J","8TTXNCMhGT4kOt9b4O2M","6ncb7IoqkFWxhCnWauHd","OFzSc2RIKLLEpb4zukVm","0DAQEVtmNKQiW6aoQrvo","MJfih2jBZiV1o2IkKYV2","p9s1YxMrTKFQUCWqAxdY","clwSKgZBRY0XkQQHgXs1","mR5qpIK6oQvjoyDIHu8j","derTAcMzdgO0bBkx54Ca","5KUmc2mcNIMZS5MPdTSP","4zrX79x8eQtCVYy3jRcx","fxVPRkGICwnrAwym52gK","d36VxAViB4Sqst1J7Pk6","AvzExKtdFXBOprLNVErN","jBSd3TmQHxGinjGNPanP","wVmaSXHsiZuc2IKtwp4j","AyUi31uRyCaGTlexwVAi","FcicWmob6DfqJ3Dm7OsQ","TH3DSssPQ3iEBmQFCwdo","MrDJejNmC5luYTYO8PNJ","Q7s8a1nflKvSDvm11TsB","bCLeYrF18nFmoT5a334w","kcuWzlm8iH9owLjw9XWS","8HpDzuXSnYhOJ2BDmd4s","xJ41ehRDBv68e4FB4l5T","IoYtQmZ6G40RClM5MoBd","Z0KwfCfee1Wk6UJ6QaMT","u6Eyi89hf6UihkfgnAWd","d2gPdAMOLTA90aUXEIC1","j0Ti9IepWFeydkgrmDky","s4jvHDYZbQaqlNMmsQ3t","NUzYvIDS9BbQnWHJk9m6","q5xSNmmrtX0eVKTQ7CaA","YmLieWhfaXVNwz3vjfy6","weAgqE6i3FD9BH0xDmSd","zWytohmW5Jv7KEaf8GwZ","j8WAdT1Kxqb0WQGBp30v","wWTO8gYJXd192suMz4x2","b1ZpLwv7ss5Q0pWSgkHY","chssm01mPywHKY9j1hce","TrSxNBy7USDZc9ho7Huu","dlfgjAuQepeWob3kQbgK","cd31z7sAkNyb2QOYndDc","RHsm5vC0NUL04ofT5PUA","XrHhCn6I689zVMERCzbO","vwKjLdZFwDgX1WJZNM4z","DvAnTIfOVy93Rd7PgwGT","qFI6KOUp9fNzu0ICTWXy","J5rZLitnKZ1SZy0bjvms","lXclCJv3iIrxqm2E277v","zdAhxdHnv4MJjQY0kPgq","TWa5gpUYywxlgV0hFrA8","NFC53Opsui15BLF3A5AH","VB6qtsSvCxJCjTcjK6AV","Yrn0cKlC2QgWpcdVSloF","pVHUov82G0SFyNGeFdAC","W4rJ8XZwALzKrbyaQk7Q","Kvs358jTxha4urYvXnz2","GBAHb0482YxlJ0kYwbIS","YITAtoNpVeaUR4rSF4XU","Q0wzd6gqP2PByyjBCrJl","fbV2C96jC07LfoYqdCyE","pBl2dJ5CeHqz2NgbXBlz","CUPXRqVxfLhqG20h1kWD","QObAyTjfqPLy4PO9Y7yB","89Wecs4FJyDcDSkcO8Mp","VhDg9AcQadHvCZMVrq7x","sClVxcu8CQtS2fCzCiyP","kJJnGZKKHxjRWz7lA2eW","WjDIDFthdl8fFE7oofh7","7vdk3lkNyZXlec6F2nfn","wiT23uQerU30HsJqR1J9","s57XUHmTeQY87VjcklEv","xNBsBmSjowP1yXwY2Za1","7o4nRtkY9d1zIrZRNGdx","V6mtmVrIm3QN4zDoK8CL","p35FHBzc07LDlzp3Ubbj","P6VRrsGXF5mSwN64kBKa","lmNyXatMqX5h8Q4lo20R","JTmARrCweg9B7krN2RhK","squUjce4scPsSbyi6HPi","x7qx6l3k8L6f4CWYvFO1","8UE3U05odTwqd5YQ9O5J","LmVFTIH4WPnYYmTlm1l6","SGYt9VG8ZgUhqqpodwgQ","B69Upda8tzzgnBKOyGI7","U1jMiccOjUsI7pLT5dIn","Eg2qiCWqMAbrmANZ8NKv","E07Y4fdAgtNcHvwR6Zt4","39WkSa5vTGrwrZVM3yDK","ruzWX0Stkq16zlmnJRA9","I2yxc5w0OUiZu4yulCJh","4mrSgHM9V2Od9UmKa8bE","k3VkpaEDa4pro2aMuA9S","XLLsP8jEN8p8fyPxmdL9","qaa1PV0G9U2nhPSJlyAm","kwnOYOt8yv92LMq90i8K","jTjHt8ZBrawjhuf7cf4D","OoM2lZNtrgyqBkNrekqn","LP1YsnwuEiudQ3seJnky","vLYrNhGgC8IR1kjfOOj5","8Li8i9LraT7Z0uhXOWTF","8OvGa3q3d73AA70etnwS","vOSOL1qTg0IZesaVMzAL","4favpWbzA7Hhmq2ccOVV","IRL1KXz0GBqUKCwSoDmI","rCJc97zJXArBzFcfPnm1","Mp8z35dyv7sgBs9JoU5V","0O9CUymYeNlUBnappxs2","WMJbYud5Fjk86uNJhBkb","XkjQVhr0TjMi4HJQqISY","tupWDwUfUV4cRQa2GdLY","t50yu5NTQLBkaSj9ldgf","ikAPZKLOjlJPBGLzPNCL","GGmQv1aDOoZ9R4ck00uS","Jem6Q1hz3eTAn16dO8Bf","WrpZC3D1JCksZMzXQXPX","mBAmMTFTtJ01kXIcv1e8","jFxXryTFemAPMbqkBYWk","8YIcEO6tOzWach2WD5NH","PWdDx7pDGyQIolB2gulK","UtGzbLcCEETTsbxDjbX5","NQlB65hMYRRjWjgrJbLC","CNtECkk43MDaZH77G2O5","yLxVUAtUZNYtGjUr4nSj","bRcFj1j1ePpdewDjjMbO","OCUnx95H1xdc5PCupR3P","0AogtZRwq4KwDQjjqWjv","inzOFKA7V4feIjo8ryKc","mZ8P28oXa48LSEQgaW0R","aOw5P5ZMqcZUJoL2J9J2","C3nx3OCS1v6nSV2WZDZA","rZ3XzGuIiskY0YKPEC1W","tDRDbZ7dTDB5qrlOydLZ","sVy9teUoMD9mZY4dWOHP","C4iS7XFmFIioRmbMnYKp","T2fszoVuhLmTnEPQqu0s","EGJKdoxXxO4kXN6zrldQ","d4mwsJThCBzdZeUUrzZB","HaGWceximUJDLjAGd3zX","6yk21244pQVkeYg0nRgR","TZC2hgJr4BzhPPgFwENs","8sRk7hOaXvDRIrnFedPh","NykOFWUY98bNcLymy9AK","MgCxSY1z2BpnYJ6PvpFB","LSmzvKt2zpJ1UajvYBxf","goV9VoFaL6PG2EfBr69y","hs3HCyjOmYWQOJCqUJxw","GalKnNMymyTyaP6W7Lcl","0Zk9ECSuZY3vLnYo9y0D","ixNdHKaDZfty3IXRR2Rl","RxI4pAwXAHFkPq4wWHVy","UUhKfE4x7qJ7PI90prBn","JIwkoYLOPyW7mTRWeRk5","gr2jkR5w5QS06y3plh7W","MdN6bH8fElXKcEeDB0bd","MLSzXdwZK7N3vhQZmXf1","nqQ1PC5dkckwL0BJc8ev","IxjbMuzIAEAHMjuK2rCW","jlGcA6UddeNARlhhHUvJ","M1CNczX6YEpgQTbJNRwy","IJfVaAloMD5qMDjoEesA","5ehuaB7ICvHTE5Jq92Ng","geCqEPwyLjYYNZ7Kpg6C","rA2DvZeoOkDeKn0ZBaXF","KQwQ1N8mzLBjIs01LARM","dl99P0S83Zajvlw9YH6T","Z1KKKse30adfEFQsmI9W","nmFT2Lw6s3Grt6YsqzHX","Xk2t6Ucenbpe3W24hmSA","IywEEdABp8ZOMJXDKPfc","6VGXaIe6CBzZTfWu0Mtr","fVFRACJh2eYJ06HyVOlu"]}'
+    http_version: 
+  recorded_at: Tue, 09 Aug 2016 16:00:50 GMT
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/push_user?user_mkey=7qdanSEmctZ2jPnYA0a1"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Www-Authenticate:
+      - Digest realm="Zazo DataProvider", qop="auth", algorithm=MD5, nonce="MTQ3MDc1ODQ1MDoyNGE5M2IyN2M1MDliYTdhOTQyYjQ5ZWVmMTliM2Q1MQ==",
+        opaque="822778b6350cbc116426dfdce7488072"
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - cf678a8e-e13c-4585-b0b1-df0f666cf900
+      X-Runtime:
+      - '0.292307'
+      Date:
+      - Tue, 09 Aug 2016 16:00:50 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"status":"unauthorized"}'
+    http_version: 
+  recorded_at: Tue, 09 Aug 2016 16:00:50 GMT
+- request:
+    method: get
+    uri: "<%= dataprovider_api_base_url %>/api/v1/fetch/users/queries/push_user?user_mkey=7qdanSEmctZ2jPnYA0a1"
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - 7ca76771-0962-4a1e-b24b-aef69896c4a2
+      X-Runtime:
+      - '1.160538'
+      X-Miniprofiler-Ids:
+      - '["c2844c7p3f391n6yuum9","62n1eq6wvlp2wyt02wfj","vrm6xgfikgeth0x5f2qw","756wbdn4de8r8k9gfk7e","cs4zdx39wqshi5vuc9y5","g0xs5blfp5u7rvmqu50p","ubgu43dkwywpqc690io5","pzho6r2go1rtd16r713v","gsf5es2klxmysfzk1xcm","dviaj7f583ewzv361dbv"]'
+      Date:
+      - Tue, 09 Aug 2016 16:00:51 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"mkey":"7qdanSEmctZ2jPnYA0a1","push_token":"xxxxxxxxxxxxxxxxxxxx","device_platform":"android","device_build":"prod"}'
+    http_version: 
+  recorded_at: Tue, 09 Aug 2016 16:00:51 GMT
+recorded_with: VCR 3.0.3
