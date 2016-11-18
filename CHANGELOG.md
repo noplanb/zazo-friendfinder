@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.11.2
+- :hammer: Fixed Dockerfile
+
 ### 0.11.1
 - :hammer: Fixed Gemfile.lock for zazo-tools gem
 
