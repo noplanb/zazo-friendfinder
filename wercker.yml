@@ -1,4 +1,5 @@
 box: zazo/rails
+
 build:
   services:
     - id: postgres
